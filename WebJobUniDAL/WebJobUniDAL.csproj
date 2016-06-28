@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DataSet1Main.cs">
+      <DependentUpon>DataSet1Main.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet1Main.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
