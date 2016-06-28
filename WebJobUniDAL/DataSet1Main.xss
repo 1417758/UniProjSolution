@@ -10,11 +10,11 @@
     <Shape ID="DesignTable:Agenda" ZOrder="4" X="1161" Y="738" Height="188" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="91" />
     <Shape ID="DesignTable:Person" ZOrder="5" X="419" Y="524" Height="272" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="154" />
     <Shape ID="DesignTable:ContactDetails" ZOrder="6" X="55" Y="110" Height="377" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="238" />
-    <Shape ID="DesignTable:Employee" ZOrder="14" X="779" Y="752" Height="167" Width="238" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
+    <Shape ID="DesignTable:Employee" ZOrder="14" X="827" Y="748" Height="167" Width="238" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
     <Shape ID="DesignTable:EndUser" ZOrder="1" X="812" Y="514" Height="104" Width="229" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="50" />
     <Shape ID="DesignTable:Client" ZOrder="10" X="959" Y="259" Height="104" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="50" />
     <Shape ID="DesignTable:Company" ZOrder="9" X="469" Y="48" Height="398" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="280" />
-    <Shape ID="DesignTable:PersonReturn" ZOrder="2" X="429" Y="880" Height="335" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="217" />
+    <Shape ID="DesignTable:PersonReturn" ZOrder="2" X="429" Y="880" Height="356" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="217" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK__Person__role__339FAB6E" ZOrder="16" LineWidth="11">
@@ -49,11 +49,11 @@
       <RoutePoints>
         <Point>
           <X>1161</X>
-          <Y>834</Y>
+          <Y>830</Y>
         </Point>
         <Point>
-          <X>1017</X>
-          <Y>834</Y>
+          <X>1065</X>
+          <Y>830</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -65,11 +65,11 @@
         </Point>
         <Point>
           <X>612</X>
-          <Y>825</Y>
+          <Y>821</Y>
         </Point>
         <Point>
-          <X>779</X>
-          <Y>825</Y>
+          <X>827</X>
+          <Y>821</Y>
         </Point>
       </RoutePoints>
     </Connector>
