@@ -15,13 +15,23 @@ C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\MainWeb
 
 1. at the command prompt:
 iisexpress.exe /path:C:\Windows\microsoft.net\framework\v4.0.30319\asp.netwebadminfiles /vpath:"/asp.netwebadminfiles" /port:8082 /clr:4.0 /ntlm
+OR 
+(due to error: iisexpress.exe is not recognized as an internal or external command, operable program or batch)
+
+"C:\Program Files\IIS Express\iisexpress.exe" /path:C:\Windows\microsoft.net\framework64\v4.0.30319\asp.netwebadminfiles /vpath:"/asp.netwebadminfiles" /port:8082 /clr:4.0 /ntlm
+
 
 2. at the windows browser:
 http://localhost:8082/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\MainWeb\&applicationUrl=/
 
 3. at the Localhost Authentication popup:
 use your computer login credentials 
+home server is:
+rmcsantos
++password
+
 
 source ie: 
+https://blogs.msdn.microsoft.com/webdev/2013/08/19/accessing-the-asp-net-web-configuration-tool-in-visual-studio-2013/
 https://www.youtube.com/watch?v=b9o1ZExV5Jg
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
