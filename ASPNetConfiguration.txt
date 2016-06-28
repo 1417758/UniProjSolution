@@ -1,0 +1,27 @@
+UniProj
+
+
+https://github.com/1417758/UniProjSolution.git
+
+server name .\SQLSERVER
+
+WIN-568DTP4IIJQ\SQLSERVER
+
+
+C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\MainWeb
+
+
+---------------- ASP.NET  Web Site Administration Tool ----------------------------------------------------
+
+1. at the command prompt:
+iisexpress.exe /path:C:\Windows\microsoft.net\framework\v4.0.30319\asp.netwebadminfiles /vpath:"/asp.netwebadminfiles" /port:8082 /clr:4.0 /ntlm
+
+2. at the windows browser:
+http://localhost:8082/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\MainWeb\&applicationUrl=/
+
+3. at the Localhost Authentication popup:
+use your computer login credentials 
+
+source ie: 
+https://www.youtube.com/watch?v=b9o1ZExV5Jg
+------------------------------------------------------------------------------------------------------------------------------------------------------------
