@@ -26,8 +26,15 @@ namespace MainWeb
         public UserManager()
             : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
         {
+            //video help (https://www.youtube.com/watch?v=A8Cfc62xdMo)
+            //return here
+            //this.UserValidator = new MyValidation.MyUserValidator(this);
+            //this.PasswordValidator = new MyValidation.MyPasswordValidator(this);
+
         }
     }
+
+   
 }
 
 namespace MainWeb
