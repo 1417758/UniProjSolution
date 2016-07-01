@@ -19,7 +19,8 @@
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <asp:Login ID="Login1" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small" ForeColor="black" Height="198px" Width="482px">
+                            <asp:Login ID="Login1" runat="server" onloggedin="Login1_LoggedIn" DestinationPageUrl="~/Contact.aspx" OnAuthenticate="Login1_Authenticate1" OnLoginError="Login1_LoginError"
+                                BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small" ForeColor="black" Height="198px" Width="482px" >
                                 <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                                 <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small" ForeColor="#284775" />
                                 <TextBoxStyle Font-Size="Small" Width="100%" />
