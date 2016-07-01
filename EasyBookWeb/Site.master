@@ -47,11 +47,6 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                    <div class="navbar-brand">
-                        <asp:LoginName ID="LoginName1" runat="server"   />
-                        <asp:LoginStatus ID="LoginStatus1" runat="server" />
-                    </div>
-
 
                 </div>
                 <div class="navbar-collapse collapse">
