@@ -1,14 +1,19 @@
 UniProj
 
-
 https://github.com/1417758/UniProjSolution.git
 
 server name .\SQLSERVER
 
 WIN-568DTP4IIJQ\SQLSERVER
 
-
 C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\MainWeb
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ERROR:
+********** 30/06/2016 22:03:37 **********
+Exception Type: System.Data.SqlClient.SqlException
+Exception: Failed to generate a user instance of SQL Server due to a failure in starting the process for the user instance. The connection will be closed.
+SOLUTION: Delete all files in the %LOCALAPPDATA%\Microsoft\Microsoft SQL Server Data\SQLEXPRESS
 
 
 ---------------- ASP.NET  Web Site Administration Tool ----------------------------------------------------

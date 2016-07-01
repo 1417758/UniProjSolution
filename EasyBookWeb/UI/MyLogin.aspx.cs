@@ -16,18 +16,9 @@ public partial class UI_MyLogin : System.Web.UI.Page {
         if (Membership.ValidateUser(Login1.UserName, Login1.Password) == true) {
             Login1.Visible = true;
             Session["user"] = HttpContext.Current.User.Identity.Name;
-            Session["user"] = Login1.UserName;
-            Session["user1"] = System.Web.HttpContext.Current.Request.LogonUserIdentity.Name;
+            Session["user1"] = Login1.UserName;
+
             FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
-            FormsAuthentication.Initialize();
-            FormsAuthentication.SetAuthCookie(Login1.UserName, true);
-            bool formAut = FormsAuthentication.Authenticate(Login1.UserName, Login1.Password);
-            //FormsAuthentication.DefaultUrl();
-
-
-
-
-
         }
         else {
             Response.Write("Invalid Login");
@@ -56,14 +47,14 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             //start session here
             Session["curUser"] = endUser;
 
-            if (Session["curUser"] != null)
+            if(Session["curUser"] != null)
                 ///this.Master.
 
 
 
 
-                //redirect 
-                Response.Redirect("~/Contact.aspx");
+            //redirect 
+            Response.Redirect("~/Contact.aspx");
 
         }
         catch (System.Threading.ThreadAbortException ex) {
@@ -86,6 +77,8 @@ public partial class UI_MyLogin : System.Web.UI.Page {
     protected void Login1_LoginError(object sender, System.EventArgs e) {
 
         try {
+
+            dynamic a = User.Identity.Name;
             string endUser = this.Login1.UserName.Trim().ToUpper();
             dynamic pass = this.Login1.Password;
             dynamic ipaddress = Request.UserHostAddress;
@@ -126,6 +119,6 @@ public partial class UI_MyLogin : System.Web.UI.Page {
         }
     }
 
-
+    
 
 }
