@@ -12,7 +12,7 @@ namespace EasyBookWeb {
             try {
                 // Include enterprise logic for logging exceptions 
                 // Get the absolute path to the log file 
-                string logFile = "App_Code/ErrorLog" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".txt";
+                string logFile = "ErrorLog" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".txt";
                 logFile = HttpContext.Current.Server.MapPath(logFile);
 
 
@@ -51,13 +51,14 @@ namespace EasyBookWeb {
             }
             catch (Exception ex) {
                 //  UtilsShared.LogException(ex, User.Identity.Name);
-                System.Diagnostics.Debug.Print("ExceptionUtility, LogException Method" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                System.Diagnostics.Debug.Print("<h1>ExceptionUtility, CATCH LogException Method</h1>\n" + ex.Message + ex.InnerException + "\n" + "\n" + ex.ToString());
             }
         }
 
         // Notify System Operators about an exception 
         public static void NotifySystemOps(Exception exc) {
             // Include code for notifying IT system operators
+            //Rs ie: email notification
         }
     }
 }

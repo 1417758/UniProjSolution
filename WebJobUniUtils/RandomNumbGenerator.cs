@@ -15,7 +15,7 @@ using System.Security.Cryptography;
 // </copyright>
 //------------------------------------------------------------------------------------------------------
 // http://msdn.microsoft.com/en-us/library/system.security.cryptography.rngcryptoserviceprovider(v=VS.90).aspx
-namespace WebJobUniUtils {
+namespace WebJobUniBLL {
     public class RandomNumbGenerator {   
 
 

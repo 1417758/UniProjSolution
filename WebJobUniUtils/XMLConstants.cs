@@ -12,7 +12,7 @@ using System.Diagnostics;
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------------------------------
-namespace WebJobUniUtils {
+namespace WebJobUniBLL {
     public class XMLConstants {
 
         public const string YES = "Yes";

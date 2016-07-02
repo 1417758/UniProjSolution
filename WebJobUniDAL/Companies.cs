@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using WebJobUniDAL.DataSet1MainTableAdapters;
-using WebJobUniUtils;
+using WebJobUniBLL;
 //------------------------------------------------------------------------------------------------------
 // <copyright file="Exceptions.vb" company="">
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.

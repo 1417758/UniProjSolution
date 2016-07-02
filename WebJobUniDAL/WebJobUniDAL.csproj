@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Companies.cs" />
     <Compile Include="DataSet1Main.cs">
       <DependentUpon>DataSet1Main.xsd</DependentUpon>
     </Compile>
@@ -89,6 +90,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebJobUniUtils\WebJobUniUtils.csproj">
+      <Project>{2e4ddb58-f97c-4163-8b7f-a30ebd4154e3}</Project>
+      <Name>WebJobUniUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
