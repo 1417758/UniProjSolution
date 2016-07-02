@@ -12,8 +12,8 @@ using System.Diagnostics;
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------------------------------
-namespace WebJobUniBLL {
-    class XMLConstants {
+namespace WebJobUniUtils {
+    public class XMLConstants {
 
         public const string YES = "Yes";
         public const string NO = "No";

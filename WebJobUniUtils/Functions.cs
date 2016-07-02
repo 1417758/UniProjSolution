@@ -1,20 +1,18 @@
 ﻿using System;
 using System.IO;
-using Microsoft.Azure.WebJobs;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+
 using System.Net.Mail;
 using System.Net;
 
-namespace WebJobUniProj {
+namespace WebJobUniUtils {
     public class Functions {
         // This function will get triggered/executed when a new message is written 
         // on an Azure Queue called queue.
-        public static void ProcessQueueMessage([QueueTrigger("queue")] string message, TextWriter log) {
-            log.WriteLine(message);
-        }
+        //public static void ProcessQueueMessage([QueueTrigger("queue")] string message, TextWriter log) {
+        //    log.WriteLine(message);
+        //}
 
         public static void WriteMsgBlob(String msg, string counter) {//
             try {
@@ -23,19 +21,19 @@ namespace WebJobUniProj {
 
                 //Create an instance of CloudStorageAccount.
                 //This represents a Windows Azure Storage account.
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(conStrKey1);
+          //      CloudStorageAccount storageAccount = CloudStorageAccount.Parse(conStrKey1);
 
                 //Create an instance of CreateCloudBlobClient.
                 //Provides a client - side logical representation of the Windows Azure Blob service. This client is used to configure and execute requests against the Blob service.
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+           //     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
                 //Get a container in the Windows Azure Blob service. Create the container if it does not exist. 
-                CloudBlobContainer container = blobClient.GetContainerReference("blobcontainer1");
-                container.CreateIfNotExists();
+           //     CloudBlobContainer container = blobClient.GetContainerReference("blobcontainer1");
+          //      container.CreateIfNotExists();
 
                 //Gets a reference to a block blob in the container and upload a string text to it.
-                CloudBlockBlob blob = container.GetBlockBlobReference("survey"+ counter + ".txt");
-                blob.UploadText(msg );
+            //    CloudBlockBlob blob = container.GetBlockBlobReference("survey"+ counter + ".txt");
+            //    blob.UploadText(msg );
             }
             catch (Exception e) {
                 //Console.WriteLine("Saving to blob failed. " + e.Message);
@@ -75,12 +73,12 @@ namespace WebJobUniProj {
             try {
                 string acs = "DefaultEndpointsProtocol=https;AccountName=xxx;AccountKey=xxx";
 
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(acs);
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference("salesinfo");
-                container.CreateIfNotExists();
-                CloudBlockBlob blob = container.GetBlockBlobReference("DailyReport" + DateTime.Now + ".txt");
-                blob.UploadText(salesreport);
+                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(acs);
+                //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                //CloudBlobContainer container = blobClient.GetContainerReference("salesinfo");
+                //container.CreateIfNotExists();
+                //CloudBlockBlob blob = container.GetBlockBlobReference("DailyReport" + DateTime.Now + ".txt");
+                //blob.UploadText(salesreport);
 
                 Console.WriteLine("File saved successfully"); ;
 
