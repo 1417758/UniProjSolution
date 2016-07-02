@@ -2,16 +2,17 @@
 using System.Data;
 using WebJobUniDAL.DataSet1MainTableAdapters;
 using WebJobUniBLL;
+
 //------------------------------------------------------------------------------------------------------
 // <copyright file="Exceptions.vb" company="">
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------------------------------
 namespace WebJobUniDAL {
+
     [System.ComponentModel.DataObject()]
-    class Companies {
-
-
+    public class Companies {
+        
 
         private static CompanyTableAdapter _tblCompanyTableAdapter = null;
 

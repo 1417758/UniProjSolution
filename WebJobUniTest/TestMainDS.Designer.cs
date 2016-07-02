@@ -1,4 +1,4 @@
-﻿namespace UniProjWeb.Tests {
+﻿namespace WebJobUniTest {
     partial class TestMainDS {
         /// <summary>
         /// Required designer variable.
@@ -367,6 +367,7 @@
             this.BtonGetCompanies.TabIndex = 37;
             this.BtonGetCompanies.Text = "Get Companies";
             this.BtonGetCompanies.UseVisualStyleBackColor = true;
+            this.BtonGetCompanies.Click += new System.EventHandler(this.BtonGetCompanies_Click);
             // 
             // BttonLogExc2Database
             // 
@@ -498,6 +499,7 @@
             // 
             this.BackgroundWorker1.WorkerReportsProgress = true;
             this.BackgroundWorker1.WorkerSupportsCancellation = true;
+            this.BackgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             // 
             // btnFillDB
             // 

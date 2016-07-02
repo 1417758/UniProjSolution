@@ -1,10 +1,11 @@
 ﻿using System;
 using WebJobUniBLL;
+using WebJobUniDAL;
 using System.Windows.Forms;
 using System.Diagnostics;
 
 
-namespace UniProjWeb.Tests {
+namespace WebJobUniTest {
 
     public partial class TestMainDS : Form {
         public TestMainDS() {
@@ -27,9 +28,7 @@ namespace UniProjWeb.Tests {
             }
         }
 
-
-
-
+        
 
         private void Button1_Click(System.Object sender, System.EventArgs e) {
             //Dim d As New TestDatabaseSizingDataSetTableAdapters.QueriesTableAdapter
@@ -506,14 +505,15 @@ namespace UniProjWeb.Tests {
         */
 
 
-        /*
-                #region "Company"
 
-                private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
-                    this.DataGridView1.DataSource = Companies.GetCompanies;
+        #region "Company"
+
+
+        private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
+                    this.DataGridView1.DataSource = Companies.GetCompanies();
                     this.DataGridView1.Visible = true;
                 }
-
+        /*
                 private void BtonInsertCompany_Click(System.Object sender, System.EventArgs e) {
                     try {
                         this.LblReturn.Text = "Companies Num: " + Companies.AddCompany("rachels group", "34 albyn terrace 1b12 56 - Aberdeen");
@@ -552,9 +552,9 @@ namespace UniProjWeb.Tests {
 
                 }
 
+            */
                 #endregion
 
-            */
 
 
 
@@ -624,6 +624,7 @@ namespace UniProjWeb.Tests {
         public void Main() {
             Load += TestMainDS_Load;
         }
+
     }
 }
 
