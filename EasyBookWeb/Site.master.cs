@@ -71,5 +71,6 @@ public partial class SiteMaster : MasterPage {
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e) {
         //MainWeb Context.GetOwinContext().Authentication.SignOut();
+        FormsAuthentication.SignOut();
     }
 }
