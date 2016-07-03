@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyBookWeb;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -50,9 +51,6 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             if(Session["curUser"] != null)
                 ///this.Master.
 
-
-
-
             //redirect 
             Response.Redirect("~/Contact.aspx");
 
@@ -62,8 +60,10 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             System.Diagnostics.Debug.Print(ex.ToString());
         }
         catch (Exception ex) {
-            // UtilsShared.LogException(ex, User.Identity.Name);
-            System.Diagnostics.Debug.Print(ex.ToString());
+            System.Diagnostics.Debug.Print("<h2>MyLogin.aspx, LoggedIn Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(ex, "MyLogin.aspx, LoggedIn Method");
+            ExceptionUtility.NotifySystemOps(ex);
         }
 
     }
@@ -77,8 +77,8 @@ public partial class UI_MyLogin : System.Web.UI.Page {
     protected void Login1_LoginError(object sender, System.EventArgs e) {
 
         try {
-
-            dynamic a = User.Identity.Name;
+            ;
+            dynamic a = HttpContext.Current.User.Identity.Name;
             string endUser = this.Login1.UserName.Trim().ToUpper();
             dynamic pass = this.Login1.Password;
             dynamic ipaddress = Request.UserHostAddress;
@@ -92,10 +92,13 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             //R           Dim msg As String = "Attempted login failed for : " & user & vbCrLf & "Password entered: " & pass
             //R           SendMail.Send(msg, "EMISSIONS COMPILER - Failed Login Attempt", Net.Mail.DeliveryNotificationOptions.None, Net.Mail.MailPriority.High, toMail, fromMail, Nothing, Nothing, Nothing)
             //R           End If
-        }
+        
+       }
         catch (Exception ex) {
-            //  UtilsShared.LogException(ex, User.Identity.Name);
-            System.Diagnostics.Debug.Print(ex.ToString());
+            System.Diagnostics.Debug.Print("<h2>MyLogin.aspx, LoggedIn Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(ex, "MyLogin.aspx, LoggedIn Method");
+            ExceptionUtility.NotifySystemOps(ex);
         }
 
     }
@@ -114,7 +117,11 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             return details;
         }
         catch (Exception ex) {
-            System.Diagnostics.Debug.Print(ex.ToString());
+            System.Diagnostics.Debug.Print("<h2>MyLogin.aspx, LoggedIn Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(ex, "MyLogin.aspx, LoggedIn Method");
+            ExceptionUtility.NotifySystemOps(ex);
+        
             return "Error in creating login Details!";
         }
     }
