@@ -74,11 +74,8 @@ public partial class Error_TestError : System.Web.UI.Page {
             System.Diagnostics.Debug.Print("<h2>Default Page Error</h2>\n");
             System.Diagnostics.Debug.Print("<p>Provide as much information here as is " +
               "appropriate to show to the client.</p>\n");
-            System.Diagnostics.Debug.Print("Return to the <a href='TestError.aspx'>" + "Test Error Page</a>\n");            
-            //ORIG Response.Write("Return to the <a href=TestError.aspx'>" + "Default Page</a>\n");
-            ////Trigger postback on code-behind
-            //R     Response.write("<body OnLoad=""javascript:__doPostBack('ForcePostBack','');"">");
-
+            System.Diagnostics.Debug.Print("Return to the <a href='TestError.aspx'>" + "Test Error Page</a>\n");
+            Response.Write("Return to <a href=\"TestError.aspx\">Error Test Default Page</a>");
 
             // Log the exception and notify system operators
             ExceptionUtility.LogException(exc, "TestError.aspx, Page_Error");
