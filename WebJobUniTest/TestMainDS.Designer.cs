@@ -74,6 +74,7 @@
             this.LabelUserID = new System.Windows.Forms.Label();
             this.LabelUserName = new System.Windows.Forms.Label();
             this.LblReturn = new System.Windows.Forms.Label();
+            this.btnStartup = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.GroupBoxUsage.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -357,6 +358,7 @@
             this.BtonInsertCompany.TabIndex = 38;
             this.BtonInsertCompany.Text = "Insert Company";
             this.BtonInsertCompany.UseVisualStyleBackColor = true;
+            this.BtonInsertCompany.Click += new System.EventHandler(this.BtonInsertCompany_Click);
             // 
             // BtonGetCompanies
             // 
@@ -601,12 +603,24 @@
             this.LblReturn.TabIndex = 73;
             this.LblReturn.Text = "return";
             // 
+            // btnStartup
+            // 
+            this.btnStartup.Location = new System.Drawing.Point(799, 349);
+            this.btnStartup.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStartup.Name = "btnStartup";
+            this.btnStartup.Size = new System.Drawing.Size(109, 69);
+            this.btnStartup.TabIndex = 82;
+            this.btnStartup.Text = "Back to Start Up";
+            this.btnStartup.UseVisualStyleBackColor = true;
+            this.btnStartup.Click += new System.EventHandler(this.btnStartup_Click);
+            // 
             // TestMainDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1105, 693);
+            this.Controls.Add(this.btnStartup);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.GroupBoxUsage);
             this.Controls.Add(this.GroupBox3);
@@ -693,5 +707,6 @@
         internal System.Windows.Forms.Label LabelUserID;
         internal System.Windows.Forms.Label LabelUserName;
         internal System.Windows.Forms.Label LblReturn;
+        internal System.Windows.Forms.Button btnStartup;
     }
 }

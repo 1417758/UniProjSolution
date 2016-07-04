@@ -1,5 +1,5 @@
 ﻿using System;
-using WebJobUniBLL;
+using WebJobUniUtils;
 using WebJobUniDAL;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -28,7 +28,7 @@ namespace WebJobUniTest {
             }
         }
 
-        
+
 
         private void Button1_Click(System.Object sender, System.EventArgs e) {
             //Dim d As New TestDatabaseSizingDataSetTableAdapters.QueriesTableAdapter
@@ -510,24 +510,28 @@ namespace WebJobUniTest {
 
 
         private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
-                    this.DataGridView1.DataSource = Companies.GetCompanies();
-                    this.DataGridView1.Visible = true;
-                }
-        /*
-                private void BtonInsertCompany_Click(System.Object sender, System.EventArgs e) {
-                    try {
-                        this.LblReturn.Text = "Companies Num: " + Companies.AddCompany("rachels group", "34 albyn terrace 1b12 56 - Aberdeen");
+            this.DataGridView1.DataSource = Companies.GetCompanies();
+            this.DataGridView1.Visible = true;
+        }
 
-                        this.DataGridView1.DataSource = Companies.GetCompanies;
-                        this.DataGridView1.Visible = true;
-                    }
-                    catch (Exception ex) {
-                       System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-                    }
+        private void BtonInsertCompany_Click(System.Object sender, System.EventArgs e) {
+            try {
+                this.LblReturn.Text = "Companies Num: " + Companies.AddCompany("rachels group");
 
-                }
+                //this.DataGridView1.DataSource = Companies.GetCompanies();
+                //this.DataGridView1.Visible = true;
 
-                private void Button1BtonGetCompaniesIDByCompName_Click(System.Object sender, System.EventArgs e) {
+                BtonGetCompanies_Click(sender, e);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+            }
+
+        }
+
+
+
+        /*          private void Button1BtonGetCompaniesIDByCompName_Click(System.Object sender, System.EventArgs e) {
                     try {
                         dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
@@ -553,7 +557,7 @@ namespace WebJobUniTest {
                 }
 
             */
-                #endregion
+        #endregion
 
 
 
@@ -625,6 +629,11 @@ namespace WebJobUniTest {
             Load += TestMainDS_Load;
         }
 
+        private void btnStartup_Click(object sender, EventArgs e) {
+            StartUp Check = new StartUp();
+            Check.Show();
+            Hide();
+        }
     }
 }
 
