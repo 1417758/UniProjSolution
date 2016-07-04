@@ -37,9 +37,9 @@
             this.TextBoxTimeStamp = new System.Windows.Forms.TextBox();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboInd = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtBoxFileName = new System.Windows.Forms.TextBox();
+            this.comboNat = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.GroupBoxLogin = new System.Windows.Forms.GroupBox();
             this.btnAddLoginWithUserName = new System.Windows.Forms.Button();
@@ -181,9 +181,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboInd);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.txtBoxFileName);
+            this.groupBox1.Controls.Add(this.comboNat);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
@@ -192,38 +192,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Path";
             // 
+            // comboInd
+            // 
+            this.comboInd.FormattingEnabled = true;
+            this.comboInd.Location = new System.Drawing.Point(9, 32);
+            this.comboInd.Name = "comboInd";
+            this.comboInd.Size = new System.Drawing.Size(814, 21);
+            this.comboInd.TabIndex = 26;
+            this.comboInd.SelectedIndexChanged += new System.EventHandler(this.comboInd_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 25;
-            this.label1.Text = "Selection";
+            this.label1.Text = "Nature of Business";
             // 
-            // comboBox1
+            // comboNat
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(814, 21);
-            this.comboBox1.TabIndex = 24;
-            // 
-            // txtBoxFileName
-            // 
-            this.txtBoxFileName.Location = new System.Drawing.Point(9, 32);
-            this.txtBoxFileName.Name = "txtBoxFileName";
-            this.txtBoxFileName.Size = new System.Drawing.Size(814, 20);
-            this.txtBoxFileName.TabIndex = 22;
+            this.comboNat.FormattingEnabled = true;
+            this.comboNat.Location = new System.Drawing.Point(9, 73);
+            this.comboNat.Name = "comboNat";
+            this.comboNat.Size = new System.Drawing.Size(814, 21);
+            this.comboNat.TabIndex = 24;
+            this.comboNat.SelectedIndexChanged += new System.EventHandler(this.comboNat_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 23;
-            this.label2.Text = "File Name";
+            this.label2.Text = "Industry";
             // 
             // GroupBoxLogin
             // 
@@ -367,6 +370,7 @@
             this.Controls.Add(this.ProgressBar1);
             this.Name = "Testing";
             this.Text = "Testing";
+            this.Load += new System.EventHandler(this.Testing_Load);
             this.GroupBoxUser.ResumeLayout(false);
             this.GroupBoxUser.PerformLayout();
             this.groupBoxTimeStamp.ResumeLayout(false);
@@ -400,8 +404,7 @@
         internal System.Windows.Forms.ProgressBar ProgressBar1;
         internal System.Windows.Forms.GroupBox groupBox1;
         internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        internal System.Windows.Forms.TextBox txtBoxFileName;
+        private System.Windows.Forms.ComboBox comboNat;
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.GroupBox GroupBoxLogin;
         internal System.Windows.Forms.Button btnAddLoginWithUserName;
@@ -415,5 +418,6 @@
         internal System.Windows.Forms.DataGridView DataGridView4;
         internal System.Windows.Forms.DataGridView DataGridView2;
         internal System.Windows.Forms.DataGridView DataGridView1;
+        private System.Windows.Forms.ComboBox comboInd;
     }
 }

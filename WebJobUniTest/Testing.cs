@@ -17,6 +17,15 @@ namespace WebJobUniTest {
             InitializeComponent();
         }
 
+        private void Testing_Load(object sender, EventArgs e) {
+
+            //populate industry combobox
+            PopulateIndComboFromXMLFile(sender, e);
+
+
+        }
+
+
         private void btnAddReadFile_Click(object sender, EventArgs e) {
             try {
 
@@ -86,16 +95,15 @@ namespace WebJobUniTest {
             Hide();
         }
 
-        private void btnPopComboBox_Click(object sender, EventArgs e) {
+        private void PopulateIndComboFromXMLFile(object sender, EventArgs e) {
             try {
-                string fileName = txtBoxFileName.Text;
-                string yearXML = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\Years.xml";
-                string yearXML2 = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\SIC07CHcondensedList.xml";
-                // Utils.PopulateComboFromXMLFile(yearXML, ref this.comboBox1);               
-                PopulateComboFromXMLFile(yearXML2, ref this.comboBox1);
-              
-                //R (working vs)    PopulateComboWithIndustries(yearXML2);
 
+                //string yearXML = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\Years.xml";
+                // Utils.PopulateComboFromXMLFile(yearXML, ref this.comboBox1);   
+
+                string yearXML2 = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Data\SIC07CHcondensedList.xml";
+                //populate industries
+                PopulateComboWithIndustries(yearXML2);
 
             }
             catch (Exception ex) {
@@ -114,24 +122,24 @@ namespace WebJobUniTest {
 
                 //clear combo items
                 comboBox.Items.Clear();
-       
-                    //select desired items
-                    var xmlDocument = XDocument.Load(xmlFile);
-              //  dynamic result = null; // (from c in y where c.Attribute(XMLConstants.SETTING_ID).Value == settingName c.Attribute(XMLConstants.Value));
 
-                var indElem = from key in xmlDocument.Descendants("Industry") where key.Attribute("Section").Value == "A" select key.Value ;
+                //select desired items
+                var xmlDocument = XDocument.Load(xmlFile);
+                //  dynamic result = null; // (from c in y where c.Attribute(XMLConstants.SETTING_ID).Value == settingName c.Attribute(XMLConstants.Value));
+
+                var indElem = from key in xmlDocument.Descendants("Industry") where key.Attribute("Section").Value == "A" select key.Value;
                 var indElem2 = from key in xmlDocument.Descendants("Name") where key.Parent.Parent.Parent.Attribute("Section").Value == "A" select key.Value;
-               
+
 
                 //var secKeyItems = from key in xmlDocument.Descendants("key2") select key.Value;
                 //var alphaItems = from key in xmlDocument.Descendants("key3") select key.Value;
 
                 DataGridView1.DataSource = indElem.ToList();
-               DataGridView2.DataSource = indElem2.ToList();
+                DataGridView2.DataSource = indElem2.ToList();
 
                 //bind each combo to the selected result
                 comboBox.DataSource = indElem2.ToList();
-                    
+
 
 
             }
@@ -140,14 +148,34 @@ namespace WebJobUniTest {
             }
         }
 
+        public void PopulateComboFromXMLFile(string xmlFile, string parentSelection) {
+
+            try {
+
+                //load file
+                var xmlDocument = XDocument.Load(xmlFile);
+                
+                //select desired items
+                var indElem = from key in xmlDocument.Descendants("Name") where key.Parent.Parent.Parent.Element("UID").Value == parentSelection select key.Value;
+              
+                //DataGridView1.DataSource = indElem.ToString();
+               
+                //bind each combo to the selected result
+                this.comboNat.DataSource = indElem.ToList();
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print(ex.ToString());
+            }
+        }
 
         public void PopulateComboWithIndustries(string xmlFile) {
 
             try {
                 //attribute example: http://stackoverflow.com/questions/4721436/binding-xml-to-combobox
-        
+
                 //clear combo items
-                this.comboBox1.Items.Clear();
+                this.comboInd.Items.Clear();
 
                 DataSet ds = new DataSet();
                 ds.ReadXml(xmlFile);
@@ -156,11 +184,11 @@ namespace WebJobUniTest {
                 DataView industries = ds.Tables[0].DefaultView;
 
                 //show dataView Table on gridview
-               this.DataGridView1.DataSource = industries;
-               
+                this.DataGridView1.DataSource = industries;
+
                 //now define datatext field and datavalue field of dropdownlist  
-                this.comboBox1.DataSource = industries;
-                this.comboBox1.DisplayMember = "Domain"; //Name
+                this.comboInd.DataSource = industries;
+                this.comboInd.DisplayMember = "Domain";
 
             }
             catch (Exception ex) {
@@ -168,9 +196,65 @@ namespace WebJobUniTest {
             }
         }
 
+        private void comboInd_SelectedIndexChanged(object sender, EventArgs e) {
+            try {
+                string yearXML2 = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Data\SIC07CHcondensedList.xml";
+
+                ComboBox cmb = (ComboBox)sender;
+                int selectedIndex = cmb.SelectedIndex;
+                int selectedVal = cmb.SelectedIndex;
+                string selectedText = cmb.SelectedText;
+                dynamic selectedItem = cmb.SelectedItem;
+
+                // MessageBox.Show(String.Format("Index: [{0}] Text={1}; Value={2}", selectedIndex, selectedText, selectedVal));
+
+                //populate combo nature according industry selected 
+                PopulateComboFromXMLFile(yearXML2, (selectedIndex + 1).ToString());
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print(ex.ToString());
+            }
+        }
+
+        private void comboNat_SelectedIndexChanged(object sender, EventArgs e) {
+            GetNatureCode(sender, e);
+
+        }
+
+        public void GetNatureCode(object sender, EventArgs e) {
+
+            try {
+
+                string yearXML2 = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Data\SIC07CHcondensedList.xml";
+
+                ComboBox cmb = (ComboBox)sender;
+                int selectedIndex = cmb.SelectedIndex;
+                string selectedVal = cmb.SelectedValue.ToString();
+                string selectedText = cmb.SelectedText;
+                dynamic selectedItem = cmb.SelectedItem;
 
 
+                //load file
+                var xmlDocument = XDocument.Load(yearXML2);
+               string natSelection = "Freshwater aquaculture";
 
+                //select desired items
+                var indElem = from key in xmlDocument.Descendants("ID") where key.Parent.Element("Name").Value == selectedVal select key.Value;
 
+                DataGridView1.DataSource = indElem.ToString();
+
+                //bind each combo to the selected result
+                this.LblReturn.Text = indElem.ToList().ElementAt(0);
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print(ex.ToString());
+            }
+        }
+
+        private void btnPopComboBox_Click(object sender, EventArgs e) {
+
+        }
     }//class
 }//namespace
