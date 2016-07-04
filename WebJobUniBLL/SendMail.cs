@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using WebJobUniBLL;
+using WebJobUniUtils;
 using System.Net.NetworkInformation;
 using System.Net.Mail;
 //------------------------------------------------------------------------------------------------------

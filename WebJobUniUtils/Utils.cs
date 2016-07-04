@@ -17,6 +17,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Web.UI.WebControls;
 using WebJobUniUtils;
+using System.Windows.Forms;
 
 //------------------------------------------------------------------------------------------------------
 // <copyright file="UtilsShared.vb" company="">
@@ -1716,8 +1717,48 @@ namespace WebJobUniUtils {
                 System.Diagnostics.Debug.Print(ex.ToString());
             }
         }
-        
+
+        public static void PopulateComboFromXMLFile(string xmlFile, ref ComboBox comboBox) {
+
+            try {
+                //Dim txt = "Name"
+                //Dim value = "ID"
+
+                //clear combo items
+                comboBox.Items.Clear();
+
+                DataSet ds = new DataSet();
+                ds.ReadXml(xmlFile);
+
+                //get the dataview of table, which is default table name  
+                DataView dv = ds.Tables[0].DefaultView;
+                DataView dv1 = ds.Tables[1].DefaultView;
+                DataView dv2 = ds.Tables[2].DefaultView;
+
+                //now define datatext field and datavalue field of dropdownlist  
+                comboBox.DataSource = dv;
+                comboBox.DisplayMember = "Name";
+
+            /*    //----  try 2 ---
+                //select desired items
+                var xmlDocument = XDocument.Load(xmlFile);
+                var indElem = from key in xmlDocument.Descendants("StdIndustClass") select key.Value;
+                var indName = from key in xmlDocument.Descendants("Name") select key.Value.Trim();
+                //var secKeyItems = from key in xmlDocument.Descendants("key2") select key.Value;
+                //var alphaItems = from key in xmlDocument.Descendants("key3") select key.Value;
+
+                //bind each combo to the selected result
+                comboBox.DataSource = indName.ToList();
+                */
+
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print(ex.ToString());
+            }
+        }
+
         #endregion
 
-}
+    }
 }

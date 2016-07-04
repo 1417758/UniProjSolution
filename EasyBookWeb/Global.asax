@@ -20,7 +20,7 @@
         try {
             // Code that runs when an unhandled error occurs
             //source https://msdn.microsoft.com/en-us/library/bb397417(v=vs.100).aspx
-            
+
             // Get the exception object.
             Exception exc = Server.GetLastError();
 
@@ -43,17 +43,20 @@
             // For other kinds of errors give the user some information
             // but stay on the default page
             System.Diagnostics.Debug.Print("<h2>Global.asax Page, Application_Error Method, Error</h2>\n");
-            System.Diagnostics.Debug.Print(
-                "<p>" + exc.Message + "</p>\n");
+            System.Diagnostics.Debug.Print("<p>" + exc.Message + "</p>\n");
             System.Diagnostics.Debug.Print("<p>" + exc.InnerException + "</p>\n");
-            //R Response.Redirect("~/Error/GenericError.aspx");
+
+            //NB REVIEW THIS 03/7/16
+            //ORIG Response.Write("Return to the <a href='Default.aspx'>" + "Default Page</a>\n"); /note here Default=testError.aspx
+            Response.Write("Return to <a href=\"GenericError.aspx\">Generic</a>");
+      //WORKING VS    Response.Write("Return to <a href=\"TestError.aspx\">Error Test Default Page</a>");
 
             // Log the exception and notify system operators        
             ExceptionUtility.LogException(exc, "Global.asax, Application_Error Method");
             ExceptionUtility.NotifySystemOps(exc);
-            
-                //R test
-              //R  Server.Transfer("GenericError.aspx", true);
+
+            //R test
+            //R  Server.Transfer("GenericError.aspx", true);
 
             // Clear the error from the server
             Server.ClearError();

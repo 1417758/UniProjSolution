@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using WebJobUniUtils;
 
 namespace WebJobUniTest {
@@ -113,35 +114,24 @@ namespace WebJobUniTest {
 
                 //clear combo items
                 comboBox.Items.Clear();
-
-                DataSet ds = new DataSet();
-                ds.ReadXml(xmlFile);
-
-                //get the dataview of table, which is default table name  
-                DataView industries = ds.Tables[0].DefaultView;
        
-
-                DataGridView1.DataSource = industries;
-                
-                //DataGridView4.DataSource = dv3.Table;
-
-
-                //now define datatext field and datavalue field of dropdownlist  
-                comboBox.DataSource = industries;
-                comboBox.DisplayMember = "Name";
-                
-
-                /*    //----  try 2 ---
                     //select desired items
                     var xmlDocument = XDocument.Load(xmlFile);
-                    var indElem = from key in xmlDocument.Descendants("StdIndustClass") select key.Value;
-                    var indName = from key in xmlDocument.Descendants("Name") select key.Value.Trim();
-                    //var secKeyItems = from key in xmlDocument.Descendants("key2") select key.Value;
-                    //var alphaItems = from key in xmlDocument.Descendants("key3") select key.Value;
+              //  dynamic result = null; // (from c in y where c.Attribute(XMLConstants.SETTING_ID).Value == settingName c.Attribute(XMLConstants.Value));
 
-                    //bind each combo to the selected result
-                    comboBox.DataSource = indName.ToList();
-                    */
+                var indElem = from key in xmlDocument.Descendants("Industry") where key.Attribute("Section").Value == "A" select key.Value ;
+                var indElem2 = from key in xmlDocument.Descendants("Name") where key.Parent.Parent.Parent.Attribute("Section").Value == "A" select key.Value;
+               
+
+                //var secKeyItems = from key in xmlDocument.Descendants("key2") select key.Value;
+                //var alphaItems = from key in xmlDocument.Descendants("key3") select key.Value;
+
+                DataGridView1.DataSource = indElem.ToList();
+               DataGridView2.DataSource = indElem2.ToList();
+
+                //bind each combo to the selected result
+                comboBox.DataSource = indElem2.ToList();
+                    
 
 
             }
@@ -170,9 +160,9 @@ namespace WebJobUniTest {
                
                 //now define datatext field and datavalue field of dropdownlist  
                 this.comboBox1.DataSource = industries;
-                this.comboBox1.DisplayMember = "Name";
+                this.comboBox1.DisplayMember = "Domain"; //Name
 
-           }
+            }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print(ex.ToString());
             }

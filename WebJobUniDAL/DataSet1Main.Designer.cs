@@ -10,8 +10,6 @@
 
 #pragma warning disable 1591
 
-using System;
-
 namespace WebJobUniDAL {
     
     
@@ -9277,10 +9275,6 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             else {
                 return ((object)(returnValue));
             }
-        }
-
-        internal int Insert(string companyName, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8, object p9, object p10) {
-            throw new NotImplementedException();
         }
     }
     

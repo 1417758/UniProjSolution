@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StdIndustClass>
+	<Industry Section="A"> 
+		<UID>1</UID>
+		<Domain>Agriculture, Forestry and Fishing</Domain>
+		<activities>
+			<activity><ID>01110</ID><Name>Growing of cereals (except rice), leguminous crops and oil seeds</Name></activity>
+			<activity><ID>01120</ID><Name>Growing of rice</Name></activity>
+			<activity><ID>01130</ID><Name>Growing of vegetables and melons, roots and tubers</Name></activity>
+			<activity><ID>01140</ID><Name>Growing of sugar cane</Name></activity>
+			<activity><ID>01150</ID><Name>Growing of tobacco</Name></activity>
+			<activity><ID>01160</ID><Name>Growing of fibre crops</Name></activity>
+			<activity><ID>01190</ID><Name>Growing of other non-perennial crops</Name></activity>
+			<activity><ID>01210</ID><Name>Growing of grapes</Name></activity>
+			<activity><ID>01220</ID><Name>Growing of tropical and subtropical fruits</Name></activity>
+			<activity><ID>01230</ID><Name>Growing of citrus fruits</Name></activity>
+			<activity><ID>01240</ID><Name>Growing of pome fruits and stone fruits</Name></activity>
+			<activity><ID>01250</ID><Name>Growing of other tree and bush fruits and nuts</Name></activity>
+			<activity><ID>01260</ID><Name>Growing of oleaginous fruits</Name></activity>
+			<activity><ID>01270</ID><Name>Growing of beverage crops</Name></activity>
+			<activity><ID>01280</ID><Name>Growing of spices, aromatic, drug and pharmaceutical crops</Name></activity>
+			<activity><ID>01290</ID><Name>Growing of other perennial crops</Name></activity>
+			<activity><ID>01300</ID><Name>Plant propagation</Name></activity>
+			<activity><ID>01410</ID><Name>Raising of dairy cattle</Name></activity>
+			<activity><ID>01420</ID><Name>Raising of other cattle and buffaloes</Name></activity>
+			<activity><ID>01430</ID><Name>Raising of horses and other equines</Name></activity>
+			<activity><ID>01440</ID><Name>Raising of camels and camelids</Name></activity>
+			<activity><ID>01450</ID><Name>Raising of sheep and  goats</Name></activity>
+			<activity><ID>01460</ID><Name>Raising of swine/pigs</Name></activity>
+			<activity><ID>01470</ID><Name>Raising of poultry</Name></activity>
+			<activity><ID>01490</ID><Name>Raising of other animals</Name></activity>
+			<activity><ID>01500</ID><Name>Mixed farming</Name></activity>
+			<activity><ID>01610</ID><Name>Support activities for crop production</Name></activity>
+			<activity><ID>01621</ID><Name>Farm animal boarding and care</Name></activity>
+			<activity><ID>01629</ID><Name>Support activities for animal production (other than farm animal boarding and care) n.e.c.</Name></activity>
+			<activity><ID>01630</ID><Name>Post-harvest crop activities</Name></activity>
+			<activity><ID>01640</ID><Name>Seed processing for propagation</Name></activity>
+			<activity><ID>01700</ID><Name>Hunting, trapping and related service activities</Name></activity>
+			<activity><ID>02100</ID><Name>Silviculture and other forestry activities</Name></activity>
+			<activity><ID>02200</ID><Name>Logging</Name></activity>
+			<activity><ID>02300</ID><Name>Gathering of wild growing non-wood products</Name></activity>
+			<activity><ID>02400</ID><Name>Support services to forestry</Name></activity>
+			<activity><ID>03110</ID><Name>Marine fishing</Name></activity>
+			<activity><ID>03120</ID><Name>Freshwater fishing</Name></activity>
+			<activity><ID>03210</ID><Name>Marine aquaculture</Name></activity>
+			<activity><ID>03220</ID><Name>Freshwater aquaculture</Name></activity>
+		</activities>
+	</Industry>
+
+	<Industry Section="B"><UID>2</UID><Domain>Mining and Quarrying</Domain>
+	<activities>
+	<activity><ID>05101</ID><Name>Deep coal mines</Name></activity>
+	<activity><ID>05102</ID><Name>Open cast coal working</Name></activity>
+	<activity><ID>05200</ID><Name>Mining of lignite</Name></activity>
+	<activity><ID>06100</ID><Name>Extraction of crude petroleum</Name></activity>
+	<activity><ID>06200</ID><Name>Extraction of natural gas</Name></activity>
+	<activity><ID>07100</ID><Name>Mining of iron ores</Name></activity>
+	<activity><ID>07210</ID><Name>Mining of uranium and thorium ores</Name></activity>
+	<activity><ID>07290</ID><Name>Mining of other non-ferrous metal ores</Name></activity>
+	<activity><ID>08110</ID><Name>Quarrying of ornamental and building stone, limestone, gypsum, chalk and slate</Name></activity>
+	<activity><ID>08120</ID><Name>Operation of gravel and sand pits, mining of clays and kaolin</Name></activity>
+	<activity><ID>08910</ID><Name>Mining of chemical and fertilizer minerals</Name></activity>
+	<activity><ID>08920</ID><Name>Extraction of peat</Name></activity>
+	<activity><ID>08930</ID><Name>Extraction of salt</Name></activity>
+	<activity><ID>08990</ID><Name>Other mining and quarrying n.e.c.</Name></activity>
+	<activity><ID>09100</ID><Name>Support activities for petroleum and natural gas extraction</Name></activity>
+	<activity><ID>09900</ID><Name>Support activities for other mining and quarrying</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="C"> <UID>3</UID><Domain>Manufacturing</Domain>
+	<activities>
+	<activity><ID>10110</ID><Name>Processing and preserving of meat</Name></activity>
+	<activity><ID>10120</ID><Name>Processing and preserving of poultry meat</Name></activity>
+	<activity><ID>10130</ID><Name>Production of meat and poultry meat products</Name></activity>
+	<activity><ID>10200</ID><Name>Processing and preserving of fish, crustaceans and molluscs</Name></activity>
+	<activity><ID>10310</ID><Name>Processing and preserving of potatoes</Name></activity>
+	<activity><ID>10320</ID><Name>Manufacture of fruit and vegetable juice</Name></activity>
+	<activity><ID>10390</ID><Name>Other processing and preserving of fruit and vegetables</Name></activity>
+	<activity><ID>10410</ID><Name>Manufacture of oils and fats</Name></activity>
+	<activity><ID>10420</ID><Name>Manufacture of margarine and similar edible fats</Name></activity>
+	<activity><ID>10511</ID><Name>Liquid milk and cream production</Name></activity>
+	<activity><ID>10512</ID><Name>Butter and cheese production</Name></activity>
+	<activity><ID>10519</ID><Name>Manufacture of other milk products</Name></activity>
+	<activity><ID>10520</ID><Name>Manufacture of ice cream</Name></activity>
+	<activity><ID>10611</ID><Name>Grain milling</Name></activity>
+	<activity><ID>10612</ID><Name>Manufacture of breakfast cereals and cereals-based food</Name></activity>
+	<activity><ID>10620</ID><Name>Manufacture of starches and starch products</Name></activity>
+	<activity><ID>10710</ID><Name>Manufacture of bread, manufacture of fresh pastry goods and cakes</Name></activity>
+	<activity><ID>10720</ID><Name>Manufacture of rusks and biscuits, manufacture of preserved pastry goods and cakes</Name></activity>
+	<activity><ID>10730</ID><Name>Manufacture of macaroni, noodles, couscous and similar farinaceous products</Name></activity>
+	<activity><ID>10810</ID><Name>Manufacture of sugar</Name></activity>
+	<activity><ID>10821</ID><Name>Manufacture of cocoa and chocolate confectionery</Name></activity>
+	<activity><ID>10822</ID><Name>Manufacture of sugar confectionery</Name></activity>
+	<activity><ID>10831</ID><Name>Tea processing</Name></activity>
+	<activity><ID>10832</ID><Name>Production of coffee and coffee substitutes</Name></activity>
+	<activity><ID>10840</ID><Name>Manufacture of condiments and seasonings</Name></activity>
+	<activity><ID>10850</ID><Name>Manufacture of prepared meals and dishes</Name></activity>
+	<activity><ID>10860</ID><Name>Manufacture of homogenized food preparations and dietetic food</Name></activity>
+	<activity><ID>10890</ID><Name>Manufacture of other food products n.e.c.</Name></activity>
+	<activity><ID>10910</ID><Name>Manufacture of prepared feeds for farm animals</Name></activity>
+	<activity><ID>10920</ID><Name>Manufacture of prepared pet foods</Name></activity>
+	<activity><ID>11010</ID><Name>Distilling, rectifying and blending of spirits</Name></activity>
+	<activity><ID>11020</ID><Name>Manufacture of wine from grape</Name></activity>
+	<activity><ID>11030</ID><Name>Manufacture of cider and other fruit wines</Name></activity>
+	<activity><ID>11040</ID><Name>Manufacture of other non-distilled fermented beverages</Name></activity>
+	<activity><ID>11050</ID><Name>Manufacture of beer</Name></activity>
+	<activity><ID>11060</ID><Name>Manufacture of malt</Name></activity>
+	<activity><ID>11070</ID><Name>Manufacture of soft drinks, production of mineral waters and other bottled waters</Name></activity>
+	<activity><ID>12000</ID><Name>Manufacture of tobacco products</Name></activity>
+	<activity><ID>13100</ID><Name>Preparation and spinning of textile fibres</Name></activity>
+	<activity><ID>13200</ID><Name>Weaving of textiles</Name></activity>
+	<activity><ID>13300</ID><Name>Finishing of textiles</Name></activity>
+	<activity><ID>13910</ID><Name>Manufacture of knitted and crocheted fabrics</Name></activity>
+	<activity><ID>13921</ID><Name>Manufacture of soft furnishings</Name></activity>
+	<activity><ID>13922</ID><Name>manufacture of canvas goods, sacks, etc.</Name></activity>
+	<activity><ID>13923</ID><Name>manufacture of household textiles</Name></activity>
+	<activity><ID>13931</ID><Name>Manufacture of woven or tufted carpets and rugs</Name></activity>
+	<activity><ID>13939</ID><Name>Manufacture of other carpets and rugs</Name></activity>
+	<activity><ID>13940</ID><Name>Manufacture of cordage, rope, twine and netting</Name></activity>
+	<activity><ID>13950</ID><Name>Manufacture of non-wovens and articles made from non-wovens, except apparel</Name></activity>
+	<activity><ID>13960</ID><Name>Manufacture of other technical and industrial textiles</Name></activity>
+	<activity><ID>13990</ID><Name>Manufacture of other textiles n.e.c.</Name></activity>
+	<activity><ID>14110</ID><Name>Manufacture of leather clothes</Name></activity>
+	<activity><ID>14120</ID><Name>Manufacture of workwear</Name></activity>
+	<activity><ID>14131</ID><Name>Manufacture of other men's outerwear</Name></activity>
+	<activity><ID>14132</ID><Name>Manufacture of other women's outerwear</Name></activity>
+	<activity><ID>14141</ID><Name>Manufacture of men's underwear</Name></activity>
+	<activity><ID>14142</ID><Name>Manufacture of women's underwear</Name></activity>
+	<activity><ID>14190</ID><Name>Manufacture of other wearing apparel and accessories n.e.c.</Name></activity>
+	<activity><ID>14200</ID><Name>Manufacture of articles of fur</Name></activity>
+	<activity><ID>14310</ID><Name>Manufacture of knitted and crocheted hosiery</Name></activity>
+	<activity><ID>14390</ID><Name>Manufacture of other knitted and crocheted apparel</Name></activity>
+	<activity><ID>15110</ID><Name>Tanning and dressing of leather, dressing and dyeing of fur</Name></activity>
+	<activity><ID>15120</ID><Name>Manufacture of luggage, handbags and the like, saddlery and harness</Name></activity>
+	<activity><ID>15200</ID><Name>Manufacture of footwear</Name></activity>
+	<activity><ID>16100</ID><Name>Sawmilling and planing of wood</Name></activity>
+	<activity><ID>16210</ID><Name>Manufacture of veneer sheets and wood-based panels</Name></activity>
+	<activity><ID>16220</ID><Name>Manufacture of assembled parquet floors</Name></activity>
+	<activity><ID>16230</ID><Name>Manufacture of other builders' carpentry and joinery</Name></activity>
+	<activity><ID>16240</ID><Name>Manufacture of wooden containers</Name></activity>
+	<activity><ID>16290</ID><Name>Manufacture of other products of wood, manufacture of articles of cork, straw and plaiting materials</Name></activity>
+	<activity><ID>17110</ID><Name>Manufacture of pulp</Name></activity>
+	<activity><ID>17120</ID><Name>Manufacture of paper and paperboard</Name></activity>
+	<activity><ID>17211</ID><Name>Manufacture of corrugated paper and paperboard, sacks and bags</Name></activity>
+	<activity><ID>17219</ID><Name>Manufacture of other paper and paperboard containers</Name></activity>
+	<activity><ID>17220</ID><Name>Manufacture of household and sanitary goods and of toilet requisites</Name></activity>
+	<activity><ID>17230</ID><Name>Manufacture of paper stationery</Name></activity>
+	<activity><ID>17240</ID><Name>Manufacture of wallpaper</Name></activity>
+	<activity><ID>17290</ID><Name>Manufacture of other articles of paper and paperboard n.e.c.</Name></activity>
+	<activity><ID>18110</ID><Name>Printing of newspapers</Name></activity>
+	<activity><ID>18121</ID><Name>Manufacture of printed labels</Name></activity>
+	<activity><ID>18129</ID><Name>Printing n.e.c.</Name></activity>
+	<activity><ID>18130</ID><Name>Pre-press and pre-media services</Name></activity>
+	<activity><ID>18140</ID><Name>Binding and related services</Name></activity>
+	<activity><ID>18201</ID><Name>Reproduction of sound recording</Name></activity>
+	<activity><ID>18202</ID><Name>Reproduction of video recording</Name></activity>
+	<activity><ID>18203</ID><Name>Reproduction of computer media</Name></activity>
+	<activity><ID>19100</ID><Name>Manufacture of coke oven products</Name></activity>
+	<activity><ID>19201</ID><Name>Mineral oil refining</Name></activity>
+	<activity><ID>19209</ID><Name>Other treatment of petroleum products (excluding petrochemicals manufacture)</Name></activity>
+	<activity><ID>20110</ID><Name>Manufacture of industrial gases</Name></activity>
+	<activity><ID>20120</ID><Name>Manufacture of dyes and pigments</Name></activity>
+	<activity><ID>20130</ID><Name>Manufacture of other inorganic basic chemicals</Name></activity>
+	<activity><ID>20140</ID><Name>Manufacture of other organic basic chemicals</Name></activity>
+	<activity><ID>20150</ID><Name>Manufacture of fertilizers and nitrogen compounds</Name></activity>
+	<activity><ID>20160</ID><Name>Manufacture of plastics in primary forms</Name></activity>
+	<activity><ID>20170</ID><Name>Manufacture of synthetic rubber in primary forms</Name></activity>
+	<activity><ID>20200</ID><Name>Manufacture of pesticides and other agrochemical products</Name></activity>
+	<activity><ID>20301</ID><Name>Manufacture of paints, varnishes and similar coatings, mastics and sealants</Name></activity>
+	<activity><ID>20302</ID><Name>Manufacture of printing ink</Name></activity>
+	<activity><ID>20411</ID><Name>Manufacture of soap and detergents</Name></activity>
+	<activity><ID>20412</ID><Name>Manufacture of cleaning and polishing preparations</Name></activity>
+	<activity><ID>20420</ID><Name>Manufacture of perfumes and toilet preparations</Name></activity>
+	<activity><ID>20510</ID><Name>Manufacture of explosives</Name></activity>
+	<activity><ID>20520</ID><Name>Manufacture of glues</Name></activity>
+	<activity><ID>20530</ID><Name>Manufacture of essential oils</Name></activity>
+	<activity><ID>20590</ID><Name>Manufacture of other chemical products n.e.c.</Name></activity>
+	<activity><ID>20600</ID><Name>Manufacture of man-made fibres</Name></activity>
+	<activity><ID>21100</ID><Name>Manufacture of basic pharmaceutical products</Name></activity>
+	<activity><ID>21200</ID><Name>Manufacture of pharmaceutical preparations</Name></activity>
+	<activity><ID>22110</ID><Name>Manufacture of rubber tyres and tubes, retreading and rebuilding of rubber tyres</Name></activity>
+	<activity><ID>22190</ID><Name>Manufacture of other rubber products</Name></activity>
+	<activity><ID>22210</ID><Name>Manufacture of plastic plates, sheets, tubes and profiles</Name></activity>
+	<activity><ID>22220</ID><Name>Manufacture of plastic packing goods</Name></activity>
+	<activity><ID>22230</ID><Name>Manufacture of builders  ware of plastic</Name></activity>
+	<activity><ID>22290</ID><Name>Manufacture of other plastic products</Name></activity>
+	<activity><ID>23110</ID><Name>Manufacture of flat glass</Name></activity>
+	<activity><ID>23120</ID><Name>Shaping and processing of flat glass</Name></activity>
+	<activity><ID>23130</ID><Name>Manufacture of hollow glass</Name></activity>
+	<activity><ID>23140</ID><Name>Manufacture of glass fibres</Name></activity>
+	<activity><ID>23190</ID><Name>Manufacture and processing of other glass, including technical glassware</Name></activity>
+	<activity><ID>23200</ID><Name>Manufacture of refractory products</Name></activity>
+	<activity><ID>23310</ID><Name>Manufacture of ceramic tiles and flags</Name></activity>
+	<activity><ID>23320</ID><Name>Manufacture of bricks, tiles and construction products, in baked clay</Name></activity>
+	<activity><ID>23410</ID><Name>Manufacture of ceramic household and ornamental articles</Name></activity>
+	<activity><ID>23420</ID><Name>Manufacture of ceramic sanitary fixtures</Name></activity>
+	<activity><ID>23430</ID><Name>Manufacture of ceramic insulators and insulating fittings</Name></activity>
+	<activity><ID>23440</ID><Name>Manufacture of other technical ceramic products</Name></activity>
+	<activity><ID>23490</ID><Name>Manufacture of other ceramic products n.e.c.</Name></activity>
+	<activity><ID>23510</ID><Name>Manufacture of cement</Name></activity>
+	<activity><ID>23520</ID><Name>Manufacture of lime and plaster</Name></activity>
+	<activity><ID>23610</ID><Name>Manufacture of concrete products for construction purposes</Name></activity>
+	<activity><ID>23620</ID><Name>Manufacture of plaster products for construction purposes</Name></activity>
+	<activity><ID>23630</ID><Name>Manufacture of ready-mixed concrete</Name></activity>
+	<activity><ID>23640</ID><Name>Manufacture of mortars</Name></activity>
+	<activity><ID>23650</ID><Name>Manufacture of fibre cement</Name></activity>
+	<activity><ID>23690</ID><Name>Manufacture of other articles of concrete, plaster and cement</Name></activity>
+	<activity><ID>23700</ID><Name>Cutting, shaping and finishing of stone</Name></activity>
+	<activity><ID>23910</ID><Name>Production of abrasive products</Name></activity>
+	<activity><ID>23990</ID><Name>Manufacture of other non-metallic mineral products n.e.c.</Name></activity>
+	<activity><ID>24100</ID><Name>Manufacture of basic iron and steel and of ferro-alloys</Name></activity>
+	<activity><ID>24200</ID><Name>Manufacture of tubes, pipes, hollow profiles and related fittings, of steel</Name></activity>
+	<activity><ID>24310</ID><Name>Cold drawing of bars</Name></activity>
+	<activity><ID>24320</ID><Name>Cold rolling of narrow strip</Name></activity>
+	<activity><ID>24330</ID><Name>Cold forming or folding</Name></activity>
+	<activity><ID>24340</ID><Name>Cold drawing of wire</Name></activity>
+	<activity><ID>24410</ID><Name>Precious metals production</Name></activity>
+	<activity><ID>24420</ID><Name>Aluminium production</Name></activity>
+	<activity><ID>24430</ID><Name>Lead, zinc and tin production</Name></activity>
+	<activity><ID>24440</ID><Name>Copper production</Name></activity>
+	<activity><ID>24450</ID><Name>Other non-ferrous metal production</Name></activity>
+	<activity><ID>24460</ID><Name>Processing of nuclear fuel</Name></activity>
+	<activity><ID>24510</ID><Name>Casting of iron</Name></activity>
+	<activity><ID>24520</ID><Name>Casting of steel</Name></activity>
+	<activity><ID>24530</ID><Name>Casting of light metals</Name></activity>
+	<activity><ID>24540</ID><Name>Casting of other non-ferrous metals</Name></activity>
+	<activity><ID>25110</ID><Name>Manufacture of metal structures and parts of structures</Name></activity>
+	<activity><ID>25120</ID><Name>Manufacture of doors and windows of metal</Name></activity>
+	<activity><ID>25210</ID><Name>Manufacture of central heating radiators and boilers</Name></activity>
+	<activity><ID>25290</ID><Name>Manufacture of other tanks, reservoirs and containers of metal</Name></activity>
+	<activity><ID>25300</ID><Name>Manufacture of steam generators, except central heating hot water boilers</Name></activity>
+	<activity><ID>25400</ID><Name>Manufacture of weapons and ammunition</Name></activity>
+	<activity><ID>25500</ID><Name>Forging, pressing, stamping and roll-forming of metal, powder metallurgy</Name></activity>
+	<activity><ID>25610</ID><Name>Treatment and coating of metals</Name></activity>
+	<activity><ID>25620</ID><Name>Machining</Name></activity>
+	<activity><ID>25710</ID><Name>Manufacture of cutlery</Name></activity>
+	<activity><ID>25720</ID><Name>Manufacture of locks and hinges</Name></activity>
+	<activity><ID>25730</ID><Name>Manufacture of tools</Name></activity>
+	<activity><ID>25910</ID><Name>Manufacture of steel drums and similar containers</Name></activity>
+	<activity><ID>25920</ID><Name>Manufacture of light metal packaging</Name></activity>
+	<activity><ID>25930</ID><Name>Manufacture of wire products, chain and springs</Name></activity>
+	<activity><ID>25940</ID><Name>Manufacture of fasteners and screw machine products</Name></activity>
+	<activity><ID>25990</ID><Name>Manufacture of other fabricated metal products n.e.c.</Name></activity>
+	<activity><ID>26110</ID><Name>Manufacture of electronic components</Name></activity>
+	<activity><ID>26120</ID><Name>Manufacture of loaded electronic boards</Name></activity>
+	<activity><ID>26200</ID><Name>Manufacture of computers and peripheral equipment</Name></activity>
+	<activity><ID>26301</ID><Name>Manufacture of telegraph and telephone apparatus and equipment</Name></activity>
+	<activity><ID>26309</ID><Name>Manufacture of communication equipment other than telegraph, and telephone apparatus and equipment</Name></activity>
+	<activity><ID>26400</ID><Name>Manufacture of consumer electronics</Name></activity>
+	<activity><ID>26511</ID><Name>Manufacture of electronic measuring, testing etc. equipment, not for industrial process control</Name></activity>
+	<activity><ID>26512</ID><Name>Manufacture of electronic industrial process control equipment</Name></activity>
+	<activity><ID>26513</ID><Name>Manufacture of non-electronic measuring, testing etc. equipment, not for industrial process control</Name></activity>
+	<activity><ID>26514</ID><Name>Manufacture of non-electronic industrial process control equipment</Name></activity>
+	<activity><ID>26520</ID><Name>Manufacture of watches and clocks</Name></activity>
+	<activity><ID>26600</ID><Name>Manufacture of irradiation, electromedical and electrotherapeutic equipment</Name></activity>
+	<activity><ID>26701</ID><Name>Manufacture of optical precision instruments</Name></activity>
+	<activity><ID>26702</ID><Name>Manufacture of photographic and cinematographic equipment</Name></activity>
+	<activity><ID>26800</ID><Name>Manufacture of magnetic and optical media</Name></activity>
+	<activity><ID>27110</ID><Name>Manufacture of electric motors, generators and transformers</Name></activity>
+	<activity><ID>27120</ID><Name>Manufacture of electricity distribution and control apparatus</Name></activity>
+	<activity><ID>27200</ID><Name>Manufacture of batteries and accumulators</Name></activity>
+	<activity><ID>27310</ID><Name>Manufacture of fibre optic cables</Name></activity>
+	<activity><ID>27320</ID><Name>Manufacture of other electronic and electric wires and cables</Name></activity>
+	<activity><ID>27330</ID><Name>Manufacture of wiring devices</Name></activity>
+	<activity><ID>27400</ID><Name>Manufacture of electric lighting equipment</Name></activity>
+	<activity><ID>27510</ID><Name>Manufacture of electric domestic appliances</Name></activity>
+	<activity><ID>27520</ID><Name>Manufacture of non-electric domestic appliances</Name></activity>
+	<activity><ID>27900</ID><Name>Manufacture of other electrical equipment</Name></activity>
+	<activity><ID>28110</ID><Name>Manufacture of engines and turbines, except aircraft, vehicle and cycle engines</Name></activity>
+	<activity><ID>28120</ID><Name>Manufacture of fluid power equipment</Name></activity>
+	<activity><ID>28131</ID><Name>Manufacture of pumps</Name></activity>
+	<activity><ID>28132</ID><Name>Manufacture of compressors</Name></activity>
+	<activity><ID>28140</ID><Name>Manufacture of taps and valves</Name></activity>
+	<activity><ID>28150</ID><Name>Manufacture of bearings, gears, gearing and driving elements</Name></activity>
+	<activity><ID>28210</ID><Name>Manufacture of ovens, furnaces and furnace burners</Name></activity>
+	<activity><ID>28220</ID><Name>Manufacture of lifting and handling equipment</Name></activity>
+	<activity><ID>28230</ID><Name>Manufacture of office machinery and equipment (except computers and peripheral equipment)</Name></activity>
+	<activity><ID>28240</ID><Name>Manufacture of power-driven hand tools</Name></activity>
+	<activity><ID>28250</ID><Name>Manufacture of non-domestic cooling and ventilation equipment</Name></activity>
+	<activity><ID>28290</ID><Name>Manufacture of other general-purpose machinery n.e.c.</Name></activity>
+	<activity><ID>28301</ID><Name>Manufacture of agricultural tractors</Name></activity>
+	<activity><ID>28302</ID><Name>Manufacture of agricultural and forestry machinery other than tractors</Name></activity>
+	<activity><ID>28410</ID><Name>Manufacture of metal forming machinery</Name></activity>
+	<activity><ID>28490</ID><Name>Manufacture of other machine tools</Name></activity>
+	<activity><ID>28910</ID><Name>Manufacture of machinery for metallurgy</Name></activity>
+	<activity><ID>28921</ID><Name>Manufacture of machinery for mining</Name></activity>
+	<activity><ID>28922</ID><Name>Manufacture of earthmoving equipment</Name></activity>
+	<activity><ID>28923</ID><Name>Manufacture of equipment for concrete crushing and screening and roadworks</Name></activity>
+	<activity><ID>28930</ID><Name>Manufacture of machinery for food, beverage and tobacco processing</Name></activity>
+	<activity><ID>28940</ID><Name>Manufacture of machinery for textile, apparel and leather production</Name></activity>
+	<activity><ID>28950</ID><Name>Manufacture of machinery for paper and paperboard production</Name></activity>
+	<activity><ID>28960</ID><Name>Manufacture of plastics and rubber machinery</Name></activity>
+	<activity><ID>28990</ID><Name>Manufacture of other special-purpose machinery n.e.c.</Name></activity>
+	<activity><ID>29100</ID><Name>Manufacture of motor vehicles</Name></activity>
+	<activity><ID>29201</ID><Name>Manufacture of bodies (coachwork) for motor vehicles (except caravans)</Name></activity>
+	<activity><ID>29202</ID><Name>Manufacture of trailers and semi-trailers</Name></activity>
+	<activity><ID>29203</ID><Name>Manufacture of caravans</Name></activity>
+	<activity><ID>29310</ID><Name>Manufacture of electrical and electronic equipment for motor vehicles and their engines</Name></activity>
+	<activity><ID>29320</ID><Name>Manufacture of other parts and accessories for motor vehicles</Name></activity>
+	<activity><ID>30110</ID><Name>Building of ships and floating structures</Name></activity>
+	<activity><ID>30120</ID><Name>Building of pleasure and sporting boats</Name></activity>
+	<activity><ID>30200</ID><Name>Manufacture of railway locomotives and rolling stock</Name></activity>
+	<activity><ID>30300</ID><Name>Manufacture of air and spacecraft and related machinery</Name></activity>
+	<activity><ID>30400</ID><Name>Manufacture of military fighting vehicles</Name></activity>
+	<activity><ID>30910</ID><Name>Manufacture of motorcycles</Name></activity>
+	<activity><ID>30920</ID><Name>Manufacture of bicycles and invalid carriages</Name></activity>
+	<activity><ID>30990</ID><Name>Manufacture of other transport equipment n.e.c.</Name></activity>
+	<activity><ID>31010</ID><Name>Manufacture of office and shop furniture</Name></activity>
+	<activity><ID>31020</ID><Name>Manufacture of kitchen furniture</Name></activity>
+	<activity><ID>31030</ID><Name>Manufacture of mattresses</Name></activity>
+	<activity><ID>31090</ID><Name>Manufacture of other furniture</Name></activity>
+	<activity><ID>32110</ID><Name>Striking of coins</Name></activity>
+	<activity><ID>32120</ID><Name>Manufacture of jewellery and related articles</Name></activity>
+	<activity><ID>32130</ID><Name>Manufacture of imitation jewellery and related articles</Name></activity>
+	<activity><ID>32200</ID><Name>Manufacture of musical instruments</Name></activity>
+	<activity><ID>32300</ID><Name>Manufacture of sports goods</Name></activity>
+	<activity><ID>32401</ID><Name>Manufacture of professional and arcade games and toys</Name></activity>
+	<activity><ID>32409</ID><Name>Manufacture of other games and toys, n.e.c.</Name></activity>
+	<activity><ID>32500</ID><Name>Manufacture of medical and dental instruments and supplies</Name></activity>
+	<activity><ID>32910</ID><Name>Manufacture of brooms and brushes</Name></activity>
+	<activity><ID>32990</ID><Name>Other manufacturing n.e.c.</Name></activity>
+	<activity><ID>33110</ID><Name>Repair of fabricated metal products</Name></activity>
+	<activity><ID>33120</ID><Name>Repair of machinery</Name></activity>
+	<activity><ID>33130</ID><Name>Repair of electronic and optical equipment</Name></activity>
+	<activity><ID>33140</ID><Name>Repair of electrical equipment</Name></activity>
+	<activity><ID>33150</ID><Name>Repair and maintenance of ships and boats</Name></activity>
+	<activity><ID>33160</ID><Name>Repair and maintenance of aircraft and spacecraft</Name></activity>
+	<activity><ID>33170</ID><Name>Repair and maintenance of other transport equipment n.e.c.</Name></activity>
+	<activity><ID>33190</ID><Name>Repair of other equipment</Name></activity>
+	<activity><ID>33200</ID><Name>Installation of industrial machinery and equipment</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="D"> <UID>4</UID><Domain>Electricity, gas, steam and air conditioning supply</Domain>
+	<activities>   
+	<activity><ID>35110</ID><Name>Production of electricity</Name></activity>
+	<activity><ID>35120</ID><Name>Transmission of electricity</Name></activity>
+	<activity><ID>35130</ID><Name>Distribution of electricity</Name></activity>
+	<activity><ID>35140</ID><Name>Trade of electricity</Name></activity>
+	<activity><ID>35210</ID><Name>Manufacture of gas</Name></activity>
+	<activity><ID>35220</ID><Name>Distribution of gaseous fuels through mains</Name></activity>
+	<activity><ID>35230</ID><Name>Trade of gas through mains</Name></activity>
+	<activity><ID>35300</ID><Name>Steam and air conditioning supply</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="E"> <UID>5</UID><Domain>Water supply, sewerage, waste management and remediation activities</Domain>
+	<activities>    
+	<activity><ID>36000</ID><Name>Water collection, treatment and supply</Name></activity>
+	<activity><ID>37000</ID><Name>Sewerage</Name></activity>
+	<activity><ID>38110</ID><Name>Collection of non-hazardous waste</Name></activity>
+	<activity><ID>38120</ID><Name>Collection of hazardous waste</Name></activity>
+	<activity><ID>38210</ID><Name>Treatment and disposal of non-hazardous waste</Name></activity>
+	<activity><ID>38220</ID><Name>Treatment and disposal of hazardous waste</Name></activity>
+	<activity><ID>38310</ID><Name>Dismantling of wrecks</Name></activity>
+	<activity><ID>38320</ID><Name>Recovery of sorted materials</Name></activity>
+	<activity><ID>39000</ID><Name>Remediation activities and other waste management services</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="F"> <UID>6</UID><Domain>Construction</Domain>
+	<activities>    
+	<activity><ID>41100</ID><Name>Development of building projects</Name></activity>
+	<activity><ID>41201</ID><Name>Construction of commercial buildings</Name></activity>
+	<activity><ID>41202</ID><Name>Construction of domestic buildings</Name></activity>
+	<activity><ID>42110</ID><Name>Construction of roads and motorways</Name></activity>
+	<activity><ID>42120</ID><Name>Construction of railways and underground railways</Name></activity>
+	<activity><ID>42130</ID><Name>Construction of bridges and tunnels</Name></activity>
+	<activity><ID>42210</ID><Name>Construction of utility projects for fluids</Name></activity>
+	<activity><ID>42220</ID><Name>Construction of utility projects for electricity and telecommunications</Name></activity>
+	<activity><ID>42910</ID><Name>Construction of water projects</Name></activity>
+	<activity><ID>42990</ID><Name>Construction of other civil engineering projects n.e.c.</Name></activity>
+	<activity><ID>43110</ID><Name>Demolition</Name></activity>
+	<activity><ID>43120</ID><Name>Site preparation</Name></activity>
+	<activity><ID>43130</ID><Name>Test drilling and boring</Name></activity>
+	<activity><ID>43210</ID><Name>Electrical installation</Name></activity>
+	<activity><ID>43220</ID><Name>Plumbing, heat and air-conditioning installation</Name></activity>
+	<activity><ID>43290</ID><Name>Other construction installation</Name></activity>
+	<activity><ID>43310</ID><Name>Plastering</Name></activity>
+	<activity><ID>43320</ID><Name>Joinery installation</Name></activity>
+	<activity><ID>43330</ID><Name>Floor and wall covering</Name></activity>
+	<activity><ID>43341</ID><Name>Painting</Name></activity>
+	<activity><ID>43342</ID><Name>Glazing</Name></activity>
+	<activity><ID>43390</ID><Name>Other building completion and finishing</Name></activity>
+	<activity><ID>43910</ID><Name>Roofing activities</Name></activity>
+	<activity><ID>43991</ID><Name>Scaffold erection</Name></activity>
+	<activity><ID>43999</ID><Name>Other specialised construction activities n.e.c.</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="G"> <UID>7</UID><Domain>Wholesale and retail trade, repair of motor vehicles and motorcycles</Domain>
+	<activities>     
+	<activity><ID>45111</ID><Name>Sale of new cars and light motor vehicles</Name></activity>
+	<activity><ID>45112</ID><Name>Sale of used cars and light motor vehicles</Name></activity>
+	<activity><ID>45190</ID><Name>Sale of other motor vehicles</Name></activity>
+	<activity><ID>45200</ID><Name>Maintenance and repair of motor vehicles</Name></activity>
+	<activity><ID>45310</ID><Name>Wholesale trade of motor vehicle parts and accessories</Name></activity>
+	<activity><ID>45320</ID><Name>Retail trade of motor vehicle parts and accessories</Name></activity>
+	<activity><ID>45400</ID><Name>Sale, maintenance and repair of motorcycles and related parts and accessories</Name></activity>
+	<activity><ID>46110</ID><Name>Agents selling agricultural raw materials, livestock, textile raw materials and semi-finished goods</Name></activity>
+	<activity><ID>46120</ID><Name>Agents involved in the sale of fuels, ores, metals and industrial chemicals</Name></activity>
+	<activity><ID>46130</ID><Name>Agents involved in the sale of timber and building materials</Name></activity>
+	<activity><ID>46140</ID><Name>Agents involved in the sale of machinery, industrial equipment, ships and aircraft</Name></activity>
+	<activity><ID>46150</ID><Name>Agents involved in the sale of furniture, household goods, hardware and ironmongery</Name></activity>
+	<activity><ID>46160</ID><Name>Agents involved in the sale of textiles, clothing, fur, footwear and leather goods</Name></activity>
+	<activity><ID>46170</ID><Name>Agents involved in the sale of food, beverages and tobacco</Name></activity>
+	<activity><ID>46180</ID><Name>Agents specialized in the sale of other particular products</Name></activity>
+	<activity><ID>46190</ID><Name>Agents involved in the sale of a variety of goods</Name></activity>
+	<activity><ID>46210</ID><Name>Wholesale of grain, unmanufactured tobacco, seeds and animal feeds</Name></activity>
+	<activity><ID>46220</ID><Name>Wholesale of flowers and plants</Name></activity>
+	<activity><ID>46230</ID><Name>Wholesale of live animals</Name></activity>
+	<activity><ID>46240</ID><Name>Wholesale of hides, skins and leather</Name></activity>
+	<activity><ID>46310</ID><Name>Wholesale of fruit and vegetables</Name></activity>
+	<activity><ID>46320</ID><Name>Wholesale of meat and meat products</Name></activity>
+	<activity><ID>46330</ID><Name>Wholesale of dairy products, eggs and edible oils and fats</Name></activity>
+	<activity><ID>46341</ID><Name>Wholesale of fruit and vegetable juices, mineral water and soft drinks</Name></activity>
+	<activity><ID>46342</ID><Name>Wholesale of wine, beer, spirits and other alcoholic beverages</Name></activity>
+	<activity><ID>46350</ID><Name>Wholesale of tobacco products</Name></activity>
+	<activity><ID>46360</ID><Name>Wholesale of sugar and chocolate and sugar confectionery</Name></activity>
+	<activity><ID>46370</ID><Name>Wholesale of coffee, tea, cocoa and spices</Name></activity>
+	<activity><ID>46380</ID><Name>Wholesale of other food, including fish, crustaceans and molluscs</Name></activity>
+	<activity><ID>46390</ID><Name>Non-specialised wholesale of food, beverages and tobacco</Name></activity>
+	<activity><ID>46410</ID><Name>Wholesale of textiles</Name></activity>
+	<activity><ID>46420</ID><Name>Wholesale of clothing and footwear</Name></activity>
+	<activity><ID>46431</ID><Name>Wholesale of audio tapes, records, CDs and video tapes and the equipment on which these are played</Name></activity>
+	<activity><ID>46439</ID><Name>Wholesale of radio, television goods and electrical household appliances (other than records, tapes, CD's and video tapes and the equipment used for playing them)</Name></activity>
+	<activity><ID>46440</ID><Name>Wholesale of china and glassware and cleaning materials</Name></activity>
+	<activity><ID>46450</ID><Name>Wholesale of perfume and cosmetics</Name></activity>
+	<activity><ID>46460</ID><Name>Wholesale of pharmaceutical goods</Name></activity>
+	<activity><ID>46470</ID><Name>Wholesale of furniture, carpets and lighting equipment</Name></activity>
+	<activity><ID>46480</ID><Name>Wholesale of watches and jewellery</Name></activity>
+	<activity><ID>46491</ID><Name>Wholesale of musical instruments</Name></activity>
+	<activity><ID>46499</ID><Name>Wholesale of household goods (other than musical instruments) n.e.c.</Name></activity>
+	<activity><ID>46510</ID><Name>Wholesale of computers, computer peripheral equipment and software</Name></activity>
+	<activity><ID>46520</ID><Name>Wholesale of electronic and telecommunications equipment and parts</Name></activity>
+	<activity><ID>46610</ID><Name>Wholesale of agricultural machinery, equipment and supplies</Name></activity>
+	<activity><ID>46620</ID><Name>Wholesale of machine tools</Name></activity>
+	<activity><ID>46630</ID><Name>Wholesale of mining, construction and civil engineering machinery</Name></activity>
+	<activity><ID>46640</ID><Name>Wholesale of machinery for the textile industry and of sewing and knitting machines</Name></activity>
+	<activity><ID>46650</ID><Name>Wholesale of office furniture</Name></activity>
+	<activity><ID>46660</ID><Name>Wholesale of other office machinery and equipment</Name></activity>
+	<activity><ID>46690</ID><Name>Wholesale of other machinery and equipment</Name></activity>
+	<activity><ID>46711</ID><Name>Wholesale of petroleum and petroleum products</Name></activity>
+	<activity><ID>46719</ID><Name>Wholesale of other fuels and related products</Name></activity>
+	<activity><ID>46720</ID><Name>Wholesale of metals and metal ores</Name></activity>
+	<activity><ID>46730</ID><Name>Wholesale of wood, construction materials and sanitary equipment</Name></activity>
+	<activity><ID>46740</ID><Name>Wholesale of hardware, plumbing and heating equipment and supplies</Name></activity>
+	<activity><ID>46750</ID><Name>Wholesale of chemical products</Name></activity>
+	<activity><ID>46760</ID><Name>Wholesale of other intermediate products</Name></activity>
+	<activity><ID>46770</ID><Name>Wholesale of waste and scrap</Name></activity>
+	<activity><ID>46900</ID><Name>Non-specialised wholesale trade</Name></activity>
+	<activity><ID>47110</ID><Name>Retail sale in non-specialised stores with food, beverages or tobacco predominating</Name></activity>
+	<activity><ID>47190</ID><Name>Other retail sale in non-specialised stores</Name></activity>
+	<activity><ID>47210</ID><Name>Retail sale of fruit and vegetables in specialised stores</Name></activity>
+	<activity><ID>47220</ID><Name>Retail sale of meat and meat products in specialised stores</Name></activity>
+	<activity><ID>47230</ID><Name>Retail sale of fish, crustaceans and molluscs in specialised stores</Name></activity>
+	<activity><ID>47240</ID><Name>Retail sale of bread, cakes, flour confectionery and sugar confectionery in specialised stores</Name></activity>
+	<activity><ID>47250</ID><Name>Retail sale of beverages in specialised stores</Name></activity>
+	<activity><ID>47260</ID><Name>Retail sale of tobacco products in specialised stores</Name></activity>
+	<activity><ID>47290</ID><Name>Other retail sale of food in specialised stores</Name></activity>
+	<activity><ID>47300</ID><Name>Retail sale of automotive fuel in specialised stores</Name></activity>
+	<activity><ID>47410</ID><Name>Retail sale of computers, peripheral units and software in specialised stores</Name></activity>
+	<activity><ID>47421</ID><Name>Retail sale of mobile telephones</Name></activity>
+	<activity><ID>47429</ID><Name>Retail sale of telecommunications equipment other than mobile telephones</Name></activity>
+	<activity><ID>47430</ID><Name>Retail sale of audio and video equipment in specialised stores</Name></activity>
+	<activity><ID>47510</ID><Name>Retail sale of textiles in specialised stores</Name></activity>
+	<activity><ID>47520</ID><Name>Retail sale of hardware, paints and glass in specialised stores</Name></activity>
+	<activity><ID>47530</ID><Name>Retail sale of carpets, rugs, wall and floor coverings in specialised stores</Name></activity>
+	<activity><ID>47540</ID><Name>Retail sale of electrical household appliances in specialised stores</Name></activity>
+	<activity><ID>47591</ID><Name>Retail sale of musical instruments and scores</Name></activity>
+	<activity><ID>47599</ID><Name>Retail of furniture, lighting, and similar (not musical instruments or scores) in specialised store</Name></activity>
+	<activity><ID>47610</ID><Name>Retail sale of books in specialised stores</Name></activity>
+	<activity><ID>47620</ID><Name>Retail sale of newspapers and stationery in specialised stores</Name></activity>
+	<activity><ID>47630</ID><Name>Retail sale of music and video recordings in specialised stores</Name></activity>
+	<activity><ID>47640</ID><Name>Retail sale of sports goods, fishing gear, camping goods, boats and bicycles</Name></activity>
+	<activity><ID>47650</ID><Name>Retail sale of games and toys in specialised stores</Name></activity>
+	<activity><ID>47710</ID><Name>Retail sale of clothing in specialised stores</Name></activity>
+	<activity><ID>47721</ID><Name>Retail sale of footwear in specialised stores</Name></activity>
+	<activity><ID>47722</ID><Name>Retail sale of leather goods in specialised stores</Name></activity>
+	<activity><ID>47730</ID><Name>Dispensing chemist in specialised stores</Name></activity>
+	<activity><ID>47741</ID><Name>Retail sale of hearing aids</Name></activity>
+	<activity><ID>47749</ID><Name>Retail sale of medical and orthopaedic goods in specialised stores (not incl. hearing aids) n.e.c.</Name></activity>
+	<activity><ID>47750</ID><Name>Retail sale of cosmetic and toilet articles in specialised stores</Name></activity>
+	<activity><ID>47760</ID><Name>Retail sale of flowers, plants, seeds, fertilizers, pet animals and pet food in specialised stores</Name></activity>
+	<activity><ID>47770</ID><Name>Retail sale of watches and jewellery in specialised stores</Name></activity>
+	<activity><ID>47781</ID><Name>Retail sale in commercial art galleries</Name></activity>
+	<activity><ID>47782</ID><Name>Retail sale by opticians</Name></activity>
+	<activity><ID>47789</ID><Name>Other retail sale of new goods in specialised stores (not commercial art galleries and opticians)</Name></activity>
+	<activity><ID>47791</ID><Name>Retail sale of antiques including antique books in stores</Name></activity>
+	<activity><ID>47799</ID><Name>Retail sale of other second-hand goods in stores (not incl. antiques)</Name></activity>
+	<activity><ID>47810</ID><Name>Retail sale via stalls and markets of food, beverages and tobacco products</Name></activity>
+	<activity><ID>47820</ID><Name>Retail sale via stalls and markets of textiles, clothing and footwear</Name></activity>
+	<activity><ID>47890</ID><Name>Retail sale via stalls and markets of other goods</Name></activity>
+	<activity><ID>47910</ID><Name>Retail sale via mail order houses or via Internet</Name></activity>
+	<activity><ID>47990</ID><Name>Other retail sale not in stores, stalls or markets</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="H"> <UID>8</UID><Domain>Transportation and storage</Domain>
+	<activities>     
+	<activity><ID>49100</ID><Name>Passenger rail transport, interurban</Name></activity>
+	<activity><ID>49200</ID><Name>Freight rail transport</Name></activity>
+	<activity><ID>49311</ID><Name>Urban and suburban passenger railway transportation by underground, metro and similar systems</Name></activity>
+	<activity><ID>49319</ID><Name>Other urban, suburban or metropolitan passenger land transport (not underground, metro or similar)</Name></activity>
+	<activity><ID>49320</ID><Name>Taxi operation</Name></activity>
+	<activity><ID>49390</ID><Name>Other passenger land transport</Name></activity>
+	<activity><ID>49410</ID><Name>Freight transport by road</Name></activity>
+	<activity><ID>49420</ID><Name>Removal services</Name></activity>
+	<activity><ID>49500</ID><Name>Transport via pipeline</Name></activity>
+	<activity><ID>50100</ID><Name>Sea and coastal passenger water transport</Name></activity>
+	<activity><ID>50200</ID><Name>Sea and coastal freight water transport</Name></activity>
+	<activity><ID>50300</ID><Name>Inland passenger water transport</Name></activity>
+	<activity><ID>50400</ID><Name>Inland freight water transport</Name></activity>
+	<activity><ID>51101</ID><Name>Scheduled passenger air transport</Name></activity>
+	<activity><ID>51102</ID><Name>Non-scheduled passenger air transport</Name></activity>
+	<activity><ID>51210</ID><Name>Freight air transport</Name></activity>
+	<activity><ID>51220</ID><Name>Space transport</Name></activity>
+	<activity><ID>52101</ID><Name>Operation of warehousing and storage facilities for water transport activities</Name></activity>
+	<activity><ID>52102</ID><Name>Operation of warehousing and storage facilities for air transport activities</Name></activity>
+	<activity><ID>52103</ID><Name>Operation of warehousing and storage facilities for land transport activities</Name></activity>
+	<activity><ID>52211</ID><Name>Operation of rail freight terminals</Name></activity>
+	<activity><ID>52212</ID><Name>Operation of rail passenger facilities at railway stations</Name></activity>
+	<activity><ID>52213</ID><Name>Operation of bus and coach passenger facilities at bus and coach stations</Name></activity>
+	<activity><ID>52219</ID><Name>Other service activities incidental to land transportation, n.e.c.</Name></activity>
+	<activity><ID>52220</ID><Name>Service activities incidental to water transportation</Name></activity>
+	<activity><ID>52230</ID><Name>Service activities incidental to air transportation</Name></activity>
+	<activity><ID>52241</ID><Name>Cargo handling for water transport activities</Name></activity>
+	<activity><ID>52242</ID><Name>Cargo handling for air transport activities</Name></activity>
+	<activity><ID>52243</ID><Name>Cargo handling for land transport activities</Name></activity>
+	<activity><ID>52290</ID><Name>Other transportation support activities</Name></activity>
+	<activity><ID>53100</ID><Name>Postal activities under universal service obligation</Name></activity>
+	<activity><ID>53201</ID><Name>Licensed carriers</Name></activity>
+	<activity><ID>53202</ID><Name>Unlicensed carrier</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="I"> <UID>9</UID><Domain>Accommodation and food service activities</Domain>
+	<activities>     
+	<activity><ID>55100</ID><Name>Hotels and similar accommodation</Name></activity>
+	<activity><ID>55201</ID><Name>Holiday centres and villages</Name></activity>
+	<activity><ID>55202</ID><Name>Youth hostels</Name></activity>
+	<activity><ID>55209</ID><Name>Other holiday and other collective accommodation</Name></activity>
+	<activity><ID>55300</ID><Name>Recreational vehicle parks, trailer parks and camping grounds</Name></activity>
+	<activity><ID>55900</ID><Name>Other accommodation</Name></activity>
+	<activity><ID>56101</ID><Name>Licensed restaurants</Name></activity>
+	<activity><ID>56102</ID><Name>Unlicensed restaurants and cafes</Name></activity>
+	<activity><ID>56103</ID><Name>Take-away food shops and mobile food stands</Name></activity>
+	<activity><ID>56210</ID><Name>Event catering activities</Name></activity>
+	<activity><ID>56290</ID><Name>Other food services</Name></activity>
+	<activity><ID>56301</ID><Name>Licensed clubs</Name></activity>
+	<activity><ID>56302</ID><Name>Public houses and bars</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="J"> <UID>10</UID><Domain>Information and communication</Domain>
+	<activities>    
+	<activity><ID>58110</ID><Name>Book publishing</Name></activity>
+	<activity><ID>58120</ID><Name>Publishing of directories and mailing lists</Name></activity>
+	<activity><ID>58130</ID><Name>Publishing of newspapers</Name></activity>
+	<activity><ID>58141</ID><Name>Publishing of learned journals</Name></activity>
+	<activity><ID>58142</ID><Name>Publishing of  consumer and business journals and periodicals</Name></activity>
+	<activity><ID>58190</ID><Name>Other publishing activities</Name></activity>
+	<activity><ID>58210</ID><Name>Publishing of computer games</Name></activity>
+	<activity><ID>58290</ID><Name>Other software publishing</Name></activity>
+	<activity><ID>59111</ID><Name>Motion picture production activities</Name></activity>
+	<activity><ID>59112</ID><Name>Video production activities</Name></activity>
+	<activity><ID>59113</ID><Name>Television programme production activities</Name></activity>
+	<activity><ID>59120</ID><Name>Motion picture, video and television programme post-production activities</Name></activity>
+	<activity><ID>59131</ID><Name>Motion picture distribution activities</Name></activity>
+	<activity><ID>59132</ID><Name>Video distribution activities</Name></activity>
+	<activity><ID>59133</ID><Name>Television programme distribution activities</Name></activity>
+	<activity><ID>59140</ID><Name>Motion picture projection activities</Name></activity>
+	<activity><ID>59200</ID><Name>Sound recording and music publishing activities</Name></activity>
+	<activity><ID>60100</ID><Name>Radio broadcasting</Name></activity>
+	<activity><ID>60200</ID><Name>Television programming and broadcasting activities</Name></activity>
+	<activity><ID>61100</ID><Name>Wired telecommunications activities</Name></activity>
+	<activity><ID>61200</ID><Name>Wireless telecommunications activities</Name></activity>
+	<activity><ID>61300</ID><Name>Satellite telecommunications activities</Name></activity>
+	<activity><ID>61900</ID><Name>Other telecommunications activities</Name></activity>
+	<activity><ID>62011</ID><Name>Ready-made interactive leisure and entertainment software development</Name></activity>
+	<activity><ID>62012</ID><Name>Business and domestic software development</Name></activity>
+	<activity><ID>62020</ID><Name>Information technology consultancy activities</Name></activity>
+	<activity><ID>62030</ID><Name>Computer facilities management activities</Name></activity>
+	<activity><ID>62090</ID><Name>Other information technology service activities</Name></activity>
+	<activity><ID>63110</ID><Name>Data processing, hosting and related activities</Name></activity>
+	<activity><ID>63120</ID><Name>Web portals</Name></activity>
+	<activity><ID>63910</ID><Name>News agency activities</Name></activity>
+	<activity><ID>63990</ID><Name>Other information service activities n.e.c.</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="K"> <UID>11</UID><Domain>Financial and insurance activities</Domain>
+	<activities>
+	<activity><ID>64110</ID><Name>Central banking</Name></activity>
+	<activity><ID>64191</ID><Name>Banks</Name></activity>
+	<activity><ID>64192</ID><Name>Building societies</Name></activity>
+	<activity><ID>64201</ID><Name>Activities of agricultural holding companies</Name></activity>
+	<activity><ID>64202</ID><Name>Activities of production holding companies</Name></activity>
+	<activity><ID>64203</ID><Name>Activities of construction holding companies</Name></activity>
+	<activity><ID>64204</ID><Name>Activities of distribution holding companies</Name></activity>
+	<activity><ID>64205</ID><Name>Activities of financial services holding companies</Name></activity>
+	<activity><ID>64209</ID><Name>Activities of other holding companies n.e.c.</Name></activity>
+	<activity><ID>64301</ID><Name>Activities of investment trusts</Name></activity>
+	<activity><ID>64302</ID><Name>Activities of unit trusts</Name></activity>
+	<activity><ID>64303</ID><Name>Activities of venture and development capital companies</Name></activity>
+	<activity><ID>64304</ID><Name>Activities of open-ended investment companies</Name></activity>
+	<activity><ID>64305</ID><Name>Activities of property unit trusts</Name></activity>
+	<activity><ID>64306</ID><Name>Activities of real estate investment trusts</Name></activity>
+	<activity><ID>64910</ID><Name>Financial leasing</Name></activity>
+	<activity><ID>64921</ID><Name>Credit granting by non-deposit taking finance houses and other specialist consumer credit grantors</Name></activity>
+	<activity><ID>64922</ID><Name>Activities of mortgage finance companies</Name></activity>
+	<activity><ID>64929</ID><Name>Other credit granting n.e.c.</Name></activity>
+	<activity><ID>64991</ID><Name>Security dealing on own account</Name></activity>
+	<activity><ID>64992</ID><Name>Factoring</Name></activity>
+	<activity><ID>64999</ID><Name>Financial intermediation not elsewhere classified</Name></activity>
+	<activity><ID>65110</ID><Name>Life insurance</Name></activity>
+	<activity><ID>65120</ID><Name>Non-life insurance</Name></activity>
+	<activity><ID>65201</ID><Name>Life reinsurance</Name></activity>
+	<activity><ID>65202</ID><Name>Non-life reinsurance</Name></activity>
+	<activity><ID>65300</ID><Name>Pension funding</Name></activity>
+	<activity><ID>66110</ID><Name>Administration of financial markets</Name></activity>
+	<activity><ID>66120</ID><Name>Security and commodity contracts dealing activities</Name></activity>
+	<activity><ID>66190</ID><Name>Activities auxiliary to financial intermediation n.e.c.</Name></activity>
+	<activity><ID>66210</ID><Name>Risk and damage evaluation</Name></activity>
+	<activity><ID>66220</ID><Name>Activities of insurance agents and brokers</Name></activity>
+	<activity><ID>66290</ID><Name>Other activities auxiliary to insurance and pension funding</Name></activity>
+	<activity><ID>66300</ID><Name>Fund management activities</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="L"> <UID>12</UID><Domain>Real estate activities</Domain>
+	<activities>
+	<activity><ID>68100</ID><Name>Buying and selling of own real estate</Name></activity>
+	<activity><ID>68201</ID><Name>Renting and operating of Housing Association real estate</Name></activity>
+	<activity><ID>68202</ID><Name>Letting and operating of conference and exhibition centres</Name></activity>
+	<activity><ID>68209</ID><Name>Other letting and operating of own or leased real estate</Name></activity>
+	<activity><ID>68310</ID><Name>Real estate agencies</Name></activity>
+	<activity><ID>68320</ID><Name>Management of real estate on a fee or contract basis</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="M"> <UID>13</UID><Domain>Professional, scientific and technical activities</Domain>
+	<activities>
+	<activity><ID>69101</ID><Name>Barristers at law</Name></activity>
+	<activity><ID>69102</ID><Name>Solicitors</Name></activity>
+	<activity><ID>69109</ID><Name>Activities of patent and copyright agents, other legal activities n.e.c.</Name></activity>
+	<activity><ID>69201</ID><Name>Accounting and auditing activities</Name></activity>
+	<activity><ID>69202</ID><Name>Bookkeeping activities</Name></activity>
+	<activity><ID>69203</ID><Name>Tax consultancy</Name></activity>
+	<activity><ID>70100</ID><Name>Activities of head offices</Name></activity>
+	<activity><ID>70210</ID><Name>Public relations and communications activities</Name></activity>
+	<activity><ID>70221</ID><Name>Financial management</Name></activity>
+	<activity><ID>70229</ID><Name>Management consultancy activities other than financial management</Name></activity>
+	<activity><ID>71111</ID><Name>Architectural activities</Name></activity>
+	<activity><ID>71112</ID><Name>Urban planning and landscape architectural activities</Name></activity>
+	<activity><ID>71121</ID><Name>Engineering design activities for industrial process and production</Name></activity>
+	<activity><ID>71122</ID><Name>Engineering related scientific and technical consulting activities</Name></activity>
+	<activity><ID>71129</ID><Name>Other engineering activities</Name></activity>
+	<activity><ID>71200</ID><Name>Technical testing and analysis</Name></activity>
+	<activity><ID>72110</ID><Name>Research and experimental development on biotechnology</Name></activity>
+	<activity><ID>72190</ID><Name>Other research and experimental development on natural sciences and engineering</Name></activity>
+	<activity><ID>72200</ID><Name>Research and experimental development on social sciences and humanities</Name></activity>
+	<activity><ID>73110</ID><Name>Advertising agencies</Name></activity>
+	<activity><ID>73120</ID><Name>Media representation services</Name></activity>
+	<activity><ID>73200</ID><Name>Market research and public opinion polling</Name></activity>
+	<activity><ID>74100</ID><Name>specialised design activities</Name></activity>
+	<activity><ID>74201</ID><Name>Portrait photographic activities</Name></activity>
+	<activity><ID>74202</ID><Name>Other specialist photography</Name></activity>
+	<activity><ID>74203</ID><Name>Film processing</Name></activity>
+	<activity><ID>74209</ID><Name>Photographic activities not elsewhere classified</Name></activity>
+	<activity><ID>74300</ID><Name>Translation and interpretation activities</Name></activity>
+	<activity><ID>74901</ID><Name>Environmental consulting activities</Name></activity>
+	<activity><ID>74902</ID><Name>Quantity surveying activities</Name></activity>
+	<activity><ID>74909</ID><Name>Other professional, scientific and technical activities n.e.c.</Name></activity>
+	<activity><ID>74990</ID><Name>Non-trading company</Name></activity>
+	<activity><ID>75000</ID><Name>Veterinary activities</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="N"> <UID>14</UID><Domain>Administrative and support service activities</Domain>
+	<activities>
+	<activity><ID>77110</ID><Name>Renting and leasing of cars and light motor vehicles</Name></activity>
+	<activity><ID>77120</ID><Name>Renting and leasing of trucks and other heavy vehicles</Name></activity>
+	<activity><ID>77210</ID><Name>Renting and leasing of recreational and sports goods</Name></activity>
+	<activity><ID>77220</ID><Name>Renting of video tapes and disks</Name></activity>
+	<activity><ID>77291</ID><Name>Renting and leasing of media entertainment equipment</Name></activity>
+	<activity><ID>77299</ID><Name>Renting and leasing of other personal and household goods</Name></activity>
+	<activity><ID>77310</ID><Name>Renting and leasing of agricultural machinery and equipment</Name></activity>
+	<activity><ID>77320</ID><Name>Renting and leasing of construction and civil engineering machinery and equipment</Name></activity>
+	<activity><ID>77330</ID><Name>Renting and leasing of office machinery and equipment (including computers)</Name></activity>
+	<activity><ID>77341</ID><Name>Renting and leasing of passenger water transport equipment</Name></activity>
+	<activity><ID>77342</ID><Name>Renting and leasing of freight water transport equipment</Name></activity>
+	<activity><ID>77351</ID><Name>Renting and leasing of air passenger transport equipment</Name></activity>
+	<activity><ID>77352</ID><Name>Renting and leasing of freight air transport equipment</Name></activity>
+	<activity><ID>77390</ID><Name>Renting and leasing of other machinery, equipment and tangible goods n.e.c.</Name></activity>
+	<activity><ID>77400</ID><Name>Leasing of intellectual property and similar products, except copyright works</Name></activity>
+	<activity><ID>78101</ID><Name>Motion picture, television and other theatrical casting activities</Name></activity>
+	<activity><ID>78109</ID><Name>Other activities of employment placement agencies</Name></activity>
+	<activity><ID>78200</ID><Name>Temporary employment agency activities</Name></activity>
+	<activity><ID>78300</ID><Name>Human resources provision and management of human resources functions</Name></activity>
+	<activity><ID>79110</ID><Name>Travel agency activities</Name></activity>
+	<activity><ID>79120</ID><Name>Tour operator activities</Name></activity>
+	<activity><ID>79901</ID><Name>Activities of tourist guides</Name></activity>
+	<activity><ID>79909</ID><Name>Other reservation service activities n.e.c.</Name></activity>
+	<activity><ID>80100</ID><Name>Private security activities</Name></activity>
+	<activity><ID>80200</ID><Name>Security systems service activities</Name></activity>
+	<activity><ID>80300</ID><Name>Investigation activities</Name></activity>
+	<activity><ID>81100</ID><Name>Combined facilities support activities</Name></activity>
+	<activity><ID>81210</ID><Name>General cleaning of buildings</Name></activity>
+	<activity><ID>81221</ID><Name>Window cleaning services</Name></activity>
+	<activity><ID>81222</ID><Name>Specialised cleaning services</Name></activity>
+	<activity><ID>81223</ID><Name>Furnace and chimney cleaning services</Name></activity>
+	<activity><ID>81229</ID><Name>Other building and industrial cleaning activities</Name></activity>
+	<activity><ID>81291</ID><Name>Disinfecting and exterminating services</Name></activity>
+	<activity><ID>81299</ID><Name>Other cleaning services</Name></activity>
+	<activity><ID>81300</ID><Name>Landscape service activities</Name></activity>
+	<activity><ID>82110</ID><Name>Combined office administrative service activities</Name></activity>
+	<activity><ID>82190</ID><Name>Photocopying, document preparation and other specialised office support activities</Name></activity>
+	<activity><ID>82200</ID><Name>Activities of call centres</Name></activity>
+	<activity><ID>82301</ID><Name>Activities of exhibition and fair organisers</Name></activity>
+	<activity><ID>82302</ID><Name>Activities of conference organisers</Name></activity>
+	<activity><ID>82911</ID><Name>Activities of collection agencies</Name></activity>
+	<activity><ID>82912</ID><Name>Activities of credit bureaus</Name></activity>
+	<activity><ID>82920</ID><Name>Packaging activities</Name></activity>
+	<activity><ID>82990</ID><Name>Other business support service activities n.e.c.</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="O"> <UID>15</UID><Domain>Public administration and defence, compulsory social security</Domain>
+	<activities>
+	<activity><ID>84110</ID><Name>General public administration activities</Name></activity>
+	<activity><ID>84120</ID><Name>Regulation of health care, education, cultural and other social services, not incl. social security</Name></activity>
+	<activity><ID>84130</ID><Name>Regulation of and contribution to more efficient operation of businesses</Name></activity>
+	<activity><ID>84210</ID><Name>Foreign affairs</Name></activity>
+	<activity><ID>84220</ID><Name>Defence activities</Name></activity>
+	<activity><ID>84230</ID><Name>Justice and judicial activities</Name></activity>
+	<activity><ID>84240</ID><Name>Public order and safety activities</Name></activity>
+	<activity><ID>84250</ID><Name>Fire service activities</Name></activity>
+	<activity><ID>84300</ID><Name>Compulsory social security activities</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="P"> <UID>16</UID><Domain>Education</Domain>
+	<activities>
+	<activity><ID>85100</ID><Name>Pre-primary education</Name></activity>
+	<activity><ID>85200</ID><Name>Primary education</Name></activity>
+	<activity><ID>85310</ID><Name>General secondary education</Name></activity>
+	<activity><ID>85320</ID><Name>Technical and vocational secondary education</Name></activity>
+	<activity><ID>85410</ID><Name>Post-secondary non-tertiary education</Name></activity>
+	<activity><ID>85421</ID><Name>First-degree level higher education</Name></activity>
+	<activity><ID>85422</ID><Name>Post-graduate level higher education</Name></activity>
+	<activity><ID>85510</ID><Name>Sports and recreation education</Name></activity>
+	<activity><ID>85520</ID><Name>Cultural education</Name></activity>
+	<activity><ID>85530</ID><Name>Driving school activities</Name></activity>
+	<activity><ID>85590</ID><Name>Other education n.e.c.</Name></activity>
+	<activity><ID>85600</ID><Name>Educational support services</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="Q"> <UID>17</UID><Domain>Human health and social work activities</Domain>
+	<activities>
+	<activity><ID>86101</ID><Name>Hospital activities</Name></activity>
+	<activity><ID>86102</ID><Name>Medical nursing home activities</Name></activity>
+	<activity><ID>86210</ID><Name>General medical practice activities</Name></activity>
+	<activity><ID>86220</ID><Name>Specialists medical practice activities</Name></activity>
+	<activity><ID>86230</ID><Name>Dental practice activities</Name></activity>
+	<activity><ID>86900</ID><Name>Other human health activities</Name></activity>
+	<activity><ID>87100</ID><Name>Residential nursing care facilities</Name></activity>
+	<activity><ID>87200</ID><Name>Residential care activities for learning difficulties, mental health and substance abuse</Name></activity>
+	<activity><ID>87300</ID><Name>Residential care activities for the elderly and disabled</Name></activity>
+	<activity><ID>87900</ID><Name>Other residential care activities n.e.c.</Name></activity>
+	<activity><ID>88100</ID><Name>Social work activities without accommodation for the elderly and disabled</Name></activity>
+	<activity><ID>88910</ID><Name>Child day-care activities</Name></activity>
+	<activity><ID>88990</ID><Name>Other social work activities without accommodation n.e.c.</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="R"> <UID>18</UID><Domain>Arts, entertainment and recreation</Domain>
+	<activities>
+	<activity><ID>90010</ID><Name>Performing arts</Name></activity>
+	<activity><ID>90020</ID><Name>Support activities to performing arts</Name></activity>
+	<activity><ID>90030</ID><Name>Artistic creation</Name></activity>
+	<activity><ID>90040</ID><Name>Operation of arts facilities</Name></activity>
+	<activity><ID>91011</ID><Name>Library activities</Name></activity>
+	<activity><ID>91012</ID><Name>Archives activities</Name></activity>
+	<activity><ID>91020</ID><Name>Museums activities</Name></activity>
+	<activity><ID>91030</ID><Name>Operation of historical sites and buildings and similar visitor attractions</Name></activity>
+	<activity><ID>91040</ID><Name>Botanical and zoological gardens and nature reserves activities</Name></activity>
+	<activity><ID>92000</ID><Name>Gambling and betting activities</Name></activity>
+	<activity><ID>93110</ID><Name>Operation of sports facilities</Name></activity>
+	<activity><ID>93120</ID><Name>Activities of sport clubs</Name></activity>
+	<activity><ID>93130</ID><Name>Fitness facilities</Name></activity>
+	<activity><ID>93191</ID><Name>Activities of racehorse owners</Name></activity>
+	<activity><ID>93199</ID><Name>Other sports activities</Name></activity>
+	<activity><ID>93210</ID><Name>Activities of amusement parks and theme parks</Name></activity>
+	<activity><ID>93290</ID><Name>Other amusement and recreation activities n.e.c.</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="S"> <UID>19</UID><Domain>Other service activities</Domain>
+	<activities>
+	<activity><ID>94110</ID><Name>Activities of business and employers membership organizations</Name></activity>
+	<activity><ID>94120</ID><Name>Activities of professional membership organizations</Name></activity>
+	<activity><ID>94200</ID><Name>Activities of trade unions</Name></activity>
+	<activity><ID>94910</ID><Name>Activities of religious organizations</Name></activity>
+	<activity><ID>94920</ID><Name>Activities of political organizations</Name></activity>
+	<activity><ID>94990</ID><Name>Activities of other membership organizations n.e.c.</Name></activity>
+	<activity><ID>95110</ID><Name>Repair of computers and peripheral equipment</Name></activity>
+	<activity><ID>95120</ID><Name>Repair of communication equipment</Name></activity>
+	<activity><ID>95210</ID><Name>Repair of consumer electronics</Name></activity>
+	<activity><ID>95220</ID><Name>Repair of household appliances and home and garden equipment</Name></activity>
+	<activity><ID>95230</ID><Name>Repair of footwear and leather goods</Name></activity>
+	<activity><ID>95240</ID><Name>Repair of furniture and home furnishings</Name></activity>
+	<activity><ID>95250</ID><Name>Repair of watches, clocks and jewellery</Name></activity>
+	<activity><ID>95290</ID><Name>Repair of personal and household goods n.e.c.</Name></activity>
+	<activity><ID>96010</ID><Name>Washing and (dry-)cleaning of textile and fur products</Name></activity>
+	<activity><ID>96020</ID><Name>Hairdressing and other beauty treatment</Name></activity>
+	<activity><ID>96030</ID><Name>Funeral and related activities</Name></activity>
+	<activity><ID>96040</ID><Name>Physical well-being activities</Name></activity>
+	<activity><ID>96090</ID><Name>Other service activities n.e.c.</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="T"> <UID>20</UID><Domain>Activities of households as employers, undifferentiated goods- and services-producing activities of households for own use</Domain>
+	<activities>
+	<activity><ID>97000</ID><Name>Activities of households as employers of domestic personnel</Name></activity>
+	<activity><ID>98000</ID><Name>Residents property management</Name></activity>
+	<activity><ID>98100</ID><Name>Undifferentiated goods-producing activities of private households for own use</Name></activity>
+	<activity><ID>98200</ID><Name>Undifferentiated service-producing activities of private households for own use</Name></activity>
+	</activities></Industry>
+
+	<Industry Section="U"> <UID>21</UID><Domain>Activities of extraterritorial organisations and bodies</Domain>
+	<activities>
+	<activity><ID>99000</ID><Name>Activities of extraterritorial organizations and bodies</Name></activity>
+	<activity><ID>99999</ID><Name>Dormant Company</Name></activity>
+	</activities></Industry>
+
+</StdIndustClass>

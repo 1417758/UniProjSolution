@@ -2,7 +2,7 @@
 using System.Text;
 using System.IO;
 using System.Xml.Linq;
-using WebJobUniBLL;
+using WebJobUniUtils;
 //------------------------------------------------------------------------------------------------------
 // <copyright file="AppSettings.vb" company="">
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
