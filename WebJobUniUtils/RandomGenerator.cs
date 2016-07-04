@@ -1,12 +1,4 @@
 ﻿using System;
-using Microsoft.VisualBasic;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 //------------------------------------------------------------------------------------------------------
@@ -15,12 +7,68 @@ using System.Security.Cryptography;
 // </copyright>
 //------------------------------------------------------------------------------------------------------
 // http://msdn.microsoft.com/en-us/library/system.security.cryptography.rngcryptoserviceprovider(v=VS.90).aspx
-namespace WebJobUniBLL {
-    public class RandomNumbGenerator {   
+namespace WebJobUniUtils {
+    public class RandomGenerator {
 
 
-            // Main method.
-            public static void Main() {
+        /// <summary>
+        /// Return random number.  Value is not truly random!  to see this, perform FOR LOOP on function.
+        /// 
+        /// See RandomNumberGenerator.vb for better version.
+        /// </summary>
+        /// <param name="MaxNumber"></param>
+        /// <param name="MinNumber"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static int RandomNumber(int MaxNumber, int MinNumber = 0) {
+
+            //initialize random number generator
+            Random r = new Random();
+
+            //if passed incorrect arguments, swap them
+            //can also throw exception or return 0
+            if (MinNumber > MaxNumber) {
+                int t = MinNumber;
+                MinNumber = MaxNumber;
+                MaxNumber = t;
+            }
+
+            return r.Next(MinNumber, MaxNumber);
+        }
+
+        /// <summary>
+        /// Return random number.  Value is not truly random!  to see this, perform FOR LOOP on function.
+        /// 
+        /// See RandomNumberGenerator.vb for better version.
+        /// </summary>
+        /// <param name="MaxNumber"></param>
+        /// <param name="MinNumber"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static int RandomNumber2(int MaxNumber, int MinNumber = 0) {
+
+            return NextInt(MinNumber, MaxNumber);
+        }
+
+
+        /// <summary>
+        /// Return random boolean true or false
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static bool RandomBoolean() {
+            dynamic randInt = RandomNumber(0, 1);
+            if (randInt == 0)
+                return false;
+
+            else // (randInt == 1) 
+                return true;
+
+        }
+
+
+        // Main method.
+        public static void Main() {
                 const int totalRolls = 25000;
                 int[] results = new int[6];
 
@@ -94,7 +142,9 @@ namespace WebJobUniBLL {
                 int result = BitConverter.ToInt32(buffer, 0);
                 return new Random(result).Next(min, max);
             }
-        }//call
+
+
+        }//class
     }//namespace
 
 

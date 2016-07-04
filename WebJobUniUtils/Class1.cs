@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebJobUniBLL
-{
+namespace WebJobUniUtils {
     public class Class1
     {
     }

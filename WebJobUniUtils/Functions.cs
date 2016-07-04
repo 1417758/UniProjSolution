@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
 
-namespace WebJobUniBLL {
+namespace WebJobUniUtils {
     public class Functions {
         // This function will get triggered/executed when a new message is written 
         // on an Azure Queue called queue.
