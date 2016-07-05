@@ -20,7 +20,7 @@ using WebJobUniUtils;
 using System.Windows.Forms;
 
 //------------------------------------------------------------------------------------------------------
-// <copyright file="UtilsShared.vb" company="">
+// <copyright file="Utils.vb" company="">
 // Copyright (c) Rachie Holding Ltd. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
@@ -528,7 +528,7 @@ namespace WebJobUniUtils {
                         PIE2UID = PIE2UID_loopVariable;
                         //dont add items that r  empty
                         if (PIE2UID != " " && !string.IsNullOrEmpty(PIE2UID)) {
-                            PIe2IDLi.Add(UtilsShared.GetNumberShort(Strings.Trim(PIE2UID)));
+                            PIe2IDLi.Add(Utils.GetNumberShort(Strings.Trim(PIE2UID)));
                         }
                     }
                 }
@@ -560,8 +560,8 @@ namespace WebJobUniUtils {
             }
             else {
                 //try and parse the string
-                System.DateTime theDate = default(System.DateTime);
-                if (System.DateTime.TryParse(array[index], out theDate)) {
+                DateTime theDate = default(DateTime);
+                if (DateTime.TryParse(array[index], out theDate)) {
                     return theDate;
                 }
                 else {
@@ -595,6 +595,24 @@ namespace WebJobUniUtils {
             }
         }
 
+        
+        public static Nullable<DateTime> GetDatetimeNOW() {
+            try {
+                string nowDateSt = DateTime.Now.ToString("yyyy/mm/dd HH:mm:ss");
+                System.Diagnostics.Debug.Print(nowDateSt);
+
+                DateTime resultDate = new DateTime();
+                DateTime.TryParse(nowDateSt, out resultDate);
+                System.Diagnostics.Debug.Print(resultDate.ToString());
+                return resultDate;
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print(ex.ToString());
+                return null;
+            }
+        }
+
         /// <summary>
         /// convert string to dateTime
         /// </summary>
@@ -610,7 +628,7 @@ namespace WebJobUniUtils {
                 }
                 else {
                     //nothing returns todays datetime
-                    throw new Exception("UtilsShared Class,GetDateFromString Function - invalid parameter " + dateString + " , not a date: ");
+                    throw new Exception("Utils Class,GetDateFromString Function - invalid parameter " + dateString + " , not a date: ");
                 }
             }
             catch (Exception ex) {
@@ -628,13 +646,13 @@ namespace WebJobUniUtils {
         public static Nullable<DateTime> GetDateFromString2(string dateString) {
             try {
                 //try and parse the string
-                System.DateTime theDate = new System.DateTime();
-                if (System.DateTime.TryParse(dateString, out theDate)) {
-                    return System.DateTime.Parse(theDate.ToString("yyyy-MM-dd"));
+                DateTime theDate = new DateTime();
+                if (DateTime.TryParse(dateString, out theDate)) {
+                    return DateTime.Parse(theDate.ToString("yyyy-MM-dd"));
                 }
                 else {
                     //nothing returns todays date and/or default date: "01/01/0001 00:00:00")
-                    throw new Exception("UtilsShared Class,GetDateFromString2 Function - invalid parameter " + dateString + " is NOT a valid date: ");
+                    throw new Exception("Utils Class,GetDateFromString2 Function - invalid parameter " + dateString + " is NOT a valid date: ");
                 }
 
             }
@@ -713,7 +731,7 @@ namespace WebJobUniUtils {
         public static int CountNoOfDaysInMonth(int month, int year) {
             try {
                 dynamic lastDM = LastDayOfMonth(month, year);
-                dynamic firstDM = new System.DateTime(year, month, 1);
+                dynamic firstDM = new DateTime(year, month, 1);
 
                 return CountDifferenceDays(lastDM, firstDM);
 
@@ -845,7 +863,7 @@ namespace WebJobUniUtils {
 
             try {
                 if ((startDate.Month != endDate.Month) || startDate.Year != endDate.Year) {
-                    return UtilsShared.GetTotalUnitFromDailyUnit(ref unit);
+                    return Utils.GetTotalUnitFromDailyUnit(ref unit);
                 }
                 else {
                     return unit;
@@ -1023,10 +1041,10 @@ namespace WebJobUniUtils {
 
                                 //get sum per month
                                 //check where the column 0 is not nothing (date/time) and also value not error code -247
-                                dynamic sum = (from a in fulldata.Rowsawhere a[0] != null && a[colIndex].ToString() != XMLConstantsShared.ERROR_247 && System.DateTime.Parse(a[0]).Month == d.Month && System.DateTime.Parse(a[0]).Year == d.Year).Sum(x => x.Field<double>(colIndex));
+                                dynamic sum = (from a in fulldata.Rowsawhere a[0] != null && a[colIndex].ToString() != XMLConstantsShared.ERROR_247 && DateTime.Parse(a[0]).Month == d.Month && DateTime.Parse(a[0]).Year == d.Year).Sum(x => x.Field<double>(colIndex));
                             //render sum or calculate average 
                             if (isAverage) {
-                                dynamic numDaysMonth = (from a in fulldata.Rowsawhere a[0] != null && System.DateTime.Parse(a[0]).Month == d.Month && System.DateTime.Parse(a[0]).Year == d.Year).Count;
+                                dynamic numDaysMonth = (from a in fulldata.Rowsawhere a[0] != null && DateTime.Parse(a[0]).Month == d.Month && DateTime.Parse(a[0]).Year == d.Year).Count;
 
                                 //Debug.Print(numDaysMonth)
                                 summaryDR[i] = sum / numDaysMonth;
@@ -1098,7 +1116,7 @@ namespace WebJobUniUtils {
 
                 for (i = 1; i <= fulldata.Columns.Count - 1; i++) {
                     if (isAverage) {
-                        dr_total[i] = totalLi[i] / UtilsShared.GetNumberInt((endDate - startDate).Days + 1);
+                        dr_total[i] = totalLi[i] / Utils.GetNumberInt((endDate - startDate).Days + 1);
                     }
                     else {
                         //add sum from array
@@ -1148,7 +1166,7 @@ namespace WebJobUniUtils {
 
             }
             else {
-                throw new Exception("UtilsShared Class, SetDataTableTitles Function ERROR: The number of titles provided MUST correspond to the SAME number of the dataTable columns.");
+                throw new Exception("Utils Class, SetDataTableTitles Function ERROR: The number of titles provided MUST correspond to the SAME number of the dataTable columns.");
             }
 
             return fulldata;
@@ -1461,18 +1479,18 @@ namespace WebJobUniUtils {
             DateTime EndDate = default(DateTime);
 
             //valid start date text? if not set to first date in year
-            if (System.DateTime.TryParse(txtStartDate.Text, out StartDate) == false) {
-                txtStartDate.Text = new DateTime(System.DateTime.Now.Year, 1, 1);
+            if (DateTime.TryParse(txtStartDate.Text, out StartDate) == false) {
+                txtStartDate.Text = new DateTime(DateTime.Now.Year, 1, 1);
             }
 
             //valid end date text? if not set to now
-            if (System.DateTime.TryParse(txtEndDate.Text, out EndDate) == false) {
-                txtEndDate.Text = System.DateTime.Now.ToShortDateString();
+            if (DateTime.TryParse(txtEndDate.Text, out EndDate) == false) {
+                txtEndDate.Text = DateTime.Now.ToShortDateString();
             }
 
             //Check if Start Date > Last day of data
             dynamic lastDayDate = TimeStamp_Shared.GetLatestTimeStamp;
-            if (System.DateTime.Compare(StartDate, lastDayDate) == 1) {
+            if (DateTime.Compare(StartDate, lastDayDate) == 1) {
                 ErrorLabel.Text = "Start Date must be less than Last Date of data (" + lastDayDate.ToShortDateString + ")";
                 ErrorLabel.Visible = false;
 
@@ -1481,7 +1499,7 @@ namespace WebJobUniUtils {
             }
 
             //Check if Start Date > End Date
-            if (System.DateTime.Compare(StartDate, EndDate) == 1) {
+            if (DateTime.Compare(StartDate, EndDate) == 1) {
                 ErrorLabel.Text = "Start Date must be less than End Date";
                 ErrorLabel.Visible = false;
                 return false;
@@ -1489,14 +1507,14 @@ namespace WebJobUniUtils {
 
             //Check if Start Date < First Date of data
             dynamic firstDayData = TimeStamp_Shared.GetFirstTimeStamp;
-            if (System.DateTime.Compare(StartDate, firstDayData) == -1) {
+            if (DateTime.Compare(StartDate, firstDayData) == -1) {
                 ErrorLabel.Text = "Start Date must be greater than First Date of data (" + firstDayData.ToShortDateString + ")";
                 ErrorLabel.Visible = false;
                 return false;
             }
 
             //Check if End Date > Last Date of data
-            if (System.DateTime.Compare(EndDate, lastDayDate) == 1) {
+            if (DateTime.Compare(EndDate, lastDayDate) == 1) {
                 ErrorLabel.Text = "End Date must be less than Last Date of data (" + lastDayDate.ToShortDateString + ")";
                 ErrorLabel.Visible = false;
                 return false;

@@ -194,7 +194,7 @@ namespace WebJobUniTest {
                 MessageBox.Show("Please enter a valid date");
             }
             else {
-                l = UtilsShared.GetDateFromString(l);
+                l = Utils.GetDateFromString(l);
                 this.DataGridView1.DataSource = Logins.GetLoginsByDate(l);
                 this.DataGridView1.Visible = true;
             }
@@ -275,7 +275,7 @@ namespace WebJobUniTest {
                 MessageBox.Show("Please enter a valid date");
             }
             else {
-                l = UtilsShared.GetDateFromString(l);
+                l = Utils.GetDateFromString(l);
                 this.DataGridView1.DataSource = Usage.GetUsageByDate(l);
                 this.DataGridView1.Visible = true;
             }
@@ -286,7 +286,7 @@ namespace WebJobUniTest {
 
 
         private void BttonGetUsageByUserNameAndDate_Click(System.Object sender, System.EventArgs e) {
-            dynamic d = UtilsShared.GetDateFromString(Strings.Trim(this.TextBoxTimeStamp.Text));
+            dynamic d = Utils.GetDateFromString(Strings.Trim(this.TextBoxTimeStamp.Text));
             dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
             if (l == null || string.IsNullOrEmpty(l) || d == null || !Information.IsDate(d)) {
@@ -336,7 +336,7 @@ namespace WebJobUniTest {
                 MessageBox.Show("Please enter a valid date");
             }
             else {
-                l = UtilsShared.GetDateFromString(l);
+                l = Utils.GetDateFromString(l);
                 this.DataGridView1.DataSource = Exceptions.GetExceptionsByDate(l);
                 this.DataGridView1.Visible = true;
             }
@@ -448,7 +448,7 @@ namespace WebJobUniTest {
                 System.Diagnostics.Debug.Print("Z" + Constants.vbTab + z);
             }
             catch (Exception ex) {
-                UtilsShared.LogException(ex, user);
+                Utils.LogException(ex, user);
             }
 
         }
@@ -510,7 +510,7 @@ namespace WebJobUniTest {
 
 
         private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
-            this.DataGridView1.DataSource = Companies.GetCompanies();
+            this.DataGridView1.DataSource = Companies.GetAllCompanies();
             this.DataGridView1.Visible = true;
         }
 

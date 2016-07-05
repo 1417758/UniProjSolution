@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agenda.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="Companies.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="ContactDetails.cs" />
     <Compile Include="DataSet1Main.cs">
       <DependentUpon>DataSet1Main.xsd</DependentUpon>
     </Compile>
@@ -61,6 +63,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Roles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

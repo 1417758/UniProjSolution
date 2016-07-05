@@ -50,7 +50,7 @@ namespace EasyBookWeb {
                 }
             }
             catch (Exception ex) {
-                //  UtilsShared.LogException(ex, User.Identity.Name);
+                //  Utils.LogException(ex, User.Identity.Name);
                 System.Diagnostics.Debug.Print("<h1>ExceptionUtility, CATCH LogException Method</h1>\n" + ex.Message + ex.InnerException + "\n" + "\n" + ex.ToString());
             }
         }

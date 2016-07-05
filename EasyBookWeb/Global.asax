@@ -62,7 +62,7 @@
             Server.ClearError();
         }
         catch (Exception ex) {
-            //  UtilsShared.LogException(ex, User.Identity.Name);
+            //  Utils.LogException(ex, User.Identity.Name);
             System.Diagnostics.Debug.Print("<h2>Global.asax, Application_Error Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
             // Log the exception and notify system operators
             ExceptionUtility.LogException(ex, "Global.asax, Application_Error Method");

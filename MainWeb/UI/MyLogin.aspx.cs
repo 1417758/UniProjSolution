@@ -71,7 +71,7 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             System.Diagnostics.Debug.Print(ex.ToString());
         }
         catch (Exception ex) {
-            // UtilsShared.LogException(ex, User.Identity.Name);
+            // Utils.LogException(ex, User.Identity.Name);
             System.Diagnostics.Debug.Print(ex.ToString());
         }
 
@@ -101,7 +101,7 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             //R           End If
         }
         catch (Exception ex) {
-            //  UtilsShared.LogException(ex, User.Identity.Name);
+            //  Utils.LogException(ex, User.Identity.Name);
             System.Diagnostics.Debug.Print(ex.ToString());
         }
 
