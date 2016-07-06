@@ -42,21 +42,21 @@ namespace WebJobUniDAL {
         
         private EmployeeDataTable tableEmployee;
         
-        private global::System.Data.DataRelation relationFK_Employee_Agenda;
-        
         private global::System.Data.DataRelation relationFK__Client__clientID__1AF3F935;
         
-        private global::System.Data.DataRelation relationFK__Person__contactD__125EB334;
-        
         private global::System.Data.DataRelation relationFK__Person__role__1352D76D;
+        
+        private global::System.Data.DataRelation relationFK__Person__contactD__125EB334;
         
         private global::System.Data.DataRelation relationFK__Company__mainCon__40058253;
         
         private global::System.Data.DataRelation relationFK__EndUser__userID__1DD065E0;
         
-        private global::System.Data.DataRelation relationFK__Employee__staffI__17236851;
-        
         private global::System.Data.DataRelation relationFK__Company__contact__40F9A68C;
+        
+        private global::System.Data.DataRelation relationFK__Employee__agenda__18178C8A;
+        
+        private global::System.Data.DataRelation relationFK__Employee__staffI__17236851;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -402,14 +402,14 @@ namespace WebJobUniDAL {
                     this.tableEmployee.InitVars();
                 }
             }
-            this.relationFK_Employee_Agenda = this.Relations["FK_Employee_Agenda"];
             this.relationFK__Client__clientID__1AF3F935 = this.Relations["FK__Client__clientID__1AF3F935"];
-            this.relationFK__Person__contactD__125EB334 = this.Relations["FK__Person__contactD__125EB334"];
             this.relationFK__Person__role__1352D76D = this.Relations["FK__Person__role__1352D76D"];
+            this.relationFK__Person__contactD__125EB334 = this.Relations["FK__Person__contactD__125EB334"];
             this.relationFK__Company__mainCon__40058253 = this.Relations["FK__Company__mainCon__40058253"];
             this.relationFK__EndUser__userID__1DD065E0 = this.Relations["FK__EndUser__userID__1DD065E0"];
-            this.relationFK__Employee__staffI__17236851 = this.Relations["FK__Employee__staffI__17236851"];
             this.relationFK__Company__contact__40F9A68C = this.Relations["FK__Company__contact__40F9A68C"];
+            this.relationFK__Employee__agenda__18178C8A = this.Relations["FK__Employee__agenda__18178C8A"];
+            this.relationFK__Employee__staffI__17236851 = this.Relations["FK__Employee__staffI__17236851"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -439,13 +439,6 @@ namespace WebJobUniDAL {
             this.tableEmployee = new EmployeeDataTable();
             base.Tables.Add(this.tableEmployee);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Employee_Agenda", new global::System.Data.DataColumn[] {
-                        this.tableEmployee.agendaColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAgenda.agendaIDColumn});
-            this.tableAgenda.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK__Client__clientID__1AF3F935", new global::System.Data.DataColumn[] {
                         this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn});
@@ -453,13 +446,6 @@ namespace WebJobUniDAL {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
-                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.contactDetColumn});
-            this.tablePerson.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
                         this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePerson.roleColumn});
@@ -467,22 +453,25 @@ namespace WebJobUniDAL {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Employee_Agenda = new global::System.Data.DataRelation("FK_Employee_Agenda", new global::System.Data.DataColumn[] {
-                        this.tableEmployee.agendaColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAgenda.agendaIDColumn}, false);
-            this.Relations.Add(this.relationFK_Employee_Agenda);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
+                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.contactDetColumn});
+            this.tablePerson.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK__Client__clientID__1AF3F935 = new global::System.Data.DataRelation("FK__Client__clientID__1AF3F935", new global::System.Data.DataColumn[] {
                         this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, false);
             this.Relations.Add(this.relationFK__Client__clientID__1AF3F935);
-            this.relationFK__Person__contactD__125EB334 = new global::System.Data.DataRelation("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
-                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.contactDetColumn}, false);
-            this.Relations.Add(this.relationFK__Person__contactD__125EB334);
             this.relationFK__Person__role__1352D76D = new global::System.Data.DataRelation("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
                         this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePerson.roleColumn}, false);
             this.Relations.Add(this.relationFK__Person__role__1352D76D);
+            this.relationFK__Person__contactD__125EB334 = new global::System.Data.DataRelation("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
+                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.contactDetColumn}, false);
+            this.Relations.Add(this.relationFK__Person__contactD__125EB334);
             this.relationFK__Company__mainCon__40058253 = new global::System.Data.DataRelation("FK__Company__mainCon__40058253", new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCompany.mainContactColumn}, false);
@@ -491,14 +480,18 @@ namespace WebJobUniDAL {
                         this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableEndUser.userIDColumn}, false);
             this.Relations.Add(this.relationFK__EndUser__userID__1DD065E0);
-            this.relationFK__Employee__staffI__17236851 = new global::System.Data.DataRelation("FK__Employee__staffI__17236851", new global::System.Data.DataColumn[] {
-                        this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableEmployee.staffIDColumn}, false);
-            this.Relations.Add(this.relationFK__Employee__staffI__17236851);
             this.relationFK__Company__contact__40F9A68C = new global::System.Data.DataRelation("FK__Company__contact__40F9A68C", new global::System.Data.DataColumn[] {
                         this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCompany.contactDetColumn}, false);
             this.Relations.Add(this.relationFK__Company__contact__40F9A68C);
+            this.relationFK__Employee__agenda__18178C8A = new global::System.Data.DataRelation("FK__Employee__agenda__18178C8A", new global::System.Data.DataColumn[] {
+                        this.tableAgenda.agendaIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEmployee.agendaColumn}, false);
+            this.Relations.Add(this.relationFK__Employee__agenda__18178C8A);
+            this.relationFK__Employee__staffI__17236851 = new global::System.Data.DataRelation("FK__Employee__staffI__17236851", new global::System.Data.DataColumn[] {
+                        this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEmployee.staffIDColumn}, false);
+            this.Relations.Add(this.relationFK__Employee__staffI__17236851);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3424,15 +3417,18 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmployeeRow AddEmployeeRow(PersonRow parentPersonRowByFK__Employee__staffI__17236851, string natInsNumb, string jobTitle, short agenda) {
+            public EmployeeRow AddEmployeeRow(PersonRow parentPersonRowByFK__Employee__staffI__17236851, string natInsNumb, string jobTitle, AgendaRow parentAgendaRowByFK__Employee__agenda__18178C8A) {
                 EmployeeRow rowEmployeeRow = ((EmployeeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         natInsNumb,
                         jobTitle,
-                        agenda};
+                        null};
                 if ((parentPersonRowByFK__Employee__staffI__17236851 != null)) {
                     columnValuesArray[0] = parentPersonRowByFK__Employee__staffI__17236851[0];
+                }
+                if ((parentAgendaRowByFK__Employee__agenda__18178C8A != null)) {
+                    columnValuesArray[3] = parentAgendaRowByFK__Employee__agenda__18178C8A[0];
                 }
                 rowEmployeeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeeRow);
@@ -3482,13 +3478,10 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columnagenda);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnstaffID}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnagenda}, false));
                 this.columnstaffID.AllowDBNull = false;
                 this.columnstaffID.Unique = true;
                 this.columnnatInsNumb.MaxLength = 20;
                 this.columnjobTitle.MaxLength = 50;
-                this.columnagenda.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3669,17 +3662,6 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmployeeRow EmployeeRow {
-                get {
-                    return ((EmployeeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Employee_Agenda"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Employee_Agenda"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IssyncCalendarNull() {
                 return this.IsNull(this.tableAgenda.syncCalendarColumn);
             }
@@ -3688,6 +3670,17 @@ namespace WebJobUniDAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetsyncCalendarNull() {
                 this[this.tableAgenda.syncCalendarColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EmployeeRow[] GetEmployeeRows() {
+                if ((this.Table.ChildRelations["FK__Employee__agenda__18178C8A"] == null)) {
+                    return new EmployeeRow[0];
+                }
+                else {
+                    return ((EmployeeRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Employee__agenda__18178C8A"])));
+                }
             }
         }
         
@@ -4735,23 +4728,23 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContactDetailsRow ContactDetailsRow {
-                get {
-                    return ((ContactDetailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__contactD__125EB334"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__contactD__125EB334"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RolesRow RolesRow {
                 get {
                     return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__role__1352D76D"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Person__role__1352D76D"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ContactDetailsRow ContactDetailsRow {
+                get {
+                    return ((ContactDetailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__contactD__125EB334"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__contactD__125EB334"]);
                 }
             }
             
@@ -4923,6 +4916,17 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AgendaRow AgendaRow {
+                get {
+                    return ((AgendaRow)(this.GetParentRow(this.Table.ParentRelations["FK__Employee__agenda__18178C8A"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Employee__agenda__18178C8A"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PersonRow PersonRow {
                 get {
                     return ((PersonRow)(this.GetParentRow(this.Table.ParentRelations["FK__Employee__staffI__17236851"])));
@@ -4966,17 +4970,6 @@ namespace WebJobUniDAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetagendaNull() {
                 this[this.tableEmployee.agendaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AgendaRow[] GetAgendaRows() {
-                if ((this.Table.ChildRelations["FK_Employee_Agenda"] == null)) {
-                    return new AgendaRow[0];
-                }
-                else {
-                    return ((AgendaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Employee_Agenda"])));
-                }
             }
         }
         
@@ -10344,30 +10337,21 @@ SELECT staffID, natInsNumb, jobTitle, agenda FROM Employee WHERE (staffID = @sta
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._clientTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Client.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._clientTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._employeeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._employeeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._agendaTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Agenda.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._agendaTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._clientTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Client.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._clientTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10398,6 +10382,15 @@ SELECT staffID, natInsNumb, jobTitle, agenda FROM Employee WHERE (staffID = @sta
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._employeeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._employeeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -10424,27 +10417,19 @@ SELECT staffID, natInsNumb, jobTitle, agenda FROM Employee WHERE (staffID = @sta
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._clientTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Client.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._clientTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._employeeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._employeeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._agendaTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Agenda.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._agendaTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._clientTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Client.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._clientTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10472,6 +10457,14 @@ SELECT staffID, natInsNumb, jobTitle, agenda FROM Employee WHERE (staffID = @sta
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._employeeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._employeeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -10482,6 +10475,14 @@ SELECT staffID, natInsNumb, jobTitle, agenda FROM Employee WHERE (staffID = @sta
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(DataSet1Main dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._employeeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._employeeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._personReturnTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.PersonReturn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -10506,27 +10507,19 @@ SELECT staffID, natInsNumb, jobTitle, agenda FROM Employee WHERE (staffID = @sta
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._agendaTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Agenda.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._agendaTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._employeeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._employeeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._clientTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Client.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._clientTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._agendaTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Agenda.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._agendaTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
