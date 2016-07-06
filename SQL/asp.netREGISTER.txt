@@ -1,0 +1,15 @@
+
+https://msdn.microsoft.com/en-us/library/ms229862(v=vs.100).aspx
+
+_________________________________________________________________________
+.NET Framework version 4 (64-bit systems)
+RUN	
+%windir%\Microsoft.NET\Framework64\v4.0.30319
+_________________________________________________________________________
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_regsql.exe
+
+
+_________________________________________________________________________
+related:
+
+http://www.asp.net/web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-cs

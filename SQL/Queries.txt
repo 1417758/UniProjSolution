@@ -1,0 +1,38 @@
+1. How to select the nth row in a SQL database table?
+
+SELECT * FROM (
+  SELECT
+    ROW_NUMBER() OVER (ORDER BY key ASC) AS rownumber,
+    columns
+  FROM tablename
+) AS foo
+WHERE rownumber <= n
+________________________________________________________________________________
+2. SQL Server Data Types and Their .NET Framework Equivalents
+source: http://stackoverflow.com/questions/425389/c-sharp-equivalent-of-sql-server-datatypes
+
+SQL Server data type          CLR data type (SQL Server)    CLR data type (.NET Framework)  
+
+varbinary                     SqlBytes, SqlBinary           Byte[]  
+binary                        SqlBytes, SqlBinary           Byte[]  
+
+varchar                       None                          None
+char                          None                          None
+text                          None                          None
+
+uniqueidentifier              SqlGuid                       Guid 
+bit                           SqlBoolean                    Boolean 
+tinyint                       SqlByte                       Byte 
+smallint                      SqlInt16                      Int16  
+int                           SqlInt32                      Int32  
+
+smallmoney                    SqlMoney                      Decimal  
+money                         SqlMoney                      Decimal  
+numeric                       SqlDecimal                    Decimal  
+decimal                       SqlDecimal                    Decimal  
+float                         SqlDouble                     Double  
+
+smalldatetime                 SqlDateTime                   DateTime  
+datetime                      SqlDateTime                   DateTime 
+________________________________________________________________________________
+3.
