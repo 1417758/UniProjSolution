@@ -46,9 +46,9 @@ namespace WebJobUniDAL {
         
         private global::System.Data.DataRelation relationFK__Client__clientID__1AF3F935;
         
-        private global::System.Data.DataRelation relationFK__Person__role__1352D76D;
-        
         private global::System.Data.DataRelation relationFK__Person__contactD__125EB334;
+        
+        private global::System.Data.DataRelation relationFK__Person__role__1352D76D;
         
         private global::System.Data.DataRelation relationFK__Company__mainCon__40058253;
         
@@ -404,8 +404,8 @@ namespace WebJobUniDAL {
             }
             this.relationFK_Employee_Agenda = this.Relations["FK_Employee_Agenda"];
             this.relationFK__Client__clientID__1AF3F935 = this.Relations["FK__Client__clientID__1AF3F935"];
-            this.relationFK__Person__role__1352D76D = this.Relations["FK__Person__role__1352D76D"];
             this.relationFK__Person__contactD__125EB334 = this.Relations["FK__Person__contactD__125EB334"];
+            this.relationFK__Person__role__1352D76D = this.Relations["FK__Person__role__1352D76D"];
             this.relationFK__Company__mainCon__40058253 = this.Relations["FK__Company__mainCon__40058253"];
             this.relationFK__EndUser__userID__1DD065E0 = this.Relations["FK__EndUser__userID__1DD065E0"];
             this.relationFK__Employee__staffI__17236851 = this.Relations["FK__Employee__staffI__17236851"];
@@ -453,16 +453,16 @@ namespace WebJobUniDAL {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
-                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.roleColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
+                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.contactDetColumn});
             this.tablePerson.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
-                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.contactDetColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
+                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.roleColumn});
             this.tablePerson.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -475,14 +475,14 @@ namespace WebJobUniDAL {
                         this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, false);
             this.Relations.Add(this.relationFK__Client__clientID__1AF3F935);
-            this.relationFK__Person__role__1352D76D = new global::System.Data.DataRelation("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
-                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.roleColumn}, false);
-            this.Relations.Add(this.relationFK__Person__role__1352D76D);
             this.relationFK__Person__contactD__125EB334 = new global::System.Data.DataRelation("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
                         this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePerson.contactDetColumn}, false);
             this.Relations.Add(this.relationFK__Person__contactD__125EB334);
+            this.relationFK__Person__role__1352D76D = new global::System.Data.DataRelation("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
+                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.roleColumn}, false);
+            this.Relations.Add(this.relationFK__Person__role__1352D76D);
             this.relationFK__Company__mainCon__40058253 = new global::System.Data.DataRelation("FK__Company__mainCon__40058253", new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCompany.mainContactColumn}, false);
@@ -4735,23 +4735,23 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RolesRow RolesRow {
-                get {
-                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__role__1352D76D"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__role__1352D76D"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ContactDetailsRow ContactDetailsRow {
                 get {
                     return ((ContactDetailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__contactD__125EB334"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Person__contactD__125EB334"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RolesRow RolesRow {
+                get {
+                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__role__1352D76D"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__role__1352D76D"]);
                 }
             }
             

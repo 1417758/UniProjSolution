@@ -38,7 +38,7 @@ namespace WebJobUniDAL {
 
         #region "GET Methods"
 
-        /// <summary>
+        /// <summary>//1
         /// function which returns all instances of Person datatable
         /// </summary>all instances of inputs
         /// <returns></returns>
@@ -56,13 +56,13 @@ namespace WebJobUniDAL {
             }
         }
 
-        /// <summary>
+        /// <summary>//2
         /// function which returns an instance of Person datatable that has the given contactID
         /// </summary>
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.PersonDataTable GetPersonByID(int personID) {
+        public static DataSet1Main.PersonDataTable GetPersonByID(int? personID) {
 
             try {
                 return Adapter.GetPersonByID(personID);
@@ -72,7 +72,7 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
-
+        //3
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonDataTable GetPersonByLastName(string lastName) {
 
@@ -84,7 +84,7 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
-
+        //4
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonDataTable GetPersonByASPuserID(Guid aspnetUserID) {
 
@@ -96,15 +96,18 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
-
+        //5
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonDataTable GetPersonIDByLastName(string lastName) {
 
             try {
+                //NB 6/7/16
+                //asp.net runtime error here as more than one value returned
+                //modify to show all table 1st then select wanted user
                 return Adapter.GetPersonIDByLastName(lastName);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.Person.GetPersonByLastName(lastName))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Person.GetPersonIDByLastName(lastName))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -112,7 +115,7 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "ADD Functions"
-        /// <summary>
+        /// <summary>//6
         /// function which insert a record in Person table
         /// </summary>
         /// <returns></returns>
@@ -133,15 +136,17 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "DELETE Functions"
-        /// <summary>
+        /// <summary>//7
         /// function which removed a record in Person table
         /// </summary>
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeletePersonByID(int personID) {
+        public static int DeletePersonByID(int? personID) {
             try {
-                return (int)Adapter.DeletePersonByID(personID);
+                //NB tableAdapter returns decimal value by default. TYPE= object {int}
+                dynamic result = Adapter.DeletePersonByID(personID);
+                return (int)result;
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Person.DeletePersonByID(personID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);

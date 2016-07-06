@@ -32,13 +32,13 @@ namespace WebJobUniDAL {
 
         #region "GET Methods"
         
-        /// <summary>
+        /// <summary>//1
         /// function which returns all instances of contactDetails datatable
         /// </summary>all instances of inputs
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.ContactDetailsDataTable GetAllContactDet() {
+        public static DataSet1Main.ContactDetailsDataTable GetAllContactDetails() {
 
             try {
                 return Adapter.GetAllContactDetails();
@@ -50,7 +50,7 @@ namespace WebJobUniDAL {
             }
         }
 
-        /// <summary>
+        /// <summary>//2
         /// function which returns an instance of contactDetails datatable that has the given contactID
         /// </summary>
         /// <returns></returns>
@@ -66,7 +66,7 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
-
+        //3
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.ContactDetailsDataTable GetContactDetByCompID(int companyID) {
 
@@ -78,7 +78,7 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
-
+        //4
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.ContactDetailsDataTable GetContactDetByPersonID(int personID) {
 
@@ -94,7 +94,7 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "ADD Functions"
-        /// <summary>
+        /// <summary>//5
         /// function which insert a record in contactDetails table
         /// </summary>
         /// <returns></returns>
@@ -113,7 +113,7 @@ namespace WebJobUniDAL {
                 return 0;
             }
         }
-
+        //6
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
         public static int AddContactDetailsAllNull() { 
             try {
@@ -132,7 +132,7 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "DELETE Functions"
-        /// <summary>
+        /// <summary>//7
         /// function which removed a record in contactDetails table
         /// </summary>
         /// <returns></returns>

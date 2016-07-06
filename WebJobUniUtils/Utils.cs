@@ -303,14 +303,16 @@ namespace WebJobUniUtils {
         public static bool IsNumeric(string strgNumb) {
             //Source: http://www.codeproject.com/Articles/16329/C-Equivalent-of-VB-s-IsNumeric
             ////Parse throws ArgumentNullExceptionint
-            //dynamic result1 = Int32.Parse(null);
+            //ie: dynamic result1 = Int32.Parse(null);
             ////Convert doesn't throw an exception, returns 0
-            //int result2 = Convert.ToInt32(null);
-
+            //ie:int result2 = Convert.ToInt32(null);
+            //String.IsNullOrEmpty(value) value.Trim().Length == 0; //White - space
+            if (!String.IsNullOrEmpty(strgNumb))
             if (Convert.ToDouble(strgNumb) != 0)
                 return true;
             else
                 return false;
+            return false;
         }
 
         /// <summary>

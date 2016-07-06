@@ -14,21 +14,21 @@ using WebJobUniUtils;
 namespace WebJobUniDAL {
 
     [System.ComponentModel.DataObject()]
-    public class EndUser : Person {
+    public class Employee : Person {
 
-        private static PersonReturnTableAdapter _tblEndUser = null;
+        private static PersonReturnTableAdapter _tblEmployee = null;
 
         public static void Main() {
-            EndUser end_user = new EndUser();
+            Employee Employee = new Employee();
         }
 
         #region "Properties"
         protected static PersonReturnTableAdapter Adapter {
             get {
-                if (_tblEndUser == null)
-                    _tblEndUser = new PersonReturnTableAdapter();
+                if (_tblEmployee == null)
+                    _tblEmployee = new PersonReturnTableAdapter();
 
-                return _tblEndUser;
+                return _tblEmployee;
             }
         }
         #endregion
@@ -36,19 +36,19 @@ namespace WebJobUniDAL {
         #region "GET Methods"
 
         /// <summary>
-        /// function which returns all instances of EndUser datatable
+        /// function which returns all instances of Employee datatable
         /// </summary>all instances of inputs
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.PersonReturnDataTable GetAllEndUsers() {
+        public static DataSet1Main.PersonReturnDataTable GetAllEmployees() {
 
             try {
-                return Adapter.GetAllPersonInherit((byte)RolesEnum.END_USER);
+                return Adapter.GetAllPersonInherit((byte)RolesEnum.EMPLOYEE);
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.EndUser.GetAllEndUsers() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.GetAllEmployees() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -59,37 +59,37 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.PersonReturnDataTable GetEndUserByID(int? endUserID) {
+        public static DataSet1Main.PersonReturnDataTable GetEmployeeByID(int? employeeID) {
             try {
-                return Adapter.GetPersonInheritByID((byte)RolesEnum.END_USER, endUserID);
+                return Adapter.GetPersonInheritByID((byte)RolesEnum.EMPLOYEE, employeeID);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.EndUser.GetEndUserByID(endUserID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.GetEmployeeByID(employeeID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
 
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.PersonReturnDataTable GetEndUserByLastName(string lastName) {
+        public static DataSet1Main.PersonReturnDataTable GetEmployeeByLastName(string lastName) {
 
             try {
-                return Adapter.GetPersonInheritByLastName((byte)RolesEnum.END_USER, lastName);
+                return Adapter.GetPersonInheritByLastName((byte)RolesEnum.EMPLOYEE, lastName);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.EndUser.GetEndUserByLastName(lastName))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.GetEmployeeByLastName(lastName))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
 
 
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.PersonDataTable GetEndUserIDByLastName(string lastName) {
+        public static DataSet1Main.PersonDataTable GetEmployeeIDByLastName(string lastName) {
 
             try {
                 return GetPersonIDByLastName(lastName);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.EndUser.GetEndUserIDByLastName(lastName))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.GetEmployeeIDByLastName(lastName))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -98,19 +98,19 @@ namespace WebJobUniDAL {
 
         #region "ADD Functions"
         /// <summary>
-        /// function which insert a record in EndUser table
+        /// function which insert a record in Employee table
         /// </summary>
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddEndUser(string title, string firstName, string lastName, int contactDetailID, Guid asp_netUSER_ID) {
+        public static int? AddEmployee(string title, string firstName, string lastName, int contactDetailID, Guid asp_netUSER_ID, string natInsNumb, string jobTitle, Int16 agendaID) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
-                dynamic result = Adapter.InsertPersonInherit(title, firstName, lastName, contactDetailID, (byte)RolesEnum.END_USER, asp_netUSER_ID, "", "", null);
+                dynamic result = Adapter.InsertPersonInherit(title, firstName, lastName, contactDetailID, (byte)RolesEnum.EMPLOYEE, asp_netUSER_ID, natInsNumb, jobTitle, agendaID);
                 return (int?)result;
-             }
+            }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.EndUser.AddEndUser(x6 params) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.AddEmployee(x5 params) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -119,17 +119,17 @@ namespace WebJobUniDAL {
 
         #region "DELETE Functions"
         /// <summary>
-        /// function which removed a record in EndUser table
+        /// function which removed a record in Employee table
         /// </summary>
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeleteEndUserByID(int? endUserID) {
+        public static int DeleteEmployeeByID(int? EmployeeID) {
             try {
-                return (int)Adapter.DeletePersonInheritByID(endUserID, (byte)RolesEnum.END_USER);
+                return (int)Adapter.DeletePersonInheritByID(EmployeeID, (byte)RolesEnum.EMPLOYEE);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.EndUser.DeleteEndUserByID(EndUserID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.DeleteEmployeeByID(EmployeeID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return 0;
             }
         }

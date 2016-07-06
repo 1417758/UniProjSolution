@@ -13,7 +13,7 @@ namespace WebJobUniDAL {
         // a change on these will require those to be revised 
         ADMIN = 1,
         END_USER = 2,
-        STAFF = 3,
+        EMPLOYEE = 3,
         CLIENT = 4,
         ALL = 0
     }
@@ -38,9 +38,9 @@ namespace WebJobUniDAL {
                     case "ENDUSER":
                         return (byte)RolesEnum.END_USER;
                     case "STAFF":
-                        return (byte)RolesEnum.STAFF;
+                        return (byte)RolesEnum.EMPLOYEE;
                     case "EMPLOYEE":
-                        return (byte)RolesEnum.STAFF;
+                        return (byte)RolesEnum.EMPLOYEE;
                     case "CLIENT":
                         return (byte)RolesEnum.CLIENT;
                     case "ALL":
