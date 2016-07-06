@@ -35,7 +35,7 @@ namespace WebJobUniUtils {
         /// <param name="value">The value we're looking for</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static Nullable<int> GetEnumIntValue(Type _enum, string value) {
+        public static int? GetEnumIntValue(Type _enum, string value) {
 
             try {
                 dynamic intVal = (int)Enum.Parse(_enum, value);
@@ -65,7 +65,7 @@ namespace WebJobUniUtils {
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static Nullable<bool> GetBooleanFromString(string s) {
+        public static bool? GetBooleanFromString(string s) {
             try {
                 if (s == null)
                     return false;
@@ -302,9 +302,9 @@ namespace WebJobUniUtils {
 
         public static bool IsNumeric(string strgNumb) {
             //Source: http://www.codeproject.com/Articles/16329/C-Equivalent-of-VB-s-IsNumeric
-            //// throws ArgumentNullExceptionint
+            ////Parse throws ArgumentNullExceptionint
             //dynamic result1 = Int32.Parse(null);
-            //// doesn't throw an exception, returns 0
+            ////Convert doesn't throw an exception, returns 0
             //int result2 = Convert.ToInt32(null);
 
             if (Convert.ToDouble(strgNumb) != 0)
@@ -337,7 +337,7 @@ namespace WebJobUniUtils {
             return GetNumber(x);
         }
 
-        public static Nullable<Int16> GetNumberShort(string x) {
+        public static Int16? GetNumberShort(string x) {
             if (IsNumeric(x))
                 return Int16.Parse(x);
             else
@@ -346,7 +346,7 @@ namespace WebJobUniUtils {
 
 
 
-        public static Nullable<Int32> GetNumberInt(string x) {
+        public static Int32? GetNumberInt(string x) {
             if (IsNumeric(x))
                 return Int32.Parse(x);
             else
@@ -554,7 +554,7 @@ namespace WebJobUniUtils {
         /// <param name="array"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static Nullable<DateTime> GetDateFromStringArray(int index, string[] array) {
+        public static DateTime? GetDateFromStringArray(int index, string[] array) {
             if (index > array.Length - 1 || array.Length == 0) {
                 return null;
             }
@@ -577,7 +577,7 @@ namespace WebJobUniUtils {
         /// <param name="d"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static Nullable<DateTime> GetDateWithNOSeconds(ref DateTime d) {
+        public static DateTime? GetDateWithNOSeconds(ref DateTime d) {
             try {
                 dynamic retDate = Convert.ToDateTime(d.ToString("yyyy-MM-dd HH:mm"));
                 //("dd-MM-yyyy HH:mm"))
@@ -596,7 +596,7 @@ namespace WebJobUniUtils {
         }
 
         
-        public static Nullable<DateTime> GetDatetimeNOW() {
+        public static DateTime? GetDatetimeNOW() {
             try {
                 string nowDateSt = DateTime.Now.ToString("yyyy/mm/dd HH:mm:ss");
                 System.Diagnostics.Debug.Print(nowDateSt);
@@ -619,7 +619,7 @@ namespace WebJobUniUtils {
         /// <param name="dateString"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static Nullable<DateTime> GetDateFromString(string dateString) {
+        public static DateTime? GetDateFromString(string dateString) {
             try {
                 //try and parse the string
                 DateTime theDate = new DateTime();
@@ -643,7 +643,7 @@ namespace WebJobUniUtils {
         /// <param name="dateString"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static Nullable<DateTime> GetDateFromString2(string dateString) {
+        public static DateTime? GetDateFromString2(string dateString) {
             try {
                 //try and parse the string
                 DateTime theDate = new DateTime();

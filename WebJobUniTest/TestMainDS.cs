@@ -28,13 +28,132 @@ namespace WebJobUniTest {
             }
         }
 
+        private void btnStartup_Click(object sender, EventArgs e) {
+            StartUp Check = new StartUp();
+            Check.Show();
+            Hide();
+        }
+        public void ResetTextBoxes() {
+            this.TextBoxTimeStamp.Text = "";
+            this.TextBoxUserName.Text = "";
+            this.TextBoxUserID.Text = "";
+        }
 
+
+        #region "Person"
+        private void btnGetAllPersons_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = Person.GetAllPerson();
+            this.DataGridView1.Visible = true;           
+        }
+
+        private void btnPersonByID_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnPersonByUserName_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnAddPerson_Click(object sender, EventArgs e) {
+            Guid userID = new Guid("294CB0FF-0F68-4A31-8F12-C26E34DCC0B8");
+            int? result = Person.AddPerson("MS", "TEST YET", "VERY LATE", 1, 1, userID);
+            this.LblReturn.Text = result.ToString();
+        }
+        #endregion
+
+
+
+        #region "End-Users"  
+        private void BttonGetAllUsers_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = EndUser.GetAllEndUsers();
+            this.DataGridView1.Visible = true;
+        }
+        private void BttonGetUserByID_Click(object sender, EventArgs e) {
+            int userID = (int)Utils.GetNumberInt(this.TextBoxUserID.Text);
+            this.DataGridView1.DataSource = EndUser.GetEndUserByID(userID);
+            this.DataGridView1.Visible = true;
+            ResetTextBoxes();
+        }
+        private void BttonGetUserByLastName_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = EndUser.GetEndUserByLastName(this.TextBoxUserName.Text);
+            this.DataGridView1.Visible = true;
+            ResetTextBoxes();
+        }
+        private void BttonGetUserIDByLastName_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = EndUser.GetEndUserIDByLastName(this.TextBoxUserName.Text);
+            this.DataGridView1.Visible = true;
+            ResetTextBoxes();
+        }
+        private void BttonAddUser_Click(object sender, EventArgs e) {
+            Guid userID = new Guid("294CB0FF-0F68-4A31-8F12-C26E34DCC0B8"); 
+            this.LblReturn.Text = EndUser.AddEndUser("Mrs", "FIRST", "TEST", 1,userID).ToString();
+            BttonGetAllUsers_Click(sender, e);
+        }
+        private void BttonDeleteUser_Click(object sender, EventArgs e) {
+            int userID = (int)Utils.GetNumberInt(this.TextBoxUserID.Text);
+            this.LblReturn.Text = EndUser.DeleteEndUserByID(userID).ToString();
+        }
+        #endregion
+
+        #region "Company"
+        private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
+            this.DataGridView1.DataSource = Company.GetAllCompanies();
+            this.DataGridView1.Visible = true;
+        }
+
+        private void BtonInsertCompany_Click(System.Object sender, System.EventArgs e) {
+            try {
+                //R this.LblReturn.Text = "Companies Num: " + Company.AddCompany("rachels group");
+
+                //this.DataGridView1.DataSource = Companies.GetCompanies();
+                //this.DataGridView1.Visible = true;
+
+                BtonGetCompanies_Click(sender, e);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+            }
+
+        }
+
+
+
+        /*          private void Button1BtonGetCompaniesIDByCompName_Click(System.Object sender, System.EventArgs e) {
+                    try {
+                        dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+
+                        if (l == null || string.IsNullOrEmpty(l)) {
+                            MessageBox.Show("Please enter a valid COMPANY name");
+                            this.TextBoxUserName.Focus();
+
+                        }
+                        else {
+                            this.LblReturn.Text = Companies.GetCompanyIDByCompanyName(l);
+                            this.DataGridView1.DataSource = Companies.GetCompanies;
+                            this.DataGridView1.Visible = true;
+
+                        }
+
+                        ResetTextBoxes();
+
+                    }
+                    catch (Exception ex) {
+                       System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+                    }
+
+                }
+
+            */
+        #endregion
+
+        #region "BackgroundWorker"
 
         private void Button1_Click(System.Object sender, System.EventArgs e) {
             //Dim d As New TestDatabaseSizingDataSetTableAdapters.QueriesTableAdapter
             //d.AddRecord(1, 2, DateTime.Now)
             BackgroundWorker1.RunWorkerAsync();
         }
+
 
 
         private void BackgroundWorker1_DoWork(System.Object sender, System.ComponentModel.DoWorkEventArgs e) {
@@ -84,483 +203,354 @@ namespace WebJobUniTest {
         private void BackgroundWorker1_RunWorkerCompleted(System.Object sender, System.ComponentModel.RunWorkerCompletedEventArgs e) {
             //R   this.Label1.Text = "Completed adding of " + dateTimeCount + " records.";
         }
-
-        public void ResetTextBoxes() {
-            this.TextBoxTimeStamp.Text = "";
-            this.TextBoxUserName.Text = "";
-            this.TextBoxUserID.Text = "";
-        }
-
-        /*
-
-        #region "Test Logins"
-        /// <summary>
-        /// Add a dummy login.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <remarks></remarks>
-        private void btnAddLogin_Click(System.Object sender, System.EventArgs e) {
-            try {
-                this.LblReturn.Text = "Login Num: " + Logins.AddLogin(System.DateTime.Now, "JUST ADDED", "LOGIN", true, "you hv successfully added a login", "123.456.789.101", SharedSettings.Settings.SystemUserID);
-
-                this.DataGridView1.DataSource = Logins.GetLogins;
-                this.DataGridView1.Visible = true;
-            }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Test.TestMainDS.btnAddLogin_Click() \n" + XMLConstants.DEBUG_ERROR);                
-            }
-        }
-
-        private void btnAddLoginWithUserName_Click(System.Object sender, System.EventArgs e) {
-            try {
-                dynamic l = this.TextBoxUserName.Text.Trim();
-
-                if (l == null || string.IsNullOrEmpty(l)) {
-                    MessageBox.Show("Please enter a valid user name");
-                }
-                else {
-                    this.LblReturn.Text = "Login Num: " + Logins.AddLogin(System.DateTime.Now, "JUST ADDED", "LOGIN", true, "you hv successfully added a login", "123.456.789.101", l);
-
-                    this.DataGridView1.DataSource = Logins.GetLogins;
-                    this.DataGridView1.Visible = true;
-                }
-                ResetTextBoxes();
-                this.TextBoxUserName.Focus();
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-        private void btnAddLoginWithStrUserId_Click(System.Object sender, System.EventArgs e) {
-            try {
-                dynamic l = this.TextBoxUserID.Text.Trim();
-
-                if (l == null || string.IsNullOrEmpty(l)) {
-                    MessageBox.Show("Please enter a valid user id");
-                }
-                else {
-                    this.LblReturn.Text = "Login Num: " + Logins.AddLogin(System.DateTime.Now, "JUST ADDED", "LOGIN", true, "you hv successfully added a login", "123.456.789.101", l);
-
-                    this.DataGridView1.DataSource = Logins.GetLogins;
-                    this.DataGridView1.Visible = true;
-                }
-
-                ResetTextBoxes();
-                this.TextBoxUserID.Focus();
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-        /// <summary>
-        /// Get record of all logins and display on gridview
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <remarks></remarks>
-        private void btnGetAllLogins_Click(System.Object sender, System.EventArgs e) {
-            this.DataGridView1.DataSource = Logins.GetLogins;
-            this.DataGridView1.Visible = true;
-        }
-
-        /// <summary>
-        /// Get count of number of logins for particular user.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <remarks></remarks>
-
-        private void btnGetLoginsByUserName_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user name");
-            }
-            else {
-                this.DataGridView1.DataSource = Logins.GetLoginsByUserName_ALL(l);
-                this.DataGridView1.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxUserName.Focus();
-        }
-
-
-        private void btnGetLoginByDate_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxTimeStamp.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid date");
-            }
-            else {
-                l = Utils.GetDateFromString(l);
-                this.DataGridView1.DataSource = Logins.GetLoginsByDate(l);
-                this.DataGridView1.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxTimeStamp.Focus();
-        }
         #endregion
+        
+        #region "Test Logins"
+        /*  /// <summary>
+      /// Add a dummy login.
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      /// <remarks></remarks>
+      private void btnAddLogin_Click(System.Object sender, System.EventArgs e) {
+          try {
+              this.LblReturn.Text = "Login Num: " + Logins.AddLogin(System.DateTime.Now, "JUST ADDED", "LOGIN", true, "you hv successfully added a login", "123.456.789.101", SharedSettings.Settings.SystemUserID);
+
+              this.DataGridView1.DataSource = Logins.GetLogins;
+              this.DataGridView1.Visible = true;
+          }
+          catch (Exception ex) {
+              System.Diagnostics.Debug.Print("Test.TestMainDS.btnAddLogin_Click() \n" + XMLConstants.DEBUG_ERROR);                
+          }
+      }
+
+      private void btnAddLoginWithUserName_Click(System.Object sender, System.EventArgs e) {
+          try {
+              dynamic l = this.TextBoxUserName.Text.Trim();
+
+              if (l == null || string.IsNullOrEmpty(l)) {
+                  MessageBox.Show("Please enter a valid user name");
+              }
+              else {
+                  this.LblReturn.Text = "Login Num: " + Logins.AddLogin(System.DateTime.Now, "JUST ADDED", "LOGIN", true, "you hv successfully added a login", "123.456.789.101", l);
+
+                  this.DataGridView1.DataSource = Logins.GetLogins;
+                  this.DataGridView1.Visible = true;
+              }
+              ResetTextBoxes();
+              this.TextBoxUserName.Focus();
+          }
+          catch (Exception ex) {
+             System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+          }
+      }
+      private void btnAddLoginWithStrUserId_Click(System.Object sender, System.EventArgs e) {
+          try {
+              dynamic l = this.TextBoxUserID.Text.Trim();
+
+              if (l == null || string.IsNullOrEmpty(l)) {
+                  MessageBox.Show("Please enter a valid user id");
+              }
+              else {
+                  this.LblReturn.Text = "Login Num: " + Logins.AddLogin(System.DateTime.Now, "JUST ADDED", "LOGIN", true, "you hv successfully added a login", "123.456.789.101", l);
+
+                  this.DataGridView1.DataSource = Logins.GetLogins;
+                  this.DataGridView1.Visible = true;
+              }
+
+              ResetTextBoxes();
+              this.TextBoxUserID.Focus();
+          }
+          catch (Exception ex) {
+             System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+          }
+      }
+      /// <summary>
+      /// Get record of all logins and display on gridview
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      /// <remarks></remarks>
+      private void btnGetAllLogins_Click(System.Object sender, System.EventArgs e) {
+          this.DataGridView1.DataSource = Logins.GetLogins;
+          this.DataGridView1.Visible = true;
+      }
+
+      /// <summary>
+      /// Get count of number of logins for particular user.
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      /// <remarks></remarks>
+
+      private void btnGetLoginsByUserName_Click(System.Object sender, System.EventArgs e) {
+          dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+
+          if (l == null || string.IsNullOrEmpty(l)) {
+              MessageBox.Show("Please enter a valid user name");
+          }
+          else {
+              this.DataGridView1.DataSource = Logins.GetLoginsByUserName_ALL(l);
+              this.DataGridView1.Visible = true;
+          }
+
+          ResetTextBoxes();
+          this.TextBoxUserName.Focus();
+      }
 
 
+      private void btnGetLoginByDate_Click(System.Object sender, System.EventArgs e) {
+          dynamic l = Strings.Trim(this.TextBoxTimeStamp.Text);
+
+          if (l == null || string.IsNullOrEmpty(l)) {
+              MessageBox.Show("Please enter a valid date");
+          }
+          else {
+              l = Utils.GetDateFromString(l);
+              this.DataGridView1.DataSource = Logins.GetLoginsByDate(l);
+              this.DataGridView1.Visible = true;
+          }
+
+          ResetTextBoxes();
+          this.TextBoxTimeStamp.Focus();
+      }*/
+        #endregion
+            
         #region "Test Usage"
-        /// <summary>
-        /// Add a dummy page visit.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <remarks></remarks>
-        private void btnAddUsage_Click(System.Object sender, System.EventArgs e) {
-            dynamic userID = SharedSettings.Settings.SystemUserID;
-            this.LblReturn.Text = "Usage Num: " + Usage.AddUsage(System.DateTime.Now, userID, "JUST ADDED USAGE");
-            this.DataGridView1.DataSource = Usage.GetUsage;
-            this.DataGridView1.Visible = true;
+        /*  /// <summary>
+          /// Add a dummy page visit.
+          /// </summary>
+          /// <param name="sender"></param>
+          /// <param name="e"></param>
+          /// <remarks></remarks>
+          private void btnAddUsage_Click(System.Object sender, System.EventArgs e) {
+              dynamic userID = SharedSettings.Settings.SystemUserID;
+              this.LblReturn.Text = "Usage Num: " + Usage.AddUsage(System.DateTime.Now, userID, "JUST ADDED USAGE");
+              this.DataGridView1.DataSource = Usage.GetUsage;
+              this.DataGridView1.Visible = true;
 
 
-        }
+          }
 
 
-        private void btnAddUsageByUserName_Click(System.Object sender, System.EventArgs e) {
-            try {
-                dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+          private void btnAddUsageByUserName_Click(System.Object sender, System.EventArgs e) {
+              try {
+                  dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
-                if (l == null || string.IsNullOrEmpty(l)) {
-                    MessageBox.Show("Please enter a valid user name");
-                }
-                else {
-                    this.LblReturn.Text = "Usage Num: " + Usage.AddUsage(System.DateTime.Now, l, "JUST ADDED USAGE");
-                    this.DataGridView1.DataSource = Usage.GetUsage;
-                    this.DataGridView1.Visible = true;
-                }
-                ResetTextBoxes();
-                this.TextBoxUserName.Focus();
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-        /// <summary>
-        /// Get record of all page usage and display on gridview
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <remarks></remarks>
-        private void btnTestGetAllUsage_Click(System.Object sender, System.EventArgs e) {
-            this.DataGridView1.DataSource = Usage.GetUsage;
-            this.DataGridView1.Visible = true;
-        }
+                  if (l == null || string.IsNullOrEmpty(l)) {
+                      MessageBox.Show("Please enter a valid user name");
+                  }
+                  else {
+                      this.LblReturn.Text = "Usage Num: " + Usage.AddUsage(System.DateTime.Now, l, "JUST ADDED USAGE");
+                      this.DataGridView1.DataSource = Usage.GetUsage;
+                      this.DataGridView1.Visible = true;
+                  }
+                  ResetTextBoxes();
+                  this.TextBoxUserName.Focus();
+              }
+              catch (Exception ex) {
+                 System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+              }
+          }
+          /// <summary>
+          /// Get record of all page usage and display on gridview
+          /// </summary>
+          /// <param name="sender"></param>
+          /// <param name="e"></param>
+          /// <remarks></remarks>
+          private void btnTestGetAllUsage_Click(System.Object sender, System.EventArgs e) {
+              this.DataGridView1.DataSource = Usage.GetUsage;
+              this.DataGridView1.Visible = true;
+          }
 
-        private void BttonGetUsageByUserName_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+          private void BttonGetUsageByUserName_Click(System.Object sender, System.EventArgs e) {
+              dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user name");
-            }
-            else {
-                this.DataGridView1.DataSource = Usage.GetUsageByUserName(l);
-                this.DataGridView1.Visible = true;
-            }
+              if (l == null || string.IsNullOrEmpty(l)) {
+                  MessageBox.Show("Please enter a valid user name");
+              }
+              else {
+                  this.DataGridView1.DataSource = Usage.GetUsageByUserName(l);
+                  this.DataGridView1.Visible = true;
+              }
 
-            ResetTextBoxes();
-            this.TextBoxUserName.Focus();
-        }
-
-
-        private void BttonGetUsageByDate_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxTimeStamp.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid date");
-            }
-            else {
-                l = Utils.GetDateFromString(l);
-                this.DataGridView1.DataSource = Usage.GetUsageByDate(l);
-                this.DataGridView1.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxTimeStamp.Focus();
-        }
+              ResetTextBoxes();
+              this.TextBoxUserName.Focus();
+          }
 
 
-        private void BttonGetUsageByUserNameAndDate_Click(System.Object sender, System.EventArgs e) {
-            dynamic d = Utils.GetDateFromString(Strings.Trim(this.TextBoxTimeStamp.Text));
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+          private void BttonGetUsageByDate_Click(System.Object sender, System.EventArgs e) {
+              dynamic l = Strings.Trim(this.TextBoxTimeStamp.Text);
 
-            if (l == null || string.IsNullOrEmpty(l) || d == null || !Information.IsDate(d)) {
-                MessageBox.Show("Please enter a valid user name and date/timestamp ");
-            }
-            else {
-                this.DataGridView1.DataSource = Usage.GetUsageByDateAndUserName(d, l);
-                this.DataGridView1.Visible = true;
-            }
+              if (l == null || string.IsNullOrEmpty(l)) {
+                  MessageBox.Show("Please enter a valid date");
+              }
+              else {
+                  l = Utils.GetDateFromString(l);
+                  this.DataGridView1.DataSource = Usage.GetUsageByDate(l);
+                  this.DataGridView1.Visible = true;
+              }
 
-            ResetTextBoxes();
-            this.TextBoxTimeStamp.Focus();
+              ResetTextBoxes();
+              this.TextBoxTimeStamp.Focus();
+          }
 
-        }
 
+          private void BttonGetUsageByUserNameAndDate_Click(System.Object sender, System.EventArgs e) {
+              dynamic d = Utils.GetDateFromString(Strings.Trim(this.TextBoxTimeStamp.Text));
+              dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
+              if (l == null || string.IsNullOrEmpty(l) || d == null || !Information.IsDate(d)) {
+                  MessageBox.Show("Please enter a valid user name and date/timestamp ");
+              }
+              else {
+                  this.DataGridView1.DataSource = Usage.GetUsageByDateAndUserName(d, l);
+                  this.DataGridView1.Visible = true;
+              }
+
+              ResetTextBoxes();
+              this.TextBoxTimeStamp.Focus();
+
+          }
+
+  */
         #endregion
 
         #region "Test Exceptions"
-
-
-        private void BttonGetExceptions_Click(System.Object sender, System.EventArgs e) {
-            this.DataGridView1.DataSource = Exceptions.GetExceptions;
-            this.DataGridView1.Visible = true;
-        }
-
-
-        private void BtonGetExByUserName_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user name");
-            }
-            else {
-                this.DataGridView1.DataSource = Exceptions.GetExceptionsByUserName(l);
-                this.DataGridView1.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxUserName.Focus();
-        }
-
-        private void BtonGetExByDate_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxTimeStamp.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid date");
-            }
-            else {
-                l = Utils.GetDateFromString(l);
-                this.DataGridView1.DataSource = Exceptions.GetExceptionsByDate(l);
-                this.DataGridView1.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxTimeStamp.Focus();
-        }
-
-        private void BtonAddException_Click(System.Object sender, System.EventArgs e) {
-            try {
-                dynamic id = SharedSettings.Settings.SystemUserID;
-                System.Diagnostics.Debug.Print(id.ToString());
-                this.LblReturn.Text = "Exception Num: " + Exceptions.AddException(DateTime.Now, "JUST ADDED", "EXCEPTION", "", "", "lajksdf", "lajksdf", "", id);
-                this.DataGridView1.DataSource = Exceptions.GetExceptions;
-                this.DataGridView1.Visible = true;
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-        private void BttonAddExceptionByUserName_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user name");
-            }
-            else {
-                this.LblReturn.Text = "Exception Num: " + Exceptions.AddException(System.DateTime.Now, "JUST ADDED", "EXCEPTION", "", "", "lajksdf", "lajksdf", "", l);
-                this.DataGridView1.DataSource = Exceptions.GetExceptions;
-                this.DataGridView1.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxUserName.Focus();
-
-
-        }
-        #endregion
-
-
-        #region "Test Users"
-
-        private void BttonUserExists_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user name");
-            }
-            else {
-                this.LblReturn.Text = Users.UserExists(l);
-                this.LblReturn.Visible = true;
-            }
-
-        }
-
-        private void BttonGetUsers_Click(System.Object sender, System.EventArgs e) {
-            this.DataGridView1.DataSource = Users.GetUsers;
-            this.DataGridView1.Visible = true;
-        }
-
-
-
-        private void BttonGetUserIDByUserName_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserName.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user name");
-            }
-            else {
-                this.LblReturn.Text = Users.GetUserIDByUserName(l).ToString;
-                this.LblReturn.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxUserName.Focus();
-        }
-
-
-        private void BttonGetUserNameByUserID_Click(System.Object sender, System.EventArgs e) {
-            dynamic l = Strings.Trim(this.TextBoxUserID.Text);
-
-            if (l == null || string.IsNullOrEmpty(l)) {
-                MessageBox.Show("Please enter a valid user id");
-            }
-            else {
-                this.LblReturn.Text = Users.GetUserNameByUserID(l).ToString;
-                this.LblReturn.Visible = true;
-            }
-
-            ResetTextBoxes();
-            this.TextBoxUserID.Focus();
-
-        }
-
-        #endregion
-        */
-
-
-        /*
-        private void BttonLogExc2Database_Click(System.Object sender, System.EventArgs e) {
-            dynamic user = "rachela";
-            try {
-                //do calc that will throw exception
-                System.Diagnostics.Debug.Print(SharedSettings.Settings.ToString);
-                this.DataGridView1.Hide();
-                string x = "XXX";
-                int y = 122;
-                dynamic z = x + y;
-                System.Diagnostics.Debug.Print("Z" + Constants.vbTab + z);
-            }
-            catch (Exception ex) {
-                Utils.LogException(ex, user);
-            }
-
-        }
-
-        #region "FeedBack"
-
-        private void BtonGetFeedbacks_Click(System.Object sender, System.EventArgs e) {
-
-            try {
-                this.DataGridView1.DataSource = Feedbacks.GetFeedBacks;
-                this.DataGridView1.Visible = true;
-
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-
-        private void BtonGetFeedbacksByUserName_Click(System.Object sender, System.EventArgs e) {
-            try {
-                dynamic l = Strings.Trim(this.TextBoxUserName.Text);
-
-                if (l == null || string.IsNullOrEmpty(l)) {
-                    MessageBox.Show("Please enter a valid user name");
-                    this.TextBoxUserName.Focus();
-
-                }
-                else {
-                    this.DataGridView1.DataSource = Feedbacks.GetFeedBacksByUserName(l);
-                    this.DataGridView1.Visible = true;
-
-                }
-                ResetTextBoxes();
-
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-
-        private void BtonInsertFeedback_Click(System.Object sender, System.EventArgs e) {
-            try {
-                this.LblReturn.Text = "FeedBack Num: " + Feedbacks.AddFeedBack("demouser", 1, "demouser@pi-kets", "JUST ADDED", "FeedBack", "True", "you hv successfully added a FeedBack");
-                System.Diagnostics.Debug.Print(this.LblReturn.Text);
-                this.DataGridView1.DataSource = Feedbacks.GetFeedBacks;
-                this.DataGridView1.Visible = true;
-            }
-            catch (Exception ex) {
-               System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-        }
-
-        #endregion
-        */
-
-
-
-        #region "Company"
-
-
-        private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
-            this.DataGridView1.DataSource = Companies.GetAllCompanies();
-            this.DataGridView1.Visible = true;
-        }
-
-        private void BtonInsertCompany_Click(System.Object sender, System.EventArgs e) {
-            try {
-                this.LblReturn.Text = "Companies Num: " + Companies.AddCompany("rachels group");
-
-                //this.DataGridView1.DataSource = Companies.GetCompanies();
-                //this.DataGridView1.Visible = true;
-
-                BtonGetCompanies_Click(sender, e);
-            }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-
-        }
-
-
-
-        /*          private void Button1BtonGetCompaniesIDByCompName_Click(System.Object sender, System.EventArgs e) {
+        /* private void BttonLogExc2Database_Click(System.Object sender, System.EventArgs e) {
+                    dynamic user = "rachela";
                     try {
-                        dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+                        //do calc that will throw exception
+                        System.Diagnostics.Debug.Print(SharedSettings.Settings.ToString);
+                        this.DataGridView1.Hide();
+                        string x = "XXX";
+                        int y = 122;
+                        dynamic z = x + y;
+                        System.Diagnostics.Debug.Print("Z" + Constants.vbTab + z);
+                    }
+                    catch (Exception ex) {
+                        Utils.LogException(ex, user);
+                    }
 
-                        if (l == null || string.IsNullOrEmpty(l)) {
-                            MessageBox.Show("Please enter a valid COMPANY name");
-                            this.TextBoxUserName.Focus();
+                }
 
-                        }
-                        else {
-                            this.LblReturn.Text = Companies.GetCompanyIDByCompanyName(l);
-                            this.DataGridView1.DataSource = Companies.GetCompanies;
-                            this.DataGridView1.Visible = true;
+                private void BttonGetExceptions_Click(System.Object sender, System.EventArgs e) {
+                    this.DataGridView1.DataSource = Exceptions.GetExceptions;
+                    this.DataGridView1.Visible = true;
+                }
 
-                        }
 
-                        ResetTextBoxes();
+                private void BtonGetExByUserName_Click(System.Object sender, System.EventArgs e) {
+                    dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
+                    if (l == null || string.IsNullOrEmpty(l)) {
+                        MessageBox.Show("Please enter a valid user name");
+                    }
+                    else {
+                        this.DataGridView1.DataSource = Exceptions.GetExceptionsByUserName(l);
+                        this.DataGridView1.Visible = true;
+                    }
+
+                    ResetTextBoxes();
+                    this.TextBoxUserName.Focus();
+                }
+
+                private void BtonGetExByDate_Click(System.Object sender, System.EventArgs e) {
+                    dynamic l = Strings.Trim(this.TextBoxTimeStamp.Text);
+
+                    if (l == null || string.IsNullOrEmpty(l)) {
+                        MessageBox.Show("Please enter a valid date");
+                    }
+                    else {
+                        l = Utils.GetDateFromString(l);
+                        this.DataGridView1.DataSource = Exceptions.GetExceptionsByDate(l);
+                        this.DataGridView1.Visible = true;
+                    }
+
+                    ResetTextBoxes();
+                    this.TextBoxTimeStamp.Focus();
+                }
+
+                private void BtonAddException_Click(System.Object sender, System.EventArgs e) {
+                    try {
+                        dynamic id = SharedSettings.Settings.SystemUserID;
+                        System.Diagnostics.Debug.Print(id.ToString());
+                        this.LblReturn.Text = "Exception Num: " + Exceptions.AddException(DateTime.Now, "JUST ADDED", "EXCEPTION", "", "", "lajksdf", "lajksdf", "", id);
+                        this.DataGridView1.DataSource = Exceptions.GetExceptions;
+                        this.DataGridView1.Visible = true;
                     }
                     catch (Exception ex) {
                        System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
                     }
-
                 }
+                private void BttonAddExceptionByUserName_Click(System.Object sender, System.EventArgs e) {
+                    dynamic l = Strings.Trim(this.TextBoxUserName.Text);
 
-            */
+                    if (l == null || string.IsNullOrEmpty(l)) {
+                        MessageBox.Show("Please enter a valid user name");
+                    }
+                    else {
+                        this.LblReturn.Text = "Exception Num: " + Exceptions.AddException(System.DateTime.Now, "JUST ADDED", "EXCEPTION", "", "", "lajksdf", "lajksdf", "", l);
+                        this.DataGridView1.DataSource = Exceptions.GetExceptions;
+                        this.DataGridView1.Visible = true;
+                    }
+
+                    ResetTextBoxes();
+                    this.TextBoxUserName.Focus();
+
+
+                }*/
         #endregion
 
+        #region "FeedBack"
+        /*
+              private void BtonGetFeedbacks_Click(System.Object sender, System.EventArgs e) {
 
+                  try {
+                      this.DataGridView1.DataSource = Feedbacks.GetFeedBacks;
+                      this.DataGridView1.Visible = true;
 
+                  }
+                  catch (Exception ex) {
+                     System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+                  }
+              }
+
+              private void BtonGetFeedbacksByUserName_Click(System.Object sender, System.EventArgs e) {
+                  try {
+                      dynamic l = Strings.Trim(this.TextBoxUserName.Text);
+
+                      if (l == null || string.IsNullOrEmpty(l)) {
+                          MessageBox.Show("Please enter a valid user name");
+                          this.TextBoxUserName.Focus();
+
+                      }
+                      else {
+                          this.DataGridView1.DataSource = Feedbacks.GetFeedBacksByUserName(l);
+                          this.DataGridView1.Visible = true;
+
+                      }
+                      ResetTextBoxes();
+
+                  }
+                  catch (Exception ex) {
+                     System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+                  }
+              }
+
+              private void BtonInsertFeedback_Click(System.Object sender, System.EventArgs e) {
+                  try {
+                      this.LblReturn.Text = "FeedBack Num: " + Feedbacks.AddFeedBack("demouser", 1, "demouser@pi-kets", "JUST ADDED", "FeedBack", "True", "you hv successfully added a FeedBack");
+                      System.Diagnostics.Debug.Print(this.LblReturn.Text);
+                      this.DataGridView1.DataSource = Feedbacks.GetFeedBacks;
+                      this.DataGridView1.Visible = true;
+                  }
+                  catch (Exception ex) {
+                     System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+                  }
+              }
+         */
+        #endregion
 
 
         private void GroupBox3_Enter(System.Object sender, System.EventArgs e) {
@@ -629,13 +619,5 @@ namespace WebJobUniTest {
             Load += TestMainDS_Load;
         }
 
-        private void btnStartup_Click(object sender, EventArgs e) {
-            StartUp Check = new StartUp();
-            Check.Show();
-            Hide();
-        }
-    }
-}
-
-
-
+    }//class
+}//namespace

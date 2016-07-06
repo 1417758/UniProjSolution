@@ -13,6 +13,12 @@ using WebJobUniUtils;
 
 namespace WebJobUniTest {
     public partial class Testing : Form {
+
+        // static readonly string filename = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\SIC07CHcondensedList.xml";
+        static readonly string yearXML = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\Years.xml";
+        static readonly string yearXML2 = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Data\SIC07CHcondensedList.xml";
+
+
         public Testing() {
             InitializeComponent();
         }
@@ -31,8 +37,7 @@ namespace WebJobUniTest {
 
                 int counter = 0;
                 string line;
-                string filename = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\SIC07CHcondensedList.xml";
-
+             
                 //// Read the file and display it line by line.
                 //System.IO.StreamReader file =
                 //    new System.IO.StreamReader(filename);
@@ -46,7 +51,7 @@ namespace WebJobUniTest {
                 //// Suspend the screen.
                 //System.Console.ReadLine();
 
-                ReadMyfile(filename);
+                ReadMyfile("filename");
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("Test.Testing.btnAddReadFile_Click() \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -98,11 +103,8 @@ namespace WebJobUniTest {
         private void PopulateIndComboFromXMLFile(object sender, EventArgs e) {
             try {
 
-                //string yearXML = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\App_Data\Years.xml";
                 // Utils.PopulateComboFromXMLFile(yearXML, ref this.comboBox1);   
-
-                string yearXML2 = @"C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Data\SIC07CHcondensedList.xml";
-                //populate industries
+        //populate industries
                 PopulateComboWithIndustries(yearXML2);
 
             }

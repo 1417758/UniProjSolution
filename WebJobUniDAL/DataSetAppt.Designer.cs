@@ -2379,7 +2379,7 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ServicesRow AddServicesRow(string name, string industry, byte nature, bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, System.DateTime dateCreated) {
+            public ServicesRow AddServicesRow(string name, string industry, short nature, bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, System.DateTime dateCreated) {
                 ServicesRow rowServicesRow = ((ServicesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2442,7 +2442,7 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columnname);
                 this.columnindustry = new global::System.Data.DataColumn("industry", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnindustry);
-                this.columnnature = new global::System.Data.DataColumn("nature", typeof(byte), null, global::System.Data.MappingType.Element);
+                this.columnnature = new global::System.Data.DataColumn("nature", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnature);
                 this.columnisCertifReq = new global::System.Data.DataColumn("isCertifReq", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnisCertifReq);
@@ -2711,7 +2711,7 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmployeeRow AddEmployeeRow(int staffID, string natInsNumb, string jobTitle, int agenda) {
+            public EmployeeRow AddEmployeeRow(int staffID, string natInsNumb, string jobTitle, byte agenda) {
                 EmployeeRow rowEmployeeRow = ((EmployeeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         staffID,
@@ -2762,7 +2762,7 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columnnatInsNumb);
                 this.columnjobTitle = new global::System.Data.DataColumn("jobTitle", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnjobTitle);
-                this.columnagenda = new global::System.Data.DataColumn("agenda", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnagenda = new global::System.Data.DataColumn("agenda", typeof(byte), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnagenda);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnstaffID}, true));
@@ -4270,10 +4270,10 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public byte nature {
+            public short nature {
                 get {
                     try {
-                        return ((byte)(this[this.tableServices.natureColumn]));
+                        return ((short)(this[this.tableServices.natureColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'nature\' in table \'Services\' is DBNull.", e);
@@ -4570,10 +4570,10 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int agenda {
+            public byte agenda {
                 get {
                     try {
-                        return ((int)(this[this.tableEmployee.agendaColumn]));
+                        return ((byte)(this[this.tableEmployee.agendaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'agenda\' in table \'Employee\' is DBNull.", e);

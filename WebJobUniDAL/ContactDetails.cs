@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using WebJobUniDAL.DataSet1MainTableAdapters;
 using WebJobUniUtils;
 
+//------------------------------------------------------------------------------------------------------
+// <copyright file="Exceptions.vb" company="">
+// Copyright (c) Rachie Holdings Ltd. All rights reserved.
+// </copyright>
+//------------------------------------------------------------------------------------------------------
 namespace WebJobUniDAL {
 
     [System.ComponentModel.DataObject()]
@@ -51,13 +56,13 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.ContactDetailsDataTable GetContactDetByContactDetID(int contactDetID) {
+        public static DataSet1Main.ContactDetailsDataTable GetContactDetailByID(int contactDetID) {
 
             try {
                 return Adapter.GetContactDetByID(contactDetID);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetByContactDetID(contacDettID) </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetailByID(contacDettID) </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -147,8 +152,6 @@ namespace WebJobUniDAL {
         #region "UPDATE Functions"
         #endregion
 
-
-        
 
     }//class
 }//namespace

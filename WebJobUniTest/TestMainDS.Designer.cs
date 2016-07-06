@@ -26,7 +26,7 @@
             this.btnAddUsageByUserName = new System.Windows.Forms.Button();
             this.BttonGetUsageByUserNameAndDate = new System.Windows.Forms.Button();
             this.BttonGetUsageByUserName = new System.Windows.Forms.Button();
-            this.btnAddLogin = new System.Windows.Forms.Button();
+            this.btnAddPerson = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.BtonGetExByDate = new System.Windows.Forms.Button();
             this.BtonAddException = new System.Windows.Forms.Button();
@@ -37,10 +37,10 @@
             this.GroupBoxUsage = new System.Windows.Forms.GroupBox();
             this.btnGetAllUsage = new System.Windows.Forms.Button();
             this.btnAddUsage = new System.Windows.Forms.Button();
-            this.BttonUserExists = new System.Windows.Forms.Button();
-            this.BttonGetUserNameByUserID = new System.Windows.Forms.Button();
+            this.bttonGetUserIDByLastName = new System.Windows.Forms.Button();
+            this.bttonGetUserByLastName = new System.Windows.Forms.Button();
             this.btnAddLoginWithUserName = new System.Windows.Forms.Button();
-            this.btnGetLoginByDate = new System.Windows.Forms.Button();
+            this.btnPersonByUserName = new System.Windows.Forms.Button();
             this.btnAddLoginWithStrUserId = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.BtonInsertFeedback = new System.Windows.Forms.Button();
@@ -52,9 +52,9 @@
             this.BtonGetCompanies = new System.Windows.Forms.Button();
             this.BttonLogExc2Database = new System.Windows.Forms.Button();
             this.GroupBoxLogin = new System.Windows.Forms.GroupBox();
-            this.btnGetAllLogins = new System.Windows.Forms.Button();
-            this.btnLoginsByUserName = new System.Windows.Forms.Button();
-            this.BttonGetUsers = new System.Windows.Forms.Button();
+            this.btnGetAllPersons = new System.Windows.Forms.Button();
+            this.btnPersonByID = new System.Windows.Forms.Button();
+            this.bttonGetAllUsers = new System.Windows.Forms.Button();
             this.groupBoxTimeStamp = new System.Windows.Forms.GroupBox();
             this.TextBoxEndDate = new System.Windows.Forms.TextBox();
             this.Label6 = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             this.btnFillDB = new System.Windows.Forms.Button();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
             this.GroupBoxTestUsers = new System.Windows.Forms.GroupBox();
-            this.BttonGetUserIDByUserName = new System.Windows.Forms.Button();
+            this.bttonGetUserByID = new System.Windows.Forms.Button();
             this.TextBoxUserID = new System.Windows.Forms.TextBox();
             this.GroupBoxUser = new System.Windows.Forms.GroupBox();
             this.TextBoxUserName = new System.Windows.Forms.TextBox();
@@ -75,6 +75,8 @@
             this.LabelUserName = new System.Windows.Forms.Label();
             this.LblReturn = new System.Windows.Forms.Label();
             this.btnStartup = new System.Windows.Forms.Button();
+            this.bttonAddUser = new System.Windows.Forms.Button();
+            this.bttonDeleteUser = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.GroupBoxUsage.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -116,15 +118,16 @@
             this.BttonGetUsageByUserName.Text = "Get Usage by UserName";
             this.BttonGetUsageByUserName.UseVisualStyleBackColor = true;
             // 
-            // btnAddLogin
+            // btnAddPerson
             // 
-            this.btnAddLogin.Location = new System.Drawing.Point(256, 16);
-            this.btnAddLogin.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddLogin.Name = "btnAddLogin";
-            this.btnAddLogin.Size = new System.Drawing.Size(75, 60);
-            this.btnAddLogin.TabIndex = 0;
-            this.btnAddLogin.Text = "Add Login";
-            this.btnAddLogin.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Location = new System.Drawing.Point(256, 16);
+            this.btnAddPerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(75, 60);
+            this.btnAddPerson.TabIndex = 0;
+            this.btnAddPerson.Text = "Add Person";
+            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
             // GroupBox1
             // 
@@ -235,25 +238,27 @@
             this.btnAddUsage.Text = "Add Usage";
             this.btnAddUsage.UseVisualStyleBackColor = true;
             // 
-            // BttonUserExists
+            // bttonGetUserIDByLastName
             // 
-            this.BttonUserExists.Location = new System.Drawing.Point(260, 20);
-            this.BttonUserExists.Margin = new System.Windows.Forms.Padding(2);
-            this.BttonUserExists.Name = "BttonUserExists";
-            this.BttonUserExists.Size = new System.Drawing.Size(81, 59);
-            this.BttonUserExists.TabIndex = 46;
-            this.BttonUserExists.Text = "User Exists";
-            this.BttonUserExists.UseVisualStyleBackColor = true;
+            this.bttonGetUserIDByLastName.Location = new System.Drawing.Point(260, 20);
+            this.bttonGetUserIDByLastName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetUserIDByLastName.Name = "bttonGetUserIDByLastName";
+            this.bttonGetUserIDByLastName.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetUserIDByLastName.TabIndex = 46;
+            this.bttonGetUserIDByLastName.Text = "Get End-User ID By LastName";
+            this.bttonGetUserIDByLastName.UseVisualStyleBackColor = true;
+            this.bttonGetUserIDByLastName.Click += new System.EventHandler(this.BttonGetUserIDByLastName_Click);
             // 
-            // BttonGetUserNameByUserID
+            // bttonGetUserByLastName
             // 
-            this.BttonGetUserNameByUserID.Location = new System.Drawing.Point(175, 19);
-            this.BttonGetUserNameByUserID.Margin = new System.Windows.Forms.Padding(2);
-            this.BttonGetUserNameByUserID.Name = "BttonGetUserNameByUserID";
-            this.BttonGetUserNameByUserID.Size = new System.Drawing.Size(81, 59);
-            this.BttonGetUserNameByUserID.TabIndex = 45;
-            this.BttonGetUserNameByUserID.Text = "Get userName By UserID";
-            this.BttonGetUserNameByUserID.UseVisualStyleBackColor = true;
+            this.bttonGetUserByLastName.Location = new System.Drawing.Point(175, 19);
+            this.bttonGetUserByLastName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetUserByLastName.Name = "bttonGetUserByLastName";
+            this.bttonGetUserByLastName.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetUserByLastName.TabIndex = 45;
+            this.bttonGetUserByLastName.Text = "Get End-User By LastName";
+            this.bttonGetUserByLastName.UseVisualStyleBackColor = true;
+            this.bttonGetUserByLastName.Click += new System.EventHandler(this.BttonGetUserByLastName_Click);
             // 
             // btnAddLoginWithUserName
             // 
@@ -265,15 +270,16 @@
             this.btnAddLoginWithUserName.Text = "Add Login with userName";
             this.btnAddLoginWithUserName.UseVisualStyleBackColor = true;
             // 
-            // btnGetLoginByDate
+            // btnPersonByUserName
             // 
-            this.btnGetLoginByDate.Location = new System.Drawing.Point(177, 15);
-            this.btnGetLoginByDate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetLoginByDate.Name = "btnGetLoginByDate";
-            this.btnGetLoginByDate.Size = new System.Drawing.Size(75, 60);
-            this.btnGetLoginByDate.TabIndex = 6;
-            this.btnGetLoginByDate.Text = "Get Logins By Date";
-            this.btnGetLoginByDate.UseVisualStyleBackColor = true;
+            this.btnPersonByUserName.Location = new System.Drawing.Point(177, 15);
+            this.btnPersonByUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPersonByUserName.Name = "btnPersonByUserName";
+            this.btnPersonByUserName.Size = new System.Drawing.Size(75, 60);
+            this.btnPersonByUserName.TabIndex = 6;
+            this.btnPersonByUserName.Text = "Get Person\r\nBy UserName";
+            this.btnPersonByUserName.UseVisualStyleBackColor = true;
+            this.btnPersonByUserName.Click += new System.EventHandler(this.btnPersonByUserName_Click);
             // 
             // btnAddLoginWithStrUserId
             // 
@@ -384,47 +390,50 @@
             // GroupBoxLogin
             // 
             this.GroupBoxLogin.Controls.Add(this.btnAddLoginWithUserName);
-            this.GroupBoxLogin.Controls.Add(this.btnGetLoginByDate);
+            this.GroupBoxLogin.Controls.Add(this.btnPersonByUserName);
             this.GroupBoxLogin.Controls.Add(this.btnAddLoginWithStrUserId);
-            this.GroupBoxLogin.Controls.Add(this.btnGetAllLogins);
-            this.GroupBoxLogin.Controls.Add(this.btnAddLogin);
-            this.GroupBoxLogin.Controls.Add(this.btnLoginsByUserName);
+            this.GroupBoxLogin.Controls.Add(this.btnGetAllPersons);
+            this.GroupBoxLogin.Controls.Add(this.btnAddPerson);
+            this.GroupBoxLogin.Controls.Add(this.btnPersonByID);
             this.GroupBoxLogin.Location = new System.Drawing.Point(4, 398);
             this.GroupBoxLogin.Name = "GroupBoxLogin";
             this.GroupBoxLogin.Size = new System.Drawing.Size(502, 84);
             this.GroupBoxLogin.TabIndex = 76;
             this.GroupBoxLogin.TabStop = false;
-            this.GroupBoxLogin.Text = "Test Login";
+            this.GroupBoxLogin.Text = "Test Person";
             // 
-            // btnGetAllLogins
+            // btnGetAllPersons
             // 
-            this.btnGetAllLogins.Location = new System.Drawing.Point(5, 15);
-            this.btnGetAllLogins.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetAllLogins.Name = "btnGetAllLogins";
-            this.btnGetAllLogins.Size = new System.Drawing.Size(81, 59);
-            this.btnGetAllLogins.TabIndex = 3;
-            this.btnGetAllLogins.Text = "Get All Logins";
-            this.btnGetAllLogins.UseVisualStyleBackColor = true;
+            this.btnGetAllPersons.Location = new System.Drawing.Point(5, 15);
+            this.btnGetAllPersons.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGetAllPersons.Name = "btnGetAllPersons";
+            this.btnGetAllPersons.Size = new System.Drawing.Size(81, 59);
+            this.btnGetAllPersons.TabIndex = 3;
+            this.btnGetAllPersons.Text = "Get All Persons";
+            this.btnGetAllPersons.UseVisualStyleBackColor = true;
+            this.btnGetAllPersons.Click += new System.EventHandler(this.btnGetAllPersons_Click);
             // 
-            // btnLoginsByUserName
+            // btnPersonByID
             // 
-            this.btnLoginsByUserName.Location = new System.Drawing.Point(90, 16);
-            this.btnLoginsByUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLoginsByUserName.Name = "btnLoginsByUserName";
-            this.btnLoginsByUserName.Size = new System.Drawing.Size(81, 59);
-            this.btnLoginsByUserName.TabIndex = 5;
-            this.btnLoginsByUserName.Text = "Get Logins By Username";
-            this.btnLoginsByUserName.UseVisualStyleBackColor = true;
+            this.btnPersonByID.Location = new System.Drawing.Point(90, 16);
+            this.btnPersonByID.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPersonByID.Name = "btnPersonByID";
+            this.btnPersonByID.Size = new System.Drawing.Size(81, 59);
+            this.btnPersonByID.TabIndex = 5;
+            this.btnPersonByID.Text = "Get Person By ID";
+            this.btnPersonByID.UseVisualStyleBackColor = true;
+            this.btnPersonByID.Click += new System.EventHandler(this.btnPersonByID_Click);
             // 
-            // BttonGetUsers
+            // bttonGetAllUsers
             // 
-            this.BttonGetUsers.Location = new System.Drawing.Point(5, 18);
-            this.BttonGetUsers.Margin = new System.Windows.Forms.Padding(2);
-            this.BttonGetUsers.Name = "BttonGetUsers";
-            this.BttonGetUsers.Size = new System.Drawing.Size(81, 59);
-            this.BttonGetUsers.TabIndex = 37;
-            this.BttonGetUsers.Text = "Test Get Users";
-            this.BttonGetUsers.UseVisualStyleBackColor = true;
+            this.bttonGetAllUsers.Location = new System.Drawing.Point(5, 18);
+            this.bttonGetAllUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetAllUsers.Name = "bttonGetAllUsers";
+            this.bttonGetAllUsers.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetAllUsers.TabIndex = 37;
+            this.bttonGetAllUsers.Text = "Get All End-Users";
+            this.bttonGetAllUsers.UseVisualStyleBackColor = true;
+            this.bttonGetAllUsers.Click += new System.EventHandler(this.BttonGetAllUsers_Click);
             // 
             // groupBoxTimeStamp
             // 
@@ -527,26 +536,29 @@
             // 
             // GroupBoxTestUsers
             // 
-            this.GroupBoxTestUsers.Controls.Add(this.BttonUserExists);
-            this.GroupBoxTestUsers.Controls.Add(this.BttonGetUserNameByUserID);
-            this.GroupBoxTestUsers.Controls.Add(this.BttonGetUserIDByUserName);
-            this.GroupBoxTestUsers.Controls.Add(this.BttonGetUsers);
+            this.GroupBoxTestUsers.Controls.Add(this.bttonDeleteUser);
+            this.GroupBoxTestUsers.Controls.Add(this.bttonAddUser);
+            this.GroupBoxTestUsers.Controls.Add(this.bttonGetUserIDByLastName);
+            this.GroupBoxTestUsers.Controls.Add(this.bttonGetUserByLastName);
+            this.GroupBoxTestUsers.Controls.Add(this.bttonGetUserByID);
+            this.GroupBoxTestUsers.Controls.Add(this.bttonGetAllUsers);
             this.GroupBoxTestUsers.Location = new System.Drawing.Point(549, 488);
             this.GroupBoxTestUsers.Name = "GroupBoxTestUsers";
-            this.GroupBoxTestUsers.Size = new System.Drawing.Size(414, 84);
+            this.GroupBoxTestUsers.Size = new System.Drawing.Size(520, 84);
             this.GroupBoxTestUsers.TabIndex = 75;
             this.GroupBoxTestUsers.TabStop = false;
-            this.GroupBoxTestUsers.Text = "Test Users";
+            this.GroupBoxTestUsers.Text = "Test End-Users";
             // 
-            // BttonGetUserIDByUserName
+            // bttonGetUserByID
             // 
-            this.BttonGetUserIDByUserName.Location = new System.Drawing.Point(90, 18);
-            this.BttonGetUserIDByUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.BttonGetUserIDByUserName.Name = "BttonGetUserIDByUserName";
-            this.BttonGetUserIDByUserName.Size = new System.Drawing.Size(81, 59);
-            this.BttonGetUserIDByUserName.TabIndex = 38;
-            this.BttonGetUserIDByUserName.Text = "Get UserID By userName";
-            this.BttonGetUserIDByUserName.UseVisualStyleBackColor = true;
+            this.bttonGetUserByID.Location = new System.Drawing.Point(90, 18);
+            this.bttonGetUserByID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetUserByID.Name = "bttonGetUserByID";
+            this.bttonGetUserByID.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetUserByID.TabIndex = 38;
+            this.bttonGetUserByID.Text = "Get End_User \r\nBy ID";
+            this.bttonGetUserByID.UseVisualStyleBackColor = true;
+            this.bttonGetUserByID.Click += new System.EventHandler(this.BttonGetUserByID_Click);
             // 
             // TextBoxUserID
             // 
@@ -614,6 +626,28 @@
             this.btnStartup.UseVisualStyleBackColor = true;
             this.btnStartup.Click += new System.EventHandler(this.btnStartup_Click);
             // 
+            // bttonAddUser
+            // 
+            this.bttonAddUser.Location = new System.Drawing.Point(345, 20);
+            this.bttonAddUser.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddUser.Name = "bttonAddUser";
+            this.bttonAddUser.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddUser.TabIndex = 47;
+            this.bttonAddUser.Text = "Add \r\nEnd-User";
+            this.bttonAddUser.UseVisualStyleBackColor = true;
+            this.bttonAddUser.Click += new System.EventHandler(this.BttonAddUser_Click);
+            // 
+            // bttonDeleteUser
+            // 
+            this.bttonDeleteUser.Location = new System.Drawing.Point(430, 20);
+            this.bttonDeleteUser.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonDeleteUser.Name = "bttonDeleteUser";
+            this.bttonDeleteUser.Size = new System.Drawing.Size(81, 59);
+            this.bttonDeleteUser.TabIndex = 48;
+            this.bttonDeleteUser.Text = "Delete End-User \r\nBy ID";
+            this.bttonDeleteUser.UseVisualStyleBackColor = true;
+            this.bttonDeleteUser.Click += new System.EventHandler(this.BttonDeleteUser_Click);
+            // 
             // TestMainDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,7 +693,7 @@
         internal System.Windows.Forms.Button btnAddUsageByUserName;
         internal System.Windows.Forms.Button BttonGetUsageByUserNameAndDate;
         internal System.Windows.Forms.Button BttonGetUsageByUserName;
-        internal System.Windows.Forms.Button btnAddLogin;
+        internal System.Windows.Forms.Button btnAddPerson;
         internal System.Windows.Forms.GroupBox GroupBox1;
         internal System.Windows.Forms.Button BtonGetExByDate;
         internal System.Windows.Forms.Button BtonAddException;
@@ -670,10 +704,10 @@
         internal System.Windows.Forms.GroupBox GroupBoxUsage;
         internal System.Windows.Forms.Button btnGetAllUsage;
         internal System.Windows.Forms.Button btnAddUsage;
-        internal System.Windows.Forms.Button BttonUserExists;
-        internal System.Windows.Forms.Button BttonGetUserNameByUserID;
+        internal System.Windows.Forms.Button bttonGetUserIDByLastName;
+        internal System.Windows.Forms.Button bttonGetUserByLastName;
         internal System.Windows.Forms.Button btnAddLoginWithUserName;
-        internal System.Windows.Forms.Button btnGetLoginByDate;
+        internal System.Windows.Forms.Button btnPersonByUserName;
         internal System.Windows.Forms.Button btnAddLoginWithStrUserId;
         internal System.Windows.Forms.GroupBox GroupBox3;
         internal System.Windows.Forms.Button BtonInsertFeedback;
@@ -685,9 +719,9 @@
         internal System.Windows.Forms.Button BtonGetCompanies;
         internal System.Windows.Forms.Button BttonLogExc2Database;
         internal System.Windows.Forms.GroupBox GroupBoxLogin;
-        internal System.Windows.Forms.Button btnGetAllLogins;
-        internal System.Windows.Forms.Button btnLoginsByUserName;
-        internal System.Windows.Forms.Button BttonGetUsers;
+        internal System.Windows.Forms.Button btnGetAllPersons;
+        internal System.Windows.Forms.Button btnPersonByID;
+        internal System.Windows.Forms.Button bttonGetAllUsers;
         internal System.Windows.Forms.GroupBox groupBoxTimeStamp;
         internal System.Windows.Forms.TextBox TextBoxEndDate;
         internal System.Windows.Forms.Label Label6;
@@ -700,7 +734,7 @@
         internal System.Windows.Forms.Button btnFillDB;
         internal System.Windows.Forms.DataGridView DataGridView1;
         internal System.Windows.Forms.GroupBox GroupBoxTestUsers;
-        internal System.Windows.Forms.Button BttonGetUserIDByUserName;
+        internal System.Windows.Forms.Button bttonGetUserByID;
         internal System.Windows.Forms.TextBox TextBoxUserID;
         internal System.Windows.Forms.GroupBox GroupBoxUser;
         internal System.Windows.Forms.TextBox TextBoxUserName;
@@ -708,5 +742,7 @@
         internal System.Windows.Forms.Label LabelUserName;
         internal System.Windows.Forms.Label LblReturn;
         internal System.Windows.Forms.Button btnStartup;
+        internal System.Windows.Forms.Button bttonDeleteUser;
+        internal System.Windows.Forms.Button bttonAddUser;
     }
 }

@@ -15,7 +15,9 @@ namespace WebJobUniTest {
         }
 
         private void btnMainXsd_Click(object sender, EventArgs e) {
-              Application.Run(new TestMainDS());
+            TestMainDS Check = new TestMainDS();
+            Check.Show();
+            Hide();
         }
 
         private void btnApptXsd_Click(object sender, EventArgs e) {
@@ -23,9 +25,6 @@ namespace WebJobUniTest {
         }
 
         private void btnMiscTesting_Click(object sender, EventArgs e) {
-            //Application.Run(new Testing());
-            //Testing.ActiveForm(); 
-
             Testing Check = new Testing();
             Check.Show();
             Hide();

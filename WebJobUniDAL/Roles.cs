@@ -8,7 +8,7 @@ using WebJobUniUtils;
 
 namespace WebJobUniDAL {
 
-    public enum RolesEnum:byte {
+    public enum RolesEnum : byte {
         //NB: this numeration is used on Stored Procedures and Functions (ie: GetAllPersonInherit...) 
         // a change on these will require those to be revised 
         ADMIN = 1,
@@ -18,8 +18,13 @@ namespace WebJobUniDAL {
         ALL = 0
     }
 
+    [System.ComponentModel.DataObject()]
     public class Roles {
 
+        private static RolesTableAdapter _tblRoleTableAdapter = null;
+
+
+        #region "Enum Functions"
         public static byte GetRolesEnumValue(string role) {
             //ie:'get parameter emission as string
             //    Dim pollutant = System.[Enum].GetName(GetType(EmissionsEnum), intParam)
@@ -27,7 +32,7 @@ namespace WebJobUniDAL {
             try {
                 switch (roleUpper) {
                     case "ADMIN":
-                        return (byte)RolesEnum.ADMIN;                        
+                        return (byte)RolesEnum.ADMIN;
                     case "END_USER":
                         return (byte)RolesEnum.END_USER;
                     case "ENDUSER":
@@ -39,24 +44,46 @@ namespace WebJobUniDAL {
                     case "CLIENT":
                         return (byte)RolesEnum.CLIENT;
                     case "ALL":
-                        return (byte)RolesEnum.ALL;                                                                                   
+                        return (byte)RolesEnum.ALL;
                     default://case else
                         throw new Exception(role + " role could not be found");
                 }//endof switch
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.Roles.GetRoleEnumValue(RolesID) </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.Roles.GetRoleEnumValue(RolesID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return 0;
             }
         }
 
-        private static RolesTableAdapter _tblRoleTableAdapter = null;
+        public static bool IsRoleWithinRolesEnum(byte role) {
+            //ie:'get parameter emission as string
+            //    Dim pollutant = System.[Enum].GetName(GetType(EmissionsEnum), intParam)
+            try {
+                //get all enum roles in an array
+                Array values = Enum.GetValues(typeof(RolesEnum));
+
+                foreach (RolesEnum roleVal in values) {
+                    System.Diagnostics.Debug.Print(String.Format("{0}: {1}", Enum.GetName(typeof(RolesEnum), roleVal), roleVal));
+                    //check it matches the parameter
+                    if ((byte)roleVal == role)
+                        return true;
+                }
+                //parameter doesnt match any items of RolesEnum 
+                return false;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Roles.IsRoleWithinRolesEnum(role) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        #endregion
 
         #region "Properties"
         protected static RolesTableAdapter Adapter {
             get {
-                if (_tblRoleTableAdapter == null) 
-                    _tblRoleTableAdapter = new RolesTableAdapter();                
+                if (_tblRoleTableAdapter == null)
+                    _tblRoleTableAdapter = new RolesTableAdapter();
                 return _tblRoleTableAdapter;
             }
         }
@@ -73,7 +100,7 @@ namespace WebJobUniDAL {
         public static DataSet1Main.RolesDataTable GetAllRoles() {
 
             try {
-                return Adapter.GetAllRoles();
+                return Adapter.GetData();
 
             }
             catch (Exception ex) {
@@ -97,7 +124,7 @@ namespace WebJobUniDAL {
                 System.Diagnostics.Debug.Print("<h2>DAL.Roles.GetRoleByID(roleID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
-        }  
+        }
         #endregion
 
         #region "ADD Functions"
@@ -109,7 +136,7 @@ namespace WebJobUniDAL {
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
         public static int AddRole(bool isAdmin, string roleDesc) {
             try {
-              return (int)Adapter.InsertRole(isAdmin, roleDesc);
+                return (int)Adapter.InsertRole(isAdmin, roleDesc);
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Roles.AddRole(x2 param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -138,7 +165,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeleteRoleByID(int roleID) {
+        public static int DeleteRoleByID(byte roleID) {
             try {
                 return (int)Adapter.DeleteRoleByID(roleID);
             }

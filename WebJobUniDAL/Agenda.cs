@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 using WebJobUniDAL.DataSet1MainTableAdapters;
 using WebJobUniUtils;
 
-
+//------------------------------------------------------------------------------------------------------
+// <copyright file="Exceptions.vb" company="">
+// Copyright (c) Rachie Holdings Ltd. All rights reserved.
+// </copyright>
+//------------------------------------------------------------------------------------------------------
 namespace WebJobUniDAL {
-    class Agenda {
+
+    [System.ComponentModel.DataObject()]
+    public class Agenda {
 
 
         private static AgendaTableAdapter _tblAgendaTableAdapter = null;
