@@ -44,9 +44,9 @@ namespace WebJobUniDAL {
         
         private global::System.Data.DataRelation relationFK__Client__clientID__1AF3F935;
         
-        private global::System.Data.DataRelation relationFK__Person__role__1352D76D;
-        
         private global::System.Data.DataRelation relationFK__Person__contactD__125EB334;
+        
+        private global::System.Data.DataRelation relationFK__Person__role__1352D76D;
         
         private global::System.Data.DataRelation relationFK__Company__mainCon__40058253;
         
@@ -403,8 +403,8 @@ namespace WebJobUniDAL {
                 }
             }
             this.relationFK__Client__clientID__1AF3F935 = this.Relations["FK__Client__clientID__1AF3F935"];
-            this.relationFK__Person__role__1352D76D = this.Relations["FK__Person__role__1352D76D"];
             this.relationFK__Person__contactD__125EB334 = this.Relations["FK__Person__contactD__125EB334"];
+            this.relationFK__Person__role__1352D76D = this.Relations["FK__Person__role__1352D76D"];
             this.relationFK__Company__mainCon__40058253 = this.Relations["FK__Company__mainCon__40058253"];
             this.relationFK__EndUser__userID__1DD065E0 = this.Relations["FK__EndUser__userID__1DD065E0"];
             this.relationFK__Company__contact__40F9A68C = this.Relations["FK__Company__contact__40F9A68C"];
@@ -446,16 +446,16 @@ namespace WebJobUniDAL {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
-                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.roleColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
+                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.contactDetColumn});
             this.tablePerson.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
-                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.contactDetColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
+                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.roleColumn});
             this.tablePerson.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -464,14 +464,14 @@ namespace WebJobUniDAL {
                         this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, false);
             this.Relations.Add(this.relationFK__Client__clientID__1AF3F935);
-            this.relationFK__Person__role__1352D76D = new global::System.Data.DataRelation("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
-                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.roleColumn}, false);
-            this.Relations.Add(this.relationFK__Person__role__1352D76D);
             this.relationFK__Person__contactD__125EB334 = new global::System.Data.DataRelation("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
                         this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePerson.contactDetColumn}, false);
             this.Relations.Add(this.relationFK__Person__contactD__125EB334);
+            this.relationFK__Person__role__1352D76D = new global::System.Data.DataRelation("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
+                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.roleColumn}, false);
+            this.Relations.Add(this.relationFK__Person__role__1352D76D);
             this.relationFK__Company__mainCon__40058253 = new global::System.Data.DataRelation("FK__Company__mainCon__40058253", new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCompany.mainContactColumn}, false);
@@ -2035,7 +2035,7 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CompanyRow AddCompanyRow(string name, string industry, short nature, string coNumb, System.DateTime incorporated, string url, ClientRow parentClientRowByFK__Company__mainCon__40058253, ContactDetailsRow parentContactDetailsRowByFK__Company__contact__40F9A68C, bool isVATreg, string vatNumb, string notes) {
+            public CompanyRow AddCompanyRow(string name, string industry, int nature, string coNumb, System.DateTime incorporated, string url, ClientRow parentClientRowByFK__Company__mainCon__40058253, ContactDetailsRow parentContactDetailsRowByFK__Company__contact__40F9A68C, bool isVATreg, string vatNumb, string notes) {
                 CompanyRow rowCompanyRow = ((CompanyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2108,7 +2108,7 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columnname);
                 this.columnindustry = new global::System.Data.DataColumn("industry", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnindustry);
-                this.columnnature = new global::System.Data.DataColumn("nature", typeof(short), null, global::System.Data.MappingType.Element);
+                this.columnnature = new global::System.Data.DataColumn("nature", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnature);
                 this.columncoNumb = new global::System.Data.DataColumn("coNumb", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncoNumb);
@@ -4128,10 +4128,10 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short nature {
+            public int nature {
                 get {
                     try {
-                        return ((short)(this[this.tableCompany.natureColumn]));
+                        return ((int)(this[this.tableCompany.natureColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'nature\' in table \'Company\' is DBNull.", e);
@@ -4728,23 +4728,23 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RolesRow RolesRow {
-                get {
-                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__role__1352D76D"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__role__1352D76D"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ContactDetailsRow ContactDetailsRow {
                 get {
                     return ((ContactDetailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__contactD__125EB334"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Person__contactD__125EB334"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RolesRow RolesRow {
+                get {
+                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__role__1352D76D"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__role__1352D76D"]);
                 }
             }
             
@@ -7522,7 +7522,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 200, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@industry", global::System.Data.SqlDbType.VarChar, 70, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nature", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 5, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nature", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@coNumb", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@incorporated", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@url", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8064,7 +8064,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object InsertCompany(string name, string industry, global::System.Nullable<short> nature, string coNumb, global::System.Nullable<global::System.DateTime> incorporated, string url, global::System.Nullable<int> mainContact, global::System.Nullable<int> contactDet, global::System.Nullable<bool> isVATreg, string vatNumb, string notes) {
+        public virtual object InsertCompany(string name, string industry, global::System.Nullable<int> nature, string coNumb, global::System.Nullable<global::System.DateTime> incorporated, string url, global::System.Nullable<int> mainContact, global::System.Nullable<int> contactDet, global::System.Nullable<bool> isVATreg, string vatNumb, string notes) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((name == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -8079,7 +8079,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                 command.Parameters[2].Value = ((string)(industry));
             }
             if ((nature.HasValue == true)) {
-                command.Parameters[3].Value = ((short)(nature.Value));
+                command.Parameters[3].Value = ((int)(nature.Value));
             }
             else {
                 command.Parameters[3].Value = global::System.DBNull.Value;

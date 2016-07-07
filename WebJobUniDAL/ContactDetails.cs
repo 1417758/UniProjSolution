@@ -23,7 +23,7 @@ namespace WebJobUniDAL {
         protected static ContactDetailsTableAdapter Adapter {
             get {
                 if (_tblContacDetTableAdapter == null)
-                    _tblContacDetTableAdapter = new ContactDetailsTableAdapter();                
+                    _tblContacDetTableAdapter = new ContactDetailsTableAdapter();
 
                 return _tblContacDetTableAdapter;
             }
@@ -31,7 +31,7 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "GET Methods"
-        
+
         /// <summary>//1
         /// function which returns all instances of contactDetails datatable
         /// </summary>all instances of inputs
@@ -42,10 +42,9 @@ namespace WebJobUniDAL {
 
             try {
                 return Adapter.GetAllContactDetails();
-
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetAllContactDet() </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetAllContactDet() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -56,37 +55,36 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.ContactDetailsDataTable GetContactDetailByID(int contactDetID) {
+        public static DataSet1Main.ContactDetailsDataTable GetContactDetailByID(int? contactDetID) {
 
             try {
                 return Adapter.GetContactDetByID(contactDetID);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetailByID(contacDettID) </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetailByID(contacDettID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
         //3
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.ContactDetailsDataTable GetContactDetByCompID(int companyID) {
+        public static DataSet1Main.ContactDetailsDataTable GetContactDetailByCompanyID(int? companyID) {
 
             try {
                 return Adapter.GetContactDetByCompID(companyID);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetByCompID(companyID))</h2> </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetByCompID(companyID))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
         //4
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.ContactDetailsDataTable GetContactDetByPersonID(int personID) {
-
+        public static DataSet1Main.ContactDetailsDataTable GetContactDetailByPersonID(int? personID) {
             try {
                 return Adapter.GetContactDetByPersonID(personID);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetByPersonID(personID))</h2> </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.GetContactDetByPersonID(personID))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -100,33 +98,34 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int AddContactDetails(string address, string postcode, string city, string country, string landline, string mobilePhone, string email) {
+        public static int? AddContactDetails(string address, string postcode, string city, string country, string landline, string mobilePhone, string email) {
             try {
-
                 DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
-                return (int)Adapter.InsertContactDet(address: address, postCode: postcode, city: city, country: country, 
-                                                    landLine: landline, mobile: mobilePhone, email: email, dateCreated:dateNow, lastUpdated:dateNow );
+                //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
+                dynamic result = Adapter.InsertContactDet(address: address, postCode: postcode, city: city, country: country,
+                                                    landLine: landline, mobile: mobilePhone, email: email, dateCreated: dateNow, lastUpdated: dateNow);
+                return (int?)result;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.AddContactDetails(x7string param) </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-                // return null;
-                return 0;
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.AddContactDetails(x7string param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
             }
         }
         //6
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public static int AddContactDetailsAllNull() { 
+        public static int? AddContactDetailsAllNull() {
             try {
                 //string address = null, string postcode = null, string city = null, string country = null, string landline = null, string mobilePhone = null, string email = null) {
 
-                    DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
-                return (int)Adapter.InsertContactDet(address: null, postCode: null, city: null, country: null,
+                DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
+                //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
+                dynamic result = Adapter.InsertContactDet(address: null, postCode: null, city: null, country: null,
                                                     landLine: null, mobile: null, email: null, dateCreated: dateNow, lastUpdated: dateNow);
+                return (int?)result;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.AddContactDetailsAllNull() </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-                // return null;
-                return 0;
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.AddContactDetailsAllNull() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
             }
         }
         #endregion
@@ -138,13 +137,13 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeleteContactDetailByID(int contactDetID) {
+        public static int DeleteContactDetailByID(int? contactDetID) {
             try {
-                return (int)Adapter.DeleteContDetByID(contactDetID);                   
+                return (int)Adapter.DeleteContDetByID(contactDetID);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.DeleteContactDetailByID(contactDetID) </h2> \n" +  ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-                 return 0;
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.DeleteContactDetailByID(contactDetID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return 0;
             }
         }
         #endregion

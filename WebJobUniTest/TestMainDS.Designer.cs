@@ -28,13 +28,13 @@
             this.bttonGetUserByLastName = new System.Windows.Forms.Button();
             this.btnDeletePersonByID = new System.Windows.Forms.Button();
             this.btnPersonByUserName = new System.Windows.Forms.Button();
-            this.Button1BtonGetCompaniesIDByCompName = new System.Windows.Forms.Button();
+            this.btton1Spare = new System.Windows.Forms.Button();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.BtonInsertCompany = new System.Windows.Forms.Button();
-            this.BtonGetCompanies = new System.Windows.Forms.Button();
+            this.bttonDeleteComp = new System.Windows.Forms.Button();
+            this.bttonAddCompLess = new System.Windows.Forms.Button();
+            this.bttonAddComp = new System.Windows.Forms.Button();
+            this.btonGetCompByID = new System.Windows.Forms.Button();
+            this.btonGetAllComp = new System.Windows.Forms.Button();
             this.GroupBoxLogin = new System.Windows.Forms.GroupBox();
             this.bttonGetPersonIDByLastName = new System.Windows.Forms.Button();
             this.btnGetPersonByAspID = new System.Windows.Forms.Button();
@@ -76,13 +76,13 @@
             this.bttonGetClientByID = new System.Windows.Forms.Button();
             this.bttonGetAllClients = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
+            this.bttonAddContDet = new System.Windows.Forms.Button();
+            this.bttonGetContDetByPersonID = new System.Windows.Forms.Button();
+            this.bttonDeleteContDet = new System.Windows.Forms.Button();
+            this.bttonGetContDetByCompID = new System.Windows.Forms.Button();
+            this.bttonGetAllContDet = new System.Windows.Forms.Button();
+            this.bttonAddContDetNull = new System.Windows.Forms.Button();
+            this.bttonGetContDetByID = new System.Windows.Forms.Button();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.textBoxPostCode = new System.Windows.Forms.TextBox();
@@ -99,6 +99,28 @@
             this.textBoxMobile = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxLandline = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBoxContDetID = new System.Windows.Forms.TextBox();
+            this.textBoxCompID = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.GroupBox2.SuspendLayout();
             this.GroupBoxLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
@@ -108,6 +130,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBoxTimeStamp.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddPerson
@@ -171,25 +195,25 @@
             this.btnPersonByUserName.UseVisualStyleBackColor = true;
             this.btnPersonByUserName.Click += new System.EventHandler(this.btnPersonByUserName_Click);
             // 
-            // Button1BtonGetCompaniesIDByCompName
+            // btton1Spare
             // 
-            this.Button1BtonGetCompaniesIDByCompName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button1BtonGetCompaniesIDByCompName.Location = new System.Drawing.Point(169, 18);
-            this.Button1BtonGetCompaniesIDByCompName.Margin = new System.Windows.Forms.Padding(2);
-            this.Button1BtonGetCompaniesIDByCompName.Name = "Button1BtonGetCompaniesIDByCompName";
-            this.Button1BtonGetCompaniesIDByCompName.Size = new System.Drawing.Size(81, 59);
-            this.Button1BtonGetCompaniesIDByCompName.TabIndex = 45;
-            this.Button1BtonGetCompaniesIDByCompName.Text = "Get CompID By CompName";
-            this.Button1BtonGetCompaniesIDByCompName.UseVisualStyleBackColor = true;
+            this.btton1Spare.Enabled = false;
+            this.btton1Spare.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btton1Spare.Location = new System.Drawing.Point(169, 18);
+            this.btton1Spare.Margin = new System.Windows.Forms.Padding(2);
+            this.btton1Spare.Name = "btton1Spare";
+            this.btton1Spare.Size = new System.Drawing.Size(81, 59);
+            this.btton1Spare.TabIndex = 45;
+            this.btton1Spare.UseVisualStyleBackColor = true;
             // 
             // GroupBox2
             // 
-            this.GroupBox2.Controls.Add(this.button14);
-            this.GroupBox2.Controls.Add(this.button15);
-            this.GroupBox2.Controls.Add(this.button16);
-            this.GroupBox2.Controls.Add(this.Button1BtonGetCompaniesIDByCompName);
-            this.GroupBox2.Controls.Add(this.BtonInsertCompany);
-            this.GroupBox2.Controls.Add(this.BtonGetCompanies);
+            this.GroupBox2.Controls.Add(this.bttonDeleteComp);
+            this.GroupBox2.Controls.Add(this.bttonAddCompLess);
+            this.GroupBox2.Controls.Add(this.bttonAddComp);
+            this.GroupBox2.Controls.Add(this.btton1Spare);
+            this.GroupBox2.Controls.Add(this.btonGetCompByID);
+            this.GroupBox2.Controls.Add(this.btonGetAllComp);
             this.GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox2.Location = new System.Drawing.Point(579, 578);
             this.GroupBox2.Name = "GroupBox2";
@@ -198,62 +222,65 @@
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Test Companies";
             // 
-            // button14
+            // bttonDeleteComp
             // 
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(415, 18);
-            this.button14.Margin = new System.Windows.Forms.Padding(2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(81, 59);
-            this.button14.TabIndex = 48;
-            this.button14.Text = "Get CompID By CompName";
-            this.button14.UseVisualStyleBackColor = true;
+            this.bttonDeleteComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonDeleteComp.Location = new System.Drawing.Point(415, 18);
+            this.bttonDeleteComp.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonDeleteComp.Name = "bttonDeleteComp";
+            this.bttonDeleteComp.Size = new System.Drawing.Size(81, 59);
+            this.bttonDeleteComp.TabIndex = 48;
+            this.bttonDeleteComp.Text = "Delete Company";
+            this.bttonDeleteComp.UseVisualStyleBackColor = true;
+            this.bttonDeleteComp.Click += new System.EventHandler(this.bttonDeleteComp_Click);
             // 
-            // button15
+            // bttonAddCompLess
             // 
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(332, 18);
-            this.button15.Margin = new System.Windows.Forms.Padding(2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(81, 59);
-            this.button15.TabIndex = 47;
-            this.button15.Text = "Insert Company";
-            this.button15.UseVisualStyleBackColor = true;
+            this.bttonAddCompLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonAddCompLess.Location = new System.Drawing.Point(332, 18);
+            this.bttonAddCompLess.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddCompLess.Name = "bttonAddCompLess";
+            this.bttonAddCompLess.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddCompLess.TabIndex = 47;
+            this.bttonAddCompLess.Text = "Add Company ( Less parameters )";
+            this.bttonAddCompLess.UseVisualStyleBackColor = true;
+            this.bttonAddCompLess.Click += new System.EventHandler(this.bttonAddCompLess_Click);
             // 
-            // button16
+            // bttonAddComp
             // 
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(251, 18);
-            this.button16.Margin = new System.Windows.Forms.Padding(2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(81, 59);
-            this.button16.TabIndex = 46;
-            this.button16.Text = "Get Companies";
-            this.button16.UseVisualStyleBackColor = true;
+            this.bttonAddComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonAddComp.Location = new System.Drawing.Point(251, 18);
+            this.bttonAddComp.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddComp.Name = "bttonAddComp";
+            this.bttonAddComp.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddComp.TabIndex = 46;
+            this.bttonAddComp.Text = "Add Company";
+            this.bttonAddComp.UseVisualStyleBackColor = true;
+            this.bttonAddComp.Click += new System.EventHandler(this.bttonAddComp_Click);
             // 
-            // BtonInsertCompany
+            // btonGetCompByID
             // 
-            this.BtonInsertCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtonInsertCompany.Location = new System.Drawing.Point(87, 18);
-            this.BtonInsertCompany.Margin = new System.Windows.Forms.Padding(2);
-            this.BtonInsertCompany.Name = "BtonInsertCompany";
-            this.BtonInsertCompany.Size = new System.Drawing.Size(81, 59);
-            this.BtonInsertCompany.TabIndex = 38;
-            this.BtonInsertCompany.Text = "Insert Company";
-            this.BtonInsertCompany.UseVisualStyleBackColor = true;
-            this.BtonInsertCompany.Click += new System.EventHandler(this.BtonInsertCompany_Click);
+            this.btonGetCompByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btonGetCompByID.Location = new System.Drawing.Point(87, 18);
+            this.btonGetCompByID.Margin = new System.Windows.Forms.Padding(2);
+            this.btonGetCompByID.Name = "btonGetCompByID";
+            this.btonGetCompByID.Size = new System.Drawing.Size(81, 59);
+            this.btonGetCompByID.TabIndex = 38;
+            this.btonGetCompByID.Text = "Get Company By ID";
+            this.btonGetCompByID.UseVisualStyleBackColor = true;
+            this.btonGetCompByID.Click += new System.EventHandler(this.btonGetCompByID_Click);
             // 
-            // BtonGetCompanies
+            // btonGetAllComp
             // 
-            this.BtonGetCompanies.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtonGetCompanies.Location = new System.Drawing.Point(5, 18);
-            this.BtonGetCompanies.Margin = new System.Windows.Forms.Padding(2);
-            this.BtonGetCompanies.Name = "BtonGetCompanies";
-            this.BtonGetCompanies.Size = new System.Drawing.Size(81, 59);
-            this.BtonGetCompanies.TabIndex = 37;
-            this.BtonGetCompanies.Text = "Get Companies";
-            this.BtonGetCompanies.UseVisualStyleBackColor = true;
-            this.BtonGetCompanies.Click += new System.EventHandler(this.BtonGetCompanies_Click);
+            this.btonGetAllComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btonGetAllComp.Location = new System.Drawing.Point(5, 18);
+            this.btonGetAllComp.Margin = new System.Windows.Forms.Padding(2);
+            this.btonGetAllComp.Name = "btonGetAllComp";
+            this.btonGetAllComp.Size = new System.Drawing.Size(81, 59);
+            this.btonGetAllComp.TabIndex = 37;
+            this.btonGetAllComp.Text = "Get All Companies";
+            this.btonGetAllComp.UseVisualStyleBackColor = true;
+            this.btonGetAllComp.Click += new System.EventHandler(this.btonGetAllComp_Click);
             // 
             // GroupBoxLogin
             // 
@@ -452,23 +479,23 @@
             this.GroupBoxUser.Controls.Add(this.textBoxLastName);
             this.GroupBoxUser.Controls.Add(this.Label1stName);
             this.GroupBoxUser.Controls.Add(this.LabelUserName);
-            this.GroupBoxUser.Location = new System.Drawing.Point(772, 162);
+            this.GroupBoxUser.Location = new System.Drawing.Point(772, 181);
             this.GroupBoxUser.Name = "GroupBoxUser";
-            this.GroupBoxUser.Size = new System.Drawing.Size(166, 181);
+            this.GroupBoxUser.Size = new System.Drawing.Size(166, 167);
             this.GroupBoxUser.TabIndex = 83;
             this.GroupBoxUser.TabStop = false;
-            this.GroupBoxUser.Text = "User";
+            this.GroupBoxUser.Text = "All Users (endUser/staff/client)";
             // 
             // textBoxASPUserID
             // 
-            this.textBoxASPUserID.Location = new System.Drawing.Point(9, 155);
+            this.textBoxASPUserID.Location = new System.Drawing.Point(9, 141);
             this.textBoxASPUserID.Name = "textBoxASPUserID";
             this.textBoxASPUserID.Size = new System.Drawing.Size(151, 20);
             this.textBoxASPUserID.TabIndex = 52;
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(9, 116);
+            this.textBoxID.Location = new System.Drawing.Point(9, 102);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(151, 20);
             this.textBoxID.TabIndex = 50;
@@ -476,7 +503,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 139);
+            this.label2.Location = new System.Drawing.Point(6, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 53;
@@ -485,22 +512,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 100);
+            this.label3.Location = new System.Drawing.Point(6, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 13);
+            this.label3.Size = new System.Drawing.Size(18, 13);
             this.label3.TabIndex = 51;
-            this.label3.Text = "ID (user/staff/clent/person)";
+            this.label3.Text = "ID";
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(9, 71);
+            this.textBoxFirstName.Location = new System.Drawing.Point(9, 66);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(151, 20);
             this.textBoxFirstName.TabIndex = 44;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(9, 32);
+            this.textBoxLastName.Location = new System.Drawing.Point(9, 29);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(151, 20);
             this.textBoxLastName.TabIndex = 22;
@@ -508,7 +535,7 @@
             // Label1stName
             // 
             this.Label1stName.AutoSize = true;
-            this.Label1stName.Location = new System.Drawing.Point(6, 55);
+            this.Label1stName.Location = new System.Drawing.Point(6, 53);
             this.Label1stName.Name = "Label1stName";
             this.Label1stName.Size = new System.Drawing.Size(57, 13);
             this.Label1stName.TabIndex = 45;
@@ -715,13 +742,13 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button17);
-            this.groupBox4.Controls.Add(this.button18);
-            this.groupBox4.Controls.Add(this.button19);
-            this.groupBox4.Controls.Add(this.button20);
-            this.groupBox4.Controls.Add(this.button21);
-            this.groupBox4.Controls.Add(this.button22);
-            this.groupBox4.Controls.Add(this.button23);
+            this.groupBox4.Controls.Add(this.bttonAddContDet);
+            this.groupBox4.Controls.Add(this.bttonGetContDetByPersonID);
+            this.groupBox4.Controls.Add(this.bttonDeleteContDet);
+            this.groupBox4.Controls.Add(this.bttonGetContDetByCompID);
+            this.groupBox4.Controls.Add(this.bttonGetAllContDet);
+            this.groupBox4.Controls.Add(this.bttonAddContDetNull);
+            this.groupBox4.Controls.Add(this.bttonGetContDetByID);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(2, 578);
             this.groupBox4.Name = "groupBox4";
@@ -730,87 +757,93 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Test Contact Details";
             // 
-            // button17
+            // bttonAddContDet
             // 
-            this.button17.Enabled = false;
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(327, 14);
-            this.button17.Margin = new System.Windows.Forms.Padding(2);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(81, 59);
-            this.button17.TabIndex = 10;
-            this.button17.Text = "Get Person ID By LastName";
-            this.button17.UseVisualStyleBackColor = true;
+            this.bttonAddContDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonAddContDet.Location = new System.Drawing.Point(327, 14);
+            this.bttonAddContDet.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddContDet.Name = "bttonAddContDet";
+            this.bttonAddContDet.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddContDet.TabIndex = 10;
+            this.bttonAddContDet.Text = "Add Cont.Details";
+            this.bttonAddContDet.UseVisualStyleBackColor = true;
+            this.bttonAddContDet.Click += new System.EventHandler(this.bttonAddContDet_Click);
             // 
-            // button18
+            // bttonGetContDetByPersonID
             // 
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(246, 14);
-            this.button18.Margin = new System.Windows.Forms.Padding(2);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(81, 59);
-            this.button18.TabIndex = 9;
-            this.button18.Text = "Get Person By AspUser ID";
-            this.button18.UseVisualStyleBackColor = true;
+            this.bttonGetContDetByPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetContDetByPersonID.Location = new System.Drawing.Point(246, 14);
+            this.bttonGetContDetByPersonID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetContDetByPersonID.Name = "bttonGetContDetByPersonID";
+            this.bttonGetContDetByPersonID.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetContDetByPersonID.TabIndex = 9;
+            this.bttonGetContDetByPersonID.Text = "Get Cont.Details By PersonID";
+            this.bttonGetContDetByPersonID.UseVisualStyleBackColor = true;
+            this.bttonGetContDetByPersonID.Click += new System.EventHandler(this.bttonGetContDetByPersonID_Click);
             // 
-            // button19
+            // bttonDeleteContDet
             // 
-            this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Location = new System.Drawing.Point(489, 14);
-            this.button19.Margin = new System.Windows.Forms.Padding(2);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(81, 59);
-            this.button19.TabIndex = 7;
-            this.button19.Text = "Delete Person By ID";
-            this.button19.UseVisualStyleBackColor = true;
+            this.bttonDeleteContDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonDeleteContDet.Location = new System.Drawing.Point(489, 14);
+            this.bttonDeleteContDet.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonDeleteContDet.Name = "bttonDeleteContDet";
+            this.bttonDeleteContDet.Size = new System.Drawing.Size(81, 59);
+            this.bttonDeleteContDet.TabIndex = 7;
+            this.bttonDeleteContDet.Text = "Delete Cont.Details By ID";
+            this.bttonDeleteContDet.UseVisualStyleBackColor = true;
+            this.bttonDeleteContDet.Click += new System.EventHandler(this.bttonDeleteContDet_Click);
             // 
-            // button20
+            // bttonGetContDetByCompID
             // 
-            this.button20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(165, 14);
-            this.button20.Margin = new System.Windows.Forms.Padding(2);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(81, 59);
-            this.button20.TabIndex = 6;
-            this.button20.Text = "Get Person\r\nBy LastName";
-            this.button20.UseVisualStyleBackColor = true;
+            this.bttonGetContDetByCompID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetContDetByCompID.Location = new System.Drawing.Point(165, 14);
+            this.bttonGetContDetByCompID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetContDetByCompID.Name = "bttonGetContDetByCompID";
+            this.bttonGetContDetByCompID.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetContDetByCompID.TabIndex = 6;
+            this.bttonGetContDetByCompID.Text = "Get Cont.Details By CompID";
+            this.bttonGetContDetByCompID.UseVisualStyleBackColor = true;
+            this.bttonGetContDetByCompID.Click += new System.EventHandler(this.bttonGetContDetByCompID_Click);
             // 
-            // button21
+            // bttonGetAllContDet
             // 
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Location = new System.Drawing.Point(3, 14);
-            this.button21.Margin = new System.Windows.Forms.Padding(2);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(81, 59);
-            this.button21.TabIndex = 3;
-            this.button21.Text = "Get All Persons";
-            this.button21.UseVisualStyleBackColor = true;
+            this.bttonGetAllContDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetAllContDet.Location = new System.Drawing.Point(3, 14);
+            this.bttonGetAllContDet.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetAllContDet.Name = "bttonGetAllContDet";
+            this.bttonGetAllContDet.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetAllContDet.TabIndex = 3;
+            this.bttonGetAllContDet.Text = "Get All \r\nCont.Details";
+            this.bttonGetAllContDet.UseVisualStyleBackColor = true;
+            this.bttonGetAllContDet.Click += new System.EventHandler(this.bttonGetAllContDet_Click);
             // 
-            // button22
+            // bttonAddContDetNull
             // 
-            this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Location = new System.Drawing.Point(408, 14);
-            this.button22.Margin = new System.Windows.Forms.Padding(2);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(81, 59);
-            this.button22.TabIndex = 0;
-            this.button22.Text = "Add Person";
-            this.button22.UseVisualStyleBackColor = true;
+            this.bttonAddContDetNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonAddContDetNull.Location = new System.Drawing.Point(408, 14);
+            this.bttonAddContDetNull.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddContDetNull.Name = "bttonAddContDetNull";
+            this.bttonAddContDetNull.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddContDetNull.TabIndex = 0;
+            this.bttonAddContDetNull.Text = "Add Cont.Details All NULL";
+            this.bttonAddContDetNull.UseVisualStyleBackColor = true;
+            this.bttonAddContDetNull.Click += new System.EventHandler(this.bttonAddContDetNull_Click);
             // 
-            // button23
+            // bttonGetContDetByID
             // 
-            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.Location = new System.Drawing.Point(84, 14);
-            this.button23.Margin = new System.Windows.Forms.Padding(2);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(81, 59);
-            this.button23.TabIndex = 5;
-            this.button23.Text = "Get Person By ID";
-            this.button23.UseVisualStyleBackColor = true;
+            this.bttonGetContDetByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetContDetByID.Location = new System.Drawing.Point(84, 14);
+            this.bttonGetContDetByID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetContDetByID.Name = "bttonGetContDetByID";
+            this.bttonGetContDetByID.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetContDetByID.TabIndex = 5;
+            this.bttonGetContDetByID.Text = "Get Cont.Details By ID";
+            this.bttonGetContDetByID.UseVisualStyleBackColor = true;
+            this.bttonGetContDetByID.Click += new System.EventHandler(this.bttonGetContDetByID_Click);
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(9, 16);
+            this.textBoxAddress.Location = new System.Drawing.Point(9, 20);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(151, 20);
             this.textBoxAddress.TabIndex = 22;
@@ -818,7 +851,7 @@
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(6, 36);
+            this.Label5.Location = new System.Drawing.Point(6, 40);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(55, 13);
             this.Label5.TabIndex = 25;
@@ -826,7 +859,7 @@
             // 
             // textBoxPostCode
             // 
-            this.textBoxPostCode.Location = new System.Drawing.Point(9, 52);
+            this.textBoxPostCode.Location = new System.Drawing.Point(9, 56);
             this.textBoxPostCode.Name = "textBoxPostCode";
             this.textBoxPostCode.Size = new System.Drawing.Size(151, 20);
             this.textBoxPostCode.TabIndex = 24;
@@ -834,7 +867,7 @@
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(7, 74);
+            this.Label6.Location = new System.Drawing.Point(7, 78);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(24, 13);
             this.Label6.TabIndex = 27;
@@ -842,7 +875,7 @@
             // 
             // textBoxCity
             // 
-            this.textBoxCity.Location = new System.Drawing.Point(10, 90);
+            this.textBoxCity.Location = new System.Drawing.Point(10, 94);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(151, 20);
             this.textBoxCity.TabIndex = 26;
@@ -850,7 +883,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 113);
+            this.label4.Location = new System.Drawing.Point(7, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 29;
@@ -858,7 +891,7 @@
             // 
             // textBoxCountry
             // 
-            this.textBoxCountry.Location = new System.Drawing.Point(10, 129);
+            this.textBoxCountry.Location = new System.Drawing.Point(10, 133);
             this.textBoxCountry.Name = "textBoxCountry";
             this.textBoxCountry.Size = new System.Drawing.Size(151, 20);
             this.textBoxCountry.TabIndex = 28;
@@ -880,9 +913,9 @@
             this.groupBoxTimeStamp.Controls.Add(this.textBoxPostCode);
             this.groupBoxTimeStamp.Controls.Add(this.Label5);
             this.groupBoxTimeStamp.Controls.Add(this.textBoxAddress);
-            this.groupBoxTimeStamp.Location = new System.Drawing.Point(772, 9);
+            this.groupBoxTimeStamp.Location = new System.Drawing.Point(772, 13);
             this.groupBoxTimeStamp.Name = "groupBoxTimeStamp";
-            this.groupBoxTimeStamp.Size = new System.Drawing.Size(327, 153);
+            this.groupBoxTimeStamp.Size = new System.Drawing.Size(327, 166);
             this.groupBoxTimeStamp.TabIndex = 72;
             this.groupBoxTimeStamp.TabStop = false;
             this.groupBoxTimeStamp.Text = "Address";
@@ -890,7 +923,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(165, 0);
+            this.label10.Location = new System.Drawing.Point(165, 4);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(121, 13);
             this.label10.TabIndex = 37;
@@ -898,7 +931,7 @@
             // 
             // textBoxSpare
             // 
-            this.textBoxSpare.Location = new System.Drawing.Point(168, 129);
+            this.textBoxSpare.Location = new System.Drawing.Point(168, 133);
             this.textBoxSpare.Name = "textBoxSpare";
             this.textBoxSpare.Size = new System.Drawing.Size(151, 20);
             this.textBoxSpare.TabIndex = 35;
@@ -907,7 +940,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(165, 113);
+            this.label7.Location = new System.Drawing.Point(165, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 36;
@@ -916,7 +949,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(168, 90);
+            this.textBoxEmail.Location = new System.Drawing.Point(168, 94);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(151, 20);
             this.textBoxEmail.TabIndex = 33;
@@ -924,7 +957,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(165, 74);
+            this.label8.Location = new System.Drawing.Point(165, 78);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 34;
@@ -932,7 +965,7 @@
             // 
             // textBoxMobile
             // 
-            this.textBoxMobile.Location = new System.Drawing.Point(167, 52);
+            this.textBoxMobile.Location = new System.Drawing.Point(167, 56);
             this.textBoxMobile.Name = "textBoxMobile";
             this.textBoxMobile.Size = new System.Drawing.Size(151, 20);
             this.textBoxMobile.TabIndex = 31;
@@ -940,7 +973,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(164, 36);
+            this.label9.Location = new System.Drawing.Point(164, 40);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 32;
@@ -948,17 +981,218 @@
             // 
             // textBoxLandline
             // 
-            this.textBoxLandline.Location = new System.Drawing.Point(167, 16);
+            this.textBoxLandline.Location = new System.Drawing.Point(167, 20);
             this.textBoxLandline.Name = "textBoxLandline";
             this.textBoxLandline.Size = new System.Drawing.Size(151, 20);
             this.textBoxLandline.TabIndex = 30;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBoxContDetID);
+            this.groupBox5.Controls.Add(this.textBoxCompID);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Location = new System.Drawing.Point(944, 181);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(166, 107);
+            this.groupBox5.TabIndex = 84;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Others";
+            // 
+            // textBoxContDetID
+            // 
+            this.textBoxContDetID.Location = new System.Drawing.Point(9, 71);
+            this.textBoxContDetID.Name = "textBoxContDetID";
+            this.textBoxContDetID.Size = new System.Drawing.Size(151, 20);
+            this.textBoxContDetID.TabIndex = 44;
+            // 
+            // textBoxCompID
+            // 
+            this.textBoxCompID.Location = new System.Drawing.Point(9, 32);
+            this.textBoxCompID.Name = "textBoxCompID";
+            this.textBoxCompID.Size = new System.Drawing.Size(151, 20);
+            this.textBoxCompID.TabIndex = 22;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 55);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(88, 13);
+            this.label13.TabIndex = 45;
+            this.label13.Text = "Contact Detail ID";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 16);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Company ID";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.label12);
+            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.textBox3);
+            this.groupBox6.Controls.Add(this.label16);
+            this.groupBox6.Controls.Add(this.textBox4);
+            this.groupBox6.Controls.Add(this.textBox5);
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.textBox6);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Controls.Add(this.textBox7);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.textBox8);
+            this.groupBox6.Location = new System.Drawing.Point(772, 11);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(327, 168);
+            this.groupBox6.TabIndex = 72;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Contact Details";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(165, 17);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(121, 13);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "Landline Phone Number";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(168, 141);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.TabIndex = 35;
+            this.textBox1.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(165, 127);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(35, 13);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Spare";
+            this.label12.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(168, 104);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(151, 20);
+            this.textBox2.TabIndex = 33;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(165, 90);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 13);
+            this.label15.TabIndex = 34;
+            this.label15.Text = "Email";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(167, 66);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(151, 20);
+            this.textBox3.TabIndex = 31;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(164, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 13);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Mobile Phone ";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(167, 30);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(151, 20);
+            this.textBox4.TabIndex = 30;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(10, 141);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(151, 20);
+            this.textBox5.TabIndex = 28;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 127);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 13);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Country";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(10, 104);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(151, 20);
+            this.textBox6.TabIndex = 26;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 90);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(24, 13);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "City";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(9, 66);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(151, 20);
+            this.textBox7.TabIndex = 24;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 52);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(55, 13);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Post code";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(9, 30);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(151, 20);
+            this.textBox8.TabIndex = 22;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(7, 17);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(45, 13);
+            this.label20.TabIndex = 38;
+            this.label20.Text = "Address";
             // 
             // TestMainDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1105, 675);
+            this.ClientSize = new System.Drawing.Size(1106, 675);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -966,6 +1200,7 @@
             this.Controls.Add(this.btnStartup);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.GroupBoxLogin);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBoxTimeStamp);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.ProgressBar1);
@@ -986,6 +1221,10 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBoxTimeStamp.ResumeLayout(false);
             this.groupBoxTimeStamp.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1002,10 +1241,10 @@
         internal System.Windows.Forms.Button bttonGetUserByLastName;
         internal System.Windows.Forms.Button btnDeletePersonByID;
         internal System.Windows.Forms.Button btnPersonByUserName;
-        internal System.Windows.Forms.Button Button1BtonGetCompaniesIDByCompName;
+        internal System.Windows.Forms.Button btton1Spare;
         internal System.Windows.Forms.GroupBox GroupBox2;
-        internal System.Windows.Forms.Button BtonInsertCompany;
-        internal System.Windows.Forms.Button BtonGetCompanies;
+        internal System.Windows.Forms.Button btonGetCompByID;
+        internal System.Windows.Forms.Button btonGetAllComp;
         internal System.Windows.Forms.Button BttonLogExc2Database;
         internal System.Windows.Forms.GroupBox GroupBoxLogin;
         internal System.Windows.Forms.Button btnGetAllPersons;
@@ -1047,17 +1286,17 @@
         internal System.Windows.Forms.Button bttonGetClientByLastName;
         internal System.Windows.Forms.Button bttonGetClientByID;
         internal System.Windows.Forms.Button bttonGetAllClients;
-        internal System.Windows.Forms.Button button14;
-        internal System.Windows.Forms.Button button15;
-        internal System.Windows.Forms.Button button16;
+        internal System.Windows.Forms.Button bttonDeleteComp;
+        internal System.Windows.Forms.Button bttonAddCompLess;
+        internal System.Windows.Forms.Button bttonAddComp;
         internal System.Windows.Forms.GroupBox groupBox4;
-        internal System.Windows.Forms.Button button17;
-        internal System.Windows.Forms.Button button18;
-        internal System.Windows.Forms.Button button19;
-        internal System.Windows.Forms.Button button20;
-        internal System.Windows.Forms.Button button21;
-        internal System.Windows.Forms.Button button22;
-        internal System.Windows.Forms.Button button23;
+        internal System.Windows.Forms.Button bttonAddContDet;
+        internal System.Windows.Forms.Button bttonGetContDetByPersonID;
+        internal System.Windows.Forms.Button bttonDeleteContDet;
+        internal System.Windows.Forms.Button bttonGetContDetByCompID;
+        internal System.Windows.Forms.Button bttonGetAllContDet;
+        internal System.Windows.Forms.Button bttonAddContDetNull;
+        internal System.Windows.Forms.Button bttonGetContDetByID;
         internal System.Windows.Forms.TextBox textBoxAddress;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.TextBox textBoxPostCode;
@@ -1074,5 +1313,27 @@
         internal System.Windows.Forms.TextBox textBoxMobile;
         internal System.Windows.Forms.Label label9;
         internal System.Windows.Forms.TextBox textBoxLandline;
+        internal System.Windows.Forms.GroupBox groupBox5;
+        internal System.Windows.Forms.TextBox textBoxContDetID;
+        internal System.Windows.Forms.TextBox textBoxCompID;
+        internal System.Windows.Forms.Label label13;
+        internal System.Windows.Forms.Label label14;
+        internal System.Windows.Forms.GroupBox groupBox6;
+        internal System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.Label label12;
+        internal System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.Label label15;
+        internal System.Windows.Forms.TextBox textBox3;
+        internal System.Windows.Forms.Label label16;
+        internal System.Windows.Forms.TextBox textBox4;
+        internal System.Windows.Forms.TextBox textBox5;
+        internal System.Windows.Forms.Label label17;
+        internal System.Windows.Forms.TextBox textBox6;
+        internal System.Windows.Forms.Label label18;
+        internal System.Windows.Forms.TextBox textBox7;
+        internal System.Windows.Forms.Label label19;
+        internal System.Windows.Forms.TextBox textBox8;
+        internal System.Windows.Forms.Label label20;
     }
 }

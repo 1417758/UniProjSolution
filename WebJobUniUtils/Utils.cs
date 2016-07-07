@@ -600,7 +600,7 @@ namespace WebJobUniUtils {
         
         public static DateTime? GetDatetimeNOW() {
             try {
-                string nowDateSt = DateTime.Now.ToString("yyyy/mm/dd HH:mm:ss");
+                string nowDateSt = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 System.Diagnostics.Debug.Print(nowDateSt);
 
                 DateTime resultDate = new DateTime();

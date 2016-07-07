@@ -3,48 +3,67 @@ using WebJobUniUtils;
 using WebJobUniDAL;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WebJobUniTest {
 
     public partial class TestMainDS : Form {
         public TestMainDS() {
-            InitializeComponent();
+            InitializeComponent();            
         }
-
+        public void Main() {
+            Load += TestMainDS_Load;
+        }
         private void TestMainDS_Load(object sender, EventArgs e) {
             try {
-                /// Load the settings object on form load.
-                dynamic filename = "C:\\forecaster\\settings.xml";
-                //"C:\Settings\Emissions Compiler\settings.xml" 
-                //'use the line below to test Testshared project when running forecaster 
-                //ForecasterSettings.Settings = ForecasterSettings.LoadSettingsFromXML(filename)
-                //load exception handling
-                //R      AppSettings.Settings = AppSettings.GetSharedSettings(filename);
-                //R     System.Diagnostics.Debug.Print(AppSettings.Settings.ToString);
+               
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
+                System.Diagnostics.Debug.Print("Test.TestMainDS.TestMainDS_Load() \n" + XMLConstants.DEBUG_ERROR);
             }
         }
-
         private void btnStartup_Click(object sender, EventArgs e) {
             StartUp Check = new StartUp();
             Check.Show();
             Hide();
         }
-        #region "Miscelleneous"        
+        #region "Miscelleneous"     
+        private void ResetTextBoxes2() {
+          /*  var controlsList = GetAll(this, typeof(TextBox));
+            MessageBox.Show("Total TEXTBOX Controls: " + controlsList.Count());
+            foreach (Control c in controlsList) {
+                c.Text += "";
+            }*/
+        }
+        public IEnumerable<Control> GetAll(Control control, Type type) {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
+        }
+
         public void ResetTextBoxes(bool showGridRowCount = true) {
             this.textBoxAddress.Text = "";
             this.textBoxLastName.Text = "";
             this.textBoxFirstName.Text = "";
             this.textBoxID.Text = "";
             this.textBoxASPUserID.Text = "";
+            this.textBoxCompID.Text = "";
+            this.textBoxContDetID.Text = "";
             if (showGridRowCount)
                 this.LblReturn.Text = (DataGridView1.RowCount - 1).ToString();
         }
-        public int? GetID() {
-            dynamic getInt = Utils.GetNumberInt(this.textBoxID.Text);
+        public int? GetID(bool isCompany = false, bool isContDetail = false) {
+            TextBox selTxtBox = this.textBoxID;
+            //check parameter options
+            if (isCompany)
+                selTxtBox = this.textBoxCompID;
+            if (isContDetail)
+                selTxtBox = this.textBoxContDetID;
+            //get text entered on textbox
+            int? getInt = Utils.GetNumberInt(selTxtBox.Text);
             if (getInt != null)
                 return (int)getInt;
             else {
@@ -53,7 +72,7 @@ namespace WebJobUniTest {
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
-                this.textBoxID.Focus();
+                selTxtBox.Focus();
                 return null;
             }
         }
@@ -163,58 +182,37 @@ namespace WebJobUniTest {
             ResetTextBoxes(showGridRowCount: false);
             GetAllUsers(sender, e, showGridRowCount: false);
         }
-        #endregion
+        #endregion//End-Users
 
         #region "Company"
-        private void BtonGetCompanies_Click(System.Object sender, System.EventArgs e) {
+        private void GetAllCompanies(object sender, EventArgs e, bool showGridRowCount = true) {
+            //populate gridView with tableAdapter data
             this.DataGridView1.DataSource = Company.GetAllCompanies();
-
+            //show number of records (NB requested by default)
+            if (showGridRowCount)
+                this.LblReturn.Text = (this.DataGridView1.RowCount - 1).ToString();
         }
-
-        private void BtonInsertCompany_Click(System.Object sender, System.EventArgs e) {
-            try {
-                //R this.LblReturn.Text = "Companies Num: " + Company.AddCompany("rachels group");
-
-                //this.DataGridView1.DataSource = Companies.GetCompanies();
-                //this.DataGridView1.Visible = true;
-
-                BtonGetCompanies_Click(sender, e);
-            }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-            }
-
+        private void btonGetAllComp_Click(object sender, EventArgs e) {
+            GetAllCompanies(sender, e);
         }
-
-
-
-        /*          private void Button1BtonGetCompaniesIDByCompName_Click(System.Object sender, System.EventArgs e) {
-                    try {
-                        dynamic l = Strings.Trim(this.textBoxUserName.Text);
-
-                        if (l == null || string.IsNullOrEmpty(l)) {
-                            MessageBox.Show("Please enter a valid COMPANY name");
-                            this.textBoxUserName.Focus();
-
-                        }
-                        else {
-                            this.LblReturn.Text = Companies.GetCompanyIDByCompanyName(l);
-                            this.DataGridView1.DataSource = Companies.GetCompanies;
-                    
-
-                        }
-
-                        ResetTextBoxes();
-
-                    }
-                    catch (Exception ex) {
-                       System.Diagnostics.Debug.Print("Test.TestMainDS._Click() \n" + XMLConstants.DEBUG_ERROR);
-                    }
-
-                }
-
-            */
-        #endregion
+        private void btonGetCompByID_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = Company.GetCompanyByID(GetID(isCompany: true));
+            ResetTextBoxes();
+        }
+        private void bttonAddComp_Click(object sender, EventArgs e) {
+            this.LblReturn.Text = Company.AddCompany("NEW FORM CO. LTD ADDED", "Fishery", 32957, "36598244", (DateTime)Utils.GetDateFromString("2016/5/17"), "www.myweb.co.uk", clientID: 4, contactDetID: 3, isVARreg: true, VATNumb:  "56876453", notes: "the end").ToString();
+            GetAllCompanies(sender, e, showGridRowCount: false);
+        }
+        private void bttonAddCompLess_Click(object sender, EventArgs e) {
+            this.LblReturn.Text = Company.AddCompany("NEW FORM CO. LTD ADDED", "Fishery", 32957, clientID: 5, contactDetID: 3).ToString();
+            GetAllCompanies(sender, e, showGridRowCount: false);
+        }
+        private void bttonDeleteComp_Click(object sender, EventArgs e) {
+            this.LblReturn.Text = Company.DeleteCompanyByID(GetID(isCompany: true)).ToString();
+            ResetTextBoxes(showGridRowCount: false);
+            GetAllCompanies(sender, e, showGridRowCount: false);
+        }
+        #endregion//Company
 
         #region "Employee"
         private void GetAllEmployees(object sender, EventArgs e, bool showGridRowCount = true) {
@@ -256,7 +254,6 @@ namespace WebJobUniTest {
         }
         #endregion
 
-
         #region "Client"
         private void GetAllClients(object sender, EventArgs e, bool showGridRowCount = true) {
             //populate gridView with tableAdapter data
@@ -296,6 +293,46 @@ namespace WebJobUniTest {
             GetAllClients(sender, e, showGridRowCount: false);
         }
         #endregion
+
+        #region "Contact Details"
+        private void GetAllContactDetails(object sender, EventArgs e, bool showGridRowCount = true) {
+            //populate gridView with tableAdapter data
+            this.DataGridView1.DataSource = ContactDetails.GetAllContactDetails();
+            //show number of records (NB requested by default)
+            if (showGridRowCount)
+                this.LblReturn.Text = (this.DataGridView1.RowCount - 1).ToString();
+        }
+        private void bttonGetAllContDet_Click(object sender, EventArgs e) {
+            GetAllContactDetails(sender, e);
+        }
+        private void bttonGetContDetByID_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = ContactDetails.GetContactDetailByID(GetID(isContDetail: true));
+            ResetTextBoxes();
+        }
+        private void bttonGetContDetByCompID_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = ContactDetails.GetContactDetailByCompanyID(GetID(isCompany: true));
+            ResetTextBoxes();
+        }
+        private void bttonGetContDetByPersonID_Click(object sender, EventArgs e) {
+            this.DataGridView1.DataSource = ContactDetails.GetContactDetailByPersonID(GetID());
+            ResetTextBoxes();
+        }
+        private void bttonAddContDet_Click(object sender, EventArgs e) {
+            this.LblReturn.Text = ContactDetails.AddContactDetails(this.textBoxAddress.Text, this.textBoxPostCode.Text, this.textBoxCity.Text, this.textBoxCountry.Text, this.textBoxLandline.Text, this.textBoxMobile.Text, this.textBoxEmail.Text).ToString();
+            GetAllContactDetails(sender, e, showGridRowCount: false);
+            ResetTextBoxes2();
+        }
+        private void bttonAddContDetNull_Click(object sender, EventArgs e) {
+            this.LblReturn.Text = ContactDetails.AddContactDetailsAllNull().ToString();
+            GetAllContactDetails(sender, e, showGridRowCount: false);
+            //ResetTextBoxes2();
+        }
+        private void bttonDeleteContDet_Click(object sender, EventArgs e) {
+            this.LblReturn.Text = ContactDetails.DeleteContactDetailByID(GetID(isContDetail: true)).ToString();
+            ResetTextBoxes(showGridRowCount: false);
+            GetAllContactDetails(sender, e, showGridRowCount: false);
+        }
+        #endregion//Contact Details
 
         #region "BackgroundWorker"
 
@@ -357,9 +394,7 @@ namespace WebJobUniTest {
         #endregion
 
 
-        public void Main() {
-            Load += TestMainDS_Load;
-        }
+
 
 
     }//class

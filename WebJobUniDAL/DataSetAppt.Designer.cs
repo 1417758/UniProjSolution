@@ -2379,7 +2379,7 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ServicesRow AddServicesRow(string name, string industry, short nature, bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, System.DateTime dateCreated) {
+            public ServicesRow AddServicesRow(string name, string industry, int nature, bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, System.DateTime dateCreated) {
                 ServicesRow rowServicesRow = ((ServicesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2442,7 +2442,7 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columnname);
                 this.columnindustry = new global::System.Data.DataColumn("industry", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnindustry);
-                this.columnnature = new global::System.Data.DataColumn("nature", typeof(short), null, global::System.Data.MappingType.Element);
+                this.columnnature = new global::System.Data.DataColumn("nature", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnature);
                 this.columnisCertifReq = new global::System.Data.DataColumn("isCertifReq", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnisCertifReq);
@@ -4270,10 +4270,10 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short nature {
+            public int nature {
                 get {
                     try {
-                        return ((short)(this[this.tableServices.natureColumn]));
+                        return ((int)(this[this.tableServices.natureColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'nature\' in table \'Services\' is DBNull.", e);
