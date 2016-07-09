@@ -54,12 +54,27 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.AgendaDataTable GetAgendaByID(int agendaID) {
+        public static DataSet1Main.AgendaDataTable GetAgendaByID(int? agendaID) {
             try {
                 return Adapter.GetAgendaByID(agendaID);
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Agenda.GetAgendaByID(agendaID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        /// <summary>
+        /// function which returns an instance of Agenda datatable that has the given contactID
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public static DataSet1Main.AgendaDataTable GetAgendaByStaffID(int? agendaID) {
+            try {
+                return Adapter.GetAgendaByStaffID(agendaID);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Agenda.GetAgendaByStaffID(agendaID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -72,9 +87,11 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int AddAgenda(bool isAppuser, bool syncCalendar) { 
+        public static int? AddAgenda(bool isAppuser, bool syncCalendar) { 
             try {
-                return (int)Adapter.InsertAgenda(isAppuser, syncCalendar);
+                // NB tableAdapter returns decimal value by default.TYPE = object { decimal}
+                dynamic result = Adapter.InsertAgenda(isAppuser, syncCalendar);
+                return (int?)result;
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Agenda.AddAgenda(x2 param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -91,7 +108,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeleteAgendaByID(int agendaID) {
+        public static int DeleteAgendaByID(int? agendaID) {
             try {
                 return (int)Adapter.DeleteAgendaByID(agendaID);
             }
