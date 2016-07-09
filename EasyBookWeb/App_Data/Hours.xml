@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Hours>
+  
+  <Hour>
+    <ID>0</ID>
+    <Name>00:00</Name>
+  </Hour>
+  <Hour>
+    <ID>1</ID>
+    <Name>01:00</Name>
+  </Hour>
+  <Hour>
+    <ID>2</ID>
+    <Name>02:00</Name>
+  </Hour>
+  <Hour>
+    <ID>3</ID>
+    <Name>03:00</Name>
+  </Hour>
+  <Hour>
+    <ID>4</ID>
+    <Name>04:00</Name>
+  </Hour>
+  <Hour>
+    <ID>5</ID>
+    <Name>05:00</Name>
+  </Hour>
+  <Hour>
+    <ID>6</ID>
+    <Name>06:00</Name>
+  </Hour>
+  <Hour>
+    <ID>7</ID>
+    <Name>07:00</Name>
+  </Hour>
+  <Hour>
+    <ID>8</ID>
+    <Name>08:00</Name>
+  </Hour>
+  <Hour>
+    <ID>9</ID>
+    <Name>09:00</Name>
+  </Hour>
+  <Hour>
+    <ID>10</ID>
+    <Name>10:00</Name>
+  </Hour>
+  <Hour>
+    <ID>11</ID>
+    <Name>11:00</Name>
+  </Hour>
+  <Hour>
+    <ID>12</ID>
+    <Name>12:00</Name>
+  </Hour>
+</Hours>

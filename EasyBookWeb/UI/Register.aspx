@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="UI_Register" %>
 
 <%@ Register src="../UserControls/IndAndNatBusUserControl.ascx" tagname="IndAndNatBusUserControl" tagprefix="uc1" %>
+<%@ Register Src="~/UserControls/hours.ascx" TagPrefix="uc1" TagName="hours" %>
+<%@ Register Src="~/UserControls/OpeningHrs.ascx" TagPrefix="uc1" TagName="OpeningHrs" %>
+
+
+
+<%@ Register src="../UserControls/OpeningHrsWeek.ascx" tagname="OpeningHrsWeek" tagprefix="uc2" %>
+
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -33,16 +41,23 @@
         <WizardSteps>
             <asp:CreateUserWizardStep runat="server" />
             <asp:WizardStep runat="server" Title="Wizard Step">
-                test
+                TEST WIZARD STEP
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 <br />
                 test 2
                 <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
             </asp:WizardStep>
-            <asp:TemplatedWizardStep runat="server" Title="Template Step">
+            <asp:TemplatedWizardStep runat="server" Title="SET YOUR BUSINESS HOURS">
                 <ContentTemplate>
-                 <%--   <uc1:IndAndNatBusUserControl ID="IndAndNatBusUserControl1" runat="server" />
-                 --%>   <br />
+                <uc1:IndAndNatBusUserControl ID="IndAndNatBusUserControl1" runat="server" />
+                       <br />
+                    phone No: 
+                    <asp:TextBox ID="TextBox1" runat="server" ToolTip="business phone number"></asp:TextBox>
+                </ContentTemplate>
+            </asp:TemplatedWizardStep>
+            <asp:TemplatedWizardStep runat="server" Title="ADD STAFF">
+                <ContentTemplate>
+                 <uc2:OpeningHrsWeek ID="OpeningHrsWeek1" runat="server" />
                 </ContentTemplate>
             </asp:TemplatedWizardStep>
             <asp:CompleteWizardStep runat="server" />
@@ -51,7 +66,9 @@
     
     <br />
     <br />
-        <uc1:IndAndNatBusUserControl ID="IndAndNatBusUserControl1" runat="server" />
+      <br />
+    <br />
+   
      <br />
     <br />
 </asp:Content>
