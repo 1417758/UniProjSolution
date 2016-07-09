@@ -44,7 +44,7 @@ namespace WebJobUniUtils {
             }
             catch (Exception ex) {
 
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -82,11 +82,11 @@ namespace WebJobUniUtils {
                     return false;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
-        
+
         #region "LINQ"
         /// <summary>
         /// Helper Function For reading XML elements named "Setting" from a settings file. XML to read is in format
@@ -132,7 +132,7 @@ namespace WebJobUniUtils {
                 return char.ToUpper(text[0]) + text.Substring(1);
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -308,10 +308,10 @@ namespace WebJobUniUtils {
             //ie:int result2 = Convert.ToInt32(null);
             //String.IsNullOrEmpty(value) value.Trim().Length == 0; //White - space
             if (!String.IsNullOrEmpty(strgNumb))
-            if (Convert.ToDouble(strgNumb) != 0)
-                return true;
-            else
-                return false;
+                if (Convert.ToDouble(strgNumb) != 0)
+                    return true;
+                else
+                    return false;
             return false;
         }
 
@@ -441,7 +441,7 @@ namespace WebJobUniUtils {
 
         }
         #endregion
-        
+
         #region "Arrays and Lists"
 
         /// <summary>
@@ -540,7 +540,7 @@ namespace WebJobUniUtils {
             }
             catch (Exception ex) {
 
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }*/
@@ -592,12 +592,12 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
 
-        
+
         public static DateTime? GetDatetimeNOW() {
             try {
                 string nowDateSt = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
@@ -610,7 +610,7 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -634,7 +634,7 @@ namespace WebJobUniUtils {
                 }
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -659,7 +659,7 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -725,7 +725,7 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return 0;
             }
         }
@@ -740,7 +740,7 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return 0;
             }
         }
@@ -762,7 +762,7 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return 0;
             }
         }
@@ -796,7 +796,7 @@ namespace WebJobUniUtils {
                 return d + 1;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return 0;
             }
         }
@@ -950,7 +950,7 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -1705,7 +1705,6 @@ namespace WebJobUniUtils {
         /// <param name="sortByComboText"></param>
         /// <remarks></remarks>
         public static void PopulateDDLFromXMLFile(string xmlFile, ref DropDownList comboBox, string text, string value, bool sortByComboText = false) {
-
             try {
                 //Dim txt = "Name"
                 //Dim value = "ID"
@@ -1734,47 +1733,42 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
             }
         }
 
-        public static void PopulateComboFromXMLFile(string xmlFile, ref ComboBox comboBox) {
-
+        /// <summary>
+        /// 9/7 method dedicated to popuating Industries (must review in order to make it generic)
+        /// </summary>
+        /// <param name="xmlFile">refer to "SIC07CHcondensedList.xml" for xml file structure</param>
+        /// <param name="dropDown"></param>
+        public static void PopulateComboFromXMLFile(string xmlFile, ref DropDownList dropDown) {
             try {
-                //Dim txt = "Name"
-                //Dim value = "ID"
+
+                if (!File.Exists(xmlFile)) {
+                    throw new Exception("<h2>Utils.Utils.PopulateComboFromXMLFile()</h2>\n" + xmlFile + " does not exist!");
+                }
 
                 //clear combo items
-                comboBox.Items.Clear();
+                dropDown.Items.Clear();
 
                 DataSet ds = new DataSet();
                 ds.ReadXml(xmlFile);
 
                 //get the dataview of table, which is default table name  
-                DataView dv = ds.Tables[0].DefaultView;
-                DataView dv1 = ds.Tables[1].DefaultView;
-                DataView dv2 = ds.Tables[2].DefaultView;
+                DataView industries = ds.Tables[0].DefaultView;
 
                 //now define datatext field and datavalue field of dropdownlist  
-                comboBox.DataSource = dv;
-                comboBox.DisplayMember = "Name";
+                dropDown.DataTextField = "Domain";
+                dropDown.DataValueField = "UID";
 
-            /*    //----  try 2 ---
-                //select desired items
-                var xmlDocument = XDocument.Load(xmlFile);
-                var indElem = from key in xmlDocument.Descendants("StdIndustClass") select key.Value;
-                var indName = from key in xmlDocument.Descendants("Name") select key.Value.Trim();
-                //var secKeyItems = from key in xmlDocument.Descendants("key2") select key.Value;
-                //var alphaItems = from key in xmlDocument.Descendants("key3") select key.Value;
-
-                //bind each combo to the selected result
-                comboBox.DataSource = indName.ToList();
-                */
-
+                //now bind the dropdownlist to the dataview  
+                dropDown.DataSource = industries;
+                dropDown.DataBind();
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print(ex.ToString());
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.PopulateComboFromXMLFile() </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace + "\n" + ex.Message);
             }
         }
 

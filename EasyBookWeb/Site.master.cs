@@ -40,7 +40,9 @@ public partial class SiteMaster : MasterPage {
     }
 
     protected void master_Page_PreLoad(object sender, EventArgs e) {
-        if (!IsPostBack) {
+       /*07/07 if (!IsPostBack) {
+            //disable cache
+            //R Response.Cache.SetCacheability(HttpCacheability.NoCache);
             // Set Anti-XSRF token
             ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
             ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
@@ -51,7 +53,7 @@ public partial class SiteMaster : MasterPage {
                 || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty)) {
                 throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
             }
-        }
+        }*/
     }
 
     protected void Page_Load(object sender, EventArgs e) {

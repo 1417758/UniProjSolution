@@ -69,6 +69,12 @@
     <Compile Include="Testing.Designer.cs">
       <DependentUpon>Testing.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestMainAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestMainAdd.Designer.cs">
+      <DependentUpon>TestMainAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestMainDS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Testing.resx">
       <DependentUpon>Testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestMainAdd.resx">
+      <DependentUpon>TestMainAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestMainDS.resx">
       <DependentUpon>TestMainDS.cs</DependentUpon>

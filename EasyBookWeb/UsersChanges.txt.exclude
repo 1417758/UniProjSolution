@@ -1,0 +1,19 @@
+
+Session["curUser"] = endUser;
+ViewState["LoginErrors"]
+
+
+this.Context.User.Identity.Name
+
+HttpContext.Current.User.Identity.Name
+
+------------  01/07/016  changes to get membership working-------------------------------------
+1. applicationhost.config (file) c:\program files\iis express\config\templates\personalwebserver (UNDONE)
+
+2.
+
+___________________________________________
+Sources
+https://msdn.microsoft.com/en-us/library/bb397417(v=vs.100).aspx
+
+http://www.4guysfromrolla.com/articles/120705-1.aspx

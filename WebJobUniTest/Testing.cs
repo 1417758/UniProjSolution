@@ -37,7 +37,7 @@ namespace WebJobUniTest {
 
                 int counter = 0;
                 string line;
-             
+
                 //// Read the file and display it line by line.
                 //System.IO.StreamReader file =
                 //    new System.IO.StreamReader(filename);
@@ -104,7 +104,7 @@ namespace WebJobUniTest {
             try {
 
                 // Utils.PopulateComboFromXMLFile(yearXML, ref this.comboBox1);   
-        //populate industries
+                //populate industries
                 PopulateComboWithIndustries(yearXML2);
 
             }
@@ -151,17 +151,16 @@ namespace WebJobUniTest {
         }
 
         public void PopulateComboFromXMLFile(string xmlFile, string parentSelection) {
-
             try {
 
                 //load file
                 var xmlDocument = XDocument.Load(xmlFile);
-                
+
                 //select desired items
                 var indElem = from key in xmlDocument.Descendants("Name") where key.Parent.Parent.Parent.Element("UID").Value == parentSelection select key.Value;
-              
+
                 //DataGridView1.DataSource = indElem.ToString();
-               
+
                 //bind each combo to the selected result
                 this.comboNat.DataSource = indElem.ToList();
 
@@ -239,7 +238,7 @@ namespace WebJobUniTest {
 
                 //load file
                 var xmlDocument = XDocument.Load(yearXML2);
-               string natSelection = "Freshwater aquaculture";
+                string natSelection = "Freshwater aquaculture";
 
                 //select desired items
                 var indElem = from key in xmlDocument.Descendants("ID") where key.Parent.Element("Name").Value == selectedVal select key.Value;

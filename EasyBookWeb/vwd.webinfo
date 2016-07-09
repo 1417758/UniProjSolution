@@ -4,15 +4,7 @@
 -->
 <VisualWebDeveloper>
 
-  <comReferences>
-    <reference Name="interop.txagg" ID="{C44E187D-EEEA-4ACA-B91D-A136C68E90F8}\1.0\0"/>
-    <reference Name="interop.replerrxlib" ID="{B34DE8FF-5E56-47CC-8E70-4C8B13181734}\1.0\0"/>
-    <reference Name="interop.dtslib" ID="{FAD11436-A84C-4720-8D20-B07FE84FDE74}\1.0\0"/>
-    <reference Name="interop.sqlresolver" ID="{10D2E4FA-E665-4B0F-9843-7815C4BAC1D9}\9.0\0"/>
-    <reference Name="interop.sqldistxlib" ID="{CB855588-5682-4058-B79D-8D5ED31B1378}\1.0\0"/>
-    <reference Name="interop.dtspipeline" ID="{6E944EA2-14A0-4997-98FA-3E1995D80BD9}\1.0\0"/>
-    <reference Name="interop.sqlmergxlib" ID="{4EA9F350-4780-4B5D-8A0F-2052C6127E2B}\1.0\0"/>
-  </comReferences>
+  <comReferences/>
 
   <iisExpressSettings windowsAuthentication="disabled" anonymousAuthentication="enabled" useClassicPipelineMode="false"/>
 </VisualWebDeveloper>
