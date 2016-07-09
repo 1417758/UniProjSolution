@@ -90,7 +90,6 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "GET Methods"
-
         /// <summary>
         /// function which returns all instances of Role datatable
         /// </summary>all instances of inputs
@@ -98,10 +97,8 @@ namespace WebJobUniDAL {
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.RolesDataTable GetAllRoles() {
-
             try {
                 return Adapter.GetData();
-
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Roles.GetAllRoles() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -115,8 +112,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.RolesDataTable GetRolesByID(byte roleID) {
-
+        public static DataSet1Main.RolesDataTable GetRoleByID(byte? roleID) {
             try {
                 return Adapter.GetRoleByID(roleID);
             }
@@ -134,9 +130,11 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int AddRole(bool isAdmin, string roleDesc) {
+        public static int? AddRole(bool isAdmin, string roleDesc) {
             try {
-                return (int)Adapter.InsertRole(isAdmin, roleDesc);
+                //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
+                dynamic result = Adapter.InsertRole(isAdmin, roleDesc);
+                return (int?)result;
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Roles.AddRole(x2 param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -165,7 +163,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeleteRoleByID(byte roleID) {
+        public static int DeleteRoleByID(byte? roleID) {
             try {
                 return (int)Adapter.DeleteRoleByID(roleID);
             }
