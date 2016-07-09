@@ -29,5 +29,11 @@ namespace WebJobUniTest {
             Check.Show();
             Hide();
         }
+
+        private void btnMainADDXsd_Click(object sender, EventArgs e) {
+            TestMainAdd Check = new TestMainAdd();
+            Check.Show();
+            Hide();
+        }
     }
 }

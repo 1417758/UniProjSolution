@@ -27,7 +27,7 @@
             this.btnMainXsd = new System.Windows.Forms.Button();
             this.btnApptXsd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnMainADDXsd = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -74,15 +74,16 @@
             this.button1.Text = " ";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnMainADDXsd
             // 
-            this.button2.Location = new System.Drawing.Point(148, 13);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 69);
-            this.button2.TabIndex = 11;
-            this.button2.Text = " ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnMainADDXsd.Location = new System.Drawing.Point(148, 13);
+            this.btnMainADDXsd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMainADDXsd.Name = "btnMainADDXsd";
+            this.btnMainADDXsd.Size = new System.Drawing.Size(109, 69);
+            this.btnMainADDXsd.TabIndex = 11;
+            this.btnMainADDXsd.Text = "Main \r\nAditional Xsd";
+            this.btnMainADDXsd.UseVisualStyleBackColor = true;
+            this.btnMainADDXsd.Click += new System.EventHandler(this.btnMainADDXsd_Click);
             // 
             // button3
             // 
@@ -100,7 +101,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnMainADDXsd);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnMiscTesting);
             this.Controls.Add(this.btnMainXsd);
@@ -117,7 +118,7 @@
         internal System.Windows.Forms.Button btnMainXsd;
         internal System.Windows.Forms.Button btnApptXsd;
         internal System.Windows.Forms.Button button1;
-        internal System.Windows.Forms.Button button2;
+        internal System.Windows.Forms.Button btnMainADDXsd;
         internal System.Windows.Forms.Button button3;
     }
 }
