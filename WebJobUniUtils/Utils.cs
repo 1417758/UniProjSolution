@@ -48,6 +48,7 @@ namespace WebJobUniUtils {
                 return null;
             }
         }
+        #region "Guid"
         public static bool IsGuid(string guidString) {
             bool bResult = false;
             try {
@@ -59,6 +60,36 @@ namespace WebJobUniUtils {
 
             return bResult;
         }
+        /// <summary>
+        /// returns test asp.net User ID corresponding to rachelASPcreated
+        /// </summary>
+        /// <returns></returns>
+        public static Guid? GetASP_UserID() {
+            try {
+                Guid userID = new Guid("9091A8A7-1460-4F22-B95D-81061CF358E7");
+                return userID;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetASP_UserID() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        /// <summary>
+        /// convert string to GUID
+        /// </summary>
+        /// <param name="aspUserID"></param>
+        /// <returns></returns>
+        public static Guid? GetASP_UserID(string aspUserID) {
+            try {
+                Guid userID = new Guid(aspUserID);
+                return userID;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetASP_UserID(aspUserID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 

@@ -8,7 +8,7 @@ using WebJobUniUtils;
 
 namespace WebJobUniDAL {
 
-    public enum RolesEnum : byte {
+    public enum  RolesEnum : byte {
         //NB: this numeration is used on Stored Procedures and Functions (ie: GetAllPersonInherit...) 
         // a change on these will require those to be revised 
         ADMIN = 1,

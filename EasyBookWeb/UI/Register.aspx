@@ -22,7 +22,7 @@
 
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server"
         OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick" OnCreatedUser="CreateUserWizard1_CreatedUser"
-        OnActiveStepChanged="CreateUserWizard1_OnActiveStepChanged"
+        OnActiveStepChanged="CreateUserWizard1_OnActiveStepChanged" OnNextButtonClick="CreateUserWizard1_NextButtonClick"
         BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="1px"
         Font-Names="Verdana" Font-Size="Medium">
         <ContinueButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" ForeColor="#284775" />
@@ -41,7 +41,7 @@
             </asp:WizardStep>
 
             <%--3rd step--%>
-            <asp:WizardStep ID="WizardStep3" runat="server" Title="SET YOUR BUSINESS HOURS">
+            <asp:WizardStep ID="WizardStep3" runat="server" Title="SET YOUR BUSINESS HOURS" OnUnload="WizardStep3_Unload">
                 <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">SET YOUR BUSINESS HOURS</header>
                 <uc2:OpeningHrsWeek ID="OpeningHrsWeek1" runat="server" />
             </asp:WizardStep>
@@ -53,7 +53,7 @@
             </asp:WizardStep>
 
             <%--5th step--%>
-            <asp:WizardStep ID="WizardStep5" runat="server" Title="ADD SERVICE">
+            <asp:WizardStep ID="WizardStep5" runat="server" Title="ADD SERVICE" >
                 <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">ADD SERVICE</header>
                 <uc4:AddServicesUserControl ID="AddServicesUserControl1" runat="server" />
             </asp:WizardStep>

@@ -17,6 +17,7 @@ namespace WebJobUniDAL {
     // abstract class Person {
     public class Person {
 
+        #region "Variables"
         private static PersonTableAdapter _tblPersonTableAdapter = null;
 
         //NB: these are checked on PERSON table insert command
@@ -24,6 +25,8 @@ namespace WebJobUniDAL {
         public static readonly string MS = "Ms";
         public static readonly string MRS = "Mrs";
         //------------------------------------
+        
+        #endregion
 
         #region "Properties"
         protected static PersonTableAdapter Adapter {
@@ -114,7 +117,7 @@ namespace WebJobUniDAL {
 
         #endregion
 
-        #region "ADD Functions"
+        #region "Functions"
         /// <summary>//6
         /// function which insert a record in Person table
         /// </summary>

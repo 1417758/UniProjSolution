@@ -9,7 +9,7 @@ using System.Net.Mail;
 // </copyright>
 //------------------------------------------------------------------------------------------------------
 namespace WebJobUniBLL {
-    class SendMail {
+    public class  SendMail {
         
 
             private SendMail() {

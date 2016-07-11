@@ -9,7 +9,7 @@ using WebJobUniUtils;
 // </copyright>
 //----
 namespace WebJobUniBLL {
-    public class AppSettings {
+    public class   AppSettings {
 
 
         #region "Public Variables"
@@ -39,7 +39,7 @@ namespace WebJobUniBLL {
         #endregion
 
         #region "Functions"
-
+      
         /// <summary>
         /// Return ToString value.
         /// </summary>
@@ -96,7 +96,7 @@ namespace WebJobUniBLL {
             }
 
                 //load exception handling settings 
-                //sdkfj assign to this class 
+                //sdkfj assign to this public class  
                // dynamic exceptions = GetExceptionHandlingSettings(filename);
 
                 //create new instance of AppSettings

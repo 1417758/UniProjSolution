@@ -82,5 +82,13 @@ public partial class UI_Register : System.Web.UI.Page {
     //    }
     //}
 
-  
+
+
+    protected void CreateUserWizard1_NextButtonClick(object sender, WizardNavigationEventArgs e) {
+
+    }
+
+    protected void WizardStep3_Unload(object sender, EventArgs e) {
+
+    }
 }
