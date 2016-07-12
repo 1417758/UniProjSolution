@@ -2,6 +2,12 @@
 
 
 <table>
+     <tr>
+        <td>Business Name</td>
+        <td>
+            <asp:TextBox ID="TextBoxDomain" runat="server" AutoCompleteType="DisplayName"></asp:TextBox>
+        </td>
+    </tr>
     <tr>
         <td>Industry:</td>
         <td>

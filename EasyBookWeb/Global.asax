@@ -49,7 +49,7 @@
             //NB REVIEW THIS 03/7/16
             //ORIG Response.Write("Return to the <a href='Default.aspx'>" + "Default Page</a>\n"); /note here Default=testError.aspx
             Response.Write("Return to <a href=\"GenericError.aspx\">Generic</a>");
-      //WORKING VS    Response.Write("Return to <a href=\"TestError.aspx\">Error Test Default Page</a>");
+            //WORKING VS    Response.Write("Return to <a href=\"TestError.aspx\">Error Test Default Page</a>");
 
             // Log the exception and notify system operators        
             ExceptionUtility.LogException(exc, "Global.asax, Application_Error Method");
@@ -62,7 +62,6 @@
             Server.ClearError();
         }
         catch (Exception ex) {
-            //  Utils.LogException(ex, User.Identity.Name);
             System.Diagnostics.Debug.Print("<h2>Global.asax, Application_Error Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
             // Log the exception and notify system operators
             ExceptionUtility.LogException(ex, "Global.asax, Application_Error Method");
@@ -73,6 +72,25 @@
 
     void Session_Start(object sender, EventArgs e) {
         // Code that runs when a new session is started
+        // Fires when the session is started
+        try {
+
+            //load settings file                    
+            //R  ECWebUtils.GetECSettings();
+
+            //load unit convertor
+            //R   UnitConvertorUtils.loadUnitsConvertorItems(SharedSettings.Settings.UnitsXMLFilename);
+
+            //load installation               
+            WebUtils.GetInstallationObjectFromSession();
+
+        }
+        catch (Exception ex) {
+            System.Diagnostics.Debug.Print("<h2>Global.asax, Application_Error Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(ex, "Global.asax, Session_Start() Method");
+            ExceptionUtility.NotifySystemOps(ex);
+        }
 
     }
 

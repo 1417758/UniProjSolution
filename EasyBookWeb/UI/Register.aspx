@@ -1,24 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="UI_Register" %>
-
-<%@ Register Src="../UserControls/IndAndNatBusUserControl.ascx" TagName="IndAndNatBusUserControl" TagPrefix="uc1" %>
+<%@ Register Src="~/UserControls/IndAndNatBusUserControl.ascx" TagName="IndAndNatBusUserControl" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/hours.ascx" TagPrefix="uc1" TagName="hours" %>
 <%@ Register Src="~/UserControls/OpeningHrs.ascx" TagPrefix="uc1" TagName="OpeningHrs" %>
+<%@ Register Src="~/UserControls/OpeningHrsWeek.ascx" TagName="OpeningHrsWeek" TagPrefix="uc2" %>
+<%@ Register Src="~/UserControls/AddStaffUserControl.ascx" TagName="AddStaffUserControl" TagPrefix="uc3" %>
+<%@ Register Src="~/UserControls/AddServicesUserControl.ascx" TagName="AddServicesUserControl" TagPrefix="uc4" %>
+<%@ Register src="~/UserControls/PersonalDetailsUserControl.ascx" tagname="PersonalDetailsUserControl" tagprefix="uc5" %>
 
-
-
-<%@ Register Src="../UserControls/OpeningHrsWeek.ascx" TagName="OpeningHrsWeek" TagPrefix="uc2" %>
-
-
-
-<%@ Register Src="../UserControls/AddStaffUserControl.ascx" TagName="AddStaffUserControl" TagPrefix="uc3" %>
-
-
-
-<%@ Register Src="../UserControls/AddServicesUserControl.ascx" TagName="AddServicesUserControl" TagPrefix="uc4" %>
-
+<%@ Reference Control="~/UserControls/PersonalDetailsUserControl.ascx" %> 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+
+    
 
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server"
         OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick" OnCreatedUser="CreateUserWizard1_CreatedUser"
@@ -33,6 +27,11 @@
         <WizardSteps>
             <%--1st step--%>
             <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server" />
+
+             <asp:WizardStep ID="WizardStep1" runat="server" Title="SET YOUR PERSONAL DETAILS">
+                <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">ENTER YOUR PERSONAL DETAILS</header>
+                <uc5:PersonalDetailsUserControl ID="PersonalDetailsUserControl1" runat="server" />
+            </asp:WizardStep>
 
             <%--2nd step--%>
             <asp:WizardStep ID="WizardStep2" runat="server" Title="SET YOUR BUSINESS DETAILS">
@@ -68,6 +67,11 @@
         <StepStyle BorderWidth="0px" />
     </asp:CreateUserWizard>
 
+
+    
+
+
+   <br />
 
 </asp:Content>
 

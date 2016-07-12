@@ -22,7 +22,8 @@ namespace WebJobUniUtils {
         public const string NA = "N/A";
 
         public const string NOT_APPLICABLE = "Not Applicable";
-        public static string DEBUG_ERROR = "+ ex.Message \n ex.InnerException \n ex.StackTrace";
+        public static string Session_Installation = "Installation";
+        public static string Session_InstallationTimeStamp = "Installation_TimeStamp";
         public static string DEBUG_ERROR3 = "+ ex3.Message \n ex3.InnerException \n ex3.StackTrace" ;
 
         #region "Settings XML"
@@ -113,6 +114,8 @@ namespace WebJobUniUtils {
         public const string UNIT = "Unit";
    
         public const string START_DATE = "StartDate";
+        public const string START_TIME = "StartTime";
+        public const string END_TIME = "EndDate";
         public const string DATASOURCE = "Datasource";
         public const string USER_TRENDS = "UserTrends";
         public const string SYSTEM_BOOLEAN = "System.Boolean";

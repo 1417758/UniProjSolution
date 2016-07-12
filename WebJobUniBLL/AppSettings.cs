@@ -3,43 +3,125 @@ using System.Text;
 using System.IO;
 using System.Xml.Linq;
 using WebJobUniUtils;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Data;
+using WebJobUniDAL;
 //------------------------------------------------------------------------------------------------------
 // <copyright file="AppSettings.vb" company="">
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //----
 namespace WebJobUniBLL {
-    public class   AppSettings {
+    public class AppSettings {
 
 
         #region "Public Variables"
-
+        public static XmlSerializer oXS = new XmlSerializer(typeof(Installation));
 
         public static AppSettings Settings;
         //Client
         public Guid SystemUserID { get; set; }
-        public string ApplicationName{ get; set; }
-        public string Client{ get; set; }
-        public string ClientAsset{ get; set; }
-        public string ClientLogo{ get; set; }
-        public string ClientUnit{ get; set; }
+        public string ApplicationName { get; set; }
+        public string Client { get; set; }
+        public string ClientAsset { get; set; }
+        public string ClientLogo { get; set; }
+        public string ClientUnit { get; set; }
 
-        public string Currency{ get; set; }
+        public string Currency { get; set; }
         //used on DEMOs only (per user)
-        public int TotalBookingsAllowed{ get; set; }
-        public int NumberOfLogins{ get; set; }
-        public string ApplicationsXML{ get; set; }
-        public string TagMatchingXml{ get; set; }
-        public string UnitsXMLFilename{ get; set; }
+        public int TotalBookingsAllowed { get; set; }
+        public int NumberOfLogins { get; set; }
+        public string ApplicationsXML { get; set; }
+        public string TagMatchingXml { get; set; }
+        public string UnitsXMLFilename { get; set; }
 
-        public string InstallationDemoXML{ get; set; }
+        public string InstallationDemoXML { get; set; }
 
-        public string SettingsXML{ get; set; }
+        public string SettingsXML { get; set; }
 
         #endregion
 
         #region "Functions"
-      
+        public static Guid? GetUserIDByUserName(string userName) {
+            try {                
+                return AspNetUser.GetUserIDByUserName(userName);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetUserIDByUserName() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        /// <summary>
+        /// Get data from SQL to populate installation object.
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="doc">Serialized installation object</param>
+        /// <param name="dt">data table passed (empty) will be populated with tags being read</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static Installation GetPopulatedInstallationObject(System.DateTime d, ref XmlDocument doc, ref DataTable dt) {
+            try {
+                /*   InstallationXML.GetPopulatedInstallationObject(d, doc, dt, SharedSettings.Settings.InputsXML);
+
+                   //recreate installation object from doc, the doc nodes have been modified with Tag values
+                   //basically deserialize
+                   dynamic i = InstallationBLL.GetFromXMLDocument(doc);
+
+                   //TODO: set timestamp to correct one...it is the MAX of all timestamps retrieved,
+                   //not necessarily what is queried.
+                   i.TimeStamp = d;
+
+                   return i;*/
+                //R
+                return null;
+            }
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetPopulatedInstallationObject() EXCEPTION </h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Convert an Installation object into XMLDocument.
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static XmlDocument GetAsXMLDocument(ref Installation i) {
+            try {
+                //Dim t As New TimerUtil("5 GetAsXMLDocument (returns an XMLDocument from Installation)")
+                //t.startTimer()
+                //working ~20sec
+                XmlDocument doc = new XmlDocument();
+                MemoryStream stream = new MemoryStream();
+                AppSettings.oXS.Serialize(stream, i);
+                stream.Position = 0;
+                doc.Load(stream);
+                stream.Flush();
+                stream.Close();
+                stream = null;
+
+                //  t.endTimer()
+                //Debug.Print("5 Created XML Document length: " & vbTab & doc.InnerXml.Length)
+                //Debug.Print(t.outputDetails())
+
+
+                //Dim f As New StreamWriter("C:\GetAsXMLDocument5.xml", FileMode.Create)
+                //f.Write(doc.InnerXml)
+                //f.Flush()
+                //f.Close()
+
+                return doc;
+
+            }
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>AppSettings.vb: EXCEPTION in GetAsXMLDocument:</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Return ToString value.
         /// </summary>
@@ -66,18 +148,18 @@ namespace WebJobUniBLL {
                 //used on DEMOs only ("per user)
                 _with1.Append("TotalPeriodAllowed " + "\t" + TotalBookingsAllowed.ToString() + Environment.NewLine);
                 _with1.Append("NumberOfLogins " + "\t" + NumberOfLogins.ToString() + Environment.NewLine);
- 
-                 _with1.Append("UnitsXMLFilename " + "\t" + UnitsXMLFilename + Environment.NewLine);
+
+                _with1.Append("UnitsXMLFilename " + "\t" + UnitsXMLFilename + Environment.NewLine);
 
                 _with1.Append("ApplicationXML " + "\t" + ApplicationsXML + Environment.NewLine);
 
-               _with1.Append("InstallationDemoXML" + "\t" + InstallationDemoXML + Environment.NewLine);
+                _with1.Append("InstallationDemoXML" + "\t" + InstallationDemoXML + Environment.NewLine);
 
                 return _with1.ToString();
 
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Error in BLL.sendMail.SendDemoSummary \n" + XMLConstants.DEBUG_ERROR);
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>Error in BLL.AppSettings.ToString() </h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
                 return "Error in creating ToString of AppSettings";
             }
         }
@@ -91,13 +173,13 @@ namespace WebJobUniBLL {
         public static AppSettings GetAppSettings(string filename) {
             try {
                 if (!File.Exists(filename)) {
-                    System.Diagnostics.Debug.Print("AppSettings.vb: EXCEPTION in GetAppSettings: FileNotFoundException: " + filename);
-                    throw new FileNotFoundException("Exception in AppSettings.vb GetAppSettings. The file " + filename + " cannot be found /  accessed");
-            }
+                    System.Diagnostics.Debug.Print("BLL.AppSettings.GetAppSettings(): EXCEPTION in GetAppSettings: FileNotFoundException: " + filename);
+                    throw new FileNotFoundException("Exception in BLL.AppSettings.GetAppSettings()" + filename + " cannot be found /  accessed");
+                }
 
                 //load exception handling settings 
                 //sdkfj assign to this public class  
-               // dynamic exceptions = GetExceptionHandlingSettings(filename);
+                // dynamic exceptions = GetExceptionHandlingSettings(filename);
 
                 //create new instance of AppSettings
                 AppSettings sharedSets = new AppSettings();
@@ -145,8 +227,8 @@ namespace WebJobUniBLL {
                 return sharedSets;
 
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("AppSettings.vb: EXCEPTION in GetAppSettings: " + XMLConstants.DEBUG_ERROR);
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>AppSettings.vb: EXCEPTION in GetAppSettings: </h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
                 return null;
             }
         }

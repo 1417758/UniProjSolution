@@ -7,7 +7,7 @@ using WebJobUniDAL.DataSet1MainTableAdapters;
 using WebJobUniUtils;
 
 //------------------------------------------------------------------------------------------------------
-// <copyright file="Exceptions.vb" company="">
+// <copyright file="Agenda.cs" company="">
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ namespace WebJobUniDAL {
         }
         #endregion
 
-        #region "GET Methods"
+        #region "GET Functions"
 
         /// <summary>
         /// function which returns all instances of Agenda datatable

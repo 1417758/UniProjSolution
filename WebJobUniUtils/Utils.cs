@@ -139,7 +139,7 @@ namespace WebJobUniUtils {
                 }
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Utils.Utils.GetSettingValueUsingLINQ() \n" + XMLConstants.DEBUG_ERROR);
+                System.Diagnostics.Debug.Print("Utils.Utils.GetSettingValueUsingLINQ() \n" + ex.Message);
                 return null;
             }
         }

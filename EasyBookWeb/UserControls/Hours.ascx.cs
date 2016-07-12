@@ -33,7 +33,7 @@ public partial class UserControls_WebUserControl : System.Web.UI.UserControl {
     #region "Set Methods"
     protected void PolulateDropDown() {
         try {
-            string hrsXML = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Hours.xml");
+            string hrsXML = SessionVariables.HourXml;
             //
             WebJobUniUtils.Utils.PopulateDDLFromXMLFile(xmlFile: hrsXML, comboBox: ref this.DropDownListHrs, text: "Name", value: "ID", sortByComboText: false);
 

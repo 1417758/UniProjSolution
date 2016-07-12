@@ -20,7 +20,7 @@ namespace WebJobUniTest {
                
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Test.TestMainDS.TestMainDS_Load() \n" + XMLConstants.DEBUG_ERROR);
+                System.Diagnostics.Debug.Print("Test.TestMainDS.TestMainDS_Load() \n" + ex.Message);
             }
         }
         private void btnStartup_Click(object sender, EventArgs e) {
