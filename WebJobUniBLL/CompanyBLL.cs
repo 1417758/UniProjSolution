@@ -30,7 +30,8 @@ namespace WebJobUniBLL {
 
         //default constructor
         public CompanyBLL() {
-
+            this.businessAddress = new ContactDetailsBLL();
+            this.mainClientContact = new ClientBLL();
         }
 
         public CompanyBLL(string _domain, string _industry, int _natOfBusiness, string _regNumb, DateTime _dateIncorporated, string _url, bool _isVATreg, string _VATnumb, string _notes) {

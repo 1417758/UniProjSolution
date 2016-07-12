@@ -1,13 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="UI_Register" %>
 <%@ Register Src="~/UserControls/IndAndNatBusUserControl.ascx" TagName="IndAndNatBusUserControl" TagPrefix="uc1" %>
-<%@ Register Src="~/UserControls/hours.ascx" TagPrefix="uc1" TagName="hours" %>
-<%@ Register Src="~/UserControls/OpeningHrs.ascx" TagPrefix="uc1" TagName="OpeningHrs" %>
 <%@ Register Src="~/UserControls/OpeningHrsWeek.ascx" TagName="OpeningHrsWeek" TagPrefix="uc2" %>
 <%@ Register Src="~/UserControls/AddStaffUserControl.ascx" TagName="AddStaffUserControl" TagPrefix="uc3" %>
 <%@ Register Src="~/UserControls/AddServicesUserControl.ascx" TagName="AddServicesUserControl" TagPrefix="uc4" %>
 <%@ Register src="~/UserControls/PersonalDetailsUserControl.ascx" tagname="PersonalDetailsUserControl" tagprefix="uc5" %>
 
-<%@ Reference Control="~/UserControls/PersonalDetailsUserControl.ascx" %> 
+<%@ Reference Control="~/UserControls/AddServicesUserControl.ascx" %> 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
@@ -16,9 +14,9 @@
 
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server"
         OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick" OnCreatedUser="CreateUserWizard1_CreatedUser"
-        OnActiveStepChanged="CreateUserWizard1_OnActiveStepChanged" OnNextButtonClick="CreateUserWizard1_NextButtonClick"
+        OnActiveStepChanged="CreateUserWizard1_OnActiveStepChanged" 
         BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="1px"
-        Font-Names="Verdana" Font-Size="Medium">
+        Font-Names="Verdana" Font-Size="Medium" DuplicateUserNameErrorMessage="User name already in use. Please enter a different user name.">
         <ContinueButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" ForeColor="#284775" />
         <CreateUserButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" ForeColor="#284775" />
         <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -40,7 +38,7 @@
             </asp:WizardStep>
 
             <%--3rd step--%>
-            <asp:WizardStep ID="WizardStep3" runat="server" Title="SET YOUR BUSINESS HOURS" OnUnload="WizardStep3_Unload">
+            <asp:WizardStep ID="WizardStep3" runat="server" Title="SET YOUR BUSINESS HOURS">
                 <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">SET YOUR BUSINESS HOURS</header>
                 <uc2:OpeningHrsWeek ID="OpeningHrsWeek1" runat="server" />
             </asp:WizardStep>

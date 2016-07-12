@@ -26,10 +26,17 @@ public partial class UI_Register : System.Web.UI.Page {
     private List<string> staffLastName;//lastName,
     private List<string> staffEmail;//emails
     ///services
-    private List<string> serviceName;//title,
-    private List<string> serviceDuration;//firstName, 
-    private List<string> servicePrice;//lastName,
-    private List<string> serviceStaff;//emails
+    private List<string> serviceName;
+    private List<string> serviceDuration;
+    private List<string> servicePrice;
+    private List<string> serviceStaff;
+    /* //usercontrols
+     ASP.usercontrols_personaldetailsusercontrol_ascx personalDetControl;
+     ASP.usercontrols_indandnatbususercontrol_ascx businessDetControl;
+     ASP.usercontrols_openinghrsweek_ascx businessHrsControl;
+     ASP.usercontrols_addstaffusercontrol_ascx staffControl;
+     ASP.usercontrols_addservicesusercontrol_ascx servicesControl;
+     */
 
 
     #region "Event Handlers"
@@ -58,6 +65,9 @@ public partial class UI_Register : System.Web.UI.Page {
     }
 
     protected void CreateUserWizard1_ContinueButtonClick(object sender, EventArgs e) {
+        //add to installation obj and session
+        PolulateInstallation();
+        //redirect
         Response.Redirect("MyLogin.aspx");
     }
 
@@ -72,39 +82,40 @@ public partial class UI_Register : System.Web.UI.Page {
               dynamic labT = CreateUserWizard1.FindControl("HeaderTemplate").FindControl("lblHeader");
               title = (Label)labT;*/
 
-
-            //get Installation from session
-           // Installation i = WebUtils.GetInstallationObjectFromSession();
-            ASP.usercontrols_personaldetailsusercontrol_ascx personal;
-            string title;
-            ASP.usercontrols_personaldetailsusercontrol_ascx personalControl = (ASP.usercontrols_personaldetailsusercontrol_ascx)this.FindControl("PersonalDetailsUserControl1");
-            personal = (ASP.usercontrols_personaldetailsusercontrol_ascx)CreateUserWizard1.FindControl("PersonalDetailsUserControl1");
-
             //step1 - Personal Details
-            if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep2)) {
-                personalControl = (ASP.usercontrols_personaldetailsusercontrol_ascx)this.CreateUserWizard1.Controls[0].FindControl("PersonalDetailsUserControl1");
-                title = personal.GetTitle();
-                title = personalControl.GetTitle();
-                personalDetails = personalControl.GetPersonalDetails();
-
+            if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep2))
+                //get personal details
+                personalDetails = PersonalDetailsUserControl1.GetPersonalDetails();
+            //step2
+            if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep3))
+                //get company details
+                businessDetails = IndAndNatBusUserControl1.GetBusinessDetails();
+            //step3
+            if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep4)) {
+                //get business hours
+                openHrs = OpeningHrsWeek1.GetOpeningHourInt();
+                closeHrs = OpeningHrsWeek1.GetClosingHourInt();
+                openDays = OpeningHrsWeek1.GetOpeningDays();
             }
-            /*
-                        //step2
-                        if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep3))
-                            title.Text = this.WizardStep2.Title;
-                        title.Text = "RACHELS";
-                        //step3
-                        if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep4))
-                            title.Text = this.WizardStep3.Title;
-                        //step4
-                        if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep5))
-                            title.Text = this.WizardStep4.Title;
-                        //step5
-                        if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(CompleteWizardStep1))
-                            title.Text = this.WizardStep5.Title;
-            */
-            //add isntallation back to session
-            //WebUtils.PutInstallationObjectinSession(i);
+            //step4
+            if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(this.WizardStep5)) {
+                //get Employees added
+                staffTitles = AddStaffUserControl1.GetStaffDetails(isTitles: true);//title,
+                staff1stName = AddStaffUserControl1.GetStaffDetails();//firstName, 
+                staffLastName = AddStaffUserControl1.GetStaffDetails(isLastNames: true);//lastName,
+                staffEmail = AddStaffUserControl1.GetStaffDetails(isEmails: true);//emails
+                //populate next slide staff dropdown
+                AddServicesUserControl1.PopulateStaff(staff1stName);
+            }
+            //step5
+            if (CreateUserWizard1.ActiveStepIndex == CreateUserWizard1.WizardSteps.IndexOf(CompleteWizardStep1)) {
+                //get services added
+                serviceName = AddServicesUserControl1.GetServiceDetails();
+                serviceDuration = AddServicesUserControl1.GetServiceDetails(isServDuration:true);
+                servicePrice = AddServicesUserControl1.GetServiceDetails(isServPrice: true);
+                serviceStaff = AddServicesUserControl1.GetServiceDetails(isServStaff: true);
+            }
+   
 
         }
         catch (Exception ex) {
@@ -118,26 +129,23 @@ public partial class UI_Register : System.Web.UI.Page {
     #endregion
 
     #region "Methods"
+    private void PolulateInstallation() {
+        try {
+            //get isntallation from session
+            Installation i = WebUtils.GetInstallationObjectFromSession();
+
+            //add isntallation back to session
+            //WebUtils.PutInstallationObjectinSession(i);
+        }
+        catch (Exception ex) {
+            System.Diagnostics.Debug.Print("<h2>Register.aspx, PolulateInstallation()</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(ex, "Register.aspx, PolulateInstallation()");
+            ExceptionUtility.NotifySystemOps(ex);
+        }
+    }
     #endregion
 
 
 
-
-
-    //protected void CreateUserWizard1_DataBinding(object sender, EventArgs e) {
-    //    RepeaterItem item = (RepeaterItem)e.Item;
-    //    if (item.ItemType == ListItemType.Header) {
-    //        item.FindControl("control"); //goes here
-    //    }
-    //}
-
-
-
-    protected void CreateUserWizard1_NextButtonClick(object sender, WizardNavigationEventArgs e) {
-
-    }
-
-    protected void WizardStep3_Unload(object sender, EventArgs e) {
-
-    }
 }

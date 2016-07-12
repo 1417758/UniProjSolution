@@ -20,6 +20,7 @@ namespace WebJobUniBLL {
 
         //default constructor
         public ClientBLL() {
+            this.contactDetail = new ContactDetailsBLL();
         }
 
         public ClientBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, byte _role, Guid _aspUserID) {

@@ -1,0 +1,28 @@
+********** 12/07/2016 07:55:18 **********
+Inner Exception Type: System.Web.HttpException
+Inner Exception: The file '/Error/HttpErrorPage.aspx' does not exist.
+Inner Source: System.Web
+Inner Stack Trace: 
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   at System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   at System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+Exception Type: System.Web.HttpException
+Exception: Error executing child request for HttpErrorPage.aspx.
+Source: Global.asax, Application_Error Method
+Stack Trace: 
+   at System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtility.Transfer(String path, Boolean preserveForm)
+   at System.Web.HttpServerUtility.Transfer(String path)
+   at ASP.global_asax.Application_Error(Object sender, EventArgs e) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\global.asax:line 39
+
+********** 12/07/2016 07:55:18 **********
+Exception Type: System.Web.HttpException
+Exception: HTTP 404
+Source: Caught in Http404ErrorPage
+Stack Trace: 

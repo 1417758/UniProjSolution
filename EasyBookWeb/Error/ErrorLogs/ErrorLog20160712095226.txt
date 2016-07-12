@@ -1,0 +1,30 @@
+********** 12/07/2016 09:52:26 **********
+Exception Type: System.InvalidCastException
+Exception: At least one element in the source array could not be cast down to the destination array type.
+Source: AddServicesUserControl.ascx, GetServiceDetails()
+Stack Trace: 
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Collections.ArrayList.CopyTo(Array array, Int32 arrayIndex)
+   at System.Web.UI.WebControls.ListItemCollection.CopyTo(Array array, Int32 index)
+   at UserControls_AddServicesUserControl.GetServiceDetails(Boolean isServNames, Boolean isServDuration, Boolean isServPrice, Boolean isServStaff) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UserControls\AddServicesUserControl.ascx.cs:line 83
+
+********** 12/07/2016 09:52:26 **********
+Exception Type: System.InvalidCastException
+Exception: At least one element in the source array could not be cast down to the destination array type.
+Source: AddServicesUserControl.ascx, GetServiceDetails()
+Stack Trace: 
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Collections.ArrayList.CopyTo(Array array, Int32 arrayIndex)
+   at System.Web.UI.WebControls.ListItemCollection.CopyTo(Array array, Int32 index)
+   at UserControls_AddServicesUserControl.GetServiceDetails(Boolean isServNames, Boolean isServDuration, Boolean isServPrice, Boolean isServStaff) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UserControls\AddServicesUserControl.ascx.cs:line 83
+
+********** 12/07/2016 09:52:26 **********
+Exception Type: System.InvalidCastException
+Exception: At least one element in the source array could not be cast down to the destination array type.
+Source: AddServicesUserControl.ascx, GetServiceDetails()
+Stack Trace: 
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Collections.ArrayList.CopyTo(Array array, Int32 arrayIndex)
+   at System.Web.UI.WebControls.ListItemCollection.CopyTo(Array array, Int32 index)
+   at UserControls_AddServicesUserControl.GetServiceDetails(Boolean isServNames, Boolean isServDuration, Boolean isServPrice, Boolean isServStaff) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UserControls\AddServicesUserControl.ascx.cs:line 83
+

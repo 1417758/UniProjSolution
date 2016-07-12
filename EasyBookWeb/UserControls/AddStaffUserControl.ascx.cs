@@ -10,18 +10,20 @@ public partial class UserControls_AddStaffUserControl : System.Web.UI.UserContro
 
     #region "Event Handlers"
     protected void Page_Load(object sender, EventArgs e) {
+        if (!IsPostBack)
+            PolulateDropDownTitle();
 
     }
 
     protected void ButtonAdd_Click(object sender, EventArgs e) {
         //invoke add method
         AddStaff();
-        PolulateDropDownTitle();
+        
     }
     #endregion
 
     #region "Get Functions"
-    public List<string> GetStaffDetails(bool isTitles = false, bool is1stNames = true, bool isLastNames = true, bool isEmails = false) {
+    public List<string> GetStaffDetails(bool isTitles = false, bool is1stNames = true, bool isLastNames = false, bool isEmails = false) {
         try {
 
             BulletedList selected = new BulletedList();
@@ -35,15 +37,20 @@ public partial class UserControls_AddStaffUserControl : System.Web.UI.UserContro
             if (isTitles)
                 selected = this.BulletedListTitle;
 
-            //get names data
-            string[] names = new string[selected.Items.Count];
-
-
+            //get data
+            ListItem[] servDescArray = new ListItem[selected.Items.Count];
             //copy data to array
-            selected.Items.CopyTo(names, 0);
+            selected.Items.CopyTo(servDescArray, 0);
+  
+            List<string> servDesc = new List<string>();
+            //loop through array
+            foreach (ListItem liItem in servDescArray) {
+                //add to list
+                servDesc.Add(liItem.Text);
+            }
 
             //return
-            return names.ToList();
+            return servDesc;
 
         }
         catch (Exception exc) {
@@ -74,7 +81,7 @@ public partial class UserControls_AddStaffUserControl : System.Web.UI.UserContro
     protected void AddStaff() {
         try {
             //get data
-            string staffTitle = this.DropDownListTitle.SelectedItem.Value;
+            string staffTitle = this.DropDownListTitle.SelectedItem.Text;
             string staff1stName = this.TextBox1stName.Text;
             string staffLastName = this.TextBoxLastName.Text;
             string staffEmail = this.TextBoxEmail.Text;

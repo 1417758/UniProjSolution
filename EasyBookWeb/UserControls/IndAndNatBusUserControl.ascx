@@ -5,7 +5,7 @@
      <tr>
         <td>Business Name</td>
         <td>
-            <asp:TextBox ID="TextBoxDomain" runat="server" AutoCompleteType="DisplayName"></asp:TextBox>
+            <asp:TextBox ID="TextBoxDomain" runat="server" placeholder="Company Name"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -22,7 +22,7 @@
     </tr>
     <tr>
         <td>Business Phone No:</td>
-        <td><asp:TextBox ID="TextBoxPhone" runat="server" AutoCompleteType="BusinessPhone"></asp:TextBox></td>
+        <td><asp:TextBox ID="TextBoxPhone" runat="server" placeholder="Business Phone Number"></asp:TextBox></td>
     </tr>
 
 </table>

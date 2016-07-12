@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebJobUniUtils;
 
 public partial class UserControls_OpeningHrsWeek : System.Web.UI.UserControl {
     protected void Page_Load(object sender, EventArgs e) {
@@ -13,6 +14,37 @@ public partial class UserControls_OpeningHrsWeek : System.Web.UI.UserControl {
     }
 
     #region "Get Functions"
+    public List<bool> GetOpeningDays() {
+        try {
+            List<bool> openingDays = new List<bool>();
+            //loop through page all controls
+            foreach (Control ctrl in this.Controls) {
+                if (ctrl is RadioButtonList) {
+                    //select a radioButtonList
+                    RadioButtonList rbl = (RadioButtonList)ctrl;
+                    //loop through items of the current radioButtonList
+                    for (int i = 0; i < rbl.Items.Count; i++) {
+                        if (rbl.Items[i].Selected) {
+                            //get the text value of the selected radio button
+                            //System.Diagnostics.Debug.Print(rbl.Items[i].Text);
+                            //System.Diagnostics.Debug.Print(rbl.Items[i].Value);
+                            //add to return list
+                            openingDays.Add(Utils.GetBooleanFromString(rbl.Items[i].Value));
+                        }//end inner if
+                    }//end forloop
+                }//endif
+            }//end foreach
+            return openingDays;
+        }
+        catch (Exception exc) {
+            System.Diagnostics.Debug.Print("<h2>AddServicesUserControl.ascx, AddService()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(exc, "AddServicesUserControl.ascx, AddService()");
+            ExceptionUtility.NotifySystemOps(exc);
+            return null;
+        }
+
+    }
     public List<int> GetOpeningHourInt() {
         List<int> openingHr = new List<int>();
         openingHr.Add(this.OpeningHrsMonday.GetOpeningHourInt());

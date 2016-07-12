@@ -36,7 +36,8 @@
                     return;
 
                 //Redirect HTTP errors to HttpError page
-                Server.Transfer("HttpError.aspx");
+                Server.Transfer("HttpErrorPage.aspx");
+               // Server.Transfer(SessionVariables.HttpErrorPage);
                 //same/alternative of above// HttpContext.Current.RewritePath("~/Error/HttpErrorPage.aspx");
             }
 

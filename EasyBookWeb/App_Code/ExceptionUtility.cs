@@ -10,15 +10,20 @@ namespace EasyBookWeb {
         // Log an Exception 
         public static void LogException(Exception exc, string source) {
             try {
+                //get saving location
+                string errorFolder = SessionVariables.ErrorFolder;
+                //create folder if it doesnt exist
+                if (!Directory.Exists(errorFolder)) {
+                    Directory.CreateDirectory(errorFolder);
+                }
                 // Include enterprise logic for logging exceptions 
                 // Get the absolute path to the log file 
-                string logFile = "ErrorLog" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".txt";
-                logFile = HttpContext.Current.Server.MapPath(logFile);
-
+                string errorLogFileName = "ErrorLog" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".txt";
+                string logFile = errorFolder + errorLogFileName;
 
                 if (logFile.Contains("MemberShip and RoleProvider Demo"))
                     //do nothing
-                    System.Diagnostics.Debug.Print("MemberShip and RoleProvider Demo ERROR, web.config I think.");
+                    System.Diagnostics.Debug.Print("<h2>MemberShip and RoleProvider Demo ERROR, web.config I think.</h2>");
                 else {
 
                     // Open the log file for append and write the log

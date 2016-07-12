@@ -2,7 +2,7 @@
 <%@ Register Src="~/UserControls/OpeningHrs.ascx" TagPrefix="uc1" TagName="OpeningHrs" %>
 
 
-<table style="padding:15px;">
+<table>
     <tr>
         <td>Monday</td>
         <td>

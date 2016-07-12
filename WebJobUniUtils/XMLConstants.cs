@@ -41,6 +41,7 @@ namespace WebJobUniUtils {
         public const string DEMO = "Demo";
 
         public const string ASSET = "Asset";
+        public const string ON = "ON";
         public const string OFF = "OFF";
 
    	#endregion

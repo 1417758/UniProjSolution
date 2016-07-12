@@ -8,6 +8,13 @@ using WebJobUniDAL;
 namespace WebJobUniBLL {
     public class AgendaBLL :Agenda{
 
+        public bool isAdmin { get; set; }
+        public bool syncCalendar { get; set; }
+
+        #region "Constructor"
+        public AgendaBLL() { }
+
+        #endregion
 
 
     }//class

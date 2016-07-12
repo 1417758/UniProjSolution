@@ -15,9 +15,9 @@
         <td></td>
     </tr>
       <tr>
-        <td><asp:TextBox ID="TextBoxService" runat="server"></asp:TextBox></td>
-        <td><asp:TextBox ID="TextBoxDuration" runat="server"></asp:TextBox></td>
-         <td><asp:TextBox ID="TextBoxPrice" runat="server"></asp:TextBox></td>
+        <td><asp:TextBox ID="TextBoxService" runat="server" placeholder="Service"></asp:TextBox></td>
+        <td><asp:TextBox ID="TextBoxDuration" runat="server" placeholder="Duration"></asp:TextBox></td>
+         <td><asp:TextBox ID="TextBoxPrice" runat="server" placeholder="Price"></asp:TextBox></td>
         <td><asp:DropDownList ID="DropDownListStaff" runat="server"></asp:DropDownList></td>
         <td><asp:Button ID="ButtonAdd" runat="server" Text="Add" OnClick="ButtonAdd_Click" /></td>
     </tr>

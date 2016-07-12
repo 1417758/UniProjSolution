@@ -96,25 +96,39 @@ namespace WebJobUniUtils {
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static bool? GetBooleanFromString(string s) {
+        public static bool GetBooleanFromString(string s) {
             try {
-                if (s == null)
+                if (string.IsNullOrEmpty(s))
                     return false;
 
-                else if (string.IsNullOrEmpty(s))
-                    return false;
-
-                else if (s.ToLower() == "true")
+                else if (s.ToLower() == "true" || s == "1" || s == XMLConstants.ON)
                     return true;
 
-                else if (s.ToLower() == "false")
+                else if (s.ToLower() == "false" || s == "0" || s == XMLConstants.OFF)
                     return false;
                 else
                     return false;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-                return null;
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.GetBooleanFromString(string) </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+        public static bool GetBooleanFromInt(int intBool) {
+            try {
+                //if (intBool == null)
+                //    return false;
+                 if (intBool == 0)
+                    return false;
+
+                else if (intBool == 1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.GetBooleanFromString(int) </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return false;
             }
         }
 
