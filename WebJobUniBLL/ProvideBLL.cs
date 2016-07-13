@@ -7,5 +7,13 @@ using WebJobUniDAL;
 
 namespace WebJobUniBLL {
     public class  ProvideBLL : Provide {
+
+        public int ServiceID { get; set; }
+        public int StaffID { get; set; }
+
+        #region "Constructor"
+        public ProvideBLL() { }
+
+        #endregion
     }
 }

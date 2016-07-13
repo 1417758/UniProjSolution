@@ -16,8 +16,8 @@ namespace EasyBookWeb {
 
         public static void PutInstallationObjectinSession(Installation i) {
             try {
+                if (i != null)
                 HttpContext.Current.Session[XMLConstants.Session_Installation] = i;
-
             }
             catch (Exception exc) {
                 System.Diagnostics.Debug.Print("<h2>WebUtils, PutInstallationObjectinSession()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);

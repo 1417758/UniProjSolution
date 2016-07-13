@@ -5,17 +5,13 @@
 <%@ Register Src="~/UserControls/AddServicesUserControl.ascx" TagName="AddServicesUserControl" TagPrefix="uc4" %>
 <%@ Register src="~/UserControls/PersonalDetailsUserControl.ascx" tagname="PersonalDetailsUserControl" tagprefix="uc5" %>
 
-<%@ Reference Control="~/UserControls/AddServicesUserControl.ascx" %> 
-
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
-    
-
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server"
         OnContinueButtonClick="CreateUserWizard1_ContinueButtonClick" OnCreatedUser="CreateUserWizard1_CreatedUser"
-        OnActiveStepChanged="CreateUserWizard1_OnActiveStepChanged" 
-        BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="1px"
+        OnActiveStepChanged="CreateUserWizard1_OnActiveStepChanged" OnNextButtonClick="CreateUserWizard1_NextButtonClick"
+        BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="1px" OnFinishButtonClick="CreateUserWizard1_FinishButtonClick"
         Font-Names="Verdana" Font-Size="Medium" DuplicateUserNameErrorMessage="User name already in use. Please enter a different user name.">
         <ContinueButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" ForeColor="#284775" />
         <CreateUserButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" ForeColor="#284775" />
@@ -32,7 +28,7 @@
             </asp:WizardStep>
 
             <%--2nd step--%>
-            <asp:WizardStep ID="WizardStep2" runat="server" Title="SET YOUR BUSINESS DETAILS">
+            <asp:WizardStep ID="WizardStep2" runat="server" Title="SET YOUR BUSINESS DETAILS" ValidateRequestMode="Enabled">
                 <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">SET YOUR BUSINESS DETAILS</header>
                 <uc1:IndAndNatBusUserControl ID="IndAndNatBusUserControl1" runat="server" />
             </asp:WizardStep>
@@ -47,12 +43,14 @@
             <asp:WizardStep ID="WizardStep4" runat="server" Title="ADD STAFF">
                 <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">ADD STAFF</header>
                 <uc3:AddStaffUserControl ID="AddStaffUserControl1" runat="server" />
+                <asp:Label ID="lblWarningStaff" runat="server" Text="" ForeColor="Red" Height="20px"></asp:Label>
             </asp:WizardStep>
 
             <%--5th step--%>
             <asp:WizardStep ID="WizardStep5" runat="server" Title="ADD SERVICE" >
                 <header style="background-color: #5D7B9D; border-style: Solid; font-weight: bold; font-size: 0.9em; color: White; text-align: center;">ADD SERVICE</header>
                 <uc4:AddServicesUserControl ID="AddServicesUserControl1" runat="server" />
+                <asp:Label ID="lblWarningService" runat="server" Text="" ForeColor="Red" Height="20px"></asp:Label>
             </asp:WizardStep>
 
             <%--register confirmation--%>
@@ -64,9 +62,6 @@
         <SideBarStyle BackColor="#5D7B9D" Font-Size="0.9em" VerticalAlign="Top" BorderWidth="0px" />
         <StepStyle BorderWidth="0px" />
     </asp:CreateUserWizard>
-
-
-    
 
 
    <br />

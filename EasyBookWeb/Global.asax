@@ -3,7 +3,6 @@
 <%@ Import Namespace="System.Web.Optimization" %>
 <%@ Import Namespace="System.Web.Routing" %>
 <%@ Import Namespace="System.Web.Profile" %>
-
 <script RunAt="server">
 
     void Application_Start(object sender, EventArgs e) {
@@ -37,7 +36,7 @@
 
                 //Redirect HTTP errors to HttpError page
                 Server.Transfer("HttpErrorPage.aspx");
-               // Server.Transfer(SessionVariables.HttpErrorPage);
+                // Server.Transfer(SessionVariables.HttpErrorPage);
                 //same/alternative of above// HttpContext.Current.RewritePath("~/Error/HttpErrorPage.aspx");
             }
 
@@ -83,7 +82,9 @@
             //R   UnitConvertorUtils.loadUnitsConvertorItems(SharedSettings.Settings.UnitsXMLFilename);
 
             //load installation               
-            WebUtils.GetInstallationObjectFromSession();
+            Installation i = WebUtils.GetInstallationObjectFromSession();
+            //save in session
+            WebUtils.PutInstallationObjectinSession(i);
 
         }
         catch (Exception ex) {

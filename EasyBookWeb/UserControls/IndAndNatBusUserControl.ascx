@@ -6,6 +6,8 @@
         <td>Business Name</td>
         <td>
             <asp:TextBox ID="TextBoxDomain" runat="server" placeholder="Company Name"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidatorDomain" runat="server" ErrorMessage="Business Name is required."
+                ControlToValidate="TextBoxDomain" ValidationGroup="BusDetails">*</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -22,7 +24,10 @@
     </tr>
     <tr>
         <td>Business Phone No:</td>
-        <td><asp:TextBox ID="TextBoxPhone" runat="server" placeholder="Business Phone Number"></asp:TextBox></td>
+        <td><asp:TextBox ID="TextBoxPhone" runat="server" placeholder="Business Phone Number"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidatorPhone" runat="server" ErrorMessage="Business Phone Number is required."
+                ControlToValidate="TextBoxPhone" ValidationGroup="BusDetails">*</asp:RequiredFieldValidator>
+        </td>
     </tr>
 
 </table>

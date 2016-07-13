@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class UserControls_PersonalDetailsUserControl : System.Web.UI.UserControl {
+
     protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack)
             //polulate dropdownList
@@ -31,6 +32,30 @@ public partial class UserControls_PersonalDetailsUserControl : System.Web.UI.Use
         persDetails.Add(TextBoxLastName.Text);
         return persDetails;
     }
+
+    public bool IsValidFields() {
+        try {
+            //validate required fields
+            this.RequiredFieldValidatorFirstName.Validate();
+            this.RequiredFieldValidatorLastName.Validate();
+            //get validation result
+            bool is1sNamVal = this.RequiredFieldValidatorFirstName.IsValid;
+            bool isLstNamVal = this.RequiredFieldValidatorLastName.IsValid;
+
+            if (!is1sNamVal || !isLstNamVal) 
+                //first and last name have not been entered               
+                throw new Exception("<h2>First and/or Last names have not been entered @PersonalDetailsUserControl useControl</h2>");            
+            else
+                return true;
+        }
+        catch (Exception exc) {
+            System.Diagnostics.Debug.Print("<h2>First and/or Last names have not been entered @PersonalDetailsUserControl useControl</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(exc, "IndAndNatBusUserControl.ascx, IsValidFields()");
+            ExceptionUtility.NotifySystemOps(exc);
+            return false;
+        }
+    }
     #endregion
 
     #region "Set Methods"
@@ -42,15 +67,13 @@ public partial class UserControls_PersonalDetailsUserControl : System.Web.UI.Use
 
         }
         catch (Exception exc) {
-            System.Diagnostics.Debug.Print("<h2>Hours.ascx, PolulateDropDownTitle()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+            System.Diagnostics.Debug.Print("<h2>PersonalDetailsUserControl.ascx, PolulateDropDownTitle()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
             // Log the exception and notify system operators
             ExceptionUtility.LogException(exc, "PersonalDetailsUserControl.ascx, PolulateDropDownTitle()");
             ExceptionUtility.NotifySystemOps(exc);
         }
     }
     #endregion
-
-
 
 
 

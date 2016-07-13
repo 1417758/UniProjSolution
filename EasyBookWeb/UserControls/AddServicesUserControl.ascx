@@ -2,8 +2,8 @@
 <table >
      <tr>
         <td >Service Name</td>
-        <td>Duration</td>
-        <td>Price</td>
+        <td>Duration (min)</td>
+        <td>Price (£)</td>
         <td colspan="2">Member of Staff</td>
         
     </tr>
@@ -15,9 +15,18 @@
         <td></td>
     </tr>
       <tr>
-        <td><asp:TextBox ID="TextBoxService" runat="server" placeholder="Service"></asp:TextBox></td>
-        <td><asp:TextBox ID="TextBoxDuration" runat="server" placeholder="Duration"></asp:TextBox></td>
-         <td><asp:TextBox ID="TextBoxPrice" runat="server" placeholder="Price"></asp:TextBox></td>
+        <td><asp:TextBox ID="TextBoxService" runat="server" placeholder="Service"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidatorService" runat="server" ErrorMessage="Service name is required."
+                ControlToValidate="TextBoxService" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
+        </td>
+        <td><asp:TextBox ID="TextBoxDuration" runat="server" placeholder="Duration"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidatorDuration" runat="server" ErrorMessage="Service duration is required."
+                ControlToValidate="TextBoxDuration" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
+        </td>
+         <td><asp:TextBox ID="TextBoxPrice" runat="server" placeholder="Price"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server" ErrorMessage="Service price is required."
+                ControlToValidate="TextBoxPrice" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
+         </td>
         <td><asp:DropDownList ID="DropDownListStaff" runat="server"></asp:DropDownList></td>
         <td><asp:Button ID="ButtonAdd" runat="server" Text="Add" OnClick="ButtonAdd_Click" /></td>
     </tr>

@@ -15,9 +15,20 @@
     </tr>
       <tr>
         <td><asp:DropDownList ID="DropDownListTitle" runat="server"></asp:DropDownList></td>
-        <td><asp:TextBox ID="TextBox1stName" runat="server" placeholder="First Name"></asp:TextBox></td>
-        <td><asp:TextBox ID="TextBoxLastName" runat="server" placeholder="Last Name"></asp:TextBox></td>
-        <td><asp:TextBox ID="TextBoxEmail" runat="server" placeholder="Email Address"></asp:TextBox></td>
+        <td><asp:TextBox ID="TextBox1stName" runat="server" placeholder="First Name"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1stName" runat="server" ErrorMessage="First Name is required."
+                ControlToValidate="TextBox1stName" ValidationGroup="AddStaff">*</asp:RequiredFieldValidator>
+        </td>
+
+        <td><asp:TextBox ID="TextBoxLastName" runat="server" placeholder="Last Name"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="Last Name is required."
+                ControlToValidate="TextBoxLastName" ValidationGroup="AddStaff">*</asp:RequiredFieldValidator>
+        </td>
+
+        <td><asp:TextBox ID="TextBoxEmail" runat="server" placeholder="Email Address"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="Email is required."
+                ControlToValidate="TextBoxEmail" ValidationGroup="AddStaff">*</asp:RequiredFieldValidator>
+        </td>
         <td><asp:Button ID="ButtonAdd" runat="server" Text="Add" OnClick="ButtonAdd_Click" /></td>
     </tr>
 </table>

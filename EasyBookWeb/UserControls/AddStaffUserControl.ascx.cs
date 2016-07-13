@@ -22,7 +22,7 @@ public partial class UserControls_AddStaffUserControl : System.Web.UI.UserContro
     }
     #endregion
 
-    #region "Get Functions"
+    #region "Functions"
     public List<string> GetStaffDetails(bool isTitles = false, bool is1stNames = true, bool isLastNames = false, bool isEmails = false) {
         try {
 
@@ -59,6 +59,36 @@ public partial class UserControls_AddStaffUserControl : System.Web.UI.UserContro
             ExceptionUtility.LogException(exc, "AddStaffUserControl.ascx, GetStaffDetails()");
             ExceptionUtility.NotifySystemOps(exc);
             return null;
+        }
+    }
+    public bool IsValidFields() {
+        try {
+            //validate required fields
+            this.RequiredFieldValidator1stName.Validate();
+            this.RequiredFieldValidatorLastName.Validate();
+            this.RequiredFieldValidatorEmail.Validate();
+         
+            //get validation result
+            bool is1sNamVal = this.RequiredFieldValidator1stName.IsValid;
+            bool isLstNamVal = this.RequiredFieldValidatorLastName.IsValid;
+            bool isEmailVal = this.RequiredFieldValidatorEmail.IsValid;
+
+            //NB---Return TRUE if staff has already been added
+            if (this.BulletedList1stName.Items.Count > 0)
+                return true;
+
+            if (!is1sNamVal || !isLstNamVal || !isEmailVal) {
+                throw new Exception("<h2>Company and/or Phone number have not been entered @IndAndNatBusUserControl useControl</h2>");
+            }
+            else
+                return true;
+        }
+        catch (Exception exc) {
+            System.Diagnostics.Debug.Print("<h2>First and/or Last name and/or email has not been entered @AddStaffUserControl useControl</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+            // Log the exception and notify system operators
+            ExceptionUtility.LogException(exc, "AddStaffUserControl.ascx, IsValidFields()");
+            ExceptionUtility.NotifySystemOps(exc);
+            return false;
         }
     }
     #endregion
