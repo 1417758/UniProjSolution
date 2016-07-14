@@ -8,6 +8,7 @@ using System.Diagnostics;
 using WebJobUniBLL;
 using WebJobUniUtils;
 using System.Xml;
+using System.Web.Security;
 
 namespace EasyBookWeb {
     public sealed class WebUtils : System.Web.UI.Page {
@@ -17,7 +18,7 @@ namespace EasyBookWeb {
         public static void PutInstallationObjectinSession(Installation i) {
             try {
                 if (i != null)
-                HttpContext.Current.Session[XMLConstants.Session_Installation] = i;
+                    HttpContext.Current.Session[XMLConstants.Session_Installation] = i;
             }
             catch (Exception exc) {
                 System.Diagnostics.Debug.Print("<h2>WebUtils, PutInstallationObjectinSession()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
@@ -52,12 +53,10 @@ namespace EasyBookWeb {
                     //R  XmlDocument doc = AppSettings.GetAsXMLDocument(ref i);
                     //R i = InstallationBLL.GetPopulatedInstallationObject(TimeStamp_Shared.GetLatestTimeStamp, doc, new DataTable());
 
+                    //set InstallationTmeStamp
+                    SessionVariables.StartTime = i.Timestamp.ToString();
                 }
                 //end  if  i IsNot Nothing Then
-
-                //set InstallationTmeStamp
-                SessionVariables.StartTime = i.Timestamp.ToString();
-
                 return i;
             }
             catch (Exception exc) {
@@ -66,6 +65,55 @@ namespace EasyBookWeb {
                 ExceptionUtility.LogException(exc, "WebUtils, GetInstallationObjectFromSession()");
                 ExceptionUtility.NotifySystemOps(exc);
                 return null;
+            }
+        }//end GetInstallationObjectFromSession
+
+
+        public static Guid AddASPNETUser(string lastName, string firstName, string emailAddress, int? count = null) {
+            try {
+
+                //14/7/16 USED to Add Employees programmatically
+                //Rule staff userName = LastName + . + first initial
+                string tempStaffUserName;
+                
+                int counter = 0;
+                if (count.HasValue)
+                    counter = count.Value;
+                
+
+                //Rule initial password = P1maths550 (Must be updated on employess 1st login) *NB first letter is capital
+                string staffPass = "P1maths550";
+
+                Guid aSPUserID = new Guid();
+
+                //Create User Name
+                //Rule staff userName = LastName + . + first initial + counter (if applicable/duplicated user)
+                if (!count.HasValue)//null
+                    tempStaffUserName = lastName + "." + firstName.ToCharArray(0, 1)[0].ToString();
+                else
+                    tempStaffUserName = lastName + "." + firstName.ToCharArray(0, 1)[0].ToString() + count.ToString();
+                System.Diagnostics.Debug.Print(tempStaffUserName);
+
+                //check if Temp user name already exists
+                MembershipUser user = Membership.GetUser(tempStaffUserName);
+                if (user == null)
+                    //add ASP.NET USER
+                    Membership.CreateUser(username: tempStaffUserName, password: staffPass, email: emailAddress);
+                else
+                    //reinterate AddASPNETUser function with counter
+                    return AddASPNETUser(lastName, firstName, emailAddress, counter + 1);
+
+                //get ASP.NET USER ID
+                aSPUserID = (Guid)AppSettings.GetUserIDByUserName(tempStaffUserName);
+
+                return aSPUserID;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>WebUtils, AddASPNETUser(x4)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                // Log the exception and notify system operators
+                ExceptionUtility.LogException(ex, "WebUtils.aspx, AddASPNETUser(x4)");
+                ExceptionUtility.NotifySystemOps(ex);
+                return new Guid();
             }
         }
         /*

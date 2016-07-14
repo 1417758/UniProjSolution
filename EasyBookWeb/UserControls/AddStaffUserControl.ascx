@@ -25,7 +25,7 @@
                 ControlToValidate="TextBoxLastName" ValidationGroup="AddStaff">*</asp:RequiredFieldValidator>
         </td>
 
-        <td><asp:TextBox ID="TextBoxEmail" runat="server" placeholder="Email Address"></asp:TextBox>
+        <td><asp:TextBox ID="TextBoxEmail" runat="server" placeholder="Email Address" type="email"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="Email is required."
                 ControlToValidate="TextBoxEmail" ValidationGroup="AddStaff">*</asp:RequiredFieldValidator>
         </td>

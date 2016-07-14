@@ -24,7 +24,7 @@
     </tr>
     <tr>
         <td>Business Phone No:</td>
-        <td><asp:TextBox ID="TextBoxPhone" runat="server" placeholder="Business Phone Number"></asp:TextBox>
+        <td><asp:TextBox ID="TextBoxPhone" runat="server" placeholder="Business Phone Number" type="number"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPhone" runat="server" ErrorMessage="Business Phone Number is required."
                 ControlToValidate="TextBoxPhone" ValidationGroup="BusDetails">*</asp:RequiredFieldValidator>
         </td>
