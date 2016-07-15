@@ -42,14 +42,17 @@
   <ItemGroup>
     <Compile Include="AgendaBLL.cs" />
     <Compile Include="AppSettings.cs" />
+    <Compile Include="ApptBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ClientBLL.cs" />
     <Compile Include="CompanyBLL.cs" />
     <Compile Include="ContactDetailsBLL.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="EndUserBLL.cs" />
+    <Compile Include="FinancialTransBLL.cs" />
     <Compile Include="Installation.cs" />
     <Compile Include="InstallationBLL.cs" />
+    <Compile Include="OrderBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvideBLL.cs" />
     <Compile Include="SendMail.cs" />

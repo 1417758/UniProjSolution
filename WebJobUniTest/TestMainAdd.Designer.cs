@@ -30,15 +30,6 @@
             this.textBoxAgendaID = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
             this.bttonStarup = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.bttonGetAllStaff = new System.Windows.Forms.Button();
@@ -48,7 +39,6 @@
             this.bttonAddAgenda = new System.Windows.Forms.Button();
             this.bttonGetAgendaByID = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Label1 = new System.Windows.Forms.Label();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.GroupBoxLogin = new System.Windows.Forms.GroupBox();
@@ -68,12 +58,23 @@
             this.bttonDeleteRole = new System.Windows.Forms.Button();
             this.bttonGetIDByLastName = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bttonDeleteAllAndReset = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox16.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.GroupBoxLogin.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox16
@@ -139,87 +140,6 @@
             this.label43.TabIndex = 23;
             this.label43.Text = "Agenda ID";
             // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.textBox25);
-            this.groupBox12.Controls.Add(this.textBox26);
-            this.groupBox12.Controls.Add(this.label38);
-            this.groupBox12.Controls.Add(this.label39);
-            this.groupBox12.Controls.Add(this.textBox27);
-            this.groupBox12.Controls.Add(this.textBox28);
-            this.groupBox12.Controls.Add(this.label40);
-            this.groupBox12.Controls.Add(this.label41);
-            this.groupBox12.Location = new System.Drawing.Point(777, 167);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(166, 167);
-            this.groupBox12.TabIndex = 108;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "All Users (endUser/staff/client)";
-            // 
-            // textBox25
-            // 
-            this.textBox25.Location = new System.Drawing.Point(9, 141);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(151, 20);
-            this.textBox25.TabIndex = 52;
-            // 
-            // textBox26
-            // 
-            this.textBox26.Location = new System.Drawing.Point(9, 102);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(151, 20);
-            this.textBox26.TabIndex = 50;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(6, 127);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(67, 13);
-            this.label38.TabIndex = 53;
-            this.label38.Text = "ASP_UserID";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(6, 89);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(18, 13);
-            this.label39.TabIndex = 51;
-            this.label39.Text = "ID";
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(9, 66);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(151, 20);
-            this.textBox27.TabIndex = 44;
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(9, 29);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(151, 20);
-            this.textBox28.TabIndex = 22;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(6, 53);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(57, 13);
-            this.label40.TabIndex = 45;
-            this.label40.Text = "First Name";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(6, 16);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(58, 13);
-            this.label41.TabIndex = 23;
-            this.label41.Text = "Last Name";
-            // 
             // bttonStarup
             // 
             this.bttonStarup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -252,6 +172,7 @@
             // bttonGetAllStaff
             // 
             this.bttonGetAllStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetAllStaff.ForeColor = System.Drawing.Color.Navy;
             this.bttonGetAllStaff.Location = new System.Drawing.Point(246, 14);
             this.bttonGetAllStaff.Margin = new System.Windows.Forms.Padding(2);
             this.bttonGetAllStaff.Name = "bttonGetAllStaff";
@@ -330,16 +251,6 @@
             this.label22.Size = new System.Drawing.Size(0, 13);
             this.label22.TabIndex = 91;
             this.label22.Visible = false;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 11);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(756, 379);
-            this.dataGridView2.TabIndex = 87;
             // 
             // Label1
             // 
@@ -554,11 +465,116 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Test Roles";
             // 
+            // bttonDeleteAllAndReset
+            // 
+            this.bttonDeleteAllAndReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonDeleteAllAndReset.ForeColor = System.Drawing.Color.Indigo;
+            this.bttonDeleteAllAndReset.Location = new System.Drawing.Point(978, 238);
+            this.bttonDeleteAllAndReset.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonDeleteAllAndReset.Name = "bttonDeleteAllAndReset";
+            this.bttonDeleteAllAndReset.Size = new System.Drawing.Size(109, 69);
+            this.bttonDeleteAllAndReset.TabIndex = 114;
+            this.bttonDeleteAllAndReset.Text = "Delete ALL \r\nand Reset";
+            this.bttonDeleteAllAndReset.UseVisualStyleBackColor = true;
+            this.bttonDeleteAllAndReset.Click += new System.EventHandler(this.bttonDeleteAllAndReset_Click);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(6, 16);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(58, 13);
+            this.label41.TabIndex = 23;
+            this.label41.Text = "Last Name";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(6, 53);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(57, 13);
+            this.label40.TabIndex = 45;
+            this.label40.Text = "First Name";
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(9, 66);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(151, 20);
+            this.textBox27.TabIndex = 44;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(6, 89);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(18, 13);
+            this.label39.TabIndex = 51;
+            this.label39.Text = "ID";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(6, 127);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(67, 13);
+            this.label38.TabIndex = 53;
+            this.label38.Text = "ASP_UserID";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(9, 102);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(151, 20);
+            this.textBox26.TabIndex = 50;
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(9, 141);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new System.Drawing.Size(151, 20);
+            this.textBox25.TabIndex = 52;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.textBox25);
+            this.groupBox12.Controls.Add(this.textBox26);
+            this.groupBox12.Controls.Add(this.label38);
+            this.groupBox12.Controls.Add(this.label39);
+            this.groupBox12.Controls.Add(this.textBox27);
+            this.groupBox12.Controls.Add(this.textBox28);
+            this.groupBox12.Controls.Add(this.label40);
+            this.groupBox12.Controls.Add(this.label41);
+            this.groupBox12.Location = new System.Drawing.Point(777, 167);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(166, 167);
+            this.groupBox12.TabIndex = 108;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "All Users (endUser/staff/client)";
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(9, 29);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(151, 20);
+            this.textBox28.TabIndex = 22;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(9, 11);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(756, 379);
+            this.dataGridView2.TabIndex = 87;
+            // 
             // TestMainAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 668);
+            this.Controls.Add(this.bttonDeleteAllAndReset);
             this.Controls.Add(this.groupBox16);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.bttonStarup);
@@ -572,14 +588,15 @@
             this.Controls.Add(this.LblReturn);
             this.Name = "TestMainAdd";
             this.Text = "TestMainAdd";
+            this.Load += new System.EventHandler(this.TestMainAdd_Load);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
             this.groupBox10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.GroupBoxLogin.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,15 +608,6 @@
         internal System.Windows.Forms.TextBox textBoxAgendaID;
         internal System.Windows.Forms.Label label42;
         internal System.Windows.Forms.Label label43;
-        internal System.Windows.Forms.GroupBox groupBox12;
-        internal System.Windows.Forms.TextBox textBox25;
-        internal System.Windows.Forms.TextBox textBox26;
-        internal System.Windows.Forms.Label label38;
-        internal System.Windows.Forms.Label label39;
-        internal System.Windows.Forms.TextBox textBox27;
-        internal System.Windows.Forms.TextBox textBox28;
-        internal System.Windows.Forms.Label label40;
-        internal System.Windows.Forms.Label label41;
         internal System.Windows.Forms.Button bttonStarup;
         internal System.Windows.Forms.GroupBox groupBox10;
         internal System.Windows.Forms.Button bttonGetAllStaff;
@@ -609,7 +617,6 @@
         internal System.Windows.Forms.Button bttonAddAgenda;
         internal System.Windows.Forms.Button bttonGetAgendaByID;
         internal System.Windows.Forms.Label label22;
-        internal System.Windows.Forms.DataGridView dataGridView2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.ProgressBar ProgressBar1;
         internal System.Windows.Forms.GroupBox GroupBoxLogin;
@@ -631,5 +638,16 @@
         internal System.Windows.Forms.GroupBox groupBox1;
         internal System.Windows.Forms.TextBox textBoxStaffID;
         internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Button bttonDeleteAllAndReset;
+        internal System.Windows.Forms.Label label41;
+        internal System.Windows.Forms.Label label40;
+        internal System.Windows.Forms.TextBox textBox27;
+        internal System.Windows.Forms.Label label39;
+        internal System.Windows.Forms.Label label38;
+        internal System.Windows.Forms.TextBox textBox26;
+        internal System.Windows.Forms.TextBox textBox25;
+        internal System.Windows.Forms.GroupBox groupBox12;
+        internal System.Windows.Forms.TextBox textBox28;
+        internal System.Windows.Forms.DataGridView dataGridView2;
     }
 }

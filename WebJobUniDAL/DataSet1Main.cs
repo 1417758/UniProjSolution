@@ -4,6 +4,8 @@ namespace WebJobUniDAL {
 
 
     partial class DataSet1Main {
+        partial class AgendaDataTable {
+        }
     }
 }
 

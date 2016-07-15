@@ -128,6 +128,21 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
+        //7
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public static int? AddContactDetails(string email) {
+            try {
+                DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
+                //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
+                dynamic result = Adapter.InsertContactDet(address: null, postCode: null, city: null, country: null,
+                                                    landLine: null, mobile: null, email: email, dateCreated: dateNow, lastUpdated: dateNow);
+                return (int?)result;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.ContactDetails.AddContactDetailsAllNull() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
         #endregion
 
         #region "DELETE Functions"

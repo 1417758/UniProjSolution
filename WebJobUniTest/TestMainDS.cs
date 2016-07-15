@@ -16,12 +16,7 @@ namespace WebJobUniTest {
             Load += TestMainDS_Load;
         }
         private void TestMainDS_Load(object sender, EventArgs e) {
-            try {
-               
-            }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("Test.TestMainDS.TestMainDS_Load() \n" + ex.Message);
-            }
+         
         }
         private void btnStartup_Click(object sender, EventArgs e) {
             StartUp Check = new StartUp();
@@ -29,21 +24,7 @@ namespace WebJobUniTest {
             Hide();
         }
         #region "Miscelleneous"     
-        private void ResetTextBoxes2() {
-          /*  var controlsList = GetAll(this, typeof(TextBox));
-            MessageBox.Show("Total TEXTBOX Controls: " + controlsList.Count());
-            foreach (Control c in controlsList) {
-                c.Text += "";
-            }*/
-        }
-        public IEnumerable<Control> GetAll(Control control, Type type) {
-            var controls = control.Controls.Cast<Control>();
-
-            return controls.SelectMany(ctrl => GetAll(ctrl, type))
-                                      .Concat(controls)
-                                      .Where(c => c.GetType() == type);
-        }
-
+       
         public void ResetTextBoxes(bool showGridRowCount = true) {
             this.textBoxAddress.Text = "";
             this.textBoxLastName.Text = "";
@@ -320,7 +301,7 @@ namespace WebJobUniTest {
         private void bttonAddContDet_Click(object sender, EventArgs e) {
             this.LblReturn.Text = ContactDetails.AddContactDetails(this.textBoxAddress.Text, this.textBoxPostCode.Text, this.textBoxCity.Text, this.textBoxCountry.Text, this.textBoxLandline.Text, this.textBoxMobile.Text, this.textBoxEmail.Text).ToString();
             GetAllContactDetails(sender, e, showGridRowCount: false);
-            ResetTextBoxes2();
+           // ResetTextBoxes2();
         }
         private void bttonAddContDetNull_Click(object sender, EventArgs e) {
             this.LblReturn.Text = ContactDetails.AddContactDetailsAllNull().ToString();

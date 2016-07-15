@@ -1,0 +1,27 @@
+********** 14/07/2016 12:18:55 **********
+Exception Type: System.InvalidOperationException
+Exception: Nullable object must have a value.
+Source: WebUtils.aspx, AddASPNETUser(x4)
+Stack Trace: 
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at EasyBookWeb.WebUtils.AddASPNETUser(String lastName, String firstName, String emailAddress, Nullable`1 count) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Code\WebUtils.cs:line 79
+
+********** 14/07/2016 12:18:55 **********
+Exception Type: System.InvalidOperationException
+Exception: Nullable object must have a value.
+Source: WebUtils.aspx, AddASPNETUser(x4)
+Stack Trace: 
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at EasyBookWeb.WebUtils.AddASPNETUser(String lastName, String firstName, String emailAddress, Nullable`1 count) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Code\WebUtils.cs:line 79
+
+********** 14/07/2016 12:18:55 **********
+Exception Type: System.InvalidOperationException
+Exception: Nullable object must have a value.
+Source: WebUtils.aspx, AddASPNETUser(x4)
+Stack Trace: 
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at EasyBookWeb.WebUtils.AddASPNETUser(String lastName, String firstName, String emailAddress, Nullable`1 count) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\App_Code\WebUtils.cs:line 79
+

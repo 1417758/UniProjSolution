@@ -21,7 +21,9 @@ namespace WebJobUniTest {
         }
 
         private void btnApptXsd_Click(object sender, EventArgs e) {
-
+            TestApptDS Check = new TestApptDS();
+            Check.Show();
+            Hide();
         }
 
         private void btnMiscTesting_Click(object sender, EventArgs e) {

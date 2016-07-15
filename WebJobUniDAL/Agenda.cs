@@ -54,7 +54,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.AgendaDataTable GetAgendaByID(int? agendaID) {
+        public static DataSet1Main.AgendaDataTable GetAgendaByID(short? agendaID) {
             try {
                 return Adapter.GetAgendaByID(agendaID);
             }
@@ -69,7 +69,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.AgendaDataTable GetAgendaByStaffID(int? agendaID) {
+        public static DataSet1Main.AgendaDataTable GetAgendaByStaffID(short? agendaID) {
             try {
                 return Adapter.GetAgendaByStaffID(agendaID);
             }
@@ -87,11 +87,11 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddAgenda(bool isAppuser, bool syncCalendar) { 
+        public static short? AddAgenda(bool isAppuser, bool syncCalendar) { 
             try {
                 // NB tableAdapter returns decimal value by default.TYPE = object { decimal}
                 dynamic result = Adapter.InsertAgenda(isAppuser, syncCalendar);
-                return (int?)result;
+                return (short?)result;
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Agenda.AddAgenda(x2 param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -108,7 +108,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public static int DeleteAgendaByID(int? agendaID) {
+        public static int DeleteAgendaByID(short? agendaID) {
             try {
                 return (int)Adapter.DeleteAgendaByID(agendaID);
             }
