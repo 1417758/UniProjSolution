@@ -1,0 +1,38 @@
+﻿
+.accordionContent {
+    background-color: #f1f1f1;
+    border-color: -moz-use-text-color #2F4F4F #2F4F4F;
+    border-right: 1px dashed #2F4F4F;
+    border-style: none hidden hidden;
+    border-width: medium 1px 1px;
+    padding: 10px 5px 5px;
+    width: 90%;
+}
+
+.accordionHeaderSelected {
+    background-color: deeppink;
+    border: 1px hidden #2F4F4F;
+    color:  white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 5px;
+    width: 90%;
+}
+
+.accordionHeader {
+    background-color: black;
+    border: 1px solid #2F4F4F;
+    color: lightgrey;
+    cursor: pointer;  
+    /*font-weight: bold;*/
+    margin-top: 5px;
+    padding: 5px;
+    width: 90%;
+}
+
+.href {
+    color: White;
+    font-weight: bold;
+    text-decoration: none;
+}

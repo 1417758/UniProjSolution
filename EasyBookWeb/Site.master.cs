@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EasyBookWeb;
+using System;
 using System.Collections.Generic;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using WebJobUniBLL;
 
 public partial class SiteMaster : MasterPage {
     private const string AntiXsrfTokenKey = "__AntiXsrfToken";
@@ -74,5 +75,13 @@ public partial class SiteMaster : MasterPage {
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e) {
         //MainWeb Context.GetOwinContext().Authentication.SignOut();
         FormsAuthentication.SignOut();
+    }
+
+    protected void btnId_Click(object sender, EventArgs e) {
+        //load TEST installation  16/7/16             
+        Installation i = WebUtils.GetInstallationObjectFromSession();
+        i = Installation.GetTestInstallation();
+        //save back to session
+        WebUtils.PutInstallationObjectinSession(i);
     }
 }

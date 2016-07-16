@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:FinancialTransaction" ZOrder="8" X="806" Y="468" Height="230" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="154" />
     <Shape ID="DesignTable:Order" ZOrder="3" X="795" Y="167" Height="272" Width="285" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="154" />
     <Shape ID="DesignTable:PaymentMethods" ZOrder="9" X="820" Y="773" Height="209" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
-    <Shape ID="DesignTable:Services" ZOrder="1" X="432" Y="602" Height="293" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
+    <Shape ID="DesignTable:Services" ZOrder="1" X="432" Y="602" Height="356" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="217" />
     <Shape ID="DesignTable:Employee" ZOrder="7" X="44" Y="413" Height="167" Width="238" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
     <Shape ID="DesignTable:Provide" ZOrder="6" X="55" Y="708" Height="125" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="70" />
     <Shape ID="DesignTable:GetOrderAndFinTransByOrderID" ZOrder="2" X="1213" Y="164" Height="335" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="280" />

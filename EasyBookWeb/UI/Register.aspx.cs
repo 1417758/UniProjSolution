@@ -224,7 +224,7 @@ public partial class UI_Register : System.Web.UI.Page {
         //process installation obj in BLL
         PolulateInstallation(CreateUserWizard1.ActiveStepIndex);
         //redirect
-        Response.Redirect("MyLogin.aspx");
+        Response.Redirect("ConfigPanel/Welcome.aspx");
     }
 
     #endregion
@@ -353,8 +353,8 @@ public partial class UI_Register : System.Web.UI.Page {
                     //create new service
                     ServicesBLL serv = new ServicesBLL();
                     serv.name = this.serviceName[k];
-                    serv.duration = this.serviceDuration[k];
-                    serv.price = this.servicePrice[k];
+                    serv.duration = (byte)Utils.GetNumberShort(this.serviceDuration[k]);
+                    serv.price = (decimal)Utils.GetNumberDouble(this.servicePrice[k]);
                     //add to installation service
                     _with4.Add(serv);
                 }

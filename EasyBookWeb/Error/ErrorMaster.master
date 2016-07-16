@@ -55,6 +55,8 @@
                         <li><a runat="server" href="~/UI/About">About</a></li>
                         <li><a runat="server" href="~/UI/Contact">Contact</a></li>
                         <li><a runat="server" href="~/Error/TestError">Test Error</a></li>
+                        <li><a runat="server" href="~/UI/ConfigPanel/Welcome.aspx">Test Client</a></li>
+                        <li><a runat="server" href="~/UI/EndUser/WelcomeUser.aspx">Test End-User</a></li>
                     </ul>
 
                     <asp:LoginView runat="server" ViewStateMode="Enabled">
@@ -78,10 +80,9 @@
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                
             </asp:ContentPlaceHolder>
             <hr />
-            <footer style="font-size:small;">
+            <footer style="font-size: small;">
                 <p>&copy; <%: DateTime.Now.Year %> - Rachie Holdings Ltd. All rights reserved.</p>
             </footer>
         </div>

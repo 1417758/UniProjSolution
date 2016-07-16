@@ -16,10 +16,11 @@ public partial class UI_MyLogin : System.Web.UI.Page {
     protected void Login1_Authenticate1(object sender, AuthenticateEventArgs e) {
         if (Membership.ValidateUser(Login1.UserName, Login1.Password) == true) {
             Login1.Visible = true;
-            Session["user"] = HttpContext.Current.User.Identity.Name;
-            Session["user1"] = Login1.UserName;
+           // Session["user"] = HttpContext.Current.User.Identity.Name;
+          //  Session["user1"] = Login1.UserName;
 
-            FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
+            FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true );
+            Response.Redirect("~/UI/ConfigPanel/Welcome.aspx");
         }
         else {
             Response.Write("Invalid Login");

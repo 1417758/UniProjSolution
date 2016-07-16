@@ -19,7 +19,7 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidatorService" runat="server" ErrorMessage="Service name is required."
                 ControlToValidate="TextBoxService" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
         </td>
-        <td><asp:TextBox ID="TextBoxDuration" runat="server" placeholder="Duration" type="number" ></asp:TextBox>
+        <td><asp:TextBox ID="TextBoxDuration" runat="server" placeholder="Duration" type="number" min="0" max="255"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidatorDuration" runat="server" ErrorMessage="Service duration is required."
                 ControlToValidate="TextBoxDuration" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
         </td>

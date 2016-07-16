@@ -9,6 +9,7 @@ using WebJobUniUtils;
 namespace WebJobUniBLL {
     public class InstallationBLL {
 
+        #region "Methods"
         public static void SaveInstallationToDB(Installation i) {
             try {
                 //  System.Diagnostics.Debug.Print(i.ToString());
@@ -54,11 +55,27 @@ namespace WebJobUniBLL {
                 System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.SaveInstallationToDB()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
             }
         }
+        #endregion
 
+        #region "Functions"
+        public List<string> GetServiceNames(Installation i) {
+            try { 
+            //save services             
+            List<string> liServNames = new List<string>();
+            //loop through services
+            foreach (ServicesBLL service in i.Services) {
+                //save service name  to new list of string
+                liServNames.Add(service.name);
+            }
 
-
-
-
+            return liServNames;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetServiceNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        #endregion
 
     }//class
 }//namespace

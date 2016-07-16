@@ -18,14 +18,11 @@
         //window.onbeforeunload = function (e) {
         //    document.getElementById("btnValidate").click();
         //    document.getElementById("PersButton1").click();
-            
-        //}
-        //function performCheck() {
-
-        //    if (Page_ClientValidate()) {
-        //    }
 
         //}
+        function logout() {
+            document.getElementById('<%= btnId.ClientID %>').click();
+        }
     </script>
 </head>
 <body>
@@ -68,8 +65,10 @@
                         <li><a runat="server" href="~/UI/About">About</a></li>
                         <li><a runat="server" href="~/UI/Contact">Contact</a></li>
                         <li><a runat="server" href="~/Error/TestError">Test Error</a></li>
+                        <li><a runat="server" href="~/UI/ConfigPanel/Welcome.aspx">Test Client</a></li>
+                        <li><a runat="server" href="~/UI/EndUser/WelcomeUser.aspx" onclick="logout();">Test End-User</a></li>
                     </ul>
-
+                    <asp:Button ID="btnId" runat="server" OnClick="btnId_Click" Style="display: none" ClientIDMode="Static"></asp:Button>
                     <asp:LoginView runat="server" ViewStateMode="Enabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -93,7 +92,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer style="font-size:small;">
+            <footer style="font-size: small;">
                 <p>&copy; <%: DateTime.Now.Year %> - Rachie Holdings Ltd. All rights reserved.</p>
             </footer>
         </div>

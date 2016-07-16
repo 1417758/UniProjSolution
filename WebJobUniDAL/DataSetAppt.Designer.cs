@@ -2225,6 +2225,8 @@ namespace WebJobUniDAL {
             
             private global::System.Data.DataColumn columndateCreated;
             
+            private global::System.Data.DataColumn columnprice;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ServicesDataTable() {
@@ -2324,6 +2326,14 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn priceColumn {
+                get {
+                    return this.columnprice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2359,7 +2369,7 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ServicesRow AddServicesRow(string name, bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, System.DateTime dateCreated) {
+            public ServicesRow AddServicesRow(string name, bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, System.DateTime dateCreated, decimal price) {
                 ServicesRow rowServicesRow = ((ServicesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2369,7 +2379,8 @@ namespace WebJobUniDAL {
                         description,
                         duration,
                         durationUnit,
-                        dateCreated};
+                        dateCreated,
+                        price};
                 rowServicesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowServicesRow);
                 return rowServicesRow;
@@ -2407,6 +2418,7 @@ namespace WebJobUniDAL {
                 this.columnduration = base.Columns["duration"];
                 this.columndurationUnit = base.Columns["durationUnit"];
                 this.columndateCreated = base.Columns["dateCreated"];
+                this.columnprice = base.Columns["price"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2428,6 +2440,8 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columndurationUnit);
                 this.columndateCreated = new global::System.Data.DataColumn("dateCreated", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndateCreated);
+                this.columnprice = new global::System.Data.DataColumn("price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprice);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnserviceID}, true));
                 this.columnserviceID.AutoIncrement = true;
@@ -4321,6 +4335,22 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal price {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableServices.priceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'price\' in table \'Services\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServices.priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsnameNull() {
                 return this.IsNull(this.tableServices.nameColumn);
             }
@@ -4401,6 +4431,18 @@ namespace WebJobUniDAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetdateCreatedNull() {
                 this[this.tableServices.dateCreatedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspriceNull() {
+                return this.IsNull(this.tableServices.priceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpriceNull() {
+                this[this.tableServices.priceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

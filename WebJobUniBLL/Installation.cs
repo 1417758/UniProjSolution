@@ -37,7 +37,7 @@ namespace WebJobUniBLL {
 
                 //Company
                 var _with2 = i.Company;
-                _with2.domain = "TESTING Rachie Holdings Ltd";
+                _with2.domain = "TESTING Ltd";
                 _with2.industry = "Net Business";
                 _with2.natureOfBusiness = 99999;
                 _with2.regNumb = "9372370-2";
@@ -73,14 +73,15 @@ namespace WebJobUniBLL {
                 var _with3 = i.Employees;
                 _with3.Add(new EmployeeBLL());
                 //staff 2
-                EmployeeBLL oi = new EmployeeBLL(Person.MS, "Lorenso", "Victor", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetASP_UserID());
+                EmployeeBLL oi = new EmployeeBLL(Person.MS, "Lorenzo", "Victor", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetASP_UserID());
                 _with3.Add(oi);
 
                 //services 
                 var _with4 = i.Services;
-                _with4.Add(new ServicesBLL());
-                _with4.Add(new ServicesBLL());
-                _with4.Add(new ServicesBLL());
+                _with4.Add(new ServicesBLL("service 1", "wrap up without a word", 55, 99.3m));
+                _with4.Add(new ServicesBLL("service 2", "no no no ", 89, 102236.893m));
+                _with4.Add(new ServicesBLL("service 3", "FFS84857 983*33h", byte.MaxValue, decimal.MaxValue));
+                _with4.Add(new ServicesBLL("service 4", "wrap up again", byte.MinValue, decimal.MinValue));
 
                 //services Provided By Staff
                 var _with5 = i.ServicesProvidedByStaff;
@@ -143,7 +144,7 @@ namespace WebJobUniBLL {
         public static void PopulateInstalation(ref Installation i, CompanyBLL company) {
             try {
                 //
-                if (i == null)
+            /*    if (i == null)
                     i = new Installation();
 
                 //Get data from parameter company
@@ -161,12 +162,15 @@ namespace WebJobUniBLL {
 
                 //update Installation with date extracted
                 i.Company = company;
-
+                */
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>BLL.Installation.PopulateInstalation(x2 params)</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
             }
         }
+
+
+       
 
 
         #endregion

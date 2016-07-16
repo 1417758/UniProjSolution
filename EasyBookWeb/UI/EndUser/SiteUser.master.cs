@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EasyBookWeb;
+using System;
 using System.Collections.Generic;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using WebJobUniBLL;
 
 public partial class SiteMaster : MasterPage {
     private const string AntiXsrfTokenKey = "__AntiXsrfToken";
@@ -58,16 +59,9 @@ public partial class SiteMaster : MasterPage {
 
     protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack) {
-            MembershipUser currentUser = Membership.GetUser();
-            if (currentUser != null) {
-                var c = currentUser.UserName;
-            }
-             dynamic b = Context.User.Identity.Name;
-            string username = HttpContext.Current.User.Identity.Name;
-            string usernameP = Page.User.Identity.Name;
-
-
-        }
+            
+         
+        }//endif isPostBack
 
     }
 

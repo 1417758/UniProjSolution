@@ -36,7 +36,7 @@
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
-              <%--  <asp:ScriptReference Name="bootstrap" />--%>
+                <%--  <asp:ScriptReference Name="bootstrap" />--%>
                 <asp:ScriptReference Name="respond" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
@@ -65,7 +65,7 @@
 
                     </div>
                     <div class="navbar-collapse collapse">
-                       <%-- <ul class="nav navbar-nav">
+                        <%-- <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/">Home</a></li>
                             <li><a runat="server" href="~/UI/About">About</a></li>
                             <li><a runat="server" href="~/UI/Contact">Contact</a></li>
@@ -91,23 +91,31 @@
                     </div>
                 </div>
             </div>
-            <aside id="asideLeft" class="grid-20 tablet-grid-20 mobile-grid-30">
+           
+            <%--Left Navigation Menu--%>
+             <aside id="asideLeft" class="grid-20 tablet-grid-20 mobile-grid-30">
                 <ul id="leftNav">
                     <li><a href="WelcomeUser.aspx">About</a></li>
-                    <li><a>Book Appointment</a></li>
+                    <li><a href="BookAppt.aspx">Book Appointment</a></li>
                     <li><a>Meet Our Team</a></li>
-                    <li><a>Services</a></li> 
-                    <li><a>Reviews</a></li>  
-                    <li><a>Contact Us</a></li>                 
+                    <li><a>Services</a></li>
+                    <li><a>Reviews</a></li>
+                    <li><a>Contact Us</a></li>
                 </ul>
             </aside>
+
+            <%--Main Content--%>
             <section id="mainSection" class="grid-75 tablet-grid-75 mobile-grid-75">
                 <div class="container body-content">
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                    </asp:ContentPlaceHolder>
-
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </section>
+            <marquee style="margin:-20px 0 -15px 0;" >Book Now</marquee>
         </main>
         <!--END OF MAIN -->
         <!--START OF FOOTER -->
