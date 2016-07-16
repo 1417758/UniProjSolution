@@ -1,0 +1,46 @@
+#bugHead {
+    height: 140px;
+    /* background-color: #DBC9DF;*/
+}
+
+/*#endFooter{
+     display: flex;
+     display: -webkit-flex Safari
+    vertical-align: baseline;
+}*/
+#mainSection {
+    /*   margin-top: -2%;*/
+
+}
+
+#logoHeader {
+    height: 125px;
+}
+
+#hSection1 {
+    vertical-align: middle;
+    /* background-color: greenyellow;*/
+}
+
+#hSection2 {
+    margin-top: 2%;
+    vertical-align: bottom;
+    /*background-color: yellow;*/
+}
+
+#hSection2 b {
+    font-size: 30pt;
+    font-weight: bolder;
+}
+
+#hSection2:nth-child(2) {
+    font-size: 25pt;
+    font-weight: normal;
+    /* color:blue;*/
+    align-content: stretch
+}
+
+/*table tr td{
+ width: 550px;
+ background-color: yellow;
+}*/
