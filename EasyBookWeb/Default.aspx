@@ -3,38 +3,37 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <h1>Easy Booking</h1>
+        <p class="lead">Customer appointments made easy! Virtual Diary 100% reliable which can be taken anywhere!</p>
+        <p><a href="UI/Register.aspx" class="btn btn-primary btn-lg">Join Today &raquo;</a></p>
     </div>
 
     <div class="row">
         <div class="col-md-4">
             <h2>Getting started</h2>
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+                An easy and familiar interface will take you through five steps to setup an account with Easy Booking. After that you will have access to a configuration panel where your business details, services and members of staff can be easily updated. Also, a web link will be provided where your own clients can book their appointments
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+                <a class="btn btn-default">Learn more &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Web Hosting</h2>
+            <h2>Advantages</h2>
             <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
+                <span>Manage clients appointments on the go, r</span>each a new geographic area, provide the facility of self-booking to clients, <span>reduce business paperwork, improve the business effectiveness and performance, integrated CRM, business statics and sales reports and also payment at the time of booking</span>.
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+                <a class="btn btn-default">Learn more &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Features</h2>
+            <p>
+                <span>Mobile App, auto-scheduler, employee availability, Email clients and employees, Cloud based appointment scheduling system, calendar sync, business reports, Help &amp; Support and much more</span>
+            </p>
+            <p>
+                <a class="btn btn-default">Learn more &raquo;  </a>
             </p>
         </div>
     </div>

@@ -24,7 +24,7 @@
                                 <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                                 <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small" ForeColor="#284775" />
                                 <TextBoxStyle Font-Size="Small" Width="100%" />
-                                <TitleTextStyle BackColor="black" Font-Bold="True" Font-Size="Small" ForeColor="LightGray" />
+                                <TitleTextStyle BackColor="black" Font-Bold="True" Font-Size="Medium" ForeColor="LightGray" />
                                 <LabelStyle Width="20%" HorizontalAlign="Left" />
                                 <ValidatorTextStyle ForeColor="Red" />
                             </asp:Login>
@@ -35,8 +35,8 @@
 
                 </div>
                 <p>
-                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register</asp:HyperLink>
-                    if you don't have a local account.
+                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" NavigateUrl="~/UI/Register.aspx">Register</asp:HyperLink>
+                    &nbsp;if you don't have a local account.
                 </p>
             </section>
         </div>

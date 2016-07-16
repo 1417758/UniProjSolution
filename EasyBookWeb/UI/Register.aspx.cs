@@ -62,6 +62,9 @@ public partial class UI_Register : System.Web.UI.Page {
             this.email = CreateUserWizard1.Email;
             // PolulateInstallation();
 
+            //hide RegisterHyperLink
+            this.RegisterHyperLink.Visible = false;
+
         }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>Register.aspx, CreatedUser()</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
