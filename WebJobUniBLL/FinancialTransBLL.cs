@@ -3,8 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebJobUniDAL;
 
 namespace WebJobUniBLL {
-    class FinancialTransBLL {
-    }
-}
+    public class FinancialTransBLL : FinancialTransaction {
+        public string status { get; set; }
+        public decimal amount { get; set; }
+        public int payMetType { get; set; }
+        public Guid authorisCode { get; set; }
+        public DateTime timeStamp { get; set; }
+
+        #region "Constructor"
+        public FinancialTransBLL() { }
+
+        #endregion
+
+    }//class
+}//namespace
