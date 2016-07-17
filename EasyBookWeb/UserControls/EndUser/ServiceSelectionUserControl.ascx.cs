@@ -10,8 +10,17 @@ public partial class UserControls_EndUser_ServiceSelectionUserControl : System.W
 
     }
     public void PopulateServices(List<String> servicesName) {
-       this.RadioButtonListServices.DataSource = servicesName;
+       
+        //loop through service names parameter
+        foreach (string sName in servicesName) {
+            //add to radioButton list
+            this.RadioButtonListServices.Items.Add(sName);            
+        }
+        this.RadioButtonListServices.DataSource = servicesName;
+        // this.RadioButtonListServices.DataTextField = "name";
+        // this.RadioButtonListServices.DataValueField = "serviceID";
         this.RadioButtonListServices.DataBind();
+
     }
 
     public string GetServiceSelected() {

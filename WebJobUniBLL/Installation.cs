@@ -71,10 +71,13 @@ namespace WebJobUniBLL {
 
                 //employees
                 var _with3 = i.Employees;
-                _with3.Add(new EmployeeBLL());
+                _with3.Add(new EmployeeBLL(Person.MRS, "RUTH", "Simpson", "sdijfif@akijhdi.co.uk", (Guid)Utils.GetASP_UserID()));
                 //staff 2
                 EmployeeBLL oi = new EmployeeBLL(Person.MS, "Lorenzo", "Victor", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetASP_UserID());
                 _with3.Add(oi);
+                //staff 3
+                EmployeeBLL oi3 = new EmployeeBLL(Person.MR, "Alves", "Thomas", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetASP_UserID());
+                _with3.Add(oi3);
 
                 //services 
                 var _with4 = i.Services;

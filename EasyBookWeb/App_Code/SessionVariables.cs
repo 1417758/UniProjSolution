@@ -61,7 +61,15 @@ namespace EasyBookWeb {
             set { HttpContext.Current.Session[XMLConstants.END_TIME] = value; }
         }
 
-        /*  public static string Interval {
+        public static string ApptTimeBttonID {
+            get { return (string)HttpContext.Current.Session["ApptTimeBttonID"]; }
+            set { HttpContext.Current.Session["ApptTimeBttonID"] = value; }
+        }
+       /*   public static string BttonID {
+            get { return ViewState["ApptTimeBttonID"]; }
+            set { ViewState["ApptTimeBttonID"] = value; }
+        }
+        public static string Interval {
               get { return HttpContext.Current.Session[XMLConstants.Interval]; }
               set { HttpContext.Current.Session[XMLConstants.Interval] = value; }
           }

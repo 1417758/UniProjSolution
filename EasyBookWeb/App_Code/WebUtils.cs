@@ -14,6 +14,7 @@ namespace EasyBookWeb {
     public sealed class WebUtils : System.Web.UI.Page {
 
         public static Installation installation;
+        public static string TIME_SELECTED;
 
         public static void PutInstallationObjectinSession(Installation i) {
             try {

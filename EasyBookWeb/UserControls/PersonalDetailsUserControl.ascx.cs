@@ -7,11 +7,21 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class UserControls_PersonalDetailsUserControl : System.Web.UI.UserControl {
-
+    private TableCell _row1_cell1 = new TableCell(); 
     protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack)
             //polulate dropdownList
             PolulateDropDownTitle();
+    }
+    public Unit Cell1Width {
+        get {
+            _row1_cell1 = (TableCell)this.Table2.FindControl("row1_c1");
+            return _row1_cell1.Width;
+        }
+        set {
+            _row1_cell1 = (TableCell)this.Table2.FindControl("row1_c1");
+            _row1_cell1.Width = value;
+        }
     }
 
     #region "Get Functions"

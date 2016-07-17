@@ -66,6 +66,7 @@ namespace WebJobUniUtils {
         /// <returns></returns>
         public static Guid? GetASP_UserID() {
             try {
+                //ASPNET-USER: rachelASPcreated
                 Guid userID = new Guid("9091A8A7-1460-4F22-B95D-81061CF358E7");
                 return userID;
             }

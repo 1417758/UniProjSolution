@@ -29,8 +29,16 @@ namespace WebJobUniBLL {
             this.agenda = new AgendaBLL();
         }
         public EmployeeBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, byte _role, string _natInsNumb, string _jobTitle, AgendaBLL _agenda, Guid _aspUserID) {
-            this.contactDetail = new ContactDetailsBLL();
+            this.contactDetail = _contactDet;
             this.agenda = new AgendaBLL();
+            this.title = _title;
+            this.firstName = _firstName;
+            this.lastName = _lastName;
+            this.role = _role;
+            this.natInsNumb = _natInsNumb;
+            this.jobTitle = _jobTitle;
+            this.aspnetUserID = _aspUserID;
+            this.agenda = _agenda;
         }
         public EmployeeBLL(string _title, string _firstName, string _lastName, string email, Guid _aspUserID) {
             this.contactDetail = new ContactDetailsBLL();

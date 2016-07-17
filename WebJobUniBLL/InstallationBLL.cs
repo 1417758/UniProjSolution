@@ -46,7 +46,7 @@ namespace WebJobUniBLL {
                 int tempServID;
                 foreach (ServicesBLL service in i.Services) {
                     //save service
-               //     tempServID = (int)ServicesBLL.AddService(service.name, service.duration, service.price);
+                    //     tempServID = (int)ServicesBLL.AddService(service.name, service.duration, service.price);
                 }
 
 
@@ -58,17 +58,78 @@ namespace WebJobUniBLL {
         #endregion
 
         #region "Functions"
-        public List<string> GetServiceNames(Installation i) {
-            try { 
-            //save services             
-            List<string> liServNames = new List<string>();
-            //loop through services
-            foreach (ServicesBLL service in i.Services) {
-                //save service name  to new list of string
-                liServNames.Add(service.name);
-            }
+        public static List<string> GetStaffNames(Installation i, bool is1stName = true, bool isLastName = false) {
+            try {
+                //create list to save services items             
+                List<string> liStaffNames = new List<string>();
 
-            return liServNames;
+                //loop through services
+                foreach (EmployeeBLL staff in i.Employees) {
+                    //select appropriate detail
+                    if (is1stName)
+                        //save service name  to new list of string
+                        liStaffNames.Add(staff.title + " " + staff.firstName);
+                    if (isLastName)
+                        //save service name  to new list of string
+                        liStaffNames.Add(staff.title + " " + staff.lastName);                   
+                }
+
+                return liStaffNames;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetStaffNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        public static List<string> GetServiceDetails(Installation i, bool isNames = true, bool isDesc = false, bool isDuration = false, bool isPrice = false) {
+            try {
+                //create list to save services items             
+                List<string> liServNames = new List<string>();
+
+                //loop through services
+                foreach (ServicesBLL service in i.Services) {
+                    //select appropriate detail
+                    if (isNames)
+                        //save service name  to new list of string
+                        liServNames.Add(service.name);
+                    if (isDesc)
+                        //save service name  to new list of string
+                        liServNames.Add(service.description);
+                    if (isDuration)
+                        //save service name  to new list of string
+                        liServNames.Add(service.duration.ToString());
+                    if (isPrice)
+                        //save service name  to new list of string
+                        liServNames.Add(service.price.ToString());
+                }
+
+                return liServNames;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetServiceNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        public static List<string> GetServiceDetailsFull(Installation i) {
+            try {
+                //create list to save services items             
+                List<string> liServNames = new List<string>();
+                string temp = "";
+
+                //loop through services
+                foreach (ServicesBLL service in i.Services) {
+                    //select appropriate detail
+                    //save service name  to new list of string
+                    temp = String.Format("{0, 177}, {1, 87} mins £ {2,500}", service.name, service.duration.ToString(), service.price.ToString());
+                    System.Diagnostics.Debug.Print(temp);
+                    temp =service.name.PadRight(35) + (service.duration.ToString()+" mins").PadRight(15) + "£ " +service.price.ToString();
+                    System.Diagnostics.Debug.Print(temp);
+                    liServNames.Add(temp);
+
+
+                }
+
+                return liServNames;
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetServiceNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
