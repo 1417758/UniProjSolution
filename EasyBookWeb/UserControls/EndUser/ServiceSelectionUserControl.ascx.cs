@@ -24,6 +24,10 @@ public partial class UserControls_EndUser_ServiceSelectionUserControl : System.W
     }
 
     public string GetServiceSelected() {
-        return this.RadioButtonListServices.SelectedItem.Text;
+        return this.RadioButtonListServices.SelectedItem.Text;//NB: no selection return expecetion!?? 18/7/16 must test
     }
+    public int GetSelectedServiceIndex() {
+        return this.RadioButtonListServices.SelectedIndex;
+    }
+
 }

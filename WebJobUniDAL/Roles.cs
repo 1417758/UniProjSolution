@@ -139,7 +139,7 @@ namespace WebJobUniDAL {
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Roles.AddRole(x2 param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 // return null;
-                return 0;
+                return null;
             }
         }
 

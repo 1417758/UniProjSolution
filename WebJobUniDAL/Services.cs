@@ -66,6 +66,16 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public static DataSetAppt.ServicesDataTable GetServiceIDByServName(string servName) {
+            try {
+                return Adapter.GetServiceIDByServName(servName);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Services.GetServiceIDByServName(servName) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
         #endregion
 
         #region "ADD Functions"
@@ -75,16 +85,16 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddService(string name,bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit) {
+        public static int? AddService(string name,bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, decimal price) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
-                dynamic result = Adapter.InsertService(name, isCertifReq, isInsReq, description, duration, durationUnit);
+                dynamic result = Adapter.InsertService(name, isCertifReq, isInsReq, description, duration, durationUnit, price);
                 return (int?)result;
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Services.AddServices(x6 param) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 // return null;
-                return 0;
+                return null;
             }
         }
         #endregion

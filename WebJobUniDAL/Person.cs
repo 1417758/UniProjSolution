@@ -48,10 +48,8 @@ namespace WebJobUniDAL {
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonDataTable GetAllPerson() {
-
             try {
                 return Adapter.GetData();
-
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Person.GetAll() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
@@ -66,7 +64,6 @@ namespace WebJobUniDAL {
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
         public static DataSet1Main.PersonDataTable GetPersonByID(int? personID) {
-
             try {
                 return Adapter.GetPersonByID(personID);
             }
@@ -78,7 +75,6 @@ namespace WebJobUniDAL {
         //3
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonDataTable GetPersonByLastName(string lastName) {
-
             try {
                 return Adapter.GetPersonByLastName(lastName);
             }
@@ -90,7 +86,6 @@ namespace WebJobUniDAL {
         //4
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonDataTable GetPersonByASPuserID(Guid aspnetUserID) {
-
             try {
                 return Adapter.GetPersonByASPuserID(aspnetUserID);
             }
@@ -114,11 +109,22 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
+        //6
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public static int? GetPersonIDByASPuserID(Guid aspnetUserID) {
+            try {                
+                return (int?)Adapter.GetPersonIDByASPuserID(aspnetUserID);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Person.GetPersonIDByASPuserID(aspnetUserID))</h2> </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
 
         #endregion
 
         #region "Functions"
-        /// <summary>//6
+        /// <summary>//7
         /// function which insert a record in Person table
         /// </summary>
         /// <returns></returns>
@@ -139,7 +145,7 @@ namespace WebJobUniDAL {
         #endregion
 
         #region "DELETE Functions"
-        /// <summary>//7
+        /// <summary>//8
         /// function which removed a record in Person table
         /// </summary>
         /// <returns></returns>

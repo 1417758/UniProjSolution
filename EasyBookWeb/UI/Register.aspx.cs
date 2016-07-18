@@ -371,7 +371,7 @@ public partial class UI_Register : System.Web.UI.Page {
 
             if (isComplete)
                 //process data and save to database
-                InstallationBLL.SaveInstallationToDB(i);
+                InstallationBLL.SaveInstallationToDB(ref i);
         }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>Register.aspx, PolulateInstallation(x6)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);

@@ -10,6 +10,7 @@ namespace WebJobUniBLL {
     public class ContactDetailsBLL : ContactDetails {
 
         #region "Variables"
+        public int? ID { get; set; }
         public string address { get; set; }
         public string city { get; set; }
         public string postCode { get; set; }

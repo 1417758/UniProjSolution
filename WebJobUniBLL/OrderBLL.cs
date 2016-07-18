@@ -11,6 +11,7 @@ namespace WebJobUniBLL {
         public static readonly int GRACE_PERIOD = 15;
         public static readonly string GRACE_PERIOD_UNIT = "min";
 
+        public int? ID { get; set; }
         public string status { get; set; }
         public decimal amount { get; set; }
         public bool isPaidinFull { get; set; }

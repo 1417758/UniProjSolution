@@ -7,6 +7,7 @@ using WebJobUniDAL;
 
 namespace WebJobUniBLL {
     public class ApptBLL : Appointment {
+        public int? ID { get; set; }
         public DateTime date { get; set; }
         public TimeSpan time { get; set; }
         public int endUserID { get; set; }

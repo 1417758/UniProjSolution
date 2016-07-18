@@ -7,6 +7,7 @@ using WebJobUniDAL;
 
 namespace WebJobUniBLL {
     public class FinancialTransBLL : FinancialTransaction {
+        public int? ID { get; set; }
         public string status { get; set; }
         public decimal amount { get; set; }
         public int payMetType { get; set; }

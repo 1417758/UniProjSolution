@@ -30,7 +30,7 @@
             this.bttonGetPayMetByID = new System.Windows.Forms.Button();
             this.textBoxASPUserID = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btton10 = new System.Windows.Forms.Button();
+            this.bttonGetServIDByServName = new System.Windows.Forms.Button();
             this.bttonGetAllStaff = new System.Windows.Forms.Button();
             this.bttonDeleteService = new System.Windows.Forms.Button();
             this.bttonGetServiceByStaffID = new System.Windows.Forms.Button();
@@ -84,6 +84,8 @@
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -164,7 +166,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btton10);
+            this.groupBox4.Controls.Add(this.bttonGetServIDByServName);
             this.groupBox4.Controls.Add(this.bttonGetAllStaff);
             this.groupBox4.Controls.Add(this.bttonDeleteService);
             this.groupBox4.Controls.Add(this.bttonGetServiceByStaffID);
@@ -179,17 +181,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Test Services";
             // 
-            // btton10
+            // bttonGetServIDByServName
             // 
-            this.btton10.Enabled = false;
-            this.btton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btton10.Location = new System.Drawing.Point(327, 14);
-            this.btton10.Margin = new System.Windows.Forms.Padding(2);
-            this.btton10.Name = "btton10";
-            this.btton10.Size = new System.Drawing.Size(81, 59);
-            this.btton10.TabIndex = 10;
-            this.btton10.Text = "Get";
-            this.btton10.UseVisualStyleBackColor = true;
+            this.bttonGetServIDByServName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetServIDByServName.Location = new System.Drawing.Point(327, 14);
+            this.bttonGetServIDByServName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetServIDByServName.Name = "bttonGetServIDByServName";
+            this.bttonGetServIDByServName.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetServIDByServName.TabIndex = 10;
+            this.bttonGetServIDByServName.Text = "Get ServID\r\n By Service Name";
+            this.bttonGetServIDByServName.UseVisualStyleBackColor = true;
+            this.bttonGetServIDByServName.Click += new System.EventHandler(this.bttonGetServIDByServName_Click);
             // 
             // bttonGetAllStaff
             // 
@@ -699,7 +701,7 @@
             this.GroupBoxUser.Controls.Add(this.textBoxLastName);
             this.GroupBoxUser.Controls.Add(this.Label1stName);
             this.GroupBoxUser.Controls.Add(this.LabelUserName);
-            this.GroupBoxUser.Location = new System.Drawing.Point(772, 123);
+            this.GroupBoxUser.Location = new System.Drawing.Point(772, 176);
             this.GroupBoxUser.Name = "GroupBoxUser";
             this.GroupBoxUser.Size = new System.Drawing.Size(166, 167);
             this.GroupBoxUser.TabIndex = 97;
@@ -737,13 +739,15 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.textBoxName);
+            this.groupBox16.Controls.Add(this.label5);
             this.groupBox16.Controls.Add(this.textBoxDate);
             this.groupBox16.Controls.Add(this.label4);
             this.groupBox16.Controls.Add(this.textBoxID);
             this.groupBox16.Controls.Add(this.label43);
             this.groupBox16.Location = new System.Drawing.Point(772, 12);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(166, 105);
+            this.groupBox16.Size = new System.Drawing.Size(166, 147);
             this.groupBox16.TabIndex = 115;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "All IDs (Appt/Order/FinTrans)";
@@ -789,6 +793,22 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(756, 379);
             this.dataGridView1.TabIndex = 86;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(9, 121);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(151, 20);
+            this.textBoxName.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 105);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Name / Desc";
             // 
             // TestApptDS
             // 
@@ -836,7 +856,7 @@
         internal System.Windows.Forms.Button bttonGetPayMetByID;
         internal System.Windows.Forms.TextBox textBoxASPUserID;
         internal System.Windows.Forms.GroupBox groupBox4;
-        internal System.Windows.Forms.Button btton10;
+        internal System.Windows.Forms.Button bttonGetServIDByServName;
         internal System.Windows.Forms.Button bttonGetAllStaff;
         internal System.Windows.Forms.Button bttonDeleteService;
         internal System.Windows.Forms.Button bttonGetServiceByStaffID;
@@ -890,5 +910,7 @@
         internal System.Windows.Forms.Button bttonGetApptByEndUserID;
         internal System.Windows.Forms.TextBox textBoxDate;
         internal System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.TextBox textBoxName;
+        internal System.Windows.Forms.Label label5;
     }
 }

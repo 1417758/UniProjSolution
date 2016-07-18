@@ -10,55 +10,69 @@ namespace WebJobUniBLL {
     public class InstallationBLL {
 
         #region "Methods"
-        public static void SaveInstallationToDB(Installation i) {
+        public static void SaveInstallationToDB(ref Installation i) {
             try {
                 //  System.Diagnostics.Debug.Print(i.ToString());
 
                 //save CLient contact Details
                 var _with1 = i.Company.mainClientContact.contactDetail;
-                int contDetID = (int)ContactDetailsBLL.AddContactDetails(_with1.email);
+                int? contDetID = ContactDetailsBLL.AddContactDetails(_with1.email);
+                _with1.ID = contDetID;
 
                 //save CLient
                 var _with2 = i.Company.mainClientContact;
-                int clientID = (int)ClientBLL.AddClient(_with2.title, _with2.firstName, _with2.lastName, contDetID, _with2.aspnetUserID);
+                int? clientID = ClientBLL.AddClient(_with2.title, _with2.firstName, _with2.lastName, (int)contDetID, _with2.aspnetUserID);
+                _with2.ID = clientID;
 
                 //save Company address/phone numb
                 var _with3 = i.Company.businessAddress;
-                int compContDetID = (int)ContactDetailsBLL.AddContactDetails(null, null, null, null, _with3.landline, null, null);
+                int? compContDetID = ContactDetailsBLL.AddContactDetails(null, null, null, null, _with3.landline, null, null);
+                _with3.ID = compContDetID;
 
                 //save Company 
                 var _with4 = i.Company;
-                int compID = (int)CompanyBLL.AddCompany(_with4.domain, _with4.industry, _with4.natureOfBusiness, clientID, compContDetID);
+                int? compID = CompanyBLL.AddCompany(_with4.domain, _with4.industry, _with4.natureOfBusiness, (int)clientID, (int)compContDetID);
+                _with4.ID = compID;
 
                 //save Employees 
-                int tempStaffContDetID, tempStaffID;
-                short tempStaffAgendaID;
+                int? tempStaffContDetID, tempStaffID;
+                short? tempStaffAgendaID;
                 foreach (EmployeeBLL staff in i.Employees) {
                     //save staff contact details
-                    tempStaffContDetID = (int)ContactDetailsBLL.AddContactDetails(staff.contactDetail.email);
+                    tempStaffContDetID = ContactDetailsBLL.AddContactDetails(staff.contactDetail.email);
+                    //save ID to Installation
+                    staff.contactDetail.ID = tempStaffContDetID;
                     //save staff agenda
-                    tempStaffAgendaID = (short)AgendaBLL.AddAgenda(false, false);
+                    tempStaffAgendaID = AgendaBLL.AddAgenda(false, false);
+                    staff.agenda.ID = tempStaffAgendaID;
                     //save employee
-                    tempStaffID = (int)EmployeeBLL.AddEmployee(staff.title, staff.firstName, staff.lastName, tempStaffContDetID, staff.aspnetUserID, null, null, tempStaffAgendaID);
+                    tempStaffID = EmployeeBLL.AddEmployee(staff.title, staff.firstName, staff.lastName, (int)tempStaffContDetID, staff.aspnetUserID, null, null, (short)tempStaffAgendaID);
+                    staff.ID = tempStaffID;
                 }
 
                 //save services 
-                int tempServID;
+                int? tempServID;
                 foreach (ServicesBLL service in i.Services) {
                     //save service
-                    //     tempServID = (int)ServicesBLL.AddService(service.name, service.duration, service.price);
+                    tempServID = ServicesBLL.AddService(service.name, service.isCertifReq, service.isInsuranceReq, service.description, service.duration, service.durationUnit, service.price);
+                    service.ID = tempServID;
                 }
+
+                //save Provide
+                //FINK!! FINK18/7//16 
+
+                //return i //?? Installation if IDs not added byRef
 
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.SaveInstallationToDB()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.SaveInstallationToDB(ref i)</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
             }
         }
         #endregion
 
         #region "Functions"
-        public static List<string> GetStaffNames(Installation i, bool is1stName = true, bool isLastName = false) {
+        public static List<string> GetStaff1stNameWithTitle(Installation i, bool is1stName = true, bool isLastName = false) {
             try {
                 //create list to save services items             
                 List<string> liStaffNames = new List<string>();
@@ -125,8 +139,7 @@ namespace WebJobUniBLL {
                     temp =service.name.PadRight(35) + (service.duration.ToString()+" mins").PadRight(15) + "£ " +service.price.ToString();
                     System.Diagnostics.Debug.Print(temp);
                     liServNames.Add(temp);
-
-
+                    
                 }
 
                 return liServNames;

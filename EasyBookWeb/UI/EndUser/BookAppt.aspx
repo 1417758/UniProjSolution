@@ -33,49 +33,59 @@
         <ContentTemplate>...</ContentTemplate>
 
         <Panes>
-            <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server" Visible="true">
+            <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server">
                 <Header>1. Select Service</Header>
                 <Content>
                     All Services Currently Available: 
                     <uc1:ServiceSelectionUserControl runat="server" ID="ServiceSelectionUserControl" />
+
+                    <asp:Button ID="button1" runat="server" Text="Next &raquo;" OnClick="Button_Click" class="btn btn-default" />
                 </Content>
             </ajaxToolkit:AccordionPane>
 
             <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server">
                 <Header>2. Service Provider</Header>
                 <Content>
-                    Select a Member of our team 
+                  Select a Member of our team: 
                     <uc1:StaffSelectionUserControl runat="server" ID="StaffSelectionUserControl" />
-
+                    <asp:Button ID="button2" runat="server" Text="Next &raquo;" OnClick="Button_Click" class="btn btn-default" />
                 </Content>
             </ajaxToolkit:AccordionPane>
 
-            <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server">
+            <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server" OnClick="Button_Click">
                 <Header>3. Select Date & Time</Header>
                 <Content>
 
                     <uc1:DateSelectionUserControl runat="server" ID="DateSelectionUserControl" />
-
+                    <asp:Button ID="button3" runat="server" Text="Next &raquo;" OnClick="Button_Click" class="btn btn-default" />
                 </Content>
             </ajaxToolkit:AccordionPane>
 
             <ajaxToolkit:AccordionPane ID="AccordionPane4" runat="server">
                 <Header>4. Your Info</Header>
-                <Content>Enter your personal information
+                <Content>
+                    Enter your personal information
 
                     <uc1:UserInfoUserControl runat="server" ID="UserInfoUserControl" />
-
+                    <asp:Button ID="button4" runat="server" Text="Next &raquo;" OnClick="Button_Click" class="btn btn-default" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:CheckBox ID="CheckBoxSaveUserDet" runat="server" Text="Save my details for next visit" Checked="true" />
                 </Content>
             </ajaxToolkit:AccordionPane>
 
             <ajaxToolkit:AccordionPane ID="AccordionPane5" runat="server">
                 <Header>5. Payment Details</Header>
-                <Content>content is located here </Content>
+                <Content>
+                    content is located here 
+                <asp:Button ID="button5" runat="server" Text="Next &raquo;" OnClick="Button_Click" class="btn btn-default" />
+                </Content>
             </ajaxToolkit:AccordionPane>
 
             <ajaxToolkit:AccordionPane ID="AccordionPane6" runat="server">
                 <Header>6. Appointment Confirmation</Header>
-                <Content>content is located here </Content>
+                <Content>
+                    content is located here 
+                    <asp:Button ID="button6" runat="server" Text="Finish &raquo;" OnClick="Button_Click" class="btn btn-default" />
+                </Content>
             </ajaxToolkit:AccordionPane>
         </Panes>
     </ajaxToolkit:Accordion>

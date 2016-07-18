@@ -14,7 +14,7 @@ namespace WebJobUniBLL {
     }
 
     public class AgendaBLL :Agenda{
-
+        public int? ID { get; set; }
         public bool isAdmin { get; set; }
         public bool syncCalendar { get; set; }
 

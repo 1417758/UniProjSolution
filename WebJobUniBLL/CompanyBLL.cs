@@ -9,6 +9,7 @@ namespace WebJobUniBLL {
     public class CompanyBLL : Company {
 
         #region "Variables"
+        public int? ID { get; set; }
         public string domain { get; set; }
         public string industry { get; set; }
         public int natureOfBusiness { get; set; }

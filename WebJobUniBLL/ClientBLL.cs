@@ -9,6 +9,7 @@ namespace WebJobUniBLL {
     public class ClientBLL : Client {
 
         #region "Variables"
+        public int? ID { get; set; }
         public string title { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
