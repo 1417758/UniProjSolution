@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using WebJobUniDAL;
 
 namespace WebJobUniBLL {
-
     public class ContactDetailsBLL : ContactDetails {
 
         #region "Variables"

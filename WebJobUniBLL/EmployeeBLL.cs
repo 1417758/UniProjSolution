@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WebJobUniDAL;
 
 namespace WebJobUniBLL {
-    public class  EmployeeBLL : Employee{
+     public class  EmployeeBLL : Employee{
 
         #region "Variables"
         public int? ID { get; set; }

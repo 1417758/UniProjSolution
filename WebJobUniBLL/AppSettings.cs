@@ -12,9 +12,8 @@ using WebJobUniDAL;
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //----
-namespace WebJobUniBLL {
+namespace WebJobUniBLL { 
     public class AppSettings {
-
 
         #region "Public Variables"
         public static XmlSerializer oXS = new XmlSerializer(typeof(Installation));
@@ -43,6 +42,36 @@ namespace WebJobUniBLL {
         #endregion
 
         #region "Functions"
+        public static bool IsUserOfType(string aspUserName, bool isTypeClient = false, bool isTypeEndUser = false) {
+            try {
+                //get aspUserID
+                Guid aspUserID = (Guid)AppSettings.GetUserIDByUserName(aspUserName);              
+                var curUser = ClientBLL.GetPersonByASPuserID(aspUserID);
+                byte curUserRole = 0;
+                
+                // get curUser ROLE
+                if (curUser != null)
+                    curUserRole = (byte)curUser.Rows[0].ItemArray[5];
+
+                //check parameters condition which applys
+                if (isTypeClient) {
+                    if (curUserRole == (byte)RolesEnum.CLIENT)
+                        return true;
+                }
+
+                if (isTypeEndUser) {
+                    if (curUserRole == (byte)RolesEnum.END_USER)
+                        return true;
+                }
+
+                //for now 18/7/16  --- anything else return false
+                return false;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.IsUserOfType(x2)</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
         public static Guid? GetUserIDByUserName(string userName) {
             try {                
                 return AspNetUser.GetUserIDByUserName(userName);

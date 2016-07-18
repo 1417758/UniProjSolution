@@ -72,6 +72,8 @@ namespace WebJobUniBLL {
         #endregion
 
         #region "Functions"
+      
+
         public static List<string> GetStaff1stNameWithTitle(Installation i, bool is1stName = true, bool isLastName = false) {
             try {
                 //create list to save services items             
@@ -85,7 +87,7 @@ namespace WebJobUniBLL {
                         liStaffNames.Add(staff.title + " " + staff.firstName);
                     if (isLastName)
                         //save service name  to new list of string
-                        liStaffNames.Add(staff.title + " " + staff.lastName);                   
+                        liStaffNames.Add(staff.title + " " + staff.lastName);
                 }
 
                 return liStaffNames;
@@ -136,10 +138,10 @@ namespace WebJobUniBLL {
                     //save service name  to new list of string
                     temp = String.Format("{0, 177}, {1, 87} mins £ {2,500}", service.name, service.duration.ToString(), service.price.ToString());
                     System.Diagnostics.Debug.Print(temp);
-                    temp =service.name.PadRight(35) + (service.duration.ToString()+" mins").PadRight(15) + "£ " +service.price.ToString();
+                    temp = service.name.PadRight(35) + (service.duration.ToString() + " mins").PadRight(15) + "£ " + service.price.ToString();
                     System.Diagnostics.Debug.Print(temp);
                     liServNames.Add(temp);
-                    
+
                 }
 
                 return liServNames;

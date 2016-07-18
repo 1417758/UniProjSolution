@@ -45,7 +45,7 @@ namespace EasyBookWeb {
                 //if Installation object in session is not nothing, return it
                 if (i != null) {
                     //do nothing 
-                    //installation is nothing
+                    System.Diagnostics.Debug.Print("Simply return installation save on session");
                 }
                 else {
 

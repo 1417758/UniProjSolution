@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebJobUniBLL;
 
 public partial class UI_MyLogin : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
@@ -16,11 +17,18 @@ public partial class UI_MyLogin : System.Web.UI.Page {
     protected void Login1_Authenticate1(object sender, AuthenticateEventArgs e) {
         if (Membership.ValidateUser(Login1.UserName, Login1.Password) == true) {
             Login1.Visible = true;
-           // Session["user"] = HttpContext.Current.User.Identity.Name;
-          //  Session["user1"] = Login1.UserName;
+            // Session["user"] = HttpContext.Current.User.Identity.Name;
+            //  Session["user1"] = Login1.UserName;
 
-            FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true );
-            Response.Redirect("~/UI/ConfigPanel/Welcome.aspx");
+            FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
+            //check user is a Client
+            bool isClient = AppSettings.IsUserOfType(Login1.UserName, isTypeClient: true);
+            //is so redirect to config panel
+            if (isClient)
+                Response.Redirect("~/UI/ConfigPanel/Welcome.aspx");
+            //else
+            //end-user? redirect to clients page??18/7/16
+
         }
         else {
             Response.Write("Invalid Login");
@@ -49,11 +57,11 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             //start session here
             Session["curUser"] = endUser;
 
-            if(Session["curUser"] != null)
+            if (Session["curUser"] != null)
                 ///this.Master.
 
-            //redirect 
-            Response.Redirect("~/Contact.aspx");
+                //redirect 
+                Response.Redirect("~/Contact.aspx");
 
         }
         catch (System.Threading.ThreadAbortException ex) {
@@ -93,8 +101,8 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             //R           Dim msg As String = "Attempted login failed for : " & user & vbCrLf & "Password entered: " & pass
             //R           SendMail.Send(msg, "EMISSIONS COMPILER - Failed Login Attempt", Net.Mail.DeliveryNotificationOptions.None, Net.Mail.MailPriority.High, toMail, fromMail, Nothing, Nothing, Nothing)
             //R           End If
-        
-       }
+
+        }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>MyLogin.aspx, LoggedIn Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
             // Log the exception and notify system operators
@@ -122,11 +130,11 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             // Log the exception and notify system operators
             ExceptionUtility.LogException(ex, "MyLogin.aspx, LoggedIn Method");
             ExceptionUtility.NotifySystemOps(ex);
-        
+
             return "Error in creating login Details!";
         }
     }
 
-    
+
 
 }

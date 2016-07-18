@@ -9,6 +9,8 @@ using WebJobUniUtils;
 namespace WebJobUniBLL {
     [Serializable()]
     public class Installation {
+
+        //public Installation() { }
         public Installation() {
             this.Company = new CompanyBLL();
             this.Timestamp = (DateTime)Utils.GetDatetimeNOW();
