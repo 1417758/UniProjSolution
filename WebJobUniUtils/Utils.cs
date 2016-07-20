@@ -64,14 +64,14 @@ namespace WebJobUniUtils {
         /// returns test asp.net User ID corresponding to rachelASPcreated
         /// </summary>
         /// <returns></returns>
-        public static Guid? GetASP_UserID() {
+        public static Guid? GetTestASP_UserID() {
             try {
                 //ASPNET-USER: rachelASPcreated
                 Guid userID = new Guid("9091A8A7-1460-4F22-B95D-81061CF358E7");
                 return userID;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetASP_UserID() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.GetRachelASP_UserID() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -86,7 +86,7 @@ namespace WebJobUniUtils {
                 return userID;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetASP_UserID(aspUserID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.GetASP_UserID(aspUserID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -644,7 +644,7 @@ namespace WebJobUniUtils {
         }
 
 
-        public static DateTime? GetDatetimeNOW() {
+        public static DateTime GetDatetimeNOW() {
             try {
                 string nowDateSt = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 System.Diagnostics.Debug.Print(nowDateSt);
@@ -657,7 +657,7 @@ namespace WebJobUniUtils {
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-                return null;
+                return new DateTime();
             }
         }
 
@@ -692,7 +692,7 @@ namespace WebJobUniUtils {
         /// <returns></returns>
         /// <remarks></remarks>
         public static DateTime? GetDateFromString2(string dateString) {
-            try {
+            try {                
                 //try and parse the string
                 DateTime theDate = new DateTime();
                 if (DateTime.TryParse(dateString, out theDate)) {
@@ -705,7 +705,20 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.GetDateFromString2(x1) </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        public static TimeSpan? GetTimeFromString(string timeString) {
+            try {
+                System.Diagnostics.Debug.Print("Given string time to parse: {0}", timeString);
+                //try and parse the string
+                TimeSpan theTime = TimeSpan.Parse(timeString);
+                System.Diagnostics.Debug.Print("The Time Converted is: {0}", theTime.ToString());
+                return theTime;                
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>Utils.Utils.GetTimeFromString(x1) </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
         }

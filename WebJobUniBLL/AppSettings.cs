@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Data;
 using WebJobUniDAL;
+using System.Collections.Generic;
 //------------------------------------------------------------------------------------------------------
 // <copyright file="AppSettings.vb" company="">
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
@@ -42,6 +43,26 @@ namespace WebJobUniBLL {
         #endregion
 
         #region "Functions"
+        public List<int> GetStaffBusyDays(int staffID) {
+            try {
+                List<int> staffBusy = new List<int>();
+                //get staff agenda
+                var staffAg = AgendaBLL.GetAgendaByStaffID(staffID);
+
+
+                //get busy days as list
+
+                //set these on date&time usercontrol
+
+                return staffBusy;
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetStaffBusyDays(x1)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                // Log the exception and notify system operators
+                return null;
+            }
+        }
         public static bool IsUserOfType(string aspUserName, bool isTypeClient = false, bool isTypeEndUser = false) {
             try {
                 //get aspUserID
@@ -72,6 +93,7 @@ namespace WebJobUniBLL {
                 return false;
             }
         }
+
         public static Guid? GetUserIDByUserName(string userName) {
             try {                
                 return AspNetUser.GetUserIDByUserName(userName);

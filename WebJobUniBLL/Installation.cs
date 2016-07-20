@@ -13,7 +13,7 @@ namespace WebJobUniBLL {
         //public Installation() { }
         public Installation() {
             this.Company = new CompanyBLL();
-            this.Timestamp = (DateTime)Utils.GetDatetimeNOW();
+            this.Timestamp = Utils.GetDatetimeNOW();
             this.Employees = new List<EmployeeBLL>();
             this.Services = new List<ServicesBLL>();
             this.ServicesProvidedByStaff = new ProvideBLL();
@@ -39,6 +39,7 @@ namespace WebJobUniBLL {
 
                 //Company
                 var _with2 = i.Company;
+                _with2.ID = 2;
                 _with2.domain = "TESTING Ltd";
                 _with2.industry = "Net Business";
                 _with2.natureOfBusiness = 99999;
@@ -52,14 +53,16 @@ namespace WebJobUniBLL {
 
                 //client (main company contact)
                 var _with1 = _with2.mainClientContact;
+                _with1.ID = 1;
                 _with1.title = Person.MRS;
                 _with1.firstName = "ME";
                 _with1.lastName = "McSantos";
                 _with1.role = (byte)RolesEnum.CLIENT;
-                _with1.aspnetUserID = (Guid)Utils.GetASP_UserID();
+                _with1.aspnetUserID = (Guid)Utils.GetTestASP_UserID();
 
                 //client Contact Details
                 var _with11 = _with1.contactDetail;
+                _with11.ID = 11;
                 _with11.address = "rua 23 qd 46 lot 28";
                 _with11.city = "Azerbejan";
                 _with11.postCode = "88402-445";
@@ -68,25 +71,42 @@ namespace WebJobUniBLL {
                 _with11.mobile = "234532455465";
                 _with11.email = "eoiuejhg@rgu.net";
                 _with11.notes = "nothing to declare";
-                _with11.dateCreated = (DateTime)Utils.GetDatetimeNOW();
+                _with11.dateCreated = Utils.GetDatetimeNOW();
                 _with11.dateUpdated = (DateTime)Utils.GetDateFromString("01/12/2010 10:04:08");
 
                 //employees
                 var _with3 = i.Employees;
-                _with3.Add(new EmployeeBLL(Person.MRS, "RUTH", "Simpson", "sdijfif@akijhdi.co.uk", (Guid)Utils.GetASP_UserID()));
+                EmployeeBLL oi1 = new EmployeeBLL(Person.MRS, "RUTH", "Simpson", "sdijfif@akijhdi.co.uk", (Guid)Utils.GetTestASP_UserID());
+                DaySchedule newTestDaySchedule = new DaySchedule(isTest: true);
+                oi1.agenda.staffCalendar.Add(Utils.GetDatetimeNOW().Date, newTestDaySchedule);
+                oi1.ID = 2;
+                _with3.Add(oi1);
                 //staff 2
-                EmployeeBLL oi = new EmployeeBLL(Person.MS, "Lorenzo", "Victor", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetASP_UserID());
-                _with3.Add(oi);
+                EmployeeBLL oi2 = new EmployeeBLL(Person.MS, "Lorenzo", "Victor", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetTestASP_UserID());
+                DaySchedule newTestDaySchedule2 = new DaySchedule(isTest: true);
+                oi2.agenda.staffCalendar.Add(Utils.GetDatetimeNOW().Date.AddDays(1), newTestDaySchedule);
+                oi2.ID = 10;
+                _with3.Add(oi2);
                 //staff 3
-                EmployeeBLL oi3 = new EmployeeBLL(Person.MR, "Alves", "Thomas", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetASP_UserID());
+                EmployeeBLL oi3 = new EmployeeBLL(Person.MR, "Alves", "Thomas", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetTestASP_UserID());
+                oi3.ID = 9;
+                DaySchedule newTestDaySchedule3 = new DaySchedule(isTest: true);
+                oi3.agenda.staffCalendar.Add(Utils.GetDatetimeNOW().Date.AddDays(2), newTestDaySchedule);
                 _with3.Add(oi3);
 
                 //services 
                 var _with4 = i.Services;
-                _with4.Add(new ServicesBLL("service 1", "wrap up without a word", 55, 99.3m));
-                _with4.Add(new ServicesBLL("service 2", "no no no ", 89, 102236.893m));
-                _with4.Add(new ServicesBLL("service 3", "FFS84857 983*33h", byte.MaxValue, decimal.MaxValue));
-                _with4.Add(new ServicesBLL("service 4", "wrap up again", byte.MinValue, decimal.MinValue));
+                ServicesBLL a = new ServicesBLL("service 1", "wrap up without a word", 55, 99.3m);
+                a.ID = 5;
+                ServicesBLL b = new ServicesBLL("service 2", "no no no ", 89, 102236.893m);
+                b.ID = 8;
+                ServicesBLL c = new ServicesBLL("service 3", "FFS84857 983*33h", byte.MaxValue, decimal.MaxValue);
+                c.ID = 13;
+                ServicesBLL d = new ServicesBLL("service 4", "wrap up again", byte.MinValue, decimal.MinValue);
+                _with4.Add(a);
+                _with4.Add(b);
+                _with4.Add(c);
+                _with4.Add(d);
 
                 //services Provided By Staff
                 var _with5 = i.ServicesProvidedByStaff;

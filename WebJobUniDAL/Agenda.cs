@@ -69,9 +69,9 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public static DataSet1Main.AgendaDataTable GetAgendaByStaffID(short? agendaID) {
+        public static DataSet1Main.AgendaDataTable GetAgendaByStaffID(int? staffID) {
             try {
-                return Adapter.GetAgendaByStaffID(agendaID);
+                return Adapter.GetAgendaByStaffID(staffID);
             }
             catch (Exception ex) {
                 System.Diagnostics.Debug.Print("<h2>DAL.Agenda.GetAgendaByStaffID(agendaID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);

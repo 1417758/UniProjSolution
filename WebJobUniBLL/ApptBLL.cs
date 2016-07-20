@@ -12,8 +12,8 @@ namespace WebJobUniBLL {
         public TimeSpan time { get; set; }
         public int endUserID { get; set; }
         public int serviceID { get; set; }
-        public string staff1stName { get; set; } //provider
-        public string notes { get; set; } //provider
+        public string provider { get; set; } //staff1stName
+        public string notes { get; set; } 
 
         #region "Constructor"
         public ApptBLL() { }

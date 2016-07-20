@@ -1,103 +1,135 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebJobUniDAL;
 
 namespace WebJobUniBLL {
-
-    public enum AgendaStatusEnum : byte {
-        //NB: this numeration is used on Stored Procedures and Functions (ie: GetAllPersonInherit...) 
-        // a change on these will require those to be revised 
-        AVAILABLE = 0, //false
-        BUSY = 1  //true      
-    }
-
-     public class AgendaBLL :Agenda{
+    public class AgendaBLL : Agenda {
         public int? ID { get; set; }
         public bool isAdmin { get; set; }
         public bool syncCalendar { get; set; }
 
-        public SerializableDictionary<int, string> calendar { get; set; }
+        // private Calendar myCalendar { get; set; }
+
+        //DateTime here represents CalendarDay
+        public SerializableDictionary<DateTime, DaySchedule> staffCalendar { get; set; }
+
 
         #region "Constructor"
         public AgendaBLL() {
-            calendar = GetNewCalendar();
+            //source: https://msdn.microsoft.com/en-us/library/system.globalization.calendar(v=vs.110).aspx
+            // Uses the default calendar of the InvariantCulture.
+            // this.myCalendar = CultureInfo.InvariantCulture.Calendar;
+            this.staffCalendar = new SerializableDictionary<DateTime, DaySchedule>();
         }
 
-        #endregion
-
-        #region "Methods"
-        public void CheckWholeCalendar(SerializableDictionary<int, string> calendar) {
-            // Use var keyword to enumerate dictionary.
-            foreach (var pair in calendar) {
-                System.Diagnostics.Debug.Print("AVAILABLE = false, \t BUSY = true");   
-                System.Diagnostics.Debug.Print("Key: {0},\t Value: {1}", pair.Key, pair.Value);
-            }
-        }
-        public void AddBooking(SerializableDictionary<int, string> calendar, int time2Add) {
-            //NB: round parameter up and/or down if not full or half hour
-            //add here 16/7/16
-
-            //add to calendar.
-            calendar.Add(time2Add, Enum.GetName(typeof(AgendaStatusEnum), AgendaStatusEnum.BUSY));
-        }
         #endregion
 
         #region "Functions"
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="startTime"></param>
-        /// <param name="endtime"></param>
-        /// <returns></returns>
-        public SerializableDictionary<int, string> GetNewCalendar(int startTime=8, int endtime=5) {
-            SerializableDictionary<int, string> calendar = new SerializableDictionary<int, string>();
-            int fullHr, halfHr;
-            string fullHr_string, halfHr_string;
-            //sort parameters
-            if (endtime < startTime)
-                endtime += 12;
+        public static DaySchedule GetDaySchedule(ref SerializableDictionary<DateTime, DaySchedule> staffCalendar, DateTime date2Add) {
+            try {
 
-            //loop through start and end time
-            for (int i = startTime; i < endtime; i++) {
-                //make up time :)
-                fullHr_string = i.ToString() + "00";
-                halfHr_string = i.ToString() + "30";
-                fullHr = (int)WebJobUniUtils.Utils.GetNumberInt(fullHr_string);
-                halfHr = (int)WebJobUniUtils.Utils.GetNumberInt(halfHr_string); 
-                System.Diagnostics.Debug.Print("Full Hour: {0},\t Half Hour: {1}", fullHr, halfHr);
-                
-                //add times to calendar
-                calendar.Add(fullHr, Enum.GetName(typeof(AgendaStatusEnum), AgendaStatusEnum.AVAILABLE));
-                calendar.Add(halfHr, Enum.GetName(typeof(AgendaStatusEnum), AgendaStatusEnum.AVAILABLE));
-            }//end for loop
+                //clean dateTime parameter to only show date
+                DateTime cleanDate = date2Add.Date;
+                DaySchedule resultDaySchedule = null;
 
-            return calendar;
-        }
+                //TryGet daySchedule for giving date
+                if (staffCalendar.TryGetValue(cleanDate, out resultDaySchedule))
+                    //add daySchedule to local variable
+                    //  SerializableDictionary<int, string> staffDaySchedule = resultDaySchedule.daySchedule;
+                    //add to daySchedule and return
+                    return resultDaySchedule;
 
-        public bool IsStaffBusy(SerializableDictionary<int, string> calendar, int time2Check) {
-            //source http://www.dotnetperls.com/dictionary
+                //this will be null if not found
+                return resultDaySchedule;
 
-            //NB: round parameter up and/or down if not full or half hour
-            //add here 16/7/16
-
-            // bool testResult;
-            string testResult;
-            //TryGetValue implies, it tests for the key. It then returns the value if it finds the key.
-            if (calendar.TryGetValue(time2Check, out testResult)) // Returns true or false.
-            {
-                System.Diagnostics.Debug.Print(testResult.ToString()); 
             }
-            
-            //check result
-           // if test
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.GetDaySchedule(x2)</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+                return null;
+            }
+
+        }//end AddBooking
 
 
-            return calendar.TryGetValue(time2Check, out testResult);
-        }
+        public static bool AddBooking(ref SerializableDictionary<DateTime, DaySchedule> staffCalendar, DateTime date2Add, int time2Add) {
+            try {
+                bool bookingAdded = false;
+                bool isStaffBusy = false;
+                //clean dateTime parameter to only show date
+                DateTime cleanDate = date2Add.Date;
+                DaySchedule newDaySchedule = new DaySchedule();//(isTest: true);
+                DaySchedule resultDaySchedule = null;
+
+                //check staff isnt already busy at the given date and time
+                //NB IsStaffBusy could be null then an cast error is going to occur here 19/7/16, must test
+                isStaffBusy = (bool)IsStaffBusy(ref staffCalendar, cleanDate, time2Add);
+
+                //check whether a dailySchedule exists for the given date
+                if (!staffCalendar.TryGetValue(cleanDate, out resultDaySchedule))
+                    //create one if is doesnt exist
+                    staffCalendar[cleanDate] = newDaySchedule;
+
+
+                if (!isStaffBusy) {
+                    //TryGet daySchedule for giving date
+                    if (staffCalendar.TryGetValue(cleanDate, out resultDaySchedule)) {
+                        //add daySchedule to local variable
+                        SerializableDictionary<int, string> staffDaySchedule = resultDaySchedule.daySchedule;
+                        //add to daySchedule and return
+                        return DaySchedule.AddBooking(ref staffDaySchedule, time2Add);
+                    }
+                }
+
+                //shouldnt get here
+                return bookingAdded;
+            }
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.AddBooking(x3)</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+                return false;
+            }
+
+        }//end AddBooking
+
+
+        public static bool? IsStaffBusy(ref SerializableDictionary<DateTime, DaySchedule> staffCalendar, DateTime date2Check, int time2Check) {
+            try {
+                //source http://www.dotnetperls.com/dictionary
+                //ie: d.Remove("cat"); // Removes cat.
+                DaySchedule resultDaySchedule = null;
+                DaySchedule newDaySchedule = new DaySchedule();//(isTest: true);
+                //clean dateTime parameter to only show date
+                DateTime cleanDate = date2Check.Date;
+
+                //try to find if staffCalendar has this date set on it.
+                if (staffCalendar.TryGetValue(cleanDate, out resultDaySchedule)) // Returns true or false.
+                {
+                    //if true fills in newDaySchedule with corresponding value of given key
+
+                    //print current date to check
+                    System.Diagnostics.Debug.Print("Current Day being checked is: " + cleanDate.ToString());
+                    //check day schedule status 
+
+                    return DaySchedule.IsStaffBusy(newDaySchedule.daySchedule, time2Check);
+                }
+
+                //current day doesnt exist on staff calendar so add it a new day shedule for the given date              
+                //R   staffCalendar[cleanDate] = newDaySchedule;
+                return false;
+            }
+            catch (Exception exc) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.IsStaffBusy(x3)</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+                return null;
+            }
+        }//end IsStaffBusy
         #endregion
+
+
+
+
 
     }//class
 }//namespace

@@ -1,8 +1,0 @@
-********** 14/07/2016 11:31:36 **********
-Exception Type: System.Web.Security.MembershipCreateUserException
-Exception: The username is already in use.
-Source: Register.aspx, PolulateInstallation(x6)
-Stack Trace: 
-   at System.Web.Security.Membership.CreateUser(String username, String password, String email)
-   at UI_Register.PolulateInstallation(Boolean isAspNetDet, Boolean isPersDet, Boolean isBusDet, Boolean isBusHrs, Boolean isEmployee, Boolean isService, Boolean isComplete) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UI\Register.aspx.cs:line 346
-

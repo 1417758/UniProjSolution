@@ -81,10 +81,32 @@
             //load unit convertor
             //R   UnitConvertorUtils.loadUnitsConvertorItems(SharedSettings.Settings.UnitsXMLFilename);
 
-            //load installation               
+            //load new installation                
             Installation i = WebUtils.GetInstallationObjectFromSession();
+
+            //source https://msdn.microsoft.com/en-us/library/6c3yckfw.aspx
+            //solve client link here
+            string clientURL1 = this.Request.RawUrl; //ie: Page.ResolveUrl("~");
+
+            //error  string  clientURL = HttpContext.Current.Server.MapPath("~/UI/EndUser/WelcomeUser.aspx?field1=5");
+            //check if its the endUser pages trying to be accessed
+            if (clientURL1.Contains("UI/EndUser")) {
+                //get companyID passed on client given url
+                string compID_url = Request.QueryString["field1"];
+                //NOTE //InstallationBLL. GET/BUILD COMPANY INSTALLATION OBJ (INCLUDING STAFF AND SERVICES) *GetAllStaff, GetAllServices (as unique DB)  
+                //18/7/16 usign test config for now
+                i = Installation.GetTestInstallation();
+                //http://msdn.microsoft.com/en-us/library/ms150046.aspx
+                Uri myUri = new Uri("http://www.example.com?param1=good&param2=bad");
+                string param1 = HttpUtility.ParseQueryString(myUri.Query).Get("param1");
+            }
+
             //save in session
             WebUtils.PutInstallationObjectinSession(i);
+
+
+
+
 
         }
         catch (Exception ex) {

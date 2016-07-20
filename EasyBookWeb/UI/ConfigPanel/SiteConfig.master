@@ -91,8 +91,8 @@
                 </div>
             </div>
             <aside id="asideLeft" class="grid-20 tablet-grid-20 mobile-grid-30">
-                <ul id="leftNav">
-                    <li><a href="Welcome.aspx" >Dashboard</a></li>
+                <ul id="leftNav" style="background-color:aquamarine;" /">
+                    <li><a href="Dashboard.aspx" >Dashboard</a></li>
                     <li><a>Calendar</a></li>
                     <li><a>Customers</a></li>
                     <li><a>Employees</a></li>

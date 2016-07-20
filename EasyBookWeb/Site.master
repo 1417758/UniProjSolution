@@ -66,7 +66,9 @@
                         <li><a runat="server" href="~/UI/Contact">Contact</a></li>
                         <li><a runat="server" href="~/Error/TestError">Test Error</a></li>
                         <li><a runat="server" href="~/UI/ConfigPanel/Welcome.aspx">Test Client</a></li>
-                        <li><a runat="server" href="~/UI/EndUser/WelcomeUser.aspx" onclick="logout();">Test End-User</a></li>
+                         <%-- <li><a runat="server" href="~/UI/EndUser/WelcomeUser.aspx">Test End-User</a></li>--%>
+                        <%--add test Installation to end-user via onclick event--%>
+                      <li><a runat="server" href="~/UI/EndUser/WelcomeUser.aspx" onclick="logout();">Test End-User</a></li>
                     </ul>
                     <asp:Button ID="btnId" runat="server" OnClick="btnId_Click" Style="display: none" ClientIDMode="Static"></asp:Button>
                     <asp:LoginView runat="server" ViewStateMode="Enabled">

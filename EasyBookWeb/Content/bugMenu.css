@@ -5,7 +5,7 @@
     padding: 15px;
     margin-left: -17.5%;    
     width: 99%; /*99%; 200px*/
-    background-color: palegreen; /*#f1f1f1;*/
+    background-color: #f1f1f1;
     height: 100%; /* Full height */
     /*   position: fixed; /* Make it stick, even on scroll */
     overflow: auto; /* Enable scrolling if the sidenav has too much content */

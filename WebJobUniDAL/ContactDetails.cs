@@ -100,7 +100,7 @@ namespace WebJobUniDAL {
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
         public static int? AddContactDetails(string address, string postcode, string city, string country, string landline, string mobilePhone, string email) {
             try {
-                DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
+                DateTime dateNow = Utils.GetDatetimeNOW();
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertContactDet(address: address, postCode: postcode, city: city, country: country,
                                                     landLine: landline, mobile: mobilePhone, email: email, dateCreated: dateNow, lastUpdated: dateNow);
@@ -117,7 +117,7 @@ namespace WebJobUniDAL {
             try {
                 //string address = null, string postcode = null, string city = null, string country = null, string landline = null, string mobilePhone = null, string email = null) {
 
-                DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
+                DateTime dateNow = Utils.GetDatetimeNOW();
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertContactDet(address: null, postCode: null, city: null, country: null,
                                                     landLine: null, mobile: null, email: null, dateCreated: dateNow, lastUpdated: dateNow);
@@ -132,7 +132,7 @@ namespace WebJobUniDAL {
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
         public static int? AddContactDetails(string email) {
             try {
-                DateTime dateNow = (DateTime)Utils.GetDatetimeNOW();
+                DateTime dateNow = Utils.GetDatetimeNOW();
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertContactDet(address: null, postCode: null, city: null, country: null,
                                                     landLine: null, mobile: null, email: email, dateCreated: dateNow, lastUpdated: dateNow);
