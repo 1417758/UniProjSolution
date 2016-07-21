@@ -47,13 +47,16 @@
     <Compile Include="ClientBLL.cs" />
     <Compile Include="CompanyBLL.cs" />
     <Compile Include="ContactDetailsBLL.cs" />
+    <Compile Include="DailyScheduleBLL.cs" />
     <Compile Include="DaySchedule.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="EndUserBLL.cs" />
+    <Compile Include="ExceptionHandling.cs" />
     <Compile Include="FinancialTransBLL.cs" />
     <Compile Include="Installation.cs" />
     <Compile Include="InstallationBLL.cs" />
     <Compile Include="OrderBLL.cs" />
+    <Compile Include="PayMethodBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvideBLL.cs" />
     <Compile Include="SampleCalendar.cs" />

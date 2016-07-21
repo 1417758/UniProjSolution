@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebJobUniDAL;
+using WebJobUniUtils;
 
 namespace WebJobUniBLL {
     public class ContactDetailsBLL : ContactDetails {
@@ -27,18 +28,17 @@ namespace WebJobUniBLL {
         public ContactDetailsBLL() {
         }
 
-        public ContactDetailsBLL(string _address, string _city, string _postCode, string _country, string _landline, string _mobile, string _email, string _notes, DateTime _dateCreated, DateTime _dateUpdated ) {
+        public ContactDetailsBLL(string _address, string _city, string _postCode, string _country, string _landline, string _mobile, string _email, string _notes) {
             this.address = _address;
             this.city = _city;
             this.postCode = _postCode;
             this.country = _country;
-            this.dateCreated = _dateCreated;
             this.landline = _landline;
             this.mobile = _mobile;
             this.email = _email;
             this.notes = _notes;
-            this.dateCreated = _dateCreated;
-            this.dateUpdated = _dateUpdated;
+            this.dateCreated = Utils.GetDatetimeNOW();
+            this.dateUpdated = Utils.GetDatetimeNOW();
         }
 
     }//class

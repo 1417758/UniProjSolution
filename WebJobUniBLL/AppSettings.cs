@@ -13,7 +13,7 @@ using System.Collections.Generic;
 // Copyright (c) Rachie Holdings Ltd. All rights reserved.
 // </copyright>
 //----
-namespace WebJobUniBLL { 
+namespace WebJobUniBLL {
     public class AppSettings {
 
         #region "Public Variables"
@@ -57,19 +57,18 @@ namespace WebJobUniBLL {
                 return staffBusy;
 
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetStaffBusyDays(x1)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
-                // Log the exception and notify system operators
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }
         public static bool IsUserOfType(string aspUserName, bool isTypeClient = false, bool isTypeEndUser = false) {
             try {
                 //get aspUserID
-                Guid aspUserID = (Guid)AppSettings.GetUserIDByUserName(aspUserName);              
+                Guid aspUserID = (Guid)AppSettings.GetUserIDByUserName(aspUserName);
                 var curUser = ClientBLL.GetPersonByASPuserID(aspUserID);
                 byte curUserRole = 0;
-                
+
                 // get curUser ROLE
                 if (curUser != null)
                     curUserRole = (byte)curUser.Rows[0].ItemArray[5];
@@ -88,18 +87,18 @@ namespace WebJobUniBLL {
                 //for now 18/7/16  --- anything else return false
                 return false;
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.IsUserOfType(x2)</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return false;
             }
         }
 
         public static Guid? GetUserIDByUserName(string userName) {
-            try {                
+            try {
                 return AspNetUser.GetUserIDByUserName(userName);
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetUserIDByUserName() </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }
@@ -129,8 +128,8 @@ namespace WebJobUniBLL {
                 //R
                 return null;
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AppSettings.GetPopulatedInstallationObject() EXCEPTION </h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }
@@ -167,9 +166,8 @@ namespace WebJobUniBLL {
                 return doc;
 
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>AppSettings.vb: EXCEPTION in GetAsXMLDocument:</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
-                return null;
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex); return null;
             }
         }
 
@@ -209,8 +207,8 @@ namespace WebJobUniBLL {
                 return _with1.ToString();
 
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>Error in BLL.AppSettings.ToString() </h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return "Error in creating ToString of AppSettings";
             }
         }
@@ -278,9 +276,8 @@ namespace WebJobUniBLL {
                 return sharedSets;
 
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>AppSettings.vb: EXCEPTION in GetAppSettings: </h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
-                return null;
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);  return null;
             }
         }
 

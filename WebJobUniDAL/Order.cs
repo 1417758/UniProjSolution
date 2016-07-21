@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebJobUniDAL.DataSetApptTableAdapters;
+using WebJobUniUtils;
 
 namespace WebJobUniDAL {
+    
     public enum OrderStatusEnum : byte {
         //NB: this numeration is used on Stored Procedures and Functions (ie: GetAllPersonInherit...) 
         // a change on these will require those to be revised 

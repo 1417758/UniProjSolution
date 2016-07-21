@@ -43,8 +43,8 @@ namespace WebJobUniBLL {
                 else  //count=1 return value
                     return (int)allServsFound.Rows[0].ItemArray[0];
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.ServicesBLL.GetServiceIDByServName_Int(x1),</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }

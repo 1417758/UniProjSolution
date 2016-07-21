@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebJobUniDAL.DataSetApptTableAdapters;
+using WebJobUniUtils;
 
 namespace WebJobUniDAL {
+    [System.ComponentModel.DataObject()]
     public class Provide {
         private static ProvideTableAdapter _tblProvideTableAdapter = null;
 

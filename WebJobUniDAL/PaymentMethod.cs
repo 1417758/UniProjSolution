@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebJobUniDAL.DataSetApptTableAdapters;
+using WebJobUniUtils;
 
 namespace WebJobUniDAL {
+    
     public enum PaymentMethodhodsEnum : byte {
         //NB: this numeration is stored on Payment Transactions DB_Table  
         // a change on these will require those to be revised 

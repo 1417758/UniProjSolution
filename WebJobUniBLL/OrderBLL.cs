@@ -14,12 +14,14 @@ namespace WebJobUniBLL {
         public int? ID { get; set; }
         public string status { get; set; }
         public decimal amount { get; set; }
-        public bool isPaidinFull { get; set; }
-        public int finTransID { get; set; }
+        public bool isPaidinFull { get; set; }        
         public int apptID { get; set; }
+        public FinancialTransBLL transaction { get; set; }
 
         #region "Constructor"
-        public OrderBLL() { }
+        public OrderBLL() {
+            this.transaction = new FinancialTransBLL();
+        }
 
         #endregion
 

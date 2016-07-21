@@ -63,9 +63,8 @@ namespace WebJobUniBLL {
                     selectedEnum[i] = items2Set[i];
                 }
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.CompanyBLL.SetCompanyTimes()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
-                
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
             }
         }
         public void SetCompanyOpeningDays(List<bool> items2Set) {
@@ -78,9 +77,8 @@ namespace WebJobUniBLL {
                     OpeningDays[i] = items2Set[i];
                 }
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.CompanyBLL.SetCompanyOpeningDays()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
-
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
             }
         }
 

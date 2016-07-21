@@ -11,14 +11,9 @@ namespace WebJobUniBLL {
         public int? ID { get; set; }
         public bool isAdmin { get; set; }
         public bool syncCalendar { get; set; }
-
-        // private Calendar myCalendar { get; set; }
-
-        //DateTime here represents CalendarDay
         public SerializableDictionary<DateTime, DaySchedule> staffCalendar { get; set; }
 
-
-        #region "Constructor"
+     #region "Constructor"
         public AgendaBLL() {
             //source: https://msdn.microsoft.com/en-us/library/system.globalization.calendar(v=vs.110).aspx
             // Uses the default calendar of the InvariantCulture.
@@ -47,8 +42,9 @@ namespace WebJobUniBLL {
                 return resultDaySchedule;
 
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.GetDaySchedule(x2)</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+           catch (Exception ex) {                
+                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.GetDaySchedule(x2)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
 
@@ -87,8 +83,8 @@ namespace WebJobUniBLL {
                 //shouldnt get here
                 return bookingAdded;
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.AddBooking(x3)</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+           catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.AddBooking(x3)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);  ExceptionHandling.LogException(ref ex);
                 return false;
             }
 
@@ -120,8 +116,8 @@ namespace WebJobUniBLL {
                 //R   staffCalendar[cleanDate] = newDaySchedule;
                 return false;
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.IsStaffBusy(x3)</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
+           catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.AgendaBLL.IsStaffBusy(x3)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);  ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }//end IsStaffBusy

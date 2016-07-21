@@ -55,7 +55,7 @@
             <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server" OnClick="Button_Click">
                 <Header>3. Select Date & Time</Header>
                 <Content>
-                 <p> <b>Current Selected Service Provider:  <asp:Label ID="LabelServProvider" runat="server" Text="Label"></asp:Label></b></p> 
+                 <p> <b>Current Selected Service Provider is:&nbsp;&nbsp; <asp:Label ID="LabelServProvider" runat="server" Text="Label"></asp:Label></b></p> 
                     <uc1:DateSelectionUserControl runat="server" ID="DateSelectionUserControl" />
                     <asp:Button ID="button3" runat="server" Text="Next &raquo;" OnClick="Button_Click" class="btn btn-default" />
                 </Content>

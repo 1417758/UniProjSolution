@@ -62,17 +62,36 @@ namespace WebJobUniBLL {
                 //FINK!! FINK18/7//16 
 
                 //return i //?? Installation if IDs not added byRef
-
-
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.SaveInstallationToDB(ref i)</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
             }
         }
+
+        public static void SaveAppoitmentToDB(ref Installation i) {
+            try {
+                //save appointments
+                int? tempServID;
+                foreach (ServicesBLL service in i.Services) {
+                    //save service
+                    tempServID = ServicesBLL.AddService(service.name, service.isCertifReq, service.isInsuranceReq, service.description, service.duration, service.durationUnit, service.price);
+                    service.ID = tempServID;
+                }
+
+            
+
+
+
+            }
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
+            }
+        }
+
         #endregion
 
         #region "Functions"
-      
+
 
         public static List<string> GetStaff1stNameWithTitle(Installation i, bool is1stName = true, bool isLastName = false) {
             try {
@@ -92,8 +111,8 @@ namespace WebJobUniBLL {
 
                 return liStaffNames;
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetStaffNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }
@@ -121,8 +140,8 @@ namespace WebJobUniBLL {
 
                 return liServNames;
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetServiceNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }
@@ -146,8 +165,8 @@ namespace WebJobUniBLL {
 
                 return liServNames;
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.InstallationBLL.GetServiceNames()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
                 return null;
             }
         }

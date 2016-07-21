@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using WebJobUniBLL;
 using WebJobUniUtils;
 
 namespace EasyBookWeb {
@@ -65,19 +66,24 @@ namespace EasyBookWeb {
             get { return (string)HttpContext.Current.Session["ApptTimeBttonID"]; }
             set { HttpContext.Current.Session["ApptTimeBttonID"] = value; }
         }
-       /*   public static string BttonID {
-            get { return ViewState["ApptTimeBttonID"]; }
-            set { ViewState["ApptTimeBttonID"] = value; }
-        }
-        public static string Interval {
-              get { return HttpContext.Current.Session[XMLConstants.Interval]; }
-              set { HttpContext.Current.Session[XMLConstants.Interval] = value; }
-          }
 
-          public static DataTable TrendDataFields {
-              get { return HttpContext.Current.Session[XMLConstants.data.TrendDataFields); }
-              set { HttpContext.Current.Session[XMLConstants.TrendDataFields) = value; }
-          }*/
+        public static ApptBLL CURRENT_APPOINTMENT {
+            get { return (ApptBLL)HttpContext.Current.Session[XMLConstants.CURRENT_APPT]; }
+            set { HttpContext.Current.Session[XMLConstants.CURRENT_APPT] = value; }           
+        }
+        /*   public static string BttonID {
+             get { return ViewState["ApptTimeBttonID"]; }
+             set { ViewState["ApptTimeBttonID"] = value; }
+         }
+         public static string Interval {
+               get { return HttpContext.Current.Session[XMLConstants.Interval]; }
+               set { HttpContext.Current.Session[XMLConstants.Interval] = value; }
+           }
+
+           public static DataTable TrendDataFields {
+               get { return HttpContext.Current.Session[XMLConstants.data.TrendDataFields); }
+               set { HttpContext.Current.Session[XMLConstants.TrendDataFields) = value; }
+           }*/
 
     }//class
 }//namespace

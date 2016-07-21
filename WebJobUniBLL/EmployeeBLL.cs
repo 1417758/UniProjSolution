@@ -29,13 +29,13 @@ namespace WebJobUniBLL {
             this.contactDetail = new ContactDetailsBLL();
             this.agenda = new AgendaBLL();
         }
-        public EmployeeBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, byte _role, string _natInsNumb, string _jobTitle, AgendaBLL _agenda, Guid _aspUserID) {
+        public EmployeeBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, string _natInsNumb, string _jobTitle, AgendaBLL _agenda, Guid _aspUserID) {
             this.contactDetail = _contactDet;
             this.agenda = new AgendaBLL();
             this.title = _title;
             this.firstName = _firstName;
             this.lastName = _lastName;
-            this.role = _role;
+            this.role = (byte)RolesEnum.EMPLOYEE;
             this.natInsNumb = _natInsNumb;
             this.jobTitle = _jobTitle;
             this.aspnetUserID = _aspUserID;
@@ -71,9 +71,8 @@ namespace WebJobUniBLL {
 
             return staffNames;
             }
-            catch (Exception exc) {
-                System.Diagnostics.Debug.Print("<h2>BLL.EmployeeBLL.GetAllStaff1stNames()</h2>\n" + exc.ToString() + "\n" + exc.InnerException + "\n" + exc.Message);
-                return null;
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);     return null;
             }
         }
         #endregion

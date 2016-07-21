@@ -337,7 +337,7 @@ public partial class UI_Register : System.Web.UI.Page {
                 //loop through all employees added 
                 for (int j = 0; j < this.staff1stName.Count; j++) {
                     //add ASP.NET USER and get ASP.NET USER ID
-                    tempStaffASPUserID = WebUtils.AddASPNETUser(this.staffLastName[j], this.staff1stName[j], this.staffEmail[j]);
+                    tempStaffASPUserID = WebUtils.AddEmployeeASPNETUser(this.staffLastName[j], this.staff1stName[j], this.staffEmail[j]);
                     //add to installation Employee
                     _with3.Add(new EmployeeBLL(this.staffTitles[j], this.staff1stName[j], this.staffLastName[j], this.staffEmail[j], tempStaffASPUserID));
                 }

@@ -938,31 +938,7 @@ namespace WebJobUniUtils {
         }
         */
         #endregion
-
-        #region "Exception Handling - proxy to Exception handling class"
-        /*  /// <summary>
-          /// uses systemID
-          /// </summary>
-          /// <param name="ex"></param>
-          /// <returns></returns>
-          /// <remarks></remarks>
-          public static string SendEmailException(ref Exception ex) {
-              return ExceptionHandling.sendEmailException(ex);
-          }
-
-          public static void LogException(ref System.Exception exception) {
-              ExceptionHandling.LogException(exception);
-          }
-
-          public static void LogException(ref System.Exception exception, string userName) {
-              ExceptionHandling.LogException(exception, userName);
-          }
-
-          public static void LogException(ref System.Exception exception, string userName, string pageOrFormName, string queryString = "", string referer = "") {
-              ExceptionHandling.LogException(exception, userName, pageOrFormName, queryString, referer);
-          }
-          */
-        #endregion
+                 
 
         #region "Data tables & DataSets"
         /// <summary>

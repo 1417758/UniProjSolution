@@ -10,22 +10,31 @@ namespace WebJobUniBLL {
     [Serializable()]
     public class Installation {
 
-        //public Installation() { }
-        public Installation() {
-            this.Company = new CompanyBLL();
-            this.Timestamp = Utils.GetDatetimeNOW();
-            this.Employees = new List<EmployeeBLL>();
-            this.Services = new List<ServicesBLL>();
-            this.ServicesProvidedByStaff = new ProvideBLL();
-        }
-
         #region "Instances"
         public DateTime Timestamp { get; set; }
         public CompanyBLL Company { get; set; }
         public List<EmployeeBLL> Employees { get; set; }
         public List<ServicesBLL> Services { get; set; }
         public ProvideBLL ServicesProvidedByStaff { get; set; }
+        public List<EndUserBLL> Customers { get; set; }
+        public List<ApptBLL> Appointments { get; set; }
+        public List<OrderBLL> Invoices { get; set; }
         #endregion
+
+        #region "Constructors"
+        //default constructor
+        public Installation() {
+            this.Company = new CompanyBLL();
+            this.Timestamp = Utils.GetDatetimeNOW();
+            this.Employees = new List<EmployeeBLL>();
+            this.Services = new List<ServicesBLL>();
+            this.ServicesProvidedByStaff = new ProvideBLL();
+            this.Customers = new List<EndUserBLL>();
+            this.Appointments = new List<ApptBLL>();
+            this.Invoices = new List<OrderBLL>();
+        }
+        #endregion
+
 
         #region "Functions"
         /// <summary>
@@ -82,13 +91,13 @@ namespace WebJobUniBLL {
                 oi1.ID = 2;
                 _with3.Add(oi1);
                 //staff 2
-                EmployeeBLL oi2 = new EmployeeBLL(Person.MS, "Lorenzo", "Victor", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetTestASP_UserID());
+                EmployeeBLL oi2 = new EmployeeBLL(Person.MS, "Lorenzo", "Victor", new ContactDetailsBLL(), "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetTestASP_UserID());
                 DaySchedule newTestDaySchedule2 = new DaySchedule(isTest: true);
                 oi2.agenda.staffCalendar.Add(Utils.GetDatetimeNOW().Date.AddDays(1), newTestDaySchedule);
                 oi2.ID = 10;
                 _with3.Add(oi2);
                 //staff 3
-                EmployeeBLL oi3 = new EmployeeBLL(Person.MR, "Alves", "Thomas", new ContactDetailsBLL(), (byte)RolesEnum.EMPLOYEE, "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetTestASP_UserID());
+                EmployeeBLL oi3 = new EmployeeBLL(Person.MR, "Alves", "Thomas", new ContactDetailsBLL(), "34802342-289", "developer", new AgendaBLL(), (Guid)Utils.GetTestASP_UserID());
                 oi3.ID = 9;
                 DaySchedule newTestDaySchedule3 = new DaySchedule(isTest: true);
                 oi3.agenda.staffCalendar.Add(Utils.GetDatetimeNOW().Date.AddDays(2), newTestDaySchedule);
@@ -103,6 +112,8 @@ namespace WebJobUniBLL {
                 ServicesBLL c = new ServicesBLL("service 3", "FFS84857 983*33h", byte.MaxValue, decimal.MaxValue);
                 c.ID = 13;
                 ServicesBLL d = new ServicesBLL("service 4", "wrap up again", byte.MinValue, decimal.MinValue);
+                d.ID = 89;
+
                 _with4.Add(a);
                 _with4.Add(b);
                 _with4.Add(c);
@@ -112,15 +123,15 @@ namespace WebJobUniBLL {
                 var _with5 = i.ServicesProvidedByStaff;
                 _with5 = null;
 
-
                 return i;
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.Installation.GetTestInstallation()</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-                return null;
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex); return null;
             }
         }
+        #endregion
 
+        #region "Methods"
         public override string ToString() {
             try {
                 //if (i == null)
@@ -155,8 +166,8 @@ namespace WebJobUniBLL {
 
                 return _with1.ToString();
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2> Error in Installation.cs ToString Function </ h2 > \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex); 
                 return "<h2>Error in Installation.cs ToString Function  </h2> \n" + ex.Message;
             }
         }
@@ -169,36 +180,36 @@ namespace WebJobUniBLL {
         public static void PopulateInstalation(ref Installation i, CompanyBLL company) {
             try {
                 //
-            /*    if (i == null)
-                    i = new Installation();
+                /*    if (i == null)
+                        i = new Installation();
 
-                //Get data from parameter company
-                var _with1 = company;
-                CompanyBLL co = new CompanyBLL(_with1.domain, _with1.industry, _with1.natureOfBusiness, _with1.regNumb, _with1.dateIncorporated, _with1.url, _with1.isVATreg, _with1.VATnumb, _with1.notes);
+                    //Get data from parameter company
+                    var _with1 = company;
+                    CompanyBLL co = new CompanyBLL(_with1.domain, _with1.industry, _with1.natureOfBusiness, _with1.regNumb, _with1.dateIncorporated, _with1.url, _with1.isVATreg, _with1.VATnumb, _with1.notes);
 
-                var _with2 = company.mainClientContact;
-                ClientBLL client = new ClientBLL(_with2.title, _with2.firstName, _with2.lastName, _with2.contactDetail, _with2.role, _with2.aspnetUserID);
+                    var _with2 = company.mainClientContact;
+                    ClientBLL client = new ClientBLL(_with2.title, _with2.firstName, _with2.lastName, _with2.contactDetail, _with2.role, _with2.aspnetUserID);
 
-                var _with3 = company.mainClientContact.contactDetail;
-                ContactDetailsBLL clientContact = new ContactDetailsBLL(_with3.address, _with3.city, _with3.postCode, _with3.country, _with3.landline, _with3.mobile, _with3.email, _with3.notes, _with3.dateCreated, _with3.dateUpdated);
+                    var _with3 = company.mainClientContact.contactDetail;
+                    ContactDetailsBLL clientContact = new ContactDetailsBLL(_with3.address, _with3.city, _with3.postCode, _with3.country, _with3.landline, _with3.mobile, _with3.email, _with3.notes, _with3.dateCreated, _with3.dateUpdated);
 
-                var _with4 = company.businessAddress;
-                ContactDetailsBLL businessAddress = new ContactDetailsBLL(_with4.address, _with4.city, _with4.postCode, _with4.country, _with4.landline, _with4.mobile, _with4.email, _with4.notes, _with4.dateCreated, _with4.dateUpdated);
+                    var _with4 = company.businessAddress;
+                    ContactDetailsBLL businessAddress = new ContactDetailsBLL(_with4.address, _with4.city, _with4.postCode, _with4.country, _with4.landline, _with4.mobile, _with4.email, _with4.notes, _with4.dateCreated, _with4.dateUpdated);
 
-                //update Installation with date extracted
-                i.Company = company;
-                */
+                    //update Installation with date extracted
+                    i.Company = company;
+                    */
             }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>BLL.Installation.PopulateInstalation(x2 params)</h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+           catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex);
             }
         }
-
-
-       
-
-
         #endregion
+
+
+
+
+
 
 
 

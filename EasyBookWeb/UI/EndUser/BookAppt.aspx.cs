@@ -12,7 +12,6 @@ using WebJobUniUtils;
 public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
 
     #region "Event Handlers"
-
     protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack)
             PopulateUserControlsFromSession();
@@ -21,6 +20,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
         this.DateSelectionUserControl.CalendarSelectionChanged += new EventHandler(DateSelectionUserControl_CalendarSelectionChanged);
 
     }
+
     protected void DateSelectionUserControl_CalendarSelectionChanged(object sender, EventArgs e) {
         try {
             System.Diagnostics.Debug.Print("calendar selection change new eventHandlers IS working");
@@ -33,7 +33,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             if (staffSel_index > 0)
                 selStaff = i.Employees[staffSel_index - 1];
             else
-                //always pick 1st staff by default
+                //ALWAYS pick 1st staff by default
                 selStaff = i.Employees[0];//staff can be null
 
 
@@ -48,6 +48,11 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             ExceptionUtility.NotifySystemOps(ex);
         }//e
     }
+    /// <summary>
+    /// NEXT button click btween book appt steps
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void Button_Click(object sender, EventArgs e) {
         try {
             //cast so can get tellesense
@@ -140,7 +145,6 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             ExceptionUtility.NotifySystemOps(ex);
         }//end catch
     }//end Button_Click
-
     #endregion
 
     #region "Methods"
@@ -152,6 +156,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             //services
             List<string> servNames = InstallationBLL.GetServiceDetailsFull(i);
             this.ServiceSelectionUserControl.PopulateServices(servNames);
+
             //Staff
             List<string> staffNames = InstallationBLL.GetStaff1stNameWithTitle(i);
             this.StaffSelectionUserControl.PopulateStaff(staffNames);
@@ -159,11 +164,12 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             //date&time
             DateTime todaysDate = this.DateSelectionUserControl.GetSelectedDate();
             System.Diagnostics.Debug.Print("CALENDAR TIME: " + todaysDate.TimeOfDay.ToString() + "ON todays date: " + todaysDate.ToString());
-            //always pick 1st staff by default
+            //ALWAYS pick 1st staff by default
             EmployeeBLL selStaff = i.Employees[0];//staff can be null
             PopulateDateAndTimeUserControl(selStaff, todaysDate);
-            //    PopulateDateAndTimeUserControl(i.Employees, todaysDate);
-            //End-user Details
+
+            //End-user Details 
+            //DO nothing start with empty fields
 
             //Payment
 
@@ -176,11 +182,14 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
         }//end catch
     }//end void
 
+
     private void UpdateInstallationObject(bool isService = false, bool isStaff = false, bool isDateAndTime = false, bool isUserInfo = false, bool isPayment = false, bool isConfirmation = false) {
         try {
-            //get isntallation from session
+            //get installation and current appt from session 
             Installation i = WebUtils.GetInstallationObjectFromSession();
-            ApptBLL appt = new ApptBLL();//may need to save to session to remember data entered. test this20/7
+            ApptBLL currAppt = SessionVariables.CURRENT_APPOINTMENT;
+            if (currAppt == null)
+                currAppt = new ApptBLL();
 
             //R SaveInstallationToDB (test installation isnt save to DB)
 
@@ -188,7 +197,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             if (isService) {//1
                 int servSel = this.ServiceSelectionUserControl.GetSelectedServiceIndex();
                 int? servID = i.Services[servSel].ID;
-                appt.serviceID = (int)servID;
+                currAppt.serviceID = (int)servID;
             }
 
             //get selected employee details
@@ -199,45 +208,74 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                 //NB index 0 = "No Preference"
                 if (staffSel_index > 0) {
                     selStaff = i.Employees[staffSel_index - 1];
-                    appt.provider = staffSel_1stnameWithTitle;
+                    currAppt.provider = staffSel_1stnameWithTitle;
                     //update date&time control == staff calendar
                     PopulateDateAndTimeUserControl(selStaff, this.DateSelectionUserControl.GetSelectedDate());
                 }
                 else {
-                    //always pick 1st staff by default
+                    //ALWAYS pick 1st staff by default
                     selStaff = i.Employees[0];//staff can be null
-                    appt.provider = selStaff.title + " " + selStaff.firstName; 
-                }                
+                    currAppt.provider = selStaff.title + " " + selStaff.firstName;
+                }
                 //update LabelServProvider
                 //-- IMPORTANT LABEL USED ON UPDATE_INSTALLATION()
                 this.LabelServProvider.Text = selStaff.firstName;
-               //R PopulateDateAndTimeUserControl(selStaff, )
+                //R PopulateDateAndTimeUserControl(selStaff, )
 
             }//endif isStaff
 
             //get selected Date&Time details
             if (isDateAndTime) {//3
-                                //
+                // get user entries from userControl
                 string userSelDate = this.DateSelectionUserControl.GetSelectedDateStrg();
                 string userSelTime = this.DateSelectionUserControl.GetSelectedTimeStrg();
+                //convert entries into correct datat type
                 DateTime userDate = (DateTime)Utils.GetDateFromString(userSelDate);
                 TimeSpan userTime = (TimeSpan)Utils.GetTimeFromString(userSelTime);
 
-                bool addedBooking = false;
-                //add to Appt obj (including 
-                appt.date = userDate;
-                appt.time = userTime;
-                System.Diagnostics.Debug.Print(appt.provider);
+                //assign entries to current appt in the session
+                currAppt.date = userDate;
+                currAppt.time = userTime;
+                System.Diagnostics.Debug.Print(currAppt.provider);
+            }
 
-                int theIntTime = (int)Utils.GetNumberInt(userSelTime.Replace(":", ""));
-                int theIntTime2 = (int)Utils.GetNumberInt(userTime.Hours.ToString() + userTime.Minutes.ToString());
+            //get entered userInformation details
+            if (isUserInfo) {
+                //get user entries from user control
+                List<string> userPersoDet = this.UserInfoUserControl.GetPersonalDetails();
 
-                int empIndex = 0;
-                //get staff agenda
-                string curSelStaffLastName = this.LabelServProvider.Text;
-                empIndex = i.Employees.FindIndex(employee => employee.firstName.Equals(curSelStaffLastName, StringComparison.Ordinal));
+                //NB added programmatically END-USER username is their email address.
+                //add ASP.NETUSER, If it already exists return aspnetID
+                Guid endUserASPUserID = WebUtils.AddEndUserASPNETUser(userPersoDet[2], userPersoDet[1], userPersoDet[3]);
+                //check user exists of DB/session 20/716 revise?
+                int userIndex = i.Customers.FindIndex(endUser => endUser.aspnetUserID.ToString().Equals(endUserASPUserID.ToString(), StringComparison.Ordinal));
+                //create new
+                if (userIndex < 0) {
+                    //create new end-user contact Details
+                    ContactDetailsBLL newEndUserContact = new ContactDetailsBLL(userPersoDet[5], userPersoDet[6], userPersoDet[7], "UK", null, userPersoDet[4], userPersoDet[3], userPersoDet[8]);
+                    //create new end-user
+                    EndUserBLL newEndUser = new EndUserBLL(userPersoDet[0], userPersoDet[1], userPersoDet[2], newEndUserContact, endUserASPUserID);
+                    //add to installation
+                    i.Customers.Add(newEndUser);
+                }
+            }
+
+            if (isPayment) {
+                //
+
+            }
+
+            if (isConfirmation) {
+                //----- Add appt to installation ------
+                i.Appointments.Add(SessionVariables.CURRENT_APPOINTMENT);
+
+                //----- Add appt to employees Agenda ------
+                int timeINT = (int)Utils.GetNumberInt(WebUtils.TIME_SELECTED.Replace(":", ""));
+                //get staff agenda 
+                string curSelStaff1stName = this.LabelServProvider.Text;
+                int empIndex = i.Employees.FindIndex(employee => employee.firstName.Equals(curSelStaff1stName, StringComparison.Ordinal));
                 var curSelStaffCalendar = i.Employees[empIndex].agenda.staffCalendar;
-                //no preference
+                //no preference REVIEW
                 /*  nextAvailStaff = GetNextAvailableStaff(i.Employees, userDate, theIntTime);
                   //source: http://stackoverflow.com/questions/1568593/how-to-use-indexof-method-of-listobject                
                   empIndex = i.Employees.FindIndex(employee => employee.lastName.Equals(nextAvailStaff.lastName, StringComparison.Ordinal));
@@ -249,33 +287,23 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                 list1.FindIndex(x => x==5);
                   */
 
-                //add booking
-                addedBooking = AgendaBLL.AddBooking(ref curSelStaffCalendar, userDate, theIntTime);
+                //add booking --- IMPORTANT --> this updates staff agenda (as BY REF is used) 
+                //NB MOVE this to after appt confirmation 20/7/16
+                bool addedBooking = AgendaBLL.AddBooking(ref curSelStaffCalendar, this.DateSelectionUserControl.GetSelectedDate(), timeINT);
+                if (!addedBooking)
+                throw new Exception("<H2>ERROR ADDING BOOKING!</H2>");//throw exc here?it doesnt allow DB save
+
+                //----- process data and save to database ------
+                InstallationBLL.SaveInstallationToDB(ref i);
             }
 
-            //get entered userInformation details
-            if (isUserInfo) {
-                //
-            }
+            //save current appt back to session installation and current appt from session 
+            SessionVariables.CURRENT_APPOINTMENT = currAppt;
 
-            if (isPayment) {
-                //
-
-            }
-
-            if (isConfirmation) {
-                //
+            //add installation back to session
+            WebUtils.PutInstallationObjectinSession(i);
 
 
-            }
-
-            //if (!isComplete)
-            //    //add installation back to session
-            //    WebUtils.PutInstallationObjectinSession(i);
-
-            //if (isComplete)
-            //    //process data and save to database
-            //    InstallationBLL.SaveInstallationToDB(i);
         }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>BookAppt.aspx, UpdateInstallationObject(x6)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
@@ -284,32 +312,6 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             ExceptionUtility.NotifySystemOps(ex);
         }
     }//end UpdateInstallationObject(x6)
-
-    /*public EmployeeBLL GetNextAvailableStaff(List<EmployeeBLL> employees, DateTime date, int time) {
-        try {
-            bool isEmployeeBusy = true;
-            //loop through each hr and 1/h of the staff agenda
-            foreach (EmployeeBLL employee in employees) {
-                //get staff agenda
-                SerializableDictionary<DateTime, DaySchedule> staffCalendar = employee.agenda.staffCalendar;
-                //upate user control for this particular employee
-                PopulateDateAndTimeUserControl(employee);
-                //CHECK STAFF BUSY DAYS 
-                // Use var keyword to enumerate dictionary. The same as: foreach (KeyValuePair<string, int> pair in calendar)
-                isEmployeeBusy = (bool)AgendaBLL.IsStaffBusy(ref staffCalendar, date, time);//time is irrelevant here as this method is called to create this date on staff's calendar
-                if (!isEmployeeBusy)
-                    return employee;
-            }//enf forloop
-            return null;
-        }
-        catch (Exception ex) {
-            System.Diagnostics.Debug.Print("<h2>BookAppt.aspx, GetNextAvailableStaff1stName(x3)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
-            // Log the exception and notify system operators
-            ExceptionUtility.LogException(ex, "BookAppt.aspx, GetNextAvailableStaff1stName(x3)");
-            ExceptionUtility.NotifySystemOps(ex);
-            return null;
-        }
-    }*/
 
 
     public void PopulateDateAndTimeUserControl(EmployeeBLL employee, DateTime selectedDate) {
@@ -359,16 +361,42 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
     /// </summary>
     /// <param name="employees"></param>
     /// <param name="selectedDate"></param>
-    public void PopulateDateAndTimeUserControl(List<EmployeeBLL> employees, DateTime selectedDate) {
-        //loop through each hr and 1/h of the staff agenda
-        foreach (EmployeeBLL employee in employees) {
-            //upate user control for this particular employee
-            PopulateDateAndTimeUserControl(employee, selectedDate);
-        }
-    }
+    /*  public void PopulateDateAndTimeUserControl(List<EmployeeBLL> employees, DateTime selectedDate) {
+          //loop through each hr and 1/h of the staff agenda
+          foreach (EmployeeBLL employee in employees) {
+              //upate user control for this particular employee
+              PopulateDateAndTimeUserControl(employee, selectedDate);
+          }
+      }*/
+    #endregion
 
+    #region "Functions"
 
-
+    /*public EmployeeBLL GetNextAvailableStaff(List<EmployeeBLL> employees, DateTime date, int time) {
+      try {
+          bool isEmployeeBusy = true;
+          //loop through each hr and 1/h of the staff agenda
+          foreach (EmployeeBLL employee in employees) {
+              //get staff agenda
+              SerializableDictionary<DateTime, DaySchedule> staffCalendar = employee.agenda.staffCalendar;
+              //upate user control for this particular employee
+              PopulateDateAndTimeUserControl(employee);
+              //CHECK STAFF BUSY DAYS 
+              // Use var keyword to enumerate dictionary. The same as: foreach (KeyValuePair<string, int> pair in calendar)
+              isEmployeeBusy = (bool)AgendaBLL.IsStaffBusy(ref staffCalendar, date, time);//time is irrelevant here as this method is called to create this date on staff's calendar
+              if (!isEmployeeBusy)
+                  return employee;
+          }//enf forloop
+          return null;
+      }
+      catch (Exception ex) {
+          System.Diagnostics.Debug.Print("<h2>BookAppt.aspx, GetNextAvailableStaff1stName(x3)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+          // Log the exception and notify system operators
+          ExceptionUtility.LogException(ex, "BookAppt.aspx, GetNextAvailableStaff1stName(x3)");
+          ExceptionUtility.NotifySystemOps(ex);
+          return null;
+      }
+  }*/
     #endregion
 
 

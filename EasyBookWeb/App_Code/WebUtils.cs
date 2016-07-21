@@ -69,11 +69,50 @@ namespace EasyBookWeb {
             }
         }//end GetInstallationObjectFromSession
 
-
-        public static Guid AddASPNETUser(string lastName, string firstName, string emailAddress, int? count = null) {
+        public static Guid AddEndUserASPNETUser(string lastName, string firstName, string emailAddress) {
             try {
+                //store staff AND endUser userName
+                string userName = emailAddress;
 
-                //14/7/16 USED to Add Employees programmatically
+                System.Diagnostics.Debug.Print("Choosen END-USER UserName is: " + userName);
+                //check if Temp user name already exists
+                MembershipUser user = Membership.GetUser(userName);
+                if (user != null)
+                    //do nothing here, return ID at the end
+                    System.Diagnostics.Debug.Print("The end-user you are trying to add already exists! userName:" + userName);
+                else {
+                    //create new END-USER
+
+                    //Rule initial password = Welcome01 (Must be updated on staff 1st login) *NB first letter is capital
+                    string endUserPass = "Welcome01";
+
+                    //create ASP.NET USER
+                    Membership.CreateUser(username: userName, password: endUserPass, email: emailAddress);
+                }
+                    //if so returns its aspnetID
+                    return (Guid)AppSettings.GetUserIDByUserName(userName);
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>WebUtils, AddEndUserASPNETUser(x4)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                // Log the exception and notify system operators
+                ExceptionUtility.LogException(ex, "WebUtils.aspx, AddEndUserASPNETUser(x4)");
+                ExceptionUtility.NotifySystemOps(ex);
+                return new Guid();
+            }
+        }
+
+
+        /// <summary>
+        /// USED to Add Employees programmatically (ie: register.aspx)
+        /// </summary>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="emailAddress"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static Guid AddEmployeeASPNETUser(string lastName, string firstName, string emailAddress, int? count = null) {
+            try {
                 //Rule staff userName = LastName + . + first initial
                 string tempStaffUserName;
                 
@@ -93,7 +132,7 @@ namespace EasyBookWeb {
                     tempStaffUserName = lastName + "." + firstName.ToCharArray(0, 1)[0].ToString();
                 else
                     tempStaffUserName = lastName + "." + firstName.ToCharArray(0, 1)[0].ToString() + count.ToString();
-                System.Diagnostics.Debug.Print(tempStaffUserName);
+                System.Diagnostics.Debug.Print("Choosen STAFF UserName is: " +tempStaffUserName);
 
                 //check if Temp user name already exists
                 MembershipUser user = Membership.GetUser(tempStaffUserName);
@@ -102,7 +141,7 @@ namespace EasyBookWeb {
                     Membership.CreateUser(username: tempStaffUserName, password: staffPass, email: emailAddress);
                 else
                     //reinterate AddASPNETUser function with counter
-                    return AddASPNETUser(lastName, firstName, emailAddress, counter + 1);
+                    return AddEmployeeASPNETUser(lastName, firstName, emailAddress, counter + 1);
 
                 //get ASP.NET USER ID
                 aSPUserID = (Guid)AppSettings.GetUserIDByUserName(tempStaffUserName);
@@ -110,13 +149,14 @@ namespace EasyBookWeb {
                 return aSPUserID;
             }
             catch (Exception ex) {
-                System.Diagnostics.Debug.Print("<h2>WebUtils, AddASPNETUser(x4)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                System.Diagnostics.Debug.Print("<h2>WebUtils, AddEmployeeASPNETUser(x4)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
                 // Log the exception and notify system operators
-                ExceptionUtility.LogException(ex, "WebUtils.aspx, AddASPNETUser(x4)");
+                ExceptionUtility.LogException(ex, "WebUtils.aspx, AddEmployeeASPNETUser(x4)");
                 ExceptionUtility.NotifySystemOps(ex);
                 return new Guid();
             }
         }
+        
         /*
                 /// <summary>
                 /// Display default dates or ones from session.
