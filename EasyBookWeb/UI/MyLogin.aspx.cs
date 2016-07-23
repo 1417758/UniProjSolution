@@ -24,8 +24,16 @@ public partial class UI_MyLogin : System.Web.UI.Page {
             //check user is a Client
             bool isClient = AppSettings.IsUserOfType(Login1.UserName, isTypeClient: true);
             //is so redirect to config panel
-            if (isClient)
+            if (isClient) {
+                Guid clientASPID = (Guid)AppSettings.GetUserIDByUserName(Login1.UserName);
+                int clientID = (int)ClientBLL.GetPersonIDByASPuserID(clientASPID);
+                //get compId
+                int? curCoID = CompanyBLL.GetCompanyIDByClientID(clientID);
+                if (curCoID != null)
+                SessionVariables.CompanyID = curCoID;
+
                 Response.Redirect("~/UI/ConfigPanel/Welcome.aspx");
+            }
             //else
             //end-user? redirect to clients page??18/7/16
 

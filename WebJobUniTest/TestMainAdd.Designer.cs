@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.textBoxTimeStamp = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxDailySchedule = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.textBoxStaffID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxRoleID = new System.Windows.Forms.TextBox();
@@ -42,21 +46,19 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.GroupBoxLogin = new System.Windows.Forms.GroupBox();
-            this.bttonGetPersonIDByLastName = new System.Windows.Forms.Button();
-            this.btnGetPersonByAspID = new System.Windows.Forms.Button();
-            this.btnDeletePersonByID = new System.Windows.Forms.Button();
-            this.btnPersonByUserName = new System.Windows.Forms.Button();
-            this.btnGetAllPersons = new System.Windows.Forms.Button();
-            this.btnAddPerson = new System.Windows.Forms.Button();
-            this.btnPersonByID = new System.Windows.Forms.Button();
+            this.bttonGetDailyShedByAgendaID = new System.Windows.Forms.Button();
+            this.btnGetDailyShedByDateAgID = new System.Windows.Forms.Button();
+            this.btnDeleteDailySheduleByID = new System.Windows.Forms.Button();
+            this.btnDailyShedByDateStaffID = new System.Windows.Forms.Button();
+            this.btnGetAllDailyShed = new System.Windows.Forms.Button();
+            this.btnAddDailyShedule = new System.Windows.Forms.Button();
+            this.btnDailySchedByID = new System.Windows.Forms.Button();
             this.LblReturn = new System.Windows.Forms.Label();
-            this.BackgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.bttonGetRoleByID = new System.Windows.Forms.Button();
             this.bttonAddRole = new System.Windows.Forms.Button();
             this.bttonGetAllRoles = new System.Windows.Forms.Button();
             this.bttonGetByLastName = new System.Windows.Forms.Button();
             this.bttonDeleteRole = new System.Windows.Forms.Button();
-            this.bttonGetIDByLastName = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bttonDeleteAllAndReset = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
@@ -69,16 +71,40 @@
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bttnDeleteExceptionByDate = new System.Windows.Forms.Button();
+            this.bttnDeleteExceptionByUserName = new System.Windows.Forms.Button();
+            this.bttnGetExceptionByUserName = new System.Windows.Forms.Button();
+            this.bttnDeleteExceptionByDateRange = new System.Windows.Forms.Button();
+            this.bttnGetExceptionByDate = new System.Windows.Forms.Button();
+            this.bttnGetAllExceptions = new System.Windows.Forms.Button();
+            this.bttnAddException = new System.Windows.Forms.Button();
+            this.bttnGetExceptionByID = new System.Windows.Forms.Button();
+            this.buttonInsertALL = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bttonCreateXMLFromDaySchedule = new System.Windows.Forms.Button();
+            this.bttonGetXMLTimes = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.bttonAddDailyShedXML = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox16.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.GroupBoxLogin.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.textBoxTimeStamp);
+            this.groupBox16.Controls.Add(this.label4);
+            this.groupBox16.Controls.Add(this.textBoxDailySchedule);
+            this.groupBox16.Controls.Add(this.label3);
             this.groupBox16.Controls.Add(this.textBoxStaffID);
             this.groupBox16.Controls.Add(this.label2);
             this.groupBox16.Controls.Add(this.textBoxRoleID);
@@ -87,10 +113,42 @@
             this.groupBox16.Controls.Add(this.label43);
             this.groupBox16.Location = new System.Drawing.Point(777, 12);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(166, 149);
+            this.groupBox16.Size = new System.Drawing.Size(330, 149);
             this.groupBox16.TabIndex = 113;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Others";
+            // 
+            // textBoxTimeStamp
+            // 
+            this.textBoxTimeStamp.Location = new System.Drawing.Point(169, 71);
+            this.textBoxTimeStamp.Name = "textBoxTimeStamp";
+            this.textBoxTimeStamp.Size = new System.Drawing.Size(151, 20);
+            this.textBoxTimeStamp.TabIndex = 50;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(166, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "TimeStamp";
+            // 
+            // textBoxDailySchedule
+            // 
+            this.textBoxDailySchedule.Location = new System.Drawing.Point(169, 32);
+            this.textBoxDailySchedule.Name = "textBoxDailySchedule";
+            this.textBoxDailySchedule.Size = new System.Drawing.Size(151, 20);
+            this.textBoxDailySchedule.TabIndex = 48;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(166, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Daily Schedule ID";
             // 
             // textBoxStaffID
             // 
@@ -162,9 +220,9 @@
             this.groupBox10.Controls.Add(this.bttonAddAgenda);
             this.groupBox10.Controls.Add(this.bttonGetAgendaByID);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(9, 398);
+            this.groupBox10.Location = new System.Drawing.Point(9, 485);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(572, 84);
+            this.groupBox10.Size = new System.Drawing.Size(500, 84);
             this.groupBox10.TabIndex = 100;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Test Agenda";
@@ -272,98 +330,104 @@
             // 
             // GroupBoxLogin
             // 
-            this.GroupBoxLogin.Controls.Add(this.bttonGetPersonIDByLastName);
-            this.GroupBoxLogin.Controls.Add(this.btnGetPersonByAspID);
-            this.GroupBoxLogin.Controls.Add(this.btnDeletePersonByID);
-            this.GroupBoxLogin.Controls.Add(this.btnPersonByUserName);
-            this.GroupBoxLogin.Controls.Add(this.btnGetAllPersons);
-            this.GroupBoxLogin.Controls.Add(this.btnAddPerson);
-            this.GroupBoxLogin.Controls.Add(this.btnPersonByID);
+            this.GroupBoxLogin.Controls.Add(this.bttonGetDailyShedByAgendaID);
+            this.GroupBoxLogin.Controls.Add(this.btnGetDailyShedByDateAgID);
+            this.GroupBoxLogin.Controls.Add(this.btnDeleteDailySheduleByID);
+            this.GroupBoxLogin.Controls.Add(this.btnDailyShedByDateStaffID);
+            this.GroupBoxLogin.Controls.Add(this.btnGetAllDailyShed);
+            this.GroupBoxLogin.Controls.Add(this.btnAddDailyShedule);
+            this.GroupBoxLogin.Controls.Add(this.btnDailySchedByID);
             this.GroupBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupBoxLogin.Location = new System.Drawing.Point(9, 398);
+            this.GroupBoxLogin.Location = new System.Drawing.Point(9, 575);
             this.GroupBoxLogin.Name = "GroupBoxLogin";
             this.GroupBoxLogin.Size = new System.Drawing.Size(572, 84);
             this.GroupBoxLogin.TabIndex = 101;
             this.GroupBoxLogin.TabStop = false;
-            this.GroupBoxLogin.Text = "Test Person";
+            this.GroupBoxLogin.Text = "Test Daily Schedule";
             // 
-            // bttonGetPersonIDByLastName
+            // bttonGetDailyShedByAgendaID
             // 
-            this.bttonGetPersonIDByLastName.Enabled = false;
-            this.bttonGetPersonIDByLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonGetPersonIDByLastName.Location = new System.Drawing.Point(327, 14);
-            this.bttonGetPersonIDByLastName.Margin = new System.Windows.Forms.Padding(2);
-            this.bttonGetPersonIDByLastName.Name = "bttonGetPersonIDByLastName";
-            this.bttonGetPersonIDByLastName.Size = new System.Drawing.Size(81, 59);
-            this.bttonGetPersonIDByLastName.TabIndex = 10;
-            this.bttonGetPersonIDByLastName.Text = "Get Person ID By LastName";
-            this.bttonGetPersonIDByLastName.UseVisualStyleBackColor = true;
+            this.bttonGetDailyShedByAgendaID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetDailyShedByAgendaID.Location = new System.Drawing.Point(327, 14);
+            this.bttonGetDailyShedByAgendaID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetDailyShedByAgendaID.Name = "bttonGetDailyShedByAgendaID";
+            this.bttonGetDailyShedByAgendaID.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetDailyShedByAgendaID.TabIndex = 10;
+            this.bttonGetDailyShedByAgendaID.Text = "Get DailyShed By AgendaID";
+            this.bttonGetDailyShedByAgendaID.UseVisualStyleBackColor = true;
+            this.bttonGetDailyShedByAgendaID.Click += new System.EventHandler(this.bttonGetDailyShedByAgendaID_Click);
             // 
-            // btnGetPersonByAspID
+            // btnGetDailyShedByDateAgID
             // 
-            this.btnGetPersonByAspID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetPersonByAspID.Location = new System.Drawing.Point(246, 14);
-            this.btnGetPersonByAspID.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetPersonByAspID.Name = "btnGetPersonByAspID";
-            this.btnGetPersonByAspID.Size = new System.Drawing.Size(81, 59);
-            this.btnGetPersonByAspID.TabIndex = 9;
-            this.btnGetPersonByAspID.Text = "Get Person By AspUser ID";
-            this.btnGetPersonByAspID.UseVisualStyleBackColor = true;
+            this.btnGetDailyShedByDateAgID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetDailyShedByDateAgID.Location = new System.Drawing.Point(246, 14);
+            this.btnGetDailyShedByDateAgID.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGetDailyShedByDateAgID.Name = "btnGetDailyShedByDateAgID";
+            this.btnGetDailyShedByDateAgID.Size = new System.Drawing.Size(81, 59);
+            this.btnGetDailyShedByDateAgID.TabIndex = 9;
+            this.btnGetDailyShedByDateAgID.Text = "Get DailyShed By Date&AgdID";
+            this.btnGetDailyShedByDateAgID.UseVisualStyleBackColor = true;
+            this.btnGetDailyShedByDateAgID.Click += new System.EventHandler(this.btnGetDailyShedByDateAgID_Click);
             // 
-            // btnDeletePersonByID
+            // btnDeleteDailySheduleByID
             // 
-            this.btnDeletePersonByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePersonByID.Location = new System.Drawing.Point(489, 14);
-            this.btnDeletePersonByID.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeletePersonByID.Name = "btnDeletePersonByID";
-            this.btnDeletePersonByID.Size = new System.Drawing.Size(81, 59);
-            this.btnDeletePersonByID.TabIndex = 7;
-            this.btnDeletePersonByID.Text = "Delete Person By ID";
-            this.btnDeletePersonByID.UseVisualStyleBackColor = true;
+            this.btnDeleteDailySheduleByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteDailySheduleByID.Location = new System.Drawing.Point(489, 14);
+            this.btnDeleteDailySheduleByID.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteDailySheduleByID.Name = "btnDeleteDailySheduleByID";
+            this.btnDeleteDailySheduleByID.Size = new System.Drawing.Size(81, 59);
+            this.btnDeleteDailySheduleByID.TabIndex = 7;
+            this.btnDeleteDailySheduleByID.Text = "Delete Daily Shedule By ID";
+            this.btnDeleteDailySheduleByID.UseVisualStyleBackColor = true;
+            this.btnDeleteDailySheduleByID.Click += new System.EventHandler(this.btnDeleteDailySheduleByID_Click);
             // 
-            // btnPersonByUserName
+            // btnDailyShedByDateStaffID
             // 
-            this.btnPersonByUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonByUserName.Location = new System.Drawing.Point(165, 14);
-            this.btnPersonByUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPersonByUserName.Name = "btnPersonByUserName";
-            this.btnPersonByUserName.Size = new System.Drawing.Size(81, 59);
-            this.btnPersonByUserName.TabIndex = 6;
-            this.btnPersonByUserName.Text = "Get Person\r\nBy LastName";
-            this.btnPersonByUserName.UseVisualStyleBackColor = true;
+            this.btnDailyShedByDateStaffID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDailyShedByDateStaffID.Location = new System.Drawing.Point(165, 14);
+            this.btnDailyShedByDateStaffID.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDailyShedByDateStaffID.Name = "btnDailyShedByDateStaffID";
+            this.btnDailyShedByDateStaffID.Size = new System.Drawing.Size(81, 59);
+            this.btnDailyShedByDateStaffID.TabIndex = 6;
+            this.btnDailyShedByDateStaffID.Text = "Get DailyShed By Date&StaffID";
+            this.btnDailyShedByDateStaffID.UseVisualStyleBackColor = true;
+            this.btnDailyShedByDateStaffID.Click += new System.EventHandler(this.btnDailyShedByDateStaffID_Click);
             // 
-            // btnGetAllPersons
+            // btnGetAllDailyShed
             // 
-            this.btnGetAllPersons.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetAllPersons.Location = new System.Drawing.Point(3, 14);
-            this.btnGetAllPersons.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetAllPersons.Name = "btnGetAllPersons";
-            this.btnGetAllPersons.Size = new System.Drawing.Size(81, 59);
-            this.btnGetAllPersons.TabIndex = 3;
-            this.btnGetAllPersons.Text = "Get All Persons";
-            this.btnGetAllPersons.UseVisualStyleBackColor = true;
+            this.btnGetAllDailyShed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetAllDailyShed.Location = new System.Drawing.Point(3, 14);
+            this.btnGetAllDailyShed.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGetAllDailyShed.Name = "btnGetAllDailyShed";
+            this.btnGetAllDailyShed.Size = new System.Drawing.Size(81, 59);
+            this.btnGetAllDailyShed.TabIndex = 3;
+            this.btnGetAllDailyShed.Text = "Get All Schedules";
+            this.btnGetAllDailyShed.UseVisualStyleBackColor = true;
+            this.btnGetAllDailyShed.Click += new System.EventHandler(this.btnGetAllDailyShed_Click);
             // 
-            // btnAddPerson
+            // btnAddDailyShedule
             // 
-            this.btnAddPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPerson.Location = new System.Drawing.Point(408, 14);
-            this.btnAddPerson.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(81, 59);
-            this.btnAddPerson.TabIndex = 0;
-            this.btnAddPerson.Text = "Add Person";
-            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddDailyShedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDailyShedule.Location = new System.Drawing.Point(408, 14);
+            this.btnAddDailyShedule.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddDailyShedule.Name = "btnAddDailyShedule";
+            this.btnAddDailyShedule.Size = new System.Drawing.Size(81, 59);
+            this.btnAddDailyShedule.TabIndex = 0;
+            this.btnAddDailyShedule.Text = "Add Daily Shedule";
+            this.btnAddDailyShedule.UseVisualStyleBackColor = true;
+            this.btnAddDailyShedule.Click += new System.EventHandler(this.btnAddDailyShedule_Click);
             // 
-            // btnPersonByID
+            // btnDailySchedByID
             // 
-            this.btnPersonByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonByID.Location = new System.Drawing.Point(84, 14);
-            this.btnPersonByID.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPersonByID.Name = "btnPersonByID";
-            this.btnPersonByID.Size = new System.Drawing.Size(81, 59);
-            this.btnPersonByID.TabIndex = 5;
-            this.btnPersonByID.Text = "Get Person By ID";
-            this.btnPersonByID.UseVisualStyleBackColor = true;
+            this.btnDailySchedByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDailySchedByID.Location = new System.Drawing.Point(84, 14);
+            this.btnDailySchedByID.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDailySchedByID.Name = "btnDailySchedByID";
+            this.btnDailySchedByID.Size = new System.Drawing.Size(81, 59);
+            this.btnDailySchedByID.TabIndex = 5;
+            this.btnDailySchedByID.Text = "Get Daily Sched By ID";
+            this.btnDailySchedByID.UseVisualStyleBackColor = true;
+            this.btnDailySchedByID.Click += new System.EventHandler(this.btnDailySchedByID_Click);
             // 
             // LblReturn
             // 
@@ -374,11 +438,6 @@
             this.LblReturn.Size = new System.Drawing.Size(57, 20);
             this.LblReturn.TabIndex = 97;
             this.LblReturn.Text = "return";
-            // 
-            // BackgroundWorker1
-            // 
-            this.BackgroundWorker1.WorkerReportsProgress = true;
-            this.BackgroundWorker1.WorkerSupportsCancellation = true;
             // 
             // bttonGetRoleByID
             // 
@@ -395,7 +454,7 @@
             // bttonAddRole
             // 
             this.bttonAddRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonAddRole.Location = new System.Drawing.Point(329, 14);
+            this.bttonAddRole.Location = new System.Drawing.Point(246, 14);
             this.bttonAddRole.Margin = new System.Windows.Forms.Padding(2);
             this.bttonAddRole.Name = "bttonAddRole";
             this.bttonAddRole.Size = new System.Drawing.Size(81, 59);
@@ -429,7 +488,7 @@
             // bttonDeleteRole
             // 
             this.bttonDeleteRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonDeleteRole.Location = new System.Drawing.Point(410, 14);
+            this.bttonDeleteRole.Location = new System.Drawing.Point(327, 14);
             this.bttonDeleteRole.Margin = new System.Windows.Forms.Padding(2);
             this.bttonDeleteRole.Name = "bttonDeleteRole";
             this.bttonDeleteRole.Size = new System.Drawing.Size(81, 59);
@@ -438,29 +497,17 @@
             this.bttonDeleteRole.UseVisualStyleBackColor = true;
             this.bttonDeleteRole.Click += new System.EventHandler(this.bttonDeleteRole_Click);
             // 
-            // bttonGetIDByLastName
-            // 
-            this.bttonGetIDByLastName.Enabled = false;
-            this.bttonGetIDByLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonGetIDByLastName.Location = new System.Drawing.Point(246, 14);
-            this.bttonGetIDByLastName.Margin = new System.Windows.Forms.Padding(2);
-            this.bttonGetIDByLastName.Name = "bttonGetIDByLastName";
-            this.bttonGetIDByLastName.Size = new System.Drawing.Size(81, 59);
-            this.bttonGetIDByLastName.TabIndex = 9;
-            this.bttonGetIDByLastName.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bttonGetIDByLastName);
             this.groupBox1.Controls.Add(this.bttonDeleteRole);
             this.groupBox1.Controls.Add(this.bttonGetByLastName);
             this.groupBox1.Controls.Add(this.bttonGetAllRoles);
             this.groupBox1.Controls.Add(this.bttonAddRole);
             this.groupBox1.Controls.Add(this.bttonGetRoleByID);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(7, 488);
+            this.groupBox1.Location = new System.Drawing.Point(9, 395);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(572, 84);
+            this.groupBox1.Size = new System.Drawing.Size(417, 84);
             this.groupBox1.TabIndex = 112;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Test Roles";
@@ -469,7 +516,7 @@
             // 
             this.bttonDeleteAllAndReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttonDeleteAllAndReset.ForeColor = System.Drawing.Color.Indigo;
-            this.bttonDeleteAllAndReset.Location = new System.Drawing.Point(978, 238);
+            this.bttonDeleteAllAndReset.Location = new System.Drawing.Point(978, 247);
             this.bttonDeleteAllAndReset.Margin = new System.Windows.Forms.Padding(2);
             this.bttonDeleteAllAndReset.Name = "bttonDeleteAllAndReset";
             this.bttonDeleteAllAndReset.Size = new System.Drawing.Size(109, 69);
@@ -569,11 +616,238 @@
             this.dataGridView2.Size = new System.Drawing.Size(756, 379);
             this.dataGridView2.TabIndex = 87;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.bttnDeleteExceptionByDate);
+            this.groupBox2.Controls.Add(this.bttnDeleteExceptionByUserName);
+            this.groupBox2.Controls.Add(this.bttnGetExceptionByUserName);
+            this.groupBox2.Controls.Add(this.bttnDeleteExceptionByDateRange);
+            this.groupBox2.Controls.Add(this.bttnGetExceptionByDate);
+            this.groupBox2.Controls.Add(this.bttnGetAllExceptions);
+            this.groupBox2.Controls.Add(this.bttnAddException);
+            this.groupBox2.Controls.Add(this.bttnGetExceptionByID);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(427, 395);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(660, 84);
+            this.groupBox2.TabIndex = 115;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Test Exceptions";
+            // 
+            // bttnDeleteExceptionByDate
+            // 
+            this.bttnDeleteExceptionByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnDeleteExceptionByDate.Location = new System.Drawing.Point(408, 14);
+            this.bttnDeleteExceptionByDate.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnDeleteExceptionByDate.Name = "bttnDeleteExceptionByDate";
+            this.bttnDeleteExceptionByDate.Size = new System.Drawing.Size(81, 59);
+            this.bttnDeleteExceptionByDate.TabIndex = 12;
+            this.bttnDeleteExceptionByDate.Text = "Delete Exception By Date";
+            this.bttnDeleteExceptionByDate.UseVisualStyleBackColor = true;
+            this.bttnDeleteExceptionByDate.Click += new System.EventHandler(this.bttnDeleteExceptionByDate_Click);
+            // 
+            // bttnDeleteExceptionByUserName
+            // 
+            this.bttnDeleteExceptionByUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnDeleteExceptionByUserName.Location = new System.Drawing.Point(570, 14);
+            this.bttnDeleteExceptionByUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnDeleteExceptionByUserName.Name = "bttnDeleteExceptionByUserName";
+            this.bttnDeleteExceptionByUserName.Size = new System.Drawing.Size(81, 59);
+            this.bttnDeleteExceptionByUserName.TabIndex = 11;
+            this.bttnDeleteExceptionByUserName.Text = "Delete Exception By UserName";
+            this.bttnDeleteExceptionByUserName.UseVisualStyleBackColor = true;
+            this.bttnDeleteExceptionByUserName.Click += new System.EventHandler(this.bttnDeleteExceptionByUserName_Click);
+            // 
+            // bttnGetExceptionByUserName
+            // 
+            this.bttnGetExceptionByUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnGetExceptionByUserName.Location = new System.Drawing.Point(246, 14);
+            this.bttnGetExceptionByUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGetExceptionByUserName.Name = "bttnGetExceptionByUserName";
+            this.bttnGetExceptionByUserName.Size = new System.Drawing.Size(81, 59);
+            this.bttnGetExceptionByUserName.TabIndex = 9;
+            this.bttnGetExceptionByUserName.Text = "Get Exception By UserName";
+            this.bttnGetExceptionByUserName.UseVisualStyleBackColor = true;
+            this.bttnGetExceptionByUserName.Click += new System.EventHandler(this.bttnGetExceptionByUserName_Click);
+            // 
+            // bttnDeleteExceptionByDateRange
+            // 
+            this.bttnDeleteExceptionByDateRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnDeleteExceptionByDateRange.Location = new System.Drawing.Point(489, 14);
+            this.bttnDeleteExceptionByDateRange.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnDeleteExceptionByDateRange.Name = "bttnDeleteExceptionByDateRange";
+            this.bttnDeleteExceptionByDateRange.Size = new System.Drawing.Size(81, 59);
+            this.bttnDeleteExceptionByDateRange.TabIndex = 7;
+            this.bttnDeleteExceptionByDateRange.Text = "Delete Exception By DateRange";
+            this.bttnDeleteExceptionByDateRange.UseVisualStyleBackColor = true;
+            this.bttnDeleteExceptionByDateRange.Click += new System.EventHandler(this.bttnDeleteExceptionByDateRange_Click);
+            // 
+            // bttnGetExceptionByDate
+            // 
+            this.bttnGetExceptionByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnGetExceptionByDate.Location = new System.Drawing.Point(165, 14);
+            this.bttnGetExceptionByDate.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGetExceptionByDate.Name = "bttnGetExceptionByDate";
+            this.bttnGetExceptionByDate.Size = new System.Drawing.Size(81, 59);
+            this.bttnGetExceptionByDate.TabIndex = 6;
+            this.bttnGetExceptionByDate.Text = "Get Exception By Date";
+            this.bttnGetExceptionByDate.UseVisualStyleBackColor = true;
+            this.bttnGetExceptionByDate.Click += new System.EventHandler(this.bttnGetExceptionByDate_Click);
+            // 
+            // bttnGetAllExceptions
+            // 
+            this.bttnGetAllExceptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnGetAllExceptions.Location = new System.Drawing.Point(3, 14);
+            this.bttnGetAllExceptions.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGetAllExceptions.Name = "bttnGetAllExceptions";
+            this.bttnGetAllExceptions.Size = new System.Drawing.Size(81, 59);
+            this.bttnGetAllExceptions.TabIndex = 3;
+            this.bttnGetAllExceptions.Text = "Get All Exceptions";
+            this.bttnGetAllExceptions.UseVisualStyleBackColor = true;
+            this.bttnGetAllExceptions.Click += new System.EventHandler(this.bttnGetAllExceptions_Click);
+            // 
+            // bttnAddException
+            // 
+            this.bttnAddException.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnAddException.Location = new System.Drawing.Point(327, 14);
+            this.bttnAddException.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAddException.Name = "bttnAddException";
+            this.bttnAddException.Size = new System.Drawing.Size(81, 59);
+            this.bttnAddException.TabIndex = 0;
+            this.bttnAddException.Text = "Add Exception";
+            this.bttnAddException.UseVisualStyleBackColor = true;
+            this.bttnAddException.Click += new System.EventHandler(this.bttnAddException_Click);
+            // 
+            // bttnGetExceptionByID
+            // 
+            this.bttnGetExceptionByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnGetExceptionByID.Location = new System.Drawing.Point(84, 14);
+            this.bttnGetExceptionByID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGetExceptionByID.Name = "bttnGetExceptionByID";
+            this.bttnGetExceptionByID.Size = new System.Drawing.Size(81, 59);
+            this.bttnGetExceptionByID.TabIndex = 5;
+            this.bttnGetExceptionByID.Text = "Get Exception By ID";
+            this.bttnGetExceptionByID.UseVisualStyleBackColor = true;
+            this.bttnGetExceptionByID.Click += new System.EventHandler(this.bttnGetExceptionByID_Click);
+            // 
+            // buttonInsertALL
+            // 
+            this.buttonInsertALL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInsertALL.ForeColor = System.Drawing.Color.Indigo;
+            this.buttonInsertALL.Location = new System.Drawing.Point(978, 168);
+            this.buttonInsertALL.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonInsertALL.Name = "buttonInsertALL";
+            this.buttonInsertALL.Size = new System.Drawing.Size(109, 69);
+            this.buttonInsertALL.TabIndex = 116;
+            this.buttonInsertALL.Text = "Insert ALL ";
+            this.buttonInsertALL.UseVisualStyleBackColor = true;
+            this.buttonInsertALL.Click += new System.EventHandler(this.buttonInsertALL_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.bttonCreateXMLFromDaySchedule);
+            this.groupBox3.Controls.Add(this.bttonGetXMLTimes);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.bttonAddDailyShedXML);
+            this.groupBox3.Controls.Add(this.button7);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(515, 485);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(572, 84);
+            this.groupBox3.TabIndex = 102;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Test Daily Schedule XML";
+            // 
+            // bttonCreateXMLFromDaySchedule
+            // 
+            this.bttonCreateXMLFromDaySchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonCreateXMLFromDaySchedule.Location = new System.Drawing.Point(327, 14);
+            this.bttonCreateXMLFromDaySchedule.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonCreateXMLFromDaySchedule.Name = "bttonCreateXMLFromDaySchedule";
+            this.bttonCreateXMLFromDaySchedule.Size = new System.Drawing.Size(81, 59);
+            this.bttonCreateXMLFromDaySchedule.TabIndex = 10;
+            this.bttonCreateXMLFromDaySchedule.Text = "Create XML From DaySchedule";
+            this.bttonCreateXMLFromDaySchedule.UseVisualStyleBackColor = true;
+            this.bttonCreateXMLFromDaySchedule.Click += new System.EventHandler(this.bttonCreateXMLFromDaySchedule_Click);
+            // 
+            // bttonGetXMLTimes
+            // 
+            this.bttonGetXMLTimes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetXMLTimes.Location = new System.Drawing.Point(246, 14);
+            this.bttonGetXMLTimes.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetXMLTimes.Name = "bttonGetXMLTimes";
+            this.bttonGetXMLTimes.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetXMLTimes.TabIndex = 9;
+            this.bttonGetXMLTimes.Text = "Get XML Times";
+            this.bttonGetXMLTimes.UseVisualStyleBackColor = true;
+            this.bttonGetXMLTimes.Click += new System.EventHandler(this.bttonGetXMLTimes_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(489, 14);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(81, 59);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Delete ";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(165, 14);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(81, 59);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Get ";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(3, 14);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(81, 59);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Get ";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // bttonAddDailyShedXML
+            // 
+            this.bttonAddDailyShedXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonAddDailyShedXML.Location = new System.Drawing.Point(408, 14);
+            this.bttonAddDailyShedXML.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddDailyShedXML.Name = "bttonAddDailyShedXML";
+            this.bttonAddDailyShedXML.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddDailyShedXML.TabIndex = 0;
+            this.bttonAddDailyShedXML.Text = "Add Daily Shedule XML";
+            this.bttonAddDailyShedXML.UseVisualStyleBackColor = true;
+            this.bttonAddDailyShedXML.Click += new System.EventHandler(this.bttonAddDailyShedXML_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(84, 14);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(81, 59);
+            this.button7.TabIndex = 5;
+            this.button7.Text = "Get ";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
             // TestMainAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 668);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.buttonInsertALL);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.bttonDeleteAllAndReset);
             this.Controls.Add(this.groupBox16);
             this.Controls.Add(this.groupBox12);
@@ -588,7 +862,6 @@
             this.Controls.Add(this.LblReturn);
             this.Name = "TestMainAdd";
             this.Text = "TestMainAdd";
-            this.Load += new System.EventHandler(this.TestMainAdd_Load);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -597,6 +870,8 @@
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -620,21 +895,18 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.ProgressBar ProgressBar1;
         internal System.Windows.Forms.GroupBox GroupBoxLogin;
-        internal System.Windows.Forms.Button bttonGetPersonIDByLastName;
-        internal System.Windows.Forms.Button btnGetPersonByAspID;
-        internal System.Windows.Forms.Button btnDeletePersonByID;
-        internal System.Windows.Forms.Button btnPersonByUserName;
-        internal System.Windows.Forms.Button btnGetAllPersons;
-        internal System.Windows.Forms.Button btnAddPerson;
-        internal System.Windows.Forms.Button btnPersonByID;
+        internal System.Windows.Forms.Button btnGetDailyShedByDateAgID;
+        internal System.Windows.Forms.Button btnDeleteDailySheduleByID;
+        internal System.Windows.Forms.Button btnDailyShedByDateStaffID;
+        internal System.Windows.Forms.Button btnGetAllDailyShed;
+        internal System.Windows.Forms.Button btnAddDailyShedule;
+        internal System.Windows.Forms.Button btnDailySchedByID;
         internal System.Windows.Forms.Label LblReturn;
-        internal System.ComponentModel.BackgroundWorker BackgroundWorker1;
         internal System.Windows.Forms.Button bttonGetRoleByID;
         internal System.Windows.Forms.Button bttonAddRole;
         internal System.Windows.Forms.Button bttonGetAllRoles;
         internal System.Windows.Forms.Button bttonGetByLastName;
         internal System.Windows.Forms.Button bttonDeleteRole;
-        internal System.Windows.Forms.Button bttonGetIDByLastName;
         internal System.Windows.Forms.GroupBox groupBox1;
         internal System.Windows.Forms.TextBox textBoxStaffID;
         internal System.Windows.Forms.Label label2;
@@ -649,5 +921,28 @@
         internal System.Windows.Forms.GroupBox groupBox12;
         internal System.Windows.Forms.TextBox textBox28;
         internal System.Windows.Forms.DataGridView dataGridView2;
+        internal System.Windows.Forms.GroupBox groupBox2;
+        internal System.Windows.Forms.Button bttnDeleteExceptionByDate;
+        internal System.Windows.Forms.Button bttnDeleteExceptionByUserName;
+        internal System.Windows.Forms.Button bttnGetExceptionByUserName;
+        internal System.Windows.Forms.Button bttnDeleteExceptionByDateRange;
+        internal System.Windows.Forms.Button bttnGetExceptionByDate;
+        internal System.Windows.Forms.Button bttnGetAllExceptions;
+        internal System.Windows.Forms.Button bttnAddException;
+        internal System.Windows.Forms.Button bttnGetExceptionByID;
+        internal System.Windows.Forms.TextBox textBoxDailySchedule;
+        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.TextBox textBoxTimeStamp;
+        internal System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.Button buttonInsertALL;
+        internal System.Windows.Forms.Button bttonGetDailyShedByAgendaID;
+        internal System.Windows.Forms.GroupBox groupBox3;
+        internal System.Windows.Forms.Button bttonCreateXMLFromDaySchedule;
+        internal System.Windows.Forms.Button bttonGetXMLTimes;
+        internal System.Windows.Forms.Button button3;
+        internal System.Windows.Forms.Button button4;
+        internal System.Windows.Forms.Button button5;
+        internal System.Windows.Forms.Button bttonAddDailyShedXML;
+        internal System.Windows.Forms.Button button7;
     }
 }

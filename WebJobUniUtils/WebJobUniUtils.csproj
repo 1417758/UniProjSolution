@@ -45,6 +45,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryXML.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="XMLConstants.cs" />

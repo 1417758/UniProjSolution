@@ -1,0 +1,7 @@
+********** 22/07/2016 20:01:50 **********
+Exception Type: System.Exception
+Exception: <h2>Company and/or Phone number have not been entered @IndAndNatBusUserControl useControl</h2>
+Source: IndAndNatBusUserControl.ascx, IsValidFields()
+Stack Trace: 
+   at UserControls_IndAndNatBusUserControl.IsValidFields() in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UserControls\IndAndNatBusUserControl.ascx.cs:line 109
+

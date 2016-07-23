@@ -1,0 +1,14 @@
+********** 22/07/2016 09:41:16 **********
+Exception Type: System.Exception
+Exception: <h2>First and/or Last names have not been entered @PersonalDetailsUserControl useControl</h2>
+Source: IndAndNatBusUserControl.ascx, IsValidFields()
+Stack Trace: 
+   at UserControls_PersonalDetailsUserControl.IsValidFields() in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UserControls\PersonalDetailsUserControl.ascx.cs:line 57
+
+********** 22/07/2016 09:41:16 **********
+Exception Type: System.Exception
+Exception: <h2>Required Fields not entered @UserInfoUserControl useControl</h2>
+Source: UserInfoUserControl.ascx, IsValidFields()
+Stack Trace: 
+   at UserControls_EndUser_UserInfoUserControl.IsValidFields() in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UserControls\EndUser\UserInfoUserControl.ascx.cs:line 47
+

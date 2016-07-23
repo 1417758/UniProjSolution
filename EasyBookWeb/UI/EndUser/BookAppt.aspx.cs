@@ -55,6 +55,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
     /// <param name="e"></param>
     protected void Button_Click(object sender, EventArgs e) {
         try {
+            bool isComplete = false;
             //cast so can get tellesense
             Button selectedBt = (Button)sender;
             string btID = selectedBt.ID;
@@ -93,10 +94,11 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                         isValid = true;
                     break;
                 case 5://payment
-                    UpdateInstallationObject(isPayment: true);
+                    //add payment validation
                     break;
                 case 6://confirmation
-                    UpdateInstallationObject(isConfirmation: true);
+                    //add confirmation validation
+                    isValid = true;
                     break;
             }
 
@@ -132,11 +134,19 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                     break;
                 case 6://confirmation
                     UpdateInstallationObject(isConfirmation: true);
+                    isComplete = true;
                     break;
             }//end switch2
 
             Outer://goto2
             System.Diagnostics.Debug.Print("BookAppt.aspx Button_Click() \t Do Nothing and exit");
+
+            //once finished rediret
+            if (isComplete) {
+                //redirect to home page
+                Response.Redirect("WelcomeUser", false);        //write redirect
+                Context.ApplicationInstance.CompleteRequest();
+            }
         }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>BookAppt.aspx, Button_Click()</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
@@ -185,6 +195,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
 
     private void UpdateInstallationObject(bool isService = false, bool isStaff = false, bool isDateAndTime = false, bool isUserInfo = false, bool isPayment = false, bool isConfirmation = false) {
         try {
+
             //get installation and current appt from session 
             Installation i = WebUtils.GetInstallationObjectFromSession();
             ApptBLL currAppt = SessionVariables.CURRENT_APPOINTMENT;
@@ -252,12 +263,14 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                 //create new
                 if (userIndex < 0) {
                     //create new end-user contact Details
-                    ContactDetailsBLL newEndUserContact = new ContactDetailsBLL(userPersoDet[5], userPersoDet[6], userPersoDet[7], "UK", null, userPersoDet[4], userPersoDet[3], userPersoDet[8]);
+                    ContactDetailsBLL newEndUserContact = new ContactDetailsBLL(userPersoDet[5], userPersoDet[6], userPersoDet[7], "UK", null, userPersoDet[4], userPersoDet[3]);
                     //create new end-user
                     EndUserBLL newEndUser = new EndUserBLL(userPersoDet[0], userPersoDet[1], userPersoDet[2], newEndUserContact, endUserASPUserID);
                     //add to installation
                     i.Customers.Add(newEndUser);
                 }
+                //add notes to current appt (userID is added on SaveInstallationToDB2)
+                currAppt.notes = userPersoDet[8];
             }
 
             if (isPayment) {
@@ -266,35 +279,12 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             }
 
             if (isConfirmation) {
-                //----- Add appt to installation ------
-                i.Appointments.Add(SessionVariables.CURRENT_APPOINTMENT);
-
-                //----- Add appt to employees Agenda ------
-                int timeINT = (int)Utils.GetNumberInt(WebUtils.TIME_SELECTED.Replace(":", ""));
-                //get staff agenda 
+                //----- Add appt to installation on session ------                
+                i.Appointments.Add(currAppt);
                 string curSelStaff1stName = this.LabelServProvider.Text;
-                int empIndex = i.Employees.FindIndex(employee => employee.firstName.Equals(curSelStaff1stName, StringComparison.Ordinal));
-                var curSelStaffCalendar = i.Employees[empIndex].agenda.staffCalendar;
-                //no preference REVIEW
-                /*  nextAvailStaff = GetNextAvailableStaff(i.Employees, userDate, theIntTime);
-                  //source: http://stackoverflow.com/questions/1568593/how-to-use-indexof-method-of-listobject                
-                  empIndex = i.Employees.FindIndex(employee => employee.lastName.Equals(nextAvailStaff.lastName, StringComparison.Ordinal));
-                  staffCalendar = i.Employees[empIndex].agenda.staffCalendar;
-
-                for ID check using FindIndex(Predicate<T>) http://www.dotnetperls.com/list-find
-                // given list1 {3, 4, 6, 5, 7, 8}
-                list1.FindIndex(x => x==5);  // should return 3, as list1[3] == 5;
-                list1.FindIndex(x => x==5);
-                  */
-
-                //add booking --- IMPORTANT --> this updates staff agenda (as BY REF is used) 
-                //NB MOVE this to after appt confirmation 20/7/16
-                bool addedBooking = AgendaBLL.AddBooking(ref curSelStaffCalendar, this.DateSelectionUserControl.GetSelectedDate(), timeINT);
-                if (!addedBooking)
-                throw new Exception("<H2>ERROR ADDING BOOKING!</H2>");//throw exc here?it doesnt allow DB save
 
                 //----- process data and save to database ------
-                InstallationBLL.SaveInstallationToDB(ref i);
+                InstallationBLL.SaveInstallationToDB2(ref i, ref currAppt, curSelStaff1stName, SessionVariables.TempStaffFolder);
             }
 
             //save current appt back to session installation and current appt from session 
@@ -302,6 +292,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
 
             //add installation back to session
             WebUtils.PutInstallationObjectinSession(i);
+
 
 
         }

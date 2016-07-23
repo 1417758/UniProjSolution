@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<DailySchedule AgendaID="7" Date="2016_07_26" ID="5">
+  <Booking>
+    <Time>1100</Time>
+    <Status>BUSY</Status>
+  </Booking>
+</DailySchedule>

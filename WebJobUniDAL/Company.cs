@@ -62,6 +62,19 @@ namespace WebJobUniDAL {
                 return null;
             }
         }
+
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public static DataSet1Main.CompanyDataTable GetCompanyByClientID(int? clientID) {
+            try {
+                return Adapter.GetCompanyByClientID(clientID);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Companies.GetCompanyByClientID(clientID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+        
+
         #endregion
 
         #region "ADD Functions"

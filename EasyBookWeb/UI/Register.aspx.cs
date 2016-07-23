@@ -369,9 +369,11 @@ public partial class UI_Register : System.Web.UI.Page {
                 //add installation back to session
                 WebUtils.PutInstallationObjectinSession(i);
 
-            if (isComplete)
+            if (isComplete) {
                 //process data and save to database
                 InstallationBLL.SaveInstallationToDB(ref i);
+                SessionVariables.CompanyID = i.Company.ID;
+            }
         }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>Register.aspx, PolulateInstallation(x6)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);

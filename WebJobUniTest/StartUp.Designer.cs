@@ -81,7 +81,7 @@
             this.btnMainADDXsd.Name = "btnMainADDXsd";
             this.btnMainADDXsd.Size = new System.Drawing.Size(109, 69);
             this.btnMainADDXsd.TabIndex = 11;
-            this.btnMainADDXsd.Text = "Main \r\nAditional Xsd";
+            this.btnMainADDXsd.Text = "Main \r\nAdditional XSD";
             this.btnMainADDXsd.UseVisualStyleBackColor = true;
             this.btnMainADDXsd.Click += new System.EventHandler(this.btnMainADDXsd_Click);
             // 

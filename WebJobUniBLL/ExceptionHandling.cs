@@ -68,7 +68,7 @@ namespace WebJobUniBLL {
             }
             catch (Exception ex2) {
                 //do nothing if there is an exception logging an exception - really bad!
-                System.Diagnostics.Debug.Print("Error in buildErrorMessage \n" + ex2.InnerException + "\n"  + ex.Message + "\n"+ex2.StackTrace );
+                System.Diagnostics.Debug.Print("Error in buildErrorMessage \n" + ex2.InnerException + "\n" + ex.Message + "\n" + ex2.StackTrace);
                 return "Error in creating Exception message! " + ex.StackTrace;
             }
         }
@@ -200,7 +200,7 @@ namespace WebJobUniBLL {
                 objStreamWriter = null;
 
             }
-           catch (Exception ex) {
+            catch (Exception ex) {
                 //error in logging exception - really bad!
                 System.Diagnostics.Debug.Print("Error in LogException" + "\n" + ex.StackTrace + "\n" + ex.Message); ExceptionHandling.LogException(ref ex);
                 System.Diagnostics.Debug.Print(ex.StackTrace.ToString());
@@ -245,20 +245,20 @@ namespace WebJobUniBLL {
                     }
                 }
             }
-           catch (Exception ex) {
+            catch (Exception ex) {
                 //error in logging exception - really bad!
                 return false;
             }
         }
 
-        
+
         /// <summary>
         /// use this method if userName is known 
         /// Log exception and send email notification if it is set on in Web.config
         /// </summary>
         /// <param name="exception"></param>
         /// <remarks></remarks>
-        public static void LogException(ref System.Exception exception, string userName="") {
+        public static void LogException(ref System.Exception exception, string userName = "") {
             try {
                 //if (SharedSettings.Settings == null) {
                 //    throw new Exception("Shared Settings is empty! this means settings.xml needs to be loaded in the application");
@@ -266,7 +266,7 @@ namespace WebJobUniBLL {
                 //      dynamic exceptionHand = SharedSettings.Settings;
 
                 Guid? userID = AppSettings.GetUserIDByUserName(userName);
-      
+
                 if (LogExceptionOrNot(System.DateTime.Now)) {
                     StringBuilder errorMsg = new StringBuilder(ExceptionHandling.BuildErrorMessage(ref exception, userName));
                     StackTrace stacktrace = new StackTrace();
@@ -274,11 +274,12 @@ namespace WebJobUniBLL {
                     var _with1 = errorMsg;
                     _with1.Append("\n" + x.ToString() + "\n");
                     _with1.Append(stacktrace.GetFrame(1).ToString() + "\n");
-                    _with1.Append(exception.InnerException.ToString() + "\n");
+                    if (exception.InnerException != null)
+                        _with1.Append(exception.InnerException.ToString() + "\n");
                     _with1.Append(exception.Source + "\n");
                     _with1.Append(exception.TargetSite + "\n");
-
-                    System.Diagnostics.Debug.Print("<h2> INNER EXC </h2> \t" + exception.InnerException.ToString());
+                    if (exception.InnerException != null)
+                        System.Diagnostics.Debug.Print("<h2> INNER EXC </h2> \t" + exception.InnerException.ToString());
                     System.Diagnostics.Debug.Print("<h2> MESSAGE </h2> \t" + exception.Message);
                     System.Diagnostics.Debug.Print("<h2> STACK-TRACE </h2> \t" + exception.StackTrace);
                     System.Diagnostics.Debug.Print("<h2> SOURCE </h2> \t" + exception.Source);
@@ -288,7 +289,7 @@ namespace WebJobUniBLL {
                     //Call LogToTextfile(errorMsg)
 
                     //log exception to database
-                     LogExceptionToDatabase(exception, ExceptionHandling.RecordToDataBase, (Guid)userID);
+                    LogExceptionToDatabase(exception, ExceptionHandling.RecordToDataBase, userID);
 
                     //send email
                     //           SendEmailException(ref exception);
@@ -300,7 +301,7 @@ namespace WebJobUniBLL {
             }
             catch (Exception ex2) {
                 //do nothing if there is an exception logging an exception - really bad!
-                System.Diagnostics.Debug.Print("Error in LogException" + "\n" + ex2.InnerException + "\n" + ex2.Message+ "\n"+ ex2.StackTrace  );
+                System.Diagnostics.Debug.Print("Error in LogException" + "\n" + ex2.InnerException + "\n" + ex2.Message + "\n" + ex2.StackTrace);
             }
         }
 
@@ -314,15 +315,20 @@ namespace WebJobUniBLL {
         /// <param name="ex"></param>
         /// <param name="logIt"></param>
         /// <remarks></remarks>
-        private static void LogExceptionToDatabase(Exception exc, bool logIt, Guid userID) {
+        private static void LogExceptionToDatabase(Exception exc, bool logIt, Guid? userID) {
 
             try {
                 if (logIt) {
-                    Exceptions.AddException(System.DateTime.Now, exc.Source, exc.Message.ToString(), exc.InnerException.ToString(), exc.StackTrace.ToString(), exc.TargetSite.ToString(), userID);
+                    string innerException = "";
+                    if (exc.InnerException == null)
+                        innerException = "";
+                    else
+                        innerException = exc.InnerException.ToString();
+                    Exceptions.AddException(System.DateTime.Now, exc.Source, exc.Message.ToString(), innerException, exc.StackTrace.ToString(), exc.TargetSite.ToString(), userID);
                 }
 
             }
-           catch (Exception ex) {
+            catch (Exception ex) {
                 //if there is an invalid UserID an exception happens here (f.k. INSERT if user id is not in asp_users table)
                 System.Diagnostics.Debug.Print(ex.ToString() + "\n" + "userID: " + userID.ToString());
 
@@ -331,9 +337,9 @@ namespace WebJobUniBLL {
                 System.Diagnostics.Debug.Print(System.DateTime.Now.ToString());
                 System.Diagnostics.Debug.Print(ex.Source);
                 System.Diagnostics.Debug.Print(ex.InnerException.ToString());
-                System.Diagnostics.Debug.Print(ex.Message); ExceptionHandling.LogException(ref ex);                
+                System.Diagnostics.Debug.Print(ex.Message); ExceptionHandling.LogException(ref ex);
                 System.Diagnostics.Debug.Print(ex.TargetSite.ToString());
-                System.Diagnostics.Debug.Print(ex.StackTrace.ToString());                
+                System.Diagnostics.Debug.Print(ex.StackTrace.ToString());
                 System.Diagnostics.Debug.Print(userID.ToString());
             }
         }

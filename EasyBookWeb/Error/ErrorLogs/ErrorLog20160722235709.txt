@@ -1,0 +1,13 @@
+********** 22/07/2016 23:57:09 **********
+Exception Type: System.Threading.ThreadAbortException
+Exception: Thread was being aborted.
+Source: BookAppt.aspx, Button_Click()
+Stack Trace: 
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at UI_EndUser_BookAppt.Button_Click(Object sender, EventArgs e) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UI\EndUser\BookAppt.aspx.cs:line 147
+

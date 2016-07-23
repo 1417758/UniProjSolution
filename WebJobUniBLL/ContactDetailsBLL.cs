@@ -10,6 +10,7 @@ namespace WebJobUniBLL {
     public class ContactDetailsBLL : ContactDetails {
 
         #region "Variables"
+        //DB table has 10 columns
         public int? ID { get; set; }
         public string address { get; set; }
         public string city { get; set; }
@@ -18,7 +19,6 @@ namespace WebJobUniBLL {
         public string landline { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }
-        public string notes { get; set; }
         public DateTime dateCreated { get; set; }
         public DateTime dateUpdated { get; set; }
 
@@ -28,7 +28,7 @@ namespace WebJobUniBLL {
         public ContactDetailsBLL() {
         }
 
-        public ContactDetailsBLL(string _address, string _city, string _postCode, string _country, string _landline, string _mobile, string _email, string _notes) {
+        public ContactDetailsBLL(string _address, string _city, string _postCode, string _country, string _landline, string _mobile, string _email) {
             this.address = _address;
             this.city = _city;
             this.postCode = _postCode;
@@ -36,7 +36,6 @@ namespace WebJobUniBLL {
             this.landline = _landline;
             this.mobile = _mobile;
             this.email = _email;
-            this.notes = _notes;
             this.dateCreated = Utils.GetDatetimeNOW();
             this.dateUpdated = Utils.GetDatetimeNOW();
         }

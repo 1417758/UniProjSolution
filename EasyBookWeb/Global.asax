@@ -35,7 +35,7 @@
                     return;
 
                 //Redirect HTTP errors to HttpError page
-                Server.Transfer("HttpErrorPage.aspx");
+                Server.Transfer("HttpError.aspx");
                 // Server.Transfer(SessionVariables.HttpErrorPage);
                 //same/alternative of above// HttpContext.Current.RewritePath("~/Error/HttpErrorPage.aspx");
             }
@@ -48,7 +48,7 @@
 
             //NB REVIEW THIS 03/7/16
             //ORIG Response.Write("Return to the <a href='Default.aspx'>" + "Default Page</a>\n"); /note here Default=testError.aspx
-            Response.Write("Return to <a href=\"GenericError.aspx\">Generic</a>");
+        //R    Response.Write("Return to <a href=\"Default.aspx\">Home Page</a>");
             //WORKING VS    Response.Write("Return to <a href=\"TestError.aspx\">Error Test Default Page</a>");
 
             // Log the exception and notify system operators        
@@ -92,13 +92,14 @@
             //check if its the endUser pages trying to be accessed
             if (clientURL1.Contains("UI/EndUser")) {
                 //get companyID passed on client given url
-                string compID_url = Request.QueryString["field1"];
+                string compID_url = Request.QueryString[XMLConstants.URLVar1];
+                System.Diagnostics.Debug.Print("<h1>Request.QueryString[field1]</h1> \t GET field1 is: \t " + compID_url.ToString() );
                 //NOTE //InstallationBLL. GET/BUILD COMPANY INSTALLATION OBJ (INCLUDING STAFF AND SERVICES) *GetAllStaff, GetAllServices (as unique DB)  
                 //18/7/16 usign test config for now
-                i = Installation.GetTestInstallation();
+            //    i = Installation.GetTestInstallation();
                 //http://msdn.microsoft.com/en-us/library/ms150046.aspx
-                Uri myUri = new Uri("http://www.example.com?param1=good&param2=bad");
-                string param1 = HttpUtility.ParseQueryString(myUri.Query).Get("param1");
+            //    Uri myUri = new Uri("http://www.example.com?param1=good&param2=bad");
+            //    string param1 = HttpUtility.ParseQueryString(myUri.Query).Get("param1");
             }
 
             //save in session

@@ -69,6 +69,17 @@ namespace WebJobUniDAL {
             }
         }
 
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public static DataSet1Main.PersonReturnDataTable GetEmployeeByAgendaID(short? agendaID) {
+            try {
+                return Adapter.GetEmployeeByAgendaID(agendaID);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Employee.GetEmployeeByAgendaID(agendaID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public static DataSet1Main.PersonReturnDataTable GetEmployeeByLastName(string lastName) {
 
@@ -103,7 +114,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddEmployee(string title, string firstName, string lastName, int contactDetailID, Guid asp_netUSER_ID, string natInsNumb, string jobTitle, Int16 agendaID) {
+        public static int? AddEmployee(string title, string firstName, string lastName, int contactDetailID, Guid asp_netUSER_ID, string natInsNumb, string jobTitle, short? agendaID) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertPersonInherit(title, firstName, lastName, contactDetailID, (byte)RolesEnum.EMPLOYEE, asp_netUSER_ID, natInsNumb, jobTitle, agendaID);

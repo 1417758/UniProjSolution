@@ -128,6 +128,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebJobUniBLL\WebJobUniBLL.csproj">
+      <Project>{b9864f94-ca42-44b9-b3b6-0bab4b16a763}</Project>
+      <Name>WebJobUniBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebJobUniDAL\WebJobUniDAL.csproj">
       <Project>{a571c465-5da4-4db0-b467-9ee17a4280b1}</Project>
       <Name>WebJobUniDAL</Name>

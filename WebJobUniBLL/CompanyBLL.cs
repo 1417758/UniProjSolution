@@ -81,6 +81,20 @@ namespace WebJobUniBLL {
                 ExceptionHandling.LogException(ref ex);
             }
         }
+        
+        public static int? GetCompanyIDByClientID(int? clientID) {
+            try {
+                var coDataTable = GetCompanyByClientID(clientID);
+                if (coDataTable != null)
+                return (int)coDataTable.Rows[0].ItemArray[0];
+                //else
+                return null;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>BLL.CompanyBLL.GetCompanyIDByClientID(clientID) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
 
 
 

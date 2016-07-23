@@ -43,7 +43,6 @@ namespace WebJobUniUtils {
 
             }
             catch (Exception ex) {
-
                 System.Diagnostics.Debug.Print("<h2>Utils.Utils. x () </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
                 return null;
             }
@@ -353,8 +352,9 @@ namespace WebJobUniUtils {
             ////Convert doesn't throw an exception, returns 0
             //ie:int result2 = Convert.ToInt32(null);
             //String.IsNullOrEmpty(value) value.Trim().Length == 0; //White - space
+            double v = 0;
             if (!String.IsNullOrEmpty(strgNumb))
-                if (Convert.ToDouble(strgNumb) != 0)
+                if ( Double.TryParse(strgNumb, out v ))
                     return true;
                 else
                     return false;

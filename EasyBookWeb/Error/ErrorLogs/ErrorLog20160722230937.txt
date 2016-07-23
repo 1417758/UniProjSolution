@@ -1,0 +1,8 @@
+********** 22/07/2016 23:09:37 **********
+Exception Type: System.Threading.ThreadAbortException
+Exception: Thread was being aborted.
+Source: BookAppt.aspx, Button_Click()
+Stack Trace: 
+   at UI_EndUser_BookAppt.UpdateInstallationObject(Boolean isService, Boolean isStaff, Boolean isDateAndTime, Boolean isUserInfo, Boolean isPayment, Boolean isConfirmation) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UI\EndUser\BookAppt.aspx.cs:line 294
+   at UI_EndUser_BookAppt.Button_Click(Object sender, EventArgs e) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UI\EndUser\BookAppt.aspx.cs:line 135
+

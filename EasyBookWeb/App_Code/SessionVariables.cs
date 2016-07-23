@@ -9,20 +9,16 @@ using WebJobUniUtils;
 namespace EasyBookWeb {
     public class SessionVariables {
 
-        /*   // <summary>
-           /// Has user clicked on left link (in which case it is assumed they have made changed)
-           /// </summary>
-           /// <value></value>
-           /// <returns></returns>
-           /// <remarks></remarks>
-        public static bool UserHasMadeChanges {
-            get { return Convert.ToBoolean(HttpContext.Current.Session(SessionConstants.UserClickedOnLeftLink)); }
-            set { HttpContext.Current.Session(SessionConstants.UserClickedOnLeftLink) = value; }
-        }*/
-
-
+       
         public static string Username {
             get { return HttpContext.Current.User.Identity.Name; }
+        }
+
+        public static string EndUserURL {
+            get { return "UI/EndUser/WelcomeUser.aspx"; } //("~/UI/EndUser/WelcomeUser.aspx"); }
+        }
+        public static string TempStaffFolder {
+            get { return HttpContext.Current.Server.MapPath("~/App_Data/DailySchedules/"); }
         }
 
         public static string TempUserFolder {
@@ -34,6 +30,10 @@ namespace EasyBookWeb {
         public static string HttpErrorPage {
             get { return HttpContext.Current.Server.MapPath("~/Error/HttpError.aspx"); }
         }
+        public static int? CompanyID {
+            get { return (int?)HttpContext.Current.Session["CompanyID"]; }
+            set { HttpContext.Current.Session["CompanyID"] = value; }
+        }
 
         public static string IndAndNatBusinessXML {
             get {
@@ -44,12 +44,11 @@ namespace EasyBookWeb {
             }
         }
 
-        public static string TitlesXml {
-            get { return HttpContext.Current.Server.MapPath("~/App_Data/Titles.xml"); }
-        }
-
         public static string HourXml {
             get { return HttpContext.Current.Server.MapPath("~/App_Data/Hours.xml"); }
+        }
+        public static string TitlesXml {
+            get { return HttpContext.Current.Server.MapPath("~/App_Data/Titles.xml"); }
         }
 
         public static string StartTime {
@@ -71,19 +70,7 @@ namespace EasyBookWeb {
             get { return (ApptBLL)HttpContext.Current.Session[XMLConstants.CURRENT_APPT]; }
             set { HttpContext.Current.Session[XMLConstants.CURRENT_APPT] = value; }           
         }
-        /*   public static string BttonID {
-             get { return ViewState["ApptTimeBttonID"]; }
-             set { ViewState["ApptTimeBttonID"] = value; }
-         }
-         public static string Interval {
-               get { return HttpContext.Current.Session[XMLConstants.Interval]; }
-               set { HttpContext.Current.Session[XMLConstants.Interval] = value; }
-           }
-
-           public static DataTable TrendDataFields {
-               get { return HttpContext.Current.Session[XMLConstants.data.TrendDataFields); }
-               set { HttpContext.Current.Session[XMLConstants.TrendDataFields) = value; }
-           }*/
+        
 
     }//class
 }//namespace

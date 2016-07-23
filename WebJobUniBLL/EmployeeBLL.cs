@@ -75,6 +75,28 @@ namespace WebJobUniBLL {
                 ExceptionHandling.LogException(ref ex);     return null;
             }
         }
+        public static string GetStaffByAgendaID(short? agendaID, bool isFirstName=true, bool isLastName = false ) {
+            try {
+                //the index here matches the column index at PersonReturn Table
+                int selectedIndex = 2;
+                //change index if lastName is required
+                if(isLastName)
+                    selectedIndex = 3;
+
+                //get all employees dataTable
+                DataSet1Main.PersonReturnDataTable staff = GetEmployeeByAgendaID(agendaID);
+
+                if (staff != null)
+                    return staff.Rows[0].Field<string>(selectedIndex);
+
+                //else
+                return null;
+            }
+            catch (Exception ex) {
+                ExceptionHandling.LogException(ref ex); return null;
+            }
+        }
+
         #endregion
 
     }//class

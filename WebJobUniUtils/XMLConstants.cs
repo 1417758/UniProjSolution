@@ -21,6 +21,10 @@ namespace WebJobUniUtils {
         public const string UNKNOWN = "Unknown";
         public const string NA = "N/A";
 
+        public const string URLVar1 = "urlco1";
+        public const string URLVar2 = "urlco2";
+
+
         public const string CURRENT_APPT = "Current Appointment";
 
         public const string NOT_APPLICABLE = "Not Applicable";

@@ -8,16 +8,23 @@ using WebJobUniDAL;
 
 namespace WebJobUniBLL {
     public class AgendaBLL : Agenda {
-        public int? ID { get; set; }
-        public bool isAdmin { get; set; }
-        public bool syncCalendar { get; set; }
+        public short? ID { get; set; } 
+        public bool? isAppUser { get; set; }
+        public bool? syncCalendar { get; set; }
         public SerializableDictionary<DateTime, DaySchedule> staffCalendar { get; set; }
 
-     #region "Constructor"
+     #region "Constructors"
         public AgendaBLL() {
             //source: https://msdn.microsoft.com/en-us/library/system.globalization.calendar(v=vs.110).aspx
             // Uses the default calendar of the InvariantCulture.
             // this.myCalendar = CultureInfo.InvariantCulture.Calendar;
+            this.staffCalendar = new SerializableDictionary<DateTime, DaySchedule>();
+        }
+
+        public AgendaBLL(short _ID, bool? _isAppUser, bool? _syncCalendar) {
+            this.ID = _ID;
+            this.isAppUser = _isAppUser;
+            this.syncCalendar = _syncCalendar; 
             this.staffCalendar = new SerializableDictionary<DateTime, DaySchedule>();
         }
 
@@ -38,7 +45,7 @@ namespace WebJobUniBLL {
                     //add to daySchedule and return
                     return resultDaySchedule;
 
-                //this will be null if not found
+                //this will be null if gets here
                 return resultDaySchedule;
 
             }
