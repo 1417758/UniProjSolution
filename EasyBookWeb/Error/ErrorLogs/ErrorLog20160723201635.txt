@@ -1,0 +1,12 @@
+********** 23/07/2016 20:16:35 **********
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Source: Global.asax, Session_Start() Method
+Stack Trace: 
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\global.asax:line 96
+
+********** 23/07/2016 20:16:35 **********
+Exception Type: System.Web.HttpException
+Exception: HTTP 404
+Source: Caught in Http404ErrorPage
+Stack Trace: 

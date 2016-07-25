@@ -52,9 +52,9 @@ namespace WebJobUniDAL {
         
         private global::System.Data.DataRelation relationFK__Client__clientID__1AF3F935;
         
-        private global::System.Data.DataRelation relationFK__Person__contactD__125EB334;
-        
         private global::System.Data.DataRelation relationFK__Person__role__1352D76D;
+        
+        private global::System.Data.DataRelation relationFK__Person__contactD__125EB334;
         
         private global::System.Data.DataRelation relationFK__Company__mainCon__40058253;
         
@@ -505,8 +505,8 @@ namespace WebJobUniDAL {
                 }
             }
             this.relationFK__Client__clientID__1AF3F935 = this.Relations["FK__Client__clientID__1AF3F935"];
-            this.relationFK__Person__contactD__125EB334 = this.Relations["FK__Person__contactD__125EB334"];
             this.relationFK__Person__role__1352D76D = this.Relations["FK__Person__role__1352D76D"];
+            this.relationFK__Person__contactD__125EB334 = this.Relations["FK__Person__contactD__125EB334"];
             this.relationFK__Company__mainCon__40058253 = this.Relations["FK__Company__mainCon__40058253"];
             this.relationFK__EndUser__userID__1DD065E0 = this.Relations["FK__EndUser__userID__1DD065E0"];
             this.relationFK__Company__contact__40F9A68C = this.Relations["FK__Company__contact__40F9A68C"];
@@ -559,16 +559,16 @@ namespace WebJobUniDAL {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
-                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.contactDetColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
+                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.roleColumn});
             this.tablePerson.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
-                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.roleColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
+                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.contactDetColumn});
             this.tablePerson.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -577,14 +577,14 @@ namespace WebJobUniDAL {
                         this.tablePerson.personIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, false);
             this.Relations.Add(this.relationFK__Client__clientID__1AF3F935);
-            this.relationFK__Person__contactD__125EB334 = new global::System.Data.DataRelation("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
-                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePerson.contactDetColumn}, false);
-            this.Relations.Add(this.relationFK__Person__contactD__125EB334);
             this.relationFK__Person__role__1352D76D = new global::System.Data.DataRelation("FK__Person__role__1352D76D", new global::System.Data.DataColumn[] {
                         this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePerson.roleColumn}, false);
             this.Relations.Add(this.relationFK__Person__role__1352D76D);
+            this.relationFK__Person__contactD__125EB334 = new global::System.Data.DataRelation("FK__Person__contactD__125EB334", new global::System.Data.DataColumn[] {
+                        this.tableContactDetails.contactDetIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePerson.contactDetColumn}, false);
+            this.Relations.Add(this.relationFK__Person__contactD__125EB334);
             this.relationFK__Company__mainCon__40058253 = new global::System.Data.DataRelation("FK__Company__mainCon__40058253", new global::System.Data.DataColumn[] {
                         this.tableClient.clientIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCompany.mainContactColumn}, false);
@@ -2028,7 +2028,7 @@ namespace WebJobUniDAL {
             
             private global::System.Data.DataColumn columnvatNumb;
             
-            private global::System.Data.DataColumn columnnotes;
+            private global::System.Data.DataColumn columninstallationXML;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2153,9 +2153,9 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn notesColumn {
+            public global::System.Data.DataColumn installationXMLColumn {
                 get {
-                    return this.columnnotes;
+                    return this.columninstallationXML;
                 }
             }
             
@@ -2196,7 +2196,7 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CompanyRow AddCompanyRow(string name, string industry, int nature, string coNumb, System.DateTime incorporated, string url, ClientRow parentClientRowByFK__Company__mainCon__40058253, ContactDetailsRow parentContactDetailsRowByFK__Company__contact__40F9A68C, bool isVATreg, string vatNumb, string notes) {
+            public CompanyRow AddCompanyRow(string name, string industry, int nature, string coNumb, System.DateTime incorporated, string url, ClientRow parentClientRowByFK__Company__mainCon__40058253, ContactDetailsRow parentContactDetailsRowByFK__Company__contact__40F9A68C, bool isVATreg, string vatNumb, string installationXML) {
                 CompanyRow rowCompanyRow = ((CompanyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2210,7 +2210,7 @@ namespace WebJobUniDAL {
                         null,
                         isVATreg,
                         vatNumb,
-                        notes};
+                        installationXML};
                 if ((parentClientRowByFK__Company__mainCon__40058253 != null)) {
                     columnValuesArray[7] = parentClientRowByFK__Company__mainCon__40058253[0];
                 }
@@ -2257,7 +2257,7 @@ namespace WebJobUniDAL {
                 this.columncontactDet = base.Columns["contactDet"];
                 this.columnisVATreg = base.Columns["isVATreg"];
                 this.columnvatNumb = base.Columns["vatNumb"];
-                this.columnnotes = base.Columns["notes"];
+                this.columninstallationXML = base.Columns["installationXML"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2285,8 +2285,8 @@ namespace WebJobUniDAL {
                 base.Columns.Add(this.columnisVATreg);
                 this.columnvatNumb = new global::System.Data.DataColumn("vatNumb", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvatNumb);
-                this.columnnotes = new global::System.Data.DataColumn("notes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnotes);
+                this.columninstallationXML = new global::System.Data.DataColumn("installationXML", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninstallationXML);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columncompanyID}, true));
                 this.columncompanyID.AutoIncrement = true;
@@ -2301,7 +2301,7 @@ namespace WebJobUniDAL {
                 this.columnurl.MaxLength = 100;
                 this.columncontactDet.AllowDBNull = false;
                 this.columnvatNumb.MaxLength = 50;
-                this.columnnotes.MaxLength = 200;
+                this.columninstallationXML.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5700,17 +5700,17 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string notes {
+            public string installationXML {
                 get {
                     try {
-                        return ((string)(this[this.tableCompany.notesColumn]));
+                        return ((string)(this[this.tableCompany.installationXMLColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'notes\' in table \'Company\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'installationXML\' in table \'Company\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCompany.notesColumn] = value;
+                    this[this.tableCompany.installationXMLColumn] = value;
                 }
             }
             
@@ -5846,14 +5846,14 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsnotesNull() {
-                return this.IsNull(this.tableCompany.notesColumn);
+            public bool IsinstallationXMLNull() {
+                return this.IsNull(this.tableCompany.installationXMLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetnotesNull() {
-                this[this.tableCompany.notesColumn] = global::System.Convert.DBNull;
+            public void SetinstallationXMLNull() {
+                this[this.tableCompany.installationXMLColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6177,23 +6177,23 @@ namespace WebJobUniDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContactDetailsRow ContactDetailsRow {
-                get {
-                    return ((ContactDetailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__contactD__125EB334"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__contactD__125EB334"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RolesRow RolesRow {
                 get {
                     return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__role__1352D76D"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Person__role__1352D76D"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ContactDetailsRow ContactDetailsRow {
+                get {
+                    return ((ContactDetailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Person__contactD__125EB334"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Person__contactD__125EB334"]);
                 }
             }
             
@@ -9492,11 +9492,12 @@ SELECT contactDetID, address, postCode, city, country, landLine, mobile, email, 
             tableMapping.ColumnMappings.Add("contactDet", "contactDet");
             tableMapping.ColumnMappings.Add("isVATreg", "isVATreg");
             tableMapping.ColumnMappings.Add("vatNumb", "vatNumb");
-            tableMapping.ColumnMappings.Add("notes", "notes");
+            tableMapping.ColumnMappings.Add("notes", "installationXML");
+            tableMapping.ColumnMappings.Add("installationXML", "installationXML");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Company] WHERE (([companyID] = @Original_companyID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_industry = 1 AND [industry] IS NULL) OR ([industry] = @Original_industry)) AND ((@IsNull_nature = 1 AND [nature] IS NULL) OR ([nature] = @Original_nature)) AND ((@IsNull_coNumb = 1 AND [coNumb] IS NULL) OR ([coNumb] = @Original_coNumb)) AND ((@IsNull_incorporated = 1 AND [incorporated] IS NULL) OR ([incorporated] = @Original_incorporated)) AND ((@IsNull_url = 1 AND [url] IS NULL) OR ([url] = @Original_url)) AND ((@IsNull_mainContact = 1 AND [mainContact] IS NULL) OR ([mainContact] = @Original_mainContact)) AND ([contactDet] = @Original_contactDet) AND ((@IsNull_isVATreg = 1 AND [isVATreg] IS NULL) OR ([isVATreg] = @Original_isVATreg)) AND ((@IsNull_vatNumb = 1 AND [vatNumb] IS NULL) OR ([vatNumb] = @Original_vatNumb)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_notes)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Company] WHERE (([companyID] = @Original_companyID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_industry = 1 AND [industry] IS NULL) OR ([industry] = @Original_industry)) AND ((@IsNull_nature = 1 AND [nature] IS NULL) OR ([nature] = @Original_nature)) AND ((@IsNull_coNumb = 1 AND [coNumb] IS NULL) OR ([coNumb] = @Original_coNumb)) AND ((@IsNull_incorporated = 1 AND [incorporated] IS NULL) OR ([incorporated] = @Original_incorporated)) AND ((@IsNull_url = 1 AND [url] IS NULL) OR ([url] = @Original_url)) AND ((@IsNull_mainContact = 1 AND [mainContact] IS NULL) OR ([mainContact] = @Original_mainContact)) AND ([contactDet] = @Original_contactDet) AND ((@IsNull_isVATreg = 1 AND [isVATreg] IS NULL) OR ([isVATreg] = @Original_isVATreg)) AND ((@IsNull_vatNumb = 1 AND [vatNumb] IS NULL) OR ([vatNumb] = @Original_vatNumb)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_companyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "companyID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -9504,7 +9505,7 @@ SELECT contactDetID, address, postCode, city, country, landLine, mobile, email, 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_industry", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "industry", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_industry", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "industry", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nature", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_coNumb", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "coNumb", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_coNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "coNumb", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_incorporated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "incorporated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -9518,16 +9519,14 @@ SELECT contactDetID, address, postCode, city, country, landLine, mobile, email, 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isVATreg", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isVATreg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_vatNumb", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vatNumb", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vatNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vatNumb", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_notes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Company] ([name], [industry], [nature], [coNumb], [incorporated], [url], [mainContact], [contactDet], [isVATreg], [vatNumb], [notes]) VALUES (@name, @industry, @nature, @coNumb, @incorporated, @url, @mainContact, @contactDet, @isVATreg, @vatNumb, @notes);
-SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact, contactDet, isVATreg, vatNumb, notes FROM Company WHERE (companyID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Company] ([name], [industry], [nature], [coNumb], [incorporated], [url], [mainContact], [contactDet], [isVATreg], [vatNumb], [installationXML]) VALUES (@name, @industry, @nature, @coNumb, @incorporated, @url, @mainContact, @contactDet, @isVATreg, @vatNumb, @installationXML);
+SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact, contactDet, isVATreg, vatNumb, installationXML FROM Company WHERE (companyID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@industry", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "industry", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nature", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@coNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "coNumb", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@incorporated", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "incorporated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@url", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "url", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9535,15 +9534,15 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contactDet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contactDet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isVATreg", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isVATreg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vatNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vatNumb", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@installationXML", global::System.Data.SqlDbType.Xml, 0, global::System.Data.ParameterDirection.Input, 0, 0, "installationXML", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Company] SET [name] = @name, [industry] = @industry, [nature] = @nature, [coNumb] = @coNumb, [incorporated] = @incorporated, [url] = @url, [mainContact] = @mainContact, [contactDet] = @contactDet, [isVATreg] = @isVATreg, [vatNumb] = @vatNumb, [notes] = @notes WHERE (([companyID] = @Original_companyID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_industry = 1 AND [industry] IS NULL) OR ([industry] = @Original_industry)) AND ((@IsNull_nature = 1 AND [nature] IS NULL) OR ([nature] = @Original_nature)) AND ((@IsNull_coNumb = 1 AND [coNumb] IS NULL) OR ([coNumb] = @Original_coNumb)) AND ((@IsNull_incorporated = 1 AND [incorporated] IS NULL) OR ([incorporated] = @Original_incorporated)) AND ((@IsNull_url = 1 AND [url] IS NULL) OR ([url] = @Original_url)) AND ((@IsNull_mainContact = 1 AND [mainContact] IS NULL) OR ([mainContact] = @Original_mainContact)) AND ([contactDet] = @Original_contactDet) AND ((@IsNull_isVATreg = 1 AND [isVATreg] IS NULL) OR ([isVATreg] = @Original_isVATreg)) AND ((@IsNull_vatNumb = 1 AND [vatNumb] IS NULL) OR ([vatNumb] = @Original_vatNumb)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_notes)));
-SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact, contactDet, isVATreg, vatNumb, notes FROM Company WHERE (companyID = @companyID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Company] SET [name] = @name, [industry] = @industry, [nature] = @nature, [coNumb] = @coNumb, [incorporated] = @incorporated, [url] = @url, [mainContact] = @mainContact, [contactDet] = @contactDet, [isVATreg] = @isVATreg, [vatNumb] = @vatNumb, [installationXML] = @installationXML WHERE (([companyID] = @Original_companyID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_industry = 1 AND [industry] IS NULL) OR ([industry] = @Original_industry)) AND ((@IsNull_nature = 1 AND [nature] IS NULL) OR ([nature] = @Original_nature)) AND ((@IsNull_coNumb = 1 AND [coNumb] IS NULL) OR ([coNumb] = @Original_coNumb)) AND ((@IsNull_incorporated = 1 AND [incorporated] IS NULL) OR ([incorporated] = @Original_incorporated)) AND ((@IsNull_url = 1 AND [url] IS NULL) OR ([url] = @Original_url)) AND ((@IsNull_mainContact = 1 AND [mainContact] IS NULL) OR ([mainContact] = @Original_mainContact)) AND ([contactDet] = @Original_contactDet) AND ((@IsNull_isVATreg = 1 AND [isVATreg] IS NULL) OR ([isVATreg] = @Original_isVATreg)) AND ((@IsNull_vatNumb = 1 AND [vatNumb] IS NULL) OR ([vatNumb] = @Original_vatNumb)));
+SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact, contactDet, isVATreg, vatNumb, installationXML FROM Company WHERE (companyID = @companyID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@industry", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "industry", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nature", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@coNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "coNumb", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@incorporated", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "incorporated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@url", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "url", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9551,14 +9550,14 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contactDet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contactDet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isVATreg", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isVATreg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vatNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vatNumb", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@installationXML", global::System.Data.SqlDbType.Xml, 0, global::System.Data.ParameterDirection.Input, 0, 0, "installationXML", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_companyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "companyID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_industry", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "industry", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_industry", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "industry", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nature", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_coNumb", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "coNumb", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_coNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "coNumb", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_incorporated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "incorporated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -9572,8 +9571,6 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isVATreg", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isVATreg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_vatNumb", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vatNumb", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vatNumb", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vatNumb", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_notes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@companyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "companyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -9587,11 +9584,11 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact," +
-                " contactDet, isVATreg, vatNumb, notes FROM dbo.Company";
+                " contactDet, isVATreg, vatNumb, installationXML FROM dbo.Company";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -9626,7 +9623,13 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contactDet", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isVATreg", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 1, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vatNumb", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 200, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "dbo.InsertCompanyInstalXMLByID";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@installationSumXML", global::System.Data.SqlDbType.Xml, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9758,7 +9761,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_companyID, string Original_name, string Original_industry, global::System.Nullable<byte> Original_nature, string Original_coNumb, global::System.Nullable<global::System.DateTime> Original_incorporated, string Original_url, global::System.Nullable<int> Original_mainContact, int Original_contactDet, global::System.Nullable<bool> Original_isVATreg, string Original_vatNumb, string Original_notes) {
+        public virtual int Delete(int Original_companyID, string Original_name, string Original_industry, global::System.Nullable<int> Original_nature, string Original_coNumb, global::System.Nullable<global::System.DateTime> Original_incorporated, string Original_url, global::System.Nullable<int> Original_mainContact, int Original_contactDet, global::System.Nullable<bool> Original_isVATreg, string Original_vatNumb) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_companyID));
             if ((Original_name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -9778,7 +9781,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             }
             if ((Original_nature.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((byte)(Original_nature.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_nature.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
@@ -9833,14 +9836,6 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_vatNumb));
             }
-            if ((Original_notes == null)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((string)(Original_notes));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9861,7 +9856,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string name, string industry, global::System.Nullable<byte> nature, string coNumb, global::System.Nullable<global::System.DateTime> incorporated, string url, global::System.Nullable<int> mainContact, int contactDet, global::System.Nullable<bool> isVATreg, string vatNumb, string notes) {
+        public virtual int Insert(string name, string industry, global::System.Nullable<int> nature, string coNumb, global::System.Nullable<global::System.DateTime> incorporated, string url, global::System.Nullable<int> mainContact, int contactDet, global::System.Nullable<bool> isVATreg, string vatNumb, object installationXML) {
             if ((name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -9875,7 +9870,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(industry));
             }
             if ((nature.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((byte)(nature.Value));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(nature.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -9917,11 +9912,11 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(vatNumb));
             }
-            if ((notes == null)) {
+            if ((installationXML == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(notes));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((object)(installationXML));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9946,7 +9941,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         public virtual int Update(
                     string name, 
                     string industry, 
-                    global::System.Nullable<byte> nature, 
+                    global::System.Nullable<int> nature, 
                     string coNumb, 
                     global::System.Nullable<global::System.DateTime> incorporated, 
                     string url, 
@@ -9954,11 +9949,11 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                     int contactDet, 
                     global::System.Nullable<bool> isVATreg, 
                     string vatNumb, 
-                    string notes, 
+                    object installationXML, 
                     int Original_companyID, 
                     string Original_name, 
                     string Original_industry, 
-                    global::System.Nullable<byte> Original_nature, 
+                    global::System.Nullable<int> Original_nature, 
                     string Original_coNumb, 
                     global::System.Nullable<global::System.DateTime> Original_incorporated, 
                     string Original_url, 
@@ -9966,7 +9961,6 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                     int Original_contactDet, 
                     global::System.Nullable<bool> Original_isVATreg, 
                     string Original_vatNumb, 
-                    string Original_notes, 
                     int companyID) {
             if ((name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -9981,7 +9975,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(industry));
             }
             if ((nature.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((byte)(nature.Value));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(nature.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -10023,11 +10017,11 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(vatNumb));
             }
-            if ((notes == null)) {
+            if ((installationXML == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(notes));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(installationXML));
             }
             this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_companyID));
             if ((Original_name == null)) {
@@ -10048,7 +10042,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             }
             if ((Original_nature.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((byte)(Original_nature.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_nature.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
@@ -10103,15 +10097,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_vatNumb));
             }
-            if ((Original_notes == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_notes));
-            }
-            this.Adapter.UpdateCommand.Parameters[33].Value = ((int)(companyID));
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(companyID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10135,7 +10121,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         public virtual int Update(
                     string name, 
                     string industry, 
-                    global::System.Nullable<byte> nature, 
+                    global::System.Nullable<int> nature, 
                     string coNumb, 
                     global::System.Nullable<global::System.DateTime> incorporated, 
                     string url, 
@@ -10143,20 +10129,19 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
                     int contactDet, 
                     global::System.Nullable<bool> isVATreg, 
                     string vatNumb, 
-                    string notes, 
+                    object installationXML, 
                     int Original_companyID, 
                     string Original_name, 
                     string Original_industry, 
-                    global::System.Nullable<byte> Original_nature, 
+                    global::System.Nullable<int> Original_nature, 
                     string Original_coNumb, 
                     global::System.Nullable<global::System.DateTime> Original_incorporated, 
                     string Original_url, 
                     global::System.Nullable<int> Original_mainContact, 
                     int Original_contactDet, 
                     global::System.Nullable<bool> Original_isVATreg, 
-                    string Original_vatNumb, 
-                    string Original_notes) {
-            return this.Update(name, industry, nature, coNumb, incorporated, url, mainContact, contactDet, isVATreg, vatNumb, notes, Original_companyID, Original_name, Original_industry, Original_nature, Original_coNumb, Original_incorporated, Original_url, Original_mainContact, Original_contactDet, Original_isVATreg, Original_vatNumb, Original_notes, Original_companyID);
+                    string Original_vatNumb) {
+            return this.Update(name, industry, nature, coNumb, incorporated, url, mainContact, contactDet, isVATreg, vatNumb, installationXML, Original_companyID, Original_name, Original_industry, Original_nature, Original_coNumb, Original_incorporated, Original_url, Original_mainContact, Original_contactDet, Original_isVATreg, Original_vatNumb, Original_companyID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10196,7 +10181,7 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object InsertCompany(string name, string industry, global::System.Nullable<int> nature, string coNumb, global::System.Nullable<global::System.DateTime> incorporated, string url, global::System.Nullable<int> mainContact, global::System.Nullable<int> contactDet, global::System.Nullable<bool> isVATreg, string vatNumb, string notes) {
+        public virtual object InsertCompany(string name, string industry, global::System.Nullable<int> nature, string coNumb, global::System.Nullable<global::System.DateTime> incorporated, string url, global::System.Nullable<int> mainContact, global::System.Nullable<int> contactDet, global::System.Nullable<bool> isVATreg, string vatNumb) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((name == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -10258,11 +10243,45 @@ SELECT companyID, name, industry, nature, coNumb, incorporated, url, mainContact
             else {
                 command.Parameters[10].Value = ((string)(vatNumb));
             }
-            if ((notes == null)) {
-                command.Parameters[11].Value = global::System.DBNull.Value;
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
             }
             else {
-                command.Parameters[11].Value = ((string)(notes));
+                return ((object)(returnValue));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object InsertCompanyInstalXMLByID(global::System.Nullable<int> compID, object installationSumXML) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            if ((compID.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(compID.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((installationSumXML == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((object)(installationSumXML));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -4,6 +4,7 @@ using WebJobUniDAL.DataSet1MainTableAdapters;
 using WebJobUniUtils;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 //------------------------------------------------------------------------------------------------------
 // <copyright file="Exceptions.vb" company="">
@@ -84,10 +85,10 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public static int? AddCompany(string compName, string industry, int natureOfBusiness, string compNumber, DateTime dateRegistered, string URL, int clientID, int contactDetID, bool isVARreg, string VATNumb, string notes) {
+        public static int? AddCompany(string compName, string industry, int? natureOfBusiness, string compNumber, DateTime? dateRegistered, string URL, int clientID, int contactDetID, bool? isVARreg, string VATNumb) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
-                dynamic result = Adapter.InsertCompany(compName, industry, natureOfBusiness, compNumber, dateRegistered, URL, clientID, contactDetID, isVARreg, VATNumb, notes);
+                dynamic result = Adapter.InsertCompany(compName, industry, natureOfBusiness, compNumber, dateRegistered, URL, clientID, contactDetID, isVARreg, VATNumb);
                 return (int?)result;
             }
             catch (Exception ex) {
@@ -96,10 +97,26 @@ namespace WebJobUniDAL {
             }
         }
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddCompany(string compName, string industry, int natureOfBusiness, int clientID, int contactDetID) {
+        public static int? AddCompany(string compName, string industry, int? natureOfBusiness, int clientID, int contactDetID) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
-                dynamic result = Adapter.InsertCompany(compName, industry, natureOfBusiness, null, null, null, clientID, contactDetID, null, null, null);
+                dynamic result = Adapter.InsertCompany(compName, industry, natureOfBusiness, null, null, null, clientID, contactDetID, null, null);
+                return (int?)result;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>DAL.Company.AddCompany(x5 params) </h2> \n" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public static int? AddCompanyInstallationSummaryXMLByID(int compID, XmlDocument iSummaryXML) {
+            try {
+                if (iSummaryXML == null)
+                    iSummaryXML = new XmlDocument();
+
+                //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
+                dynamic result = Adapter.InsertCompanyInstalXMLByID(compID, iSummaryXML.OuterXml);
                 return (int?)result;
             }
             catch (Exception ex) {

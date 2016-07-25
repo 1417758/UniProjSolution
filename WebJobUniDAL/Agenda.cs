@@ -87,7 +87,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static short? AddAgenda(bool isAppuser, bool syncCalendar) { 
+        public static short? AddAgenda(bool? isAppuser, bool? syncCalendar) { 
             try {
                 // NB tableAdapter returns decimal value by default.TYPE = object { decimal}
                 dynamic result = Adapter.InsertAgenda(isAppuser, syncCalendar);

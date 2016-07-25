@@ -111,7 +111,7 @@ namespace WebJobUniDAL {
         }
         //6
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static int? GetPersonIDByASPuserID(Guid aspnetUserID) {
+        public static int? GetPersonIDByASPuserID(Guid? aspnetUserID) {
             try {                
                 return (int?)Adapter.GetPersonIDByASPuserID(aspnetUserID);
             }
@@ -130,7 +130,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddPerson(string title, string firstName, string lastName, int contactDetailID, byte roleID, Guid asp_netUSER_ID) {
+        public static int? AddPerson(string title, string firstName, string lastName, int contactDetailID, byte roleID, Guid? asp_netUSER_ID) {
             try {
                 int? pIDReturn = 0;
                 Adapter.InsertPerson(ref pIDReturn, title, firstName, lastName, contactDetailID, roleID, asp_netUSER_ID);

@@ -15,8 +15,18 @@ namespace WebJobUniBLL {
         public string provider { get; set; } //staff1stName
         public string notes { get; set; } 
 
-        #region "Constructor"
+        #region "Constructors"
         public ApptBLL() { }
+
+        public ApptBLL(DateTime _date, TimeSpan _time, int _endUserID, int _serviceID, string _provider, string _notes) {
+            this.date = _date;
+            this.time = _time;
+            this.endUserID = _endUserID;
+            this.serviceID = _serviceID;
+            this.provider = _provider;
+            this.notes = _notes;
+        }
+
 
         #endregion
 

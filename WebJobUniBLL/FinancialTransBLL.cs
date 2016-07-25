@@ -10,10 +10,10 @@ namespace WebJobUniBLL {
 
         public int? ID { get; set; }
         public string status { get; set; }//FinTransStatusEnum
-        public decimal amount { get; set; }     
+        public decimal? amount { get; set; }     
         public PayMethodBLL payMethod { get; set; }//ref: DAL.PaymentMethodhodsEnum
-        public Guid authorisCode { get; set; }
-        public DateTime timeStamp { get; set; }
+        public Guid? authorisCode { get; set; }
+        public DateTime? timeStamp { get; set; }
 
         #region "Constructor"
         public FinancialTransBLL() {

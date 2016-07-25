@@ -21,6 +21,10 @@ namespace EasyBookWeb {
             get { return HttpContext.Current.Server.MapPath("~/App_Data/DailySchedules/"); }
         }
 
+        public static string ISummaryXML {
+            get { return HttpContext.Current.Server.MapPath("~/App_Data/ISummaryXML.xml"); }//MUST TEST for concorrent users 24/7/16
+        }
+        
         public static string TempUserFolder {
             get { return HttpContext.Current.Server.MapPath("~/App_Data/SavedFiles/" + Username + "/temp/"); }
         }

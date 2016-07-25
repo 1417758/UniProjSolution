@@ -78,28 +78,28 @@
             this.bttonAddUser = new System.Windows.Forms.Button();
             this.bttonDeleteUser = new System.Windows.Forms.Button();
             this.GroupBoxTestUsers = new System.Windows.Forms.GroupBox();
+            this.bttonGetUserIDByLastName = new System.Windows.Forms.Button();
+            this.bttonGetUserByLastName = new System.Windows.Forms.Button();
+            this.bttonGetAllUsers = new System.Windows.Forms.Button();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
             this.BackgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.Label1 = new System.Windows.Forms.Label();
-            this.bttonGetAllUsers = new System.Windows.Forms.Button();
             this.btnPersonByID = new System.Windows.Forms.Button();
             this.btnGetAllPersons = new System.Windows.Forms.Button();
             this.btnGetPersonByAspID = new System.Windows.Forms.Button();
             this.bttonGetPersonIDByLastName = new System.Windows.Forms.Button();
             this.GroupBoxLogin = new System.Windows.Forms.GroupBox();
+            this.btnDeletePersonByID = new System.Windows.Forms.Button();
+            this.btnPersonByUserName = new System.Windows.Forms.Button();
+            this.btnAddPerson = new System.Windows.Forms.Button();
             this.btonGetAllComp = new System.Windows.Forms.Button();
             this.btonGetCompByID = new System.Windows.Forms.Button();
             this.bttonAddComp = new System.Windows.Forms.Button();
             this.bttonAddCompLess = new System.Windows.Forms.Button();
             this.bttonDeleteComp = new System.Windows.Forms.Button();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
-            this.btton1Spare = new System.Windows.Forms.Button();
-            this.btnPersonByUserName = new System.Windows.Forms.Button();
-            this.btnDeletePersonByID = new System.Windows.Forms.Button();
-            this.bttonGetUserByLastName = new System.Windows.Forms.Button();
-            this.bttonGetUserIDByLastName = new System.Windows.Forms.Button();
-            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.bttonAddInstallSumXMLByID = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxCompID = new System.Windows.Forms.TextBox();
@@ -719,6 +719,43 @@
             this.GroupBoxTestUsers.TabStop = false;
             this.GroupBoxTestUsers.Text = "Test End-Users";
             // 
+            // bttonGetUserIDByLastName
+            // 
+            this.bttonGetUserIDByLastName.Enabled = false;
+            this.bttonGetUserIDByLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetUserIDByLastName.Location = new System.Drawing.Point(249, 18);
+            this.bttonGetUserIDByLastName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetUserIDByLastName.Name = "bttonGetUserIDByLastName";
+            this.bttonGetUserIDByLastName.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetUserIDByLastName.TabIndex = 46;
+            this.bttonGetUserIDByLastName.Text = "Get End-User ID By LastName";
+            this.bttonGetUserIDByLastName.UseVisualStyleBackColor = true;
+            this.bttonGetUserIDByLastName.Click += new System.EventHandler(this.bttonGetUserIDByLastName_Click);
+            // 
+            // bttonGetUserByLastName
+            // 
+            this.bttonGetUserByLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetUserByLastName.Location = new System.Drawing.Point(167, 18);
+            this.bttonGetUserByLastName.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetUserByLastName.Name = "bttonGetUserByLastName";
+            this.bttonGetUserByLastName.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetUserByLastName.TabIndex = 45;
+            this.bttonGetUserByLastName.Text = "Get End-User By LastName";
+            this.bttonGetUserByLastName.UseVisualStyleBackColor = true;
+            this.bttonGetUserByLastName.Click += new System.EventHandler(this.bttonGetUserByLastName_Click);
+            // 
+            // bttonGetAllUsers
+            // 
+            this.bttonGetAllUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetAllUsers.Location = new System.Drawing.Point(5, 18);
+            this.bttonGetAllUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetAllUsers.Name = "bttonGetAllUsers";
+            this.bttonGetAllUsers.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetAllUsers.TabIndex = 37;
+            this.bttonGetAllUsers.Text = "Get All End-Users";
+            this.bttonGetAllUsers.UseVisualStyleBackColor = true;
+            this.bttonGetAllUsers.Click += new System.EventHandler(this.bttonGetAllUsers_Click);
+            // 
             // DataGridView1
             // 
             this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -752,18 +789,6 @@
             this.Label1.Size = new System.Drawing.Size(0, 13);
             this.Label1.TabIndex = 71;
             this.Label1.Visible = false;
-            // 
-            // bttonGetAllUsers
-            // 
-            this.bttonGetAllUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonGetAllUsers.Location = new System.Drawing.Point(5, 18);
-            this.bttonGetAllUsers.Margin = new System.Windows.Forms.Padding(2);
-            this.bttonGetAllUsers.Name = "bttonGetAllUsers";
-            this.bttonGetAllUsers.Size = new System.Drawing.Size(81, 59);
-            this.bttonGetAllUsers.TabIndex = 37;
-            this.bttonGetAllUsers.Text = "Get All End-Users";
-            this.bttonGetAllUsers.UseVisualStyleBackColor = true;
-            this.bttonGetAllUsers.Click += new System.EventHandler(this.bttonGetAllUsers_Click);
             // 
             // btnPersonByID
             // 
@@ -831,6 +856,42 @@
             this.GroupBoxLogin.TabStop = false;
             this.GroupBoxLogin.Text = "Test Person";
             // 
+            // btnDeletePersonByID
+            // 
+            this.btnDeletePersonByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletePersonByID.Location = new System.Drawing.Point(489, 14);
+            this.btnDeletePersonByID.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeletePersonByID.Name = "btnDeletePersonByID";
+            this.btnDeletePersonByID.Size = new System.Drawing.Size(81, 59);
+            this.btnDeletePersonByID.TabIndex = 7;
+            this.btnDeletePersonByID.Text = "Delete Person By ID";
+            this.btnDeletePersonByID.UseVisualStyleBackColor = true;
+            this.btnDeletePersonByID.Click += new System.EventHandler(this.btnDeletePersonByID_Click);
+            // 
+            // btnPersonByUserName
+            // 
+            this.btnPersonByUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPersonByUserName.Location = new System.Drawing.Point(165, 14);
+            this.btnPersonByUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPersonByUserName.Name = "btnPersonByUserName";
+            this.btnPersonByUserName.Size = new System.Drawing.Size(81, 59);
+            this.btnPersonByUserName.TabIndex = 6;
+            this.btnPersonByUserName.Text = "Get Person\r\nBy LastName";
+            this.btnPersonByUserName.UseVisualStyleBackColor = true;
+            this.btnPersonByUserName.Click += new System.EventHandler(this.btnPersonByUserName_Click);
+            // 
+            // btnAddPerson
+            // 
+            this.btnAddPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPerson.Location = new System.Drawing.Point(408, 14);
+            this.btnAddPerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(81, 59);
+            this.btnAddPerson.TabIndex = 0;
+            this.btnAddPerson.Text = "Add Person";
+            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            // 
             // btonGetAllComp
             // 
             this.btonGetAllComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -896,7 +957,7 @@
             this.GroupBox2.Controls.Add(this.bttonDeleteComp);
             this.GroupBox2.Controls.Add(this.bttonAddCompLess);
             this.GroupBox2.Controls.Add(this.bttonAddComp);
-            this.GroupBox2.Controls.Add(this.btton1Spare);
+            this.GroupBox2.Controls.Add(this.bttonAddInstallSumXMLByID);
             this.GroupBox2.Controls.Add(this.btonGetCompByID);
             this.GroupBox2.Controls.Add(this.btonGetAllComp);
             this.GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -907,77 +968,18 @@
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Test Companies";
             // 
-            // btton1Spare
+            // bttonAddInstallSumXMLByID
             // 
-            this.btton1Spare.Enabled = false;
-            this.btton1Spare.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btton1Spare.Location = new System.Drawing.Point(169, 18);
-            this.btton1Spare.Margin = new System.Windows.Forms.Padding(2);
-            this.btton1Spare.Name = "btton1Spare";
-            this.btton1Spare.Size = new System.Drawing.Size(81, 59);
-            this.btton1Spare.TabIndex = 45;
-            this.btton1Spare.UseVisualStyleBackColor = true;
-            // 
-            // btnPersonByUserName
-            // 
-            this.btnPersonByUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonByUserName.Location = new System.Drawing.Point(165, 14);
-            this.btnPersonByUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPersonByUserName.Name = "btnPersonByUserName";
-            this.btnPersonByUserName.Size = new System.Drawing.Size(81, 59);
-            this.btnPersonByUserName.TabIndex = 6;
-            this.btnPersonByUserName.Text = "Get Person\r\nBy LastName";
-            this.btnPersonByUserName.UseVisualStyleBackColor = true;
-            this.btnPersonByUserName.Click += new System.EventHandler(this.btnPersonByUserName_Click);
-            // 
-            // btnDeletePersonByID
-            // 
-            this.btnDeletePersonByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePersonByID.Location = new System.Drawing.Point(489, 14);
-            this.btnDeletePersonByID.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeletePersonByID.Name = "btnDeletePersonByID";
-            this.btnDeletePersonByID.Size = new System.Drawing.Size(81, 59);
-            this.btnDeletePersonByID.TabIndex = 7;
-            this.btnDeletePersonByID.Text = "Delete Person By ID";
-            this.btnDeletePersonByID.UseVisualStyleBackColor = true;
-            this.btnDeletePersonByID.Click += new System.EventHandler(this.btnDeletePersonByID_Click);
-            // 
-            // bttonGetUserByLastName
-            // 
-            this.bttonGetUserByLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonGetUserByLastName.Location = new System.Drawing.Point(167, 18);
-            this.bttonGetUserByLastName.Margin = new System.Windows.Forms.Padding(2);
-            this.bttonGetUserByLastName.Name = "bttonGetUserByLastName";
-            this.bttonGetUserByLastName.Size = new System.Drawing.Size(81, 59);
-            this.bttonGetUserByLastName.TabIndex = 45;
-            this.bttonGetUserByLastName.Text = "Get End-User By LastName";
-            this.bttonGetUserByLastName.UseVisualStyleBackColor = true;
-            this.bttonGetUserByLastName.Click += new System.EventHandler(this.bttonGetUserByLastName_Click);
-            // 
-            // bttonGetUserIDByLastName
-            // 
-            this.bttonGetUserIDByLastName.Enabled = false;
-            this.bttonGetUserIDByLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttonGetUserIDByLastName.Location = new System.Drawing.Point(249, 18);
-            this.bttonGetUserIDByLastName.Margin = new System.Windows.Forms.Padding(2);
-            this.bttonGetUserIDByLastName.Name = "bttonGetUserIDByLastName";
-            this.bttonGetUserIDByLastName.Size = new System.Drawing.Size(81, 59);
-            this.bttonGetUserIDByLastName.TabIndex = 46;
-            this.bttonGetUserIDByLastName.Text = "Get End-User ID By LastName";
-            this.bttonGetUserIDByLastName.UseVisualStyleBackColor = true;
-            this.bttonGetUserIDByLastName.Click += new System.EventHandler(this.bttonGetUserIDByLastName_Click);
-            // 
-            // btnAddPerson
-            // 
-            this.btnAddPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPerson.Location = new System.Drawing.Point(408, 14);
-            this.btnAddPerson.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(81, 59);
-            this.btnAddPerson.TabIndex = 0;
-            this.btnAddPerson.Text = "Add Person";
-            this.btnAddPerson.UseVisualStyleBackColor = true;
-            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            this.bttonAddInstallSumXMLByID.Enabled = false;
+            this.bttonAddInstallSumXMLByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonAddInstallSumXMLByID.Location = new System.Drawing.Point(169, 18);
+            this.bttonAddInstallSumXMLByID.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonAddInstallSumXMLByID.Name = "bttonAddInstallSumXMLByID";
+            this.bttonAddInstallSumXMLByID.Size = new System.Drawing.Size(81, 59);
+            this.bttonAddInstallSumXMLByID.TabIndex = 45;
+            this.bttonAddInstallSumXMLByID.Text = "Add Install SumXML \r\nBy ID ";
+            this.bttonAddInstallSumXMLByID.UseVisualStyleBackColor = true;
+            this.bttonAddInstallSumXMLByID.Click += new System.EventHandler(this.bttonAddInstallSumXMLByID_Click);
             // 
             // label14
             // 
@@ -1149,7 +1151,7 @@
         internal System.Windows.Forms.Button bttonAddCompLess;
         internal System.Windows.Forms.Button bttonDeleteComp;
         internal System.Windows.Forms.GroupBox GroupBox2;
-        internal System.Windows.Forms.Button btton1Spare;
+        internal System.Windows.Forms.Button bttonAddInstallSumXMLByID;
         internal System.Windows.Forms.Label label14;
         internal System.Windows.Forms.Label label13;
         internal System.Windows.Forms.TextBox textBoxCompID;

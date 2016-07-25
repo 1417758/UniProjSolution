@@ -15,7 +15,7 @@ namespace WebJobUniBLL {
         public string lastName { get; set; }
         public ContactDetailsBLL contactDetail { get; set; }
         public byte role { get; set; }
-        public Guid aspnetUserID { get; set; }
+        public Guid? aspnetUserID { get; set; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace WebJobUniBLL {
             this.contactDetail = new ContactDetailsBLL();
         }
 
-        public ClientBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, Guid _aspUserID) {
+        public ClientBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, Guid? _aspUserID) {
             this.title = _title;
             this.firstName = _firstName;
             this.lastName = _lastName;

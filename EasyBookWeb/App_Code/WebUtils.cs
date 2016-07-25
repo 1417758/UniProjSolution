@@ -9,12 +9,17 @@ using WebJobUniBLL;
 using WebJobUniUtils;
 using System.Xml;
 using System.Web.Security;
+using System.Web.Services;
+using System.Collections.Specialized;
+using System.Text;
 
 namespace EasyBookWeb {
     public sealed class WebUtils : System.Web.UI.Page {
 
         public static Installation installation;
         public static string TIME_SELECTED;
+
+        public static object ParseOutput { get; private set; }
 
         public static void PutInstallationObjectinSession(Installation i) {
             try {
@@ -69,6 +74,14 @@ namespace EasyBookWeb {
             }
         }//end GetInstallationObjectFromSession
 
+        /// <summary>
+        /// it creates a new asp.net user utilizing the EMAIL as userName
+        /// if user already exists simply returs asp.net UserID
+        /// </summary>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="emailAddress"></param>
+        /// <returns></returns>
         public static Guid AddEndUserASPNETUser(string lastName, string firstName, string emailAddress) {
             try {
                 //store staff AND endUser userName
@@ -89,8 +102,8 @@ namespace EasyBookWeb {
                     //create ASP.NET USER
                     Membership.CreateUser(username: userName, password: endUserPass, email: emailAddress);
                 }
-                    //if so returns its aspnetID
-                    return (Guid)AppSettings.GetUserIDByUserName(userName);
+                //if so returns its aspnetID
+                return (Guid)AppSettings.GetUserIDByUserName(userName);
 
             }
             catch (Exception ex) {
@@ -102,9 +115,9 @@ namespace EasyBookWeb {
             }
         }
 
-
         /// <summary>
-        /// USED to Add Employees programmatically (ie: register.aspx)
+        /// it creates a new asp.net user utilizing their LASTNAME.F (first inital of first Name) as userName
+        /// if user already exists simply returs asp.net UserID
         /// </summary>
         /// <param name="lastName"></param>
         /// <param name="firstName"></param>
@@ -115,11 +128,11 @@ namespace EasyBookWeb {
             try {
                 //Rule staff userName = LastName + . + first initial
                 string tempStaffUserName;
-                
+
                 int counter = 0;
                 if (count.HasValue)
                     counter = count.Value;
-                
+
 
                 //Rule initial password = P1maths550 (Must be updated on employess 1st login) *NB first letter is capital
                 string staffPass = "P1maths550";
@@ -132,7 +145,7 @@ namespace EasyBookWeb {
                     tempStaffUserName = lastName + "." + firstName.ToCharArray(0, 1)[0].ToString();
                 else
                     tempStaffUserName = lastName + "." + firstName.ToCharArray(0, 1)[0].ToString() + count.ToString();
-                System.Diagnostics.Debug.Print("Choosen STAFF UserName is: " +tempStaffUserName);
+                System.Diagnostics.Debug.Print("Choosen STAFF UserName is: " + tempStaffUserName);
 
                 //check if Temp user name already exists
                 MembershipUser user = Membership.GetUser(tempStaffUserName);
@@ -156,7 +169,95 @@ namespace EasyBookWeb {
                 return new Guid();
             }
         }
-        
+
+        [WebMethod]
+        public static void LoadInstallation2Sesssion(string current_URL) {
+            try {
+                //NB a successfull client login and/or registration will populate SessionVariables.CompanyID
+                //get current comp ID from session
+                int compID_valid = 0;
+                Installation i = GetInstallationObjectFromSession();
+                int? compID_sess = null;
+                if (SessionVariables.CompanyID != null) {
+                    System.Diagnostics.Debug.Print("<h1>SESSION_Variables.CompanyID IS: </h1> \t" + SessionVariables.CompanyID.ToString());
+                    compID_sess = (int)SessionVariables.CompanyID;
+                }
+
+
+                //NB url will only be valid upon an End-user login (session start will be calling this)
+                //R      string clientURL1 = this.Request.RawUrl;
+                //   var clientURL2 = HttpContext.Current.Server.UrlDecode.compID_url(); .compID_url; //.UrlDecode.compID_url;
+                System.Diagnostics.Debug.Print("<h1>CURRENT FULL URL IS: </h1> \t" + current_URL);
+
+                string compID_url = String.Empty;
+                int? compID_url_INT = null;
+                //R      string compID_url = this.Request.QueryString[XMLConstants.URLVar1];
+                //R      string test_url = this.Request.QueryString[XMLConstants.URLVar2];
+                //R     System.Diagnostics.Debug.Print("<h1>COMPANY_ID FROM URL_VAR IS: </h1> \t" + compID_url + ",\t\t TEST URL_VAR IS:  \t" + test_url);
+
+                //source: https://msdn.microsoft.com/en-us/library/ms150046(v=vs.110).aspx
+                // Check to make sure some query string variables
+                // exist and if not add some and redirect.
+                int iqs = current_URL.IndexOf('?');
+                if (iqs == -1) {
+                    // String redirecturl = current_URL + "?var1=1&var2=2+2%2f3&var1=3";
+                    //Response.Redirect(redirecturl, true);
+                    compID_url = null;
+                }
+                // If query string variables exist, put them in
+                // a string.
+                else if (iqs >= 0) {
+                    //my get compID
+                    int startIndex = current_URL.IndexOf('=') + 1;
+                    int length = current_URL.IndexOf('&') - startIndex;//wot if a second variable aint passed in? this will fail terribly
+                    compID_url = current_URL.Substring(startIndex, length);
+
+                    //example source: https://msdn.microsoft.com/en-gb/library/ty67wk28.aspx
+                    //R       compID_url = (iqs < current_URL.Length - 1) ? current_URL.Substring(iqs + 1) : String.Empty;
+
+                    // Parse the query string variables into a NameValueCollection.
+                    //R     NameValueCollection qscoll = HttpUtility.ParseQueryString(compID_url);
+
+                    // Iterate through the collection.
+                    //R     foreach (String s in qscoll.AllKeys) { NB refer to example link above
+
+                    compID_url_INT = (int)Utils.GetNumberInt(compID_url);
+
+                }
+                //load session Installtion accordinly (should never happen??)
+                if (String.IsNullOrEmpty(compID_url) && compID_sess == null) {
+                    //get test installation
+                    i = Installation.GetTestInstallation();//NB for the time being only
+                    compID_valid = (int)i.Company.ID;
+                }
+                else if (compID_url_INT != compID_sess && compID_sess != null) {//session variablehas preference over URL. 
+                    //get session
+                    compID_valid = (int)compID_sess;
+                    //Do nothing because already have installation from session 
+                }
+                else if (compID_url_INT != null) {
+                    //get url comp variable as number
+                    compID_valid = (int)compID_url_INT;
+                    //get installation from the DB
+                    i = Installation.PopulateInstalationObjFromDB(ref i, compID_valid, SessionVariables.ISummaryXML);
+                }
+
+
+                //update session installation
+                WebUtils.PutInstallationObjectinSession(i);
+                //update compID variable on session
+                SessionVariables.CompanyID = compID_valid;
+
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>WebUtils, AddEmployeeASPNETUser(x4)</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
+                // Log the exception and notify system operators
+                ExceptionUtility.LogException(ex, "WebUtils.aspx, AddEmployeeASPNETUser(x4)");
+                ExceptionUtility.NotifySystemOps(ex);
+                //  ExceptionHandling.LogException(ref ex);
+            }
+        }
+
         /*
                 /// <summary>
                 /// Display default dates or ones from session.

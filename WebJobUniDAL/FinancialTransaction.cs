@@ -71,7 +71,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddFinancialTrans(string status, decimal amount,  int payMetType, Guid authorisCode, DateTime date) {
+        public static int? AddFinancialTrans(string status, decimal? amount,  int payMetType, Guid? authorisCode, DateTime? date) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertFinancialTrans(status, amount, payMetType, authorisCode, date);

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Installation>
+  <Timestamp>2016-07-24T09:57:42</Timestamp>
+  <Company>2</Company>  
+  <Employees>
+	<EmpID>1</EmpID>
+	<EmpID>2</EmpID>
+	<EmpID>3</EmpID>	
+  </Employees>
+  <Services>
+	<ServID>2</ServID>
+	<ServID>5</ServID>
+	<ServID>7</ServID>	
+  </Services>
+  <EndUsers>
+	<userID>2</userID>
+	<userID>5</userID>
+	<userID>7</userID>	
+  </EndUsers>
+  <Appointments>
+	<ApptID>2</ApptID>
+	<ApptID>5</ApptID>
+	<ApptID>7</ApptID>	
+  </Appointments>  
+ </Installation>

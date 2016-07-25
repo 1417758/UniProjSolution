@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 namespace WebJobUniTest {
 
@@ -180,10 +181,18 @@ namespace WebJobUniTest {
             this.DataGridView1.DataSource = Company.GetCompanyByID(GetID(isCompany: true));
             ResetTextBoxes();
         }
-        private void bttonAddComp_Click(object sender, EventArgs e) {
-            this.LblReturn.Text = Company.AddCompany("NEW FORM CO. LTD ADDED", "Fishery", 32957, "36598244", (DateTime)Utils.GetDateFromString("2016/5/17"), "www.myweb.co.uk", clientID: 4, contactDetID: 3, isVARreg: true, VATNumb:  "56876453", notes: "the end").ToString();
+        private void bttonAddComp_Click(object sender, EventArgs e) {         
+            this.LblReturn.Text = Company.AddCompany("NEW FORM CO. LTD ADDED", "Fishery", 32957, "36598244", (DateTime)Utils.GetDateFromString("2016/5/17"), "www.myweb.co.uk", clientID: 4, contactDetID: 3, isVARreg: true, VATNumb:  "56876453").ToString();
             GetAllCompanies(sender, e, showGridRowCount: false);
         }
+
+        private void bttonAddInstallSumXMLByID_Click(object sender, EventArgs e) {
+            XmlDocument iSumTest = null;// new XmlDocument();
+            // iSumTest = null;
+            this.LblReturn.Text =  Company.AddCompanyInstallationSummaryXMLByID(1, iSumTest).ToString();
+            GetAllCompanies(sender, e, showGridRowCount: false);
+        }
+
         private void bttonAddCompLess_Click(object sender, EventArgs e) {
             this.LblReturn.Text = Company.AddCompany("NEW FORM CO. LTD ADDED", "Fishery", 32957, clientID: 5, contactDetID: 3).ToString();
             GetAllCompanies(sender, e, showGridRowCount: false);
@@ -373,11 +382,12 @@ namespace WebJobUniTest {
         private void BackgroundWorker1_RunWorkerCompleted(System.Object sender, System.ComponentModel.RunWorkerCompletedEventArgs e) {
             //R   this.Label1.Text = "Completed adding of " + dateTimeCount + " records.";
         }
+
+
+
+
         #endregion
 
-
-
-
-
+       
     }//class
 }//namespace

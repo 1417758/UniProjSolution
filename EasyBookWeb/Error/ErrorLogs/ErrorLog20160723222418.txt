@@ -1,0 +1,17 @@
+********** 23/07/2016 22:24:18 **********
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Source: Global.asax, Session_Start() Method
+Stack Trace: 
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\global.asax:line 96
+
+********** 23/07/2016 22:24:18 **********
+Exception Type: System.ArgumentOutOfRangeException
+Exception: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+Source: BookAppt.aspx, PopulateUserControlsFromSession Method
+Stack Trace: 
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at UI_EndUser_BookAppt.PopulateUserControlsFromSession() in C:\RachieServer\Projects\ProjectInvestigation\UniProjSolution\EasyBookWeb\UI\EndUser\BookAppt.aspx.cs:line 178
+

@@ -11,28 +11,34 @@ namespace WebJobUniBLL {
     public class InstallationBLL {
 
         #region "Methods"
-        public static void SaveInstallationToDB2(ref Installation i, ref ApptBLL appt, string selectedStaff1stName, string staffFilePhath) {
+        public static void SaveInstallationToDB2(ref Installation i, ref ApptBLL appt, string selectedStaff1stName, string staffFilePhath, string iSumXMLfileName) {
             try {
+                //get ----summary installation xml-----
+                XmlDocument iXmlDoc = CompanyBLL.GetInstallSummanyXMLDoc((short)i.Company.ID, iSumXMLfileName);
                 //------ save End-user --------- only 1 always!? 
                 int? endUser_ContDetID;
                 //check user exists on DB
-                //   int userIndex = i.Customers.FindIndex(endUser => endUser.aspnetUserID.ToString().Equals(endUserASPUserID.ToString(), StringComparison.Ordinal));
-                int endUserIndex = i.Customers.Count - 1; //endUser added is always the last one?? use IndexFinder INSTEAD?? 22/7/16
-                int? endUser_ID = EndUserBLL.GetPersonIDByASPuserID(i.Customers[endUserIndex].aspnetUserID);
+                //   int userIndex = i.EndUsers.FindIndex(endUser => endUser.aspnetUserID.ToString().Equals(endUserASPUserID.ToString(), StringComparison.Ordinal));
+                int endUserIndex = i.EndUsers.Count - 1; //endUser added is always the last one?? use IndexFinder INSTEAD?? 22/7/16
+                int? endUser_ID = EndUserBLL.GetPersonIDByASPuserID(i.EndUsers[endUserIndex].aspnetUserID);
 
                 //only add if it doesnt exist 
                 if (endUser_ID == null) {
                     //save endUser contact details to --- DB ----
-                    var _with1 = i.Customers[endUserIndex].contactDetail;
+                    var _with1 = i.EndUsers[endUserIndex].contactDetail;
                     endUser_ContDetID = ContactDetailsBLL.AddContactDetails(_with1.address, _with1.postCode, _with1.city, _with1.country, _with1.landline, _with1.mobile, _with1.email);
                     //save endUser contact details ID to session
                     _with1.ID = endUser_ContDetID;
 
                     //save End-user to DB
-                    var _with2 = i.Customers[endUserIndex];
+                    var _with2 = i.EndUsers[endUserIndex];
                     endUser_ID = EndUserBLL.AddEndUser(_with2.title, _with2.firstName, _with2.lastName, endUser_ContDetID, _with2.aspnetUserID);
                     //save endUser ID to ---- session -----
                     _with2.ID = endUser_ID;
+
+                    //save USERID to installation xml summary                    
+                    iXmlDoc = AppSettings.AddChild2ISummaryXML(iSumXMLfileName, AppSettings.iuserID, endUser_ID.ToString());
+                    iXmlDoc.Save(iSumXMLfileName);
 
                 }
                 appt.endUserID = (int)endUser_ID;
@@ -46,6 +52,11 @@ namespace WebJobUniBLL {
                 int apptIndex = i.Appointments.FindLastIndex(oscarFinder);
                 i.Appointments[apptIndex].ID = newApptID;
 
+                //save USERID to installation xml summary
+                if (newApptID != null || newApptID != 0) {
+                    iXmlDoc = AppSettings.AddChild2ISummaryXML(iSumXMLfileName, AppSettings.iApptID, newApptID.ToString());
+                    iXmlDoc.Save(iSumXMLfileName);
+                }
 
                 //------- save staff daily schedule to ---- session ------------  
                 string minutes = "";
@@ -61,18 +72,21 @@ namespace WebJobUniBLL {
                 var curSelStaffCalendar = i.Employees[empIndex].agenda.staffCalendar;
 
                 //add booking --- IMPORTANT --> this updates staff's agenda (as BY REF is used) 
-                bool addedBooking = AgendaBLL.AddBooking(ref curSelStaffCalendar, appt.date, timeINT);
+                bool addedBooking = AgendaBLL.AddBooking(ref curSelStaffCalendar, (DateTime)appt.date, timeINT);
                 //R    if (!addedBooking)
                 //R     throw new Exception("<H2>ERROR ADDING BOOKING!</H2>");//throw exc here?it doesnt allow DB save 20/7/16
 
                 //------- save staff daily schedule to ---- DB ------------ 
                 //get xml from staff daySchedule 
-                XmlDocument staffDayScheXML = DayScheduleXML.CreateXMLFromDaySchedule(i.Employees[empIndex], staffFilePhath, appt.date);
+                XmlDocument staffDayScheXML = DayScheduleXML.CreateXMLFromDaySchedule(i.Employees[empIndex], staffFilePhath, (DateTime)appt.date);
                 //add dailySchedule to db
-                int? newDailySchedID = DailySchedule.AddDailySchedule(i.Employees[empIndex].agenda.ID, appt.date, staffDayScheXML);
+                int? newDailySchedID = DailySchedule.AddDailySchedule(i.Employees[empIndex].agenda.ID, (DateTime)appt.date, staffDayScheXML);
                 //add ID back to xml
                 DayScheduleXML.Add_ID_2DayScheduleXML(DayScheduleXML.STAFF_DAYSCHEDULEXML_FILENAME, newDailySchedID.ToString());
                 //i.DailySchedules.Add(newDailySched);
+
+                //------- SAVE  INSTALLATION XML SUMMARY TO DB  ------------  
+                int? NumbXmlAdded = CompanyBLL.AddCompanyInstallationSummaryXMLByID((short)i.Company.ID, iXmlDoc);
 
             }
             catch (Exception ex) {
@@ -80,7 +94,7 @@ namespace WebJobUniBLL {
             }
         }//end SaveInstallationToDB2
 
-        public static void SaveInstallationToDB(ref Installation i) {
+        public static void SaveInstallationToDB(ref Installation i, string iSumXMLfileName) {
             try {
                 //  System.Diagnostics.Debug.Print(i.ToString());
 
@@ -132,26 +146,32 @@ namespace WebJobUniBLL {
                 //FINK!! FINK18/7//16 
 
                 //return i //?? Installation if IDs not added byRef
+
+                //-------  create and save summary installation xml file ------------ 
+                XmlDocument iXmlDoc = AppSettings.GetInstallationSummaryXML(i, iSumXMLfileName);
+                iXmlDoc.Save(iSumXMLfileName);
+                //save intall XML SUMMARY TO DB  
+                int? NumbXmlAdded = CompanyBLL.AddCompanyInstallationSummaryXMLByID((short)i.Company.ID, iXmlDoc);
             }
             catch (Exception ex) {
                 ExceptionHandling.LogException(ref ex);
             }
         }
 
-        public static void SaveAppoitmentToDB(ref Installation i) {
-            try {
-                //save appointments
-                int? tempServID;
-                foreach (ServicesBLL service in i.Services) {
-                    //save service
-                    tempServID = ServicesBLL.AddService(service.name, service.isCertifReq, service.isInsuranceReq, service.description, service.duration, service.durationUnit, service.price);
-                    service.ID = tempServID;
-                }
-            }
-            catch (Exception ex) {
-                ExceptionHandling.LogException(ref ex);
-            }
-        }
+        /* public static void SaveAppoitmentToDB(ref Installation i) {
+             try {
+                 //save appointments
+                 int? tempServID;
+                 foreach (ServicesBLL service in i.Services) {
+                     //save service
+                     tempServID = ServicesBLL.AddService(service.name, service.isCertifReq, service.isInsuranceReq, service.description, service.duration, service.durationUnit, service.price);
+                     service.ID = tempServID;
+                 }
+             }
+             catch (Exception ex) {
+                 ExceptionHandling.LogException(ref ex);
+             }
+         }*/
 
         #endregion
 

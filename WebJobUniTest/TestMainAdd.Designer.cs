@@ -85,10 +85,10 @@
             this.bttonCreateXMLFromDaySchedule = new System.Windows.Forms.Button();
             this.bttonGetXMLTimes = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.bttonGetInstallationXML = new System.Windows.Forms.Button();
+            this.bttnAddUserAppt = new System.Windows.Forms.Button();
             this.bttonAddDailyShedXML = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.bttnCreateInstallSummaryXML = new System.Windows.Forms.Button();
             this.groupBox16.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.GroupBoxLogin.SuspendLayout();
@@ -748,17 +748,17 @@
             this.groupBox3.Controls.Add(this.bttonCreateXMLFromDaySchedule);
             this.groupBox3.Controls.Add(this.bttonGetXMLTimes);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.bttonGetInstallationXML);
+            this.groupBox3.Controls.Add(this.bttnAddUserAppt);
             this.groupBox3.Controls.Add(this.bttonAddDailyShedXML);
-            this.groupBox3.Controls.Add(this.button7);
+            this.groupBox3.Controls.Add(this.bttnCreateInstallSummaryXML);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(515, 485);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(572, 84);
             this.groupBox3.TabIndex = 102;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Test Daily Schedule XML";
+            this.groupBox3.Text = "Test XML";
             // 
             // bttonCreateXMLFromDaySchedule
             // 
@@ -795,27 +795,29 @@
             this.button3.Text = "Delete ";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // bttonGetInstallationXML
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(165, 14);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(81, 59);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Get ";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bttonGetInstallationXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttonGetInstallationXML.Location = new System.Drawing.Point(165, 14);
+            this.bttonGetInstallationXML.Margin = new System.Windows.Forms.Padding(2);
+            this.bttonGetInstallationXML.Name = "bttonGetInstallationXML";
+            this.bttonGetInstallationXML.Size = new System.Drawing.Size(81, 59);
+            this.bttonGetInstallationXML.TabIndex = 6;
+            this.bttonGetInstallationXML.Text = "Get Installation XML";
+            this.bttonGetInstallationXML.UseVisualStyleBackColor = true;
+            this.bttonGetInstallationXML.Click += new System.EventHandler(this.bttonGetInstallationXML_Click);
             // 
-            // button5
+            // bttnAddUserAppt
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(3, 14);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(81, 59);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Get ";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bttnAddUserAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnAddUserAppt.Location = new System.Drawing.Point(3, 14);
+            this.bttnAddUserAppt.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAddUserAppt.Name = "bttnAddUserAppt";
+            this.bttnAddUserAppt.Size = new System.Drawing.Size(81, 59);
+            this.bttnAddUserAppt.TabIndex = 3;
+            this.bttnAddUserAppt.Text = "Add User/Appt Install XML ";
+            this.bttnAddUserAppt.UseVisualStyleBackColor = true;
+            this.bttnAddUserAppt.Click += new System.EventHandler(this.bttnAddUserAppt_Click);
             // 
             // bttonAddDailyShedXML
             // 
@@ -829,16 +831,17 @@
             this.bttonAddDailyShedXML.UseVisualStyleBackColor = true;
             this.bttonAddDailyShedXML.Click += new System.EventHandler(this.bttonAddDailyShedXML_Click);
             // 
-            // button7
+            // bttnCreateInstallSummaryXML
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(84, 14);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(81, 59);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Get ";
-            this.button7.UseVisualStyleBackColor = true;
+            this.bttnCreateInstallSummaryXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnCreateInstallSummaryXML.Location = new System.Drawing.Point(84, 14);
+            this.bttnCreateInstallSummaryXML.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCreateInstallSummaryXML.Name = "bttnCreateInstallSummaryXML";
+            this.bttnCreateInstallSummaryXML.Size = new System.Drawing.Size(81, 59);
+            this.bttnCreateInstallSummaryXML.TabIndex = 5;
+            this.bttnCreateInstallSummaryXML.Text = "Create Install SummaryXML ";
+            this.bttnCreateInstallSummaryXML.UseVisualStyleBackColor = true;
+            this.bttnCreateInstallSummaryXML.Click += new System.EventHandler(this.bttnCreateInstallSummaryXML_Click);
             // 
             // TestMainAdd
             // 
@@ -940,9 +943,9 @@
         internal System.Windows.Forms.Button bttonCreateXMLFromDaySchedule;
         internal System.Windows.Forms.Button bttonGetXMLTimes;
         internal System.Windows.Forms.Button button3;
-        internal System.Windows.Forms.Button button4;
-        internal System.Windows.Forms.Button button5;
+        internal System.Windows.Forms.Button bttonGetInstallationXML;
+        internal System.Windows.Forms.Button bttnAddUserAppt;
         internal System.Windows.Forms.Button bttonAddDailyShedXML;
-        internal System.Windows.Forms.Button button7;
+        internal System.Windows.Forms.Button bttnCreateInstallSummaryXML;
     }
 }

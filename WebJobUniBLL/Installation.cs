@@ -19,7 +19,7 @@ namespace WebJobUniBLL {
         public List<EmployeeBLL> Employees { get; set; }
         public List<ServicesBLL> Services { get; set; }
         public ProvideBLL ServicesProvidedByStaff { get; set; }
-        public List<EndUserBLL> Customers { get; set; }
+        public List<EndUserBLL> EndUsers { get; set; }
         public List<ApptBLL> Appointments { get; set; }
         public List<OrderBLL> Invoices { get; set; }
         // public List<DailyScheduleBLL> DailySchedules { get; set; }
@@ -33,7 +33,7 @@ namespace WebJobUniBLL {
             this.Employees = new List<EmployeeBLL>();
             this.Services = new List<ServicesBLL>();
             this.ServicesProvidedByStaff = new ProvideBLL();
-            this.Customers = new List<EndUserBLL>();
+            this.EndUsers = new List<EndUserBLL>();
             this.Appointments = new List<ApptBLL>();
             this.Invoices = new List<OrderBLL>();
             //  this.DailySchedules = new List<DailyScheduleBLL>();//used to save xml to DB
@@ -62,7 +62,6 @@ namespace WebJobUniBLL {
                 _with2.url = "www.RachieHolding.com";
                 _with2.isVATreg = true;
                 _with2.VATnumb = "9234902-0";
-                _with2.notes = "all in order";
                 _with2.businessAddress = new ContactDetailsBLL();
 
                 //client (main company contact)
@@ -184,7 +183,7 @@ namespace WebJobUniBLL {
         /// </summary>
         /// <param name="i"></param>
         /// <param name="company"></param>
-        public static Installation PopulateInstalationObjFromDB(ref Installation i, int? companyID) {
+        public static Installation PopulateInstalationObjFromDB(ref Installation i, int? companyID, string iSumXMLfileName) {
             try {
                 if (i == null) {
                     i = new Installation();
@@ -196,100 +195,181 @@ namespace WebJobUniBLL {
                 //get company dataTable
                 var company = CompanyBLL.GetCompanyByID(companyID);//.GetAllCompanies();??
 
-                //get ----company contact Details ----- dataTable 
-                int coContactDetID = company.Rows[0].Field<int>(8);
-                var coContactDet = ContactDetailsBLL.GetContactDetailByID(coContactDetID);
-                //populate an instance of contactDetBLL
-                var _with11 = coContactDet.Rows[0];
-                ContactDetailsBLL coContactBLL = new ContactDetailsBLL(_with11.Field<string>(1), _with11.Field<string>(3), _with11.Field<string>(2), _with11.Field<string>(4), _with11.Field<string>(5), _with11.Field<string>(6), _with11.Field<string>(7));
+                if (company.Count > 0) {//==1
+                    //get ----summary installation xml-----  
+                    XmlDocument iXmlDoc = CompanyBLL.GetInstallSummanyXMLDoc(companyID, iSumXMLfileName);
 
-                //polulate an instance of companyBLL
-                var _with1 = company.Rows[0];
-                CompanyBLL coBLL = new CompanyBLL(_with1.Field<string>(1), _with1.Field<string>(2), _with1.Field<int>(3), _with1.Field<string>(4), _with1.Field<DateTime>(5), (string)_with1.ItemArray[6], _with1.Field<bool>(9), _with1.Field<string>(10), _with1.Field<string>(11));
-                coBLL.ID = _with1.Field<int>(0);//same as companyID               
-                //add contact details to coBLL
-                coBLL.businessAddress = coContactBLL;
-                //foreign keys
-                int clientID = _with1.Field<int>(7);
-
-                //------  Client  ---------  
-                //get client dataTable
-                var client = ClientBLL.GetClientByID(clientID);//GetAllClients();
-
-                //get ---- client contact ------dataTable 
-                int cltContactDetID = client.Rows[0].Field<int>(4);
-                var cltContactDet = ContactDetailsBLL.GetContactDetailByID(cltContactDetID);
-                //populate an instance of contactDetBLL
-                var _with21 = cltContactDet.Rows[0];
-                ContactDetailsBLL clientContactBLL = new ContactDetailsBLL(_with21.Field<string>(1), _with21.Field<string>(3), _with21.Field<string>(2), _with21.Field<string>(4), _with21.Field<string>(5), _with21.Field<string>(6), _with21.Field<string>(7));
-
-                //Populate clientBLL 
-                var _with2 = client.Rows[0];
-                ClientBLL clientBLL = new ClientBLL(_with2.Field<string>(1), _with2.Field<string>(2), _with2.Field<string>(3), clientContactBLL, _with2.Field<Guid>(9));
-                clientBLL.ID = _with2.Field<int>(0);
-                //add client to company
-                coBLL.mainClientContact = clientBLL;
-
-                //add to installation
-                i.Company = coBLL;
-                //-------------------------------------------------------------------------------------------------------------------
-
-                //------  Employees  --------- 
-                //get staff dataTable 
-                var employees = EmployeeBLL.GetAllEmployees();
-                // Loop through all employees
-                foreach (DataRow employee in employees.Rows) {
-                    //get ---- employee agenda ------dataTable 
-                    short staffAgendaID = employee.Field<short>(8);
-                    var staffAgenda = AgendaBLL.GetAgendaByID(staffAgendaID);
-                    //populate an instance of agendaBLL
-                    var _with41 = staffAgenda.Rows[0];
-                    System.Diagnostics.Debug.Print("staffAgendaID from employee Table is: " + staffAgendaID.ToString() + "staffAgendaID from AGENDA Table is: " + _with41.Field<short>(0).ToString());
-                    AgendaBLL staffAgendaBLL = new AgendaBLL(staffAgendaID,_with41.Field<bool?>(1), _with41.Field<bool?>(2));
-
-                    //get ---- employee contact ------dataTable 
-                    int staffContDetID = employee.Field<int>(4);
-                    var staffContDet = ContactDetailsBLL.GetContactDetailByID(staffContDetID);
+                    //get ----company contact Details ----- dataTable 
+                    int coContactDetID = company.Rows[0].Field<int>(8);
+                    var coContactDet = ContactDetailsBLL.GetContactDetailByID(coContactDetID);
                     //populate an instance of contactDetBLL
-                    var _with31 = cltContactDet.Rows[0];
-                    ContactDetailsBLL staffContactBLL = new ContactDetailsBLL(_with31.Field<string>(1), _with31.Field<string>(3), _with31.Field<string>(2), _with31.Field<string>(4), _with31.Field<string>(5), _with31.Field<string>(6), _with31.Field<string>(7));
+                    var _with11 = coContactDet.Rows[0];
+                    ContactDetailsBLL coContactBLL = new ContactDetailsBLL(_with11.Field<string>(1), _with11.Field<string>(3), _with11.Field<string>(2), _with11.Field<string>(4), _with11.Field<string>(5), _with11.Field<string>(6), _with11.Field<string>(7));
+                    coContactBLL.ID = _with11.Field<int>(0);
 
-                    //Populate staffBLL 
-                    var _with3 = employee;
-                    EmployeeBLL staffBLL = new EmployeeBLL(_with3.Field<string>(1), _with3.Field<string>(2), _with3.Field<string>(3), staffContactBLL, _with3.Field<string>(6), _with3.Field<string>(7), staffAgendaBLL, _with3.Field<Guid>(9));
-                    clientBLL.ID = _with3.Field<int>(0);
-                    //add contact detail to staff
-                    staffBLL.contactDetail = staffContactBLL;
+                    //polulate an instance of companyBLL
+                    var _with1 = company.Rows[0];
+                    CompanyBLL coBLL = new CompanyBLL(_with1.Field<string>(1), _with1.Field<string>(2), _with1.Field<int?>(3), _with1.Field<string>(4), _with1.Field<DateTime?>(5), _with1.Field<string>(6), _with1.Field<bool?>(9), _with1.Field<string>(10));
+                    coBLL.ID = _with1.Field<int>(0);//same as companyID               
+                                                    //add contact details to coBLL
+                    coBLL.businessAddress = coContactBLL;
+                    //foreign keys
+                    int clientID = _with1.Field<int>(7);
+
+                    //------  Client  ---------  
+                    //get client dataTable
+                    var client = ClientBLL.GetClientByID(clientID);//GetAllClients();
+
+                    //get ---- client contact ------dataTable 
+                    int cltContactDetID = client.Rows[0].Field<int>(4);
+                    var cltContactDet = ContactDetailsBLL.GetContactDetailByID(cltContactDetID);
+                    //populate an instance of contactDetBLL
+                    var _with21 = cltContactDet.Rows[0];
+                    ContactDetailsBLL clientContactBLL = new ContactDetailsBLL(_with21.Field<string>(1), _with21.Field<string>(3), _with21.Field<string>(2), _with21.Field<string>(4), _with21.Field<string>(5), _with21.Field<string>(6), _with21.Field<string>(7));
+                    clientContactBLL.ID = _with21.Field<int>(0);
+
+                    //Populate clientBLL 
+                    var _with2 = client.Rows[0];
+                    ClientBLL clientBLL = new ClientBLL(_with2.Field<string>(1), _with2.Field<string>(2), _with2.Field<string>(3), clientContactBLL, _with2.Field<Guid>(9));
+                    clientBLL.ID = _with2.Field<int>(0);
+
+                    //add client to company
+                    coBLL.mainClientContact = clientBLL;
+
+                    //add to installation
+                    i.Company = coBLL;
+                    //----------------------------------------------end of company---------------------------------------------------------------------
+
+                    //------------  Employees  -------------- 
+                    List<int> thisCoEmployees = AppSettings.GetIDsList(iSumXmlDoc: iXmlDoc, perform: AppSettings.iEmpID);
+                    //loop through all employees registered to this company
+                    foreach (int staffID in thisCoEmployees) {
+                        //get employee dataTable 
+                        var employees = EmployeeBLL.GetEmployeeByID(staffID);
+                        // Loop through all employees
+                        foreach (DataRow employee in employees.Rows) {
+                            //get ---- employee agenda ------dataTable 
+                            short staffAgendaID = employee.Field<short>(8);
+                            var staffAgenda = AgendaBLL.GetAgendaByID(staffAgendaID);
+                            //populate an instance of agendaBLL
+                            var _with41 = staffAgenda.Rows[0];
+                            //System.Diagnostics.Debug.Print("staffAgendaID from employee Table is: " + staffAgendaID.ToString() + "staffAgendaID from AGENDA Table is: " + _with41.Field<short>(0).ToString());
+                            AgendaBLL staffAgendaBLL = new AgendaBLL(staffAgendaID, _with41.Field<bool?>(1), _with41.Field<bool?>(2));
+                            staffAgendaBLL.ID = _with41.Field<short>(0);
+
+                            //get ---- employee contact ------dataTable 
+                            int staffContDetID = employee.Field<int>(4);
+                            var staffContDet = ContactDetailsBLL.GetContactDetailByID(staffContDetID);
+                            //populate an instance of contactDetBLL
+                            var _with31 = cltContactDet.Rows[0];
+                            ContactDetailsBLL staffContactBLL = new ContactDetailsBLL(_with31.Field<string>(1), _with31.Field<string>(3), _with31.Field<string>(2), _with31.Field<string>(4), _with31.Field<string>(5), _with31.Field<string>(6), _with31.Field<string>(7));
+                            staffContactBLL.ID = _with31.Field<int>(0);
+
+                            //Populate staffBLL 
+                            var _with3 = employee;
+                            EmployeeBLL staffBLL = new EmployeeBLL(_with3.Field<string>(1), _with3.Field<string>(2), _with3.Field<string>(3), staffContactBLL, _with3.Field<string>(6), _with3.Field<string>(7), staffAgendaBLL, _with3.Field<Guid>(9));
+                            staffBLL.ID = _with3.Field<int>(0);
+                            //add contact detail & agenda to staff
+                            // staffBLL.contactDetail = staffContactBLL;//already added on constructor
+                            staffBLL.agenda = staffAgendaBLL;
 
 
-                    //get ---- DailyShedules foreach  agenda ------dataTable 
-                    var curStaffCalendar = staffBLL.agenda.staffCalendar;
-                    List<int> bookingTimes = new List<int>();
-                    //get data stored on db
-                    var staffAgendaDailyShedules = DailySchedule.GetDailySchedulesByAgendaID(staffAgendaID);
-                    // Loop through each dailySchedule on staff's agenda
-                    foreach (DataRow dailySchedule in staffAgendaDailyShedules.Rows) {
-                        //create a new DayScheduleBLL
-                        DaySchedule daySchedBLL = new DaySchedule();
-                        DateTime date = dailySchedule.Field<DateTime>(2);
-                        XDocument xDoc = XDocument.Parse(dailySchedule.Field<System.String>(3));
+                            //get ---- DailyShedules foreach  agenda ------dataTable 
+                            var curStaffCalendar = staffBLL.agenda.staffCalendar;
+                            List<int> bookingTimes = new List<int>();
+                            //get data stored on db
+                            var staffAgendaDailyShedules = DailySchedule.GetDailySchedulesByAgendaID(staffAgendaID);
+                            // Loop through each dailySchedule on staff's agenda
+                            foreach (DataRow dailySchedule in staffAgendaDailyShedules.Rows) {
+                                //create a new DayScheduleBLL
+                                DaySchedule daySchedBLL = new DaySchedule();
+                                DateTime date = dailySchedule.Field<DateTime>(2);
+                                XDocument xDoc = XDocument.Parse(dailySchedule.Field<System.String>(3));
 
-                        //loopthrough db xml and get a list of "busy times"
-                        bookingTimes = DayScheduleXML.GetTimesFromDayScheduleXML(xDoc);
+                                //loopthrough db xml and get a list of "busy times"
+                                bookingTimes = DayScheduleXML.GetTimesFromDayScheduleXML(xDoc);
 
-                        //add appts to daySchedBLL
-                        foreach (int time in bookingTimes) { 
-                            //add appts to daySchedBLL
-                            bool added = AgendaBLL.AddBooking(ref curStaffCalendar, date, time);
-                            System.Diagnostics.Debug.Print("ADDED?\t " + added.ToString());
-                        }//                      
-                    }//end loop daySchedule
+                                //add appts to daySchedBLL
+                                foreach (int time in bookingTimes) {
+                                    //add appts to daySchedBLL
+                                    bool added = AgendaBLL.AddBooking(ref curStaffCalendar, date, time);
+                                    System.Diagnostics.Debug.Print("ADDED?\t " + added.ToString());
+                                }//                      
+                            }//end loop daySchedule
 
-                    //add employee to installation
-                    i.Employees.Add(staffBLL);
-                }//// endLoop through all employees
+                            //add employee to installation
+                            i.Employees.Add(staffBLL);
+                        }//// endLoop emploee dataTable
+                    }// endLoop through all employees
+                     //----------------------------------------------end of employees---------------------------------------------------------------------
+
+                    //------------  services  --------------
+                    List<int> thisCoServices = AppSettings.GetIDsList(iSumXmlDoc: iXmlDoc, perform: AppSettings.iServID);
+                    //loop through all employees registered to this company
+                    foreach (int serviceID in thisCoServices) {
+                        //get services dataTable 
+                        var services = ServicesBLL.GetServiceByID(serviceID);
+                        // Loop through all services
+                        foreach (DataRow service in services.Rows) {
+                            //Populate serviceBLL 
+                            var _with4 = service;
+                            ServicesBLL serviceBLL = new ServicesBLL(_with4.Field<string>(1), _with4.Field<bool?>(2), _with4.Field<bool?>(3), _with4.Field<string>(4), _with4.Field<byte?>(5), _with4.Field<string>(6), _with4.Field<decimal?>(8));
+                            serviceBLL.ID = _with4.Field<int>(0);
+
+                            //add service to installation
+                            i.Services.Add(serviceBLL);
+                        }
+                    }
+                    //----------------------------------------------end of services---------------------------------------------------------------------
+
+                    //------------  End-Users  --------------
+                    List<int> thisCoEndUsers = AppSettings.GetIDsList(iSumXmlDoc: iXmlDoc, perform: AppSettings.iuserID);
+                    //loop through all employees registered to this company
+                    foreach (int endUserID in thisCoEndUsers) {
+                        //get staff dataTable 
+                        var endUsers = EndUserBLL.GetEndUserByID(endUserID);
+                        // Loop through all endUsers
+                        foreach (DataRow endUser in endUsers.Rows) {
+                            //get ---- endUser contact ------dataTable 
+                            int endUserContDetID = endUser.Field<int>(4);
+                            var endUserContDet = ContactDetailsBLL.GetContactDetailByID(endUserContDetID);
+                            //populate an instance of contactDetBLL
+                            var _with51 = cltContactDet.Rows[0];
+                            ContactDetailsBLL endUserContactBLL = new ContactDetailsBLL(_with51.Field<string>(1), _with51.Field<string>(3), _with51.Field<string>(2), _with51.Field<string>(4), _with51.Field<string>(5), _with51.Field<string>(6), _with51.Field<string>(7));
+                            endUserContactBLL.ID = _with51.Field<int>(0);
+
+                            //Populate endUserBLL 
+                            var _with5 = endUser;
+                            EndUserBLL endUserBLL = new EndUserBLL(_with5.Field<string>(1), _with5.Field<string>(2), _with5.Field<string>(3), endUserContactBLL, _with5.Field<Guid>(9));
+                            endUserBLL.ID = _with5.Field<int>(0);
+
+                            //add service to installation
+                            i.EndUsers.Add(endUserBLL);
+                        }
+                    }
+                    //----------------------------------------------end of End-Users---------------------------------------------------------------------
 
 
+                    //------------  Appointments  --------------
+                    List<int> thisCoAppts = AppSettings.GetIDsList(iSumXmlDoc: iXmlDoc, perform: AppSettings.iApptID);
+                    //loop through all employees registered to this company
+                    foreach (int apptID in thisCoAppts) {
+                        //get appts dataTable 
+                        var appts = ApptBLL.GetAppointmentByID(apptID);
+                        // Loop through all appts
+                        foreach (DataRow appt in appts.Rows) {
+                            //Populate apptBLL 
+                            var _with6 = appt;
+                            ApptBLL apptBLL = new ApptBLL(_with6.Field<DateTime>(1), _with6.Field<TimeSpan>(2), _with6.Field<int>(3), _with6.Field<int>(4), _with6.Field<string>(5), _with6.Field<string>(6));
+                            apptBLL.ID = _with6.Field<int>(0);
+
+                            //add appt to installation
+                            i.Appointments.Add(apptBLL);
+                        }
+                    }
+                    //----------------------------------------------end of Appointments---------------------------------------------------------------------
+
+                }
                 return i;
             }
             catch (Exception ex) {

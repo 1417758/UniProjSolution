@@ -13,8 +13,8 @@ namespace WebJobUniBLL {
 
         public int? ID { get; set; }
         public string status { get; set; }
-        public decimal amount { get; set; }
-        public bool isPaidinFull { get; set; }        
+        public decimal? amount { get; set; }
+        public bool? isPaidinFull { get; set; }        
         public int apptID { get; set; }
         public FinancialTransBLL transaction { get; set; }
 

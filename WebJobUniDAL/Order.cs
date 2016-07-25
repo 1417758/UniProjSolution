@@ -85,7 +85,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddOrder(string status, decimal amount, bool isPaidInFull, int finTransID, int apptID) {
+        public static int? AddOrder(string status, decimal? amount, bool? isPaidInFull, int finTransID, int apptID) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertOrder(status, amount, isPaidInFull, finTransID, apptID);

@@ -57,7 +57,7 @@ namespace WebJobUniDAL {
         }
         
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.DailyScheduleDataTable GetDailyScheduleByDateAndStaffID(DateTime date, int? staffID) {
+        public static DataSet1Main.DailyScheduleDataTable GetDailyScheduleByDateAndStaffID(DateTime? date, int? staffID) {
             try {
                 return Adapter.GetDailyScheduleByDateAndStaffID(date, staffID);
             }
@@ -68,7 +68,7 @@ namespace WebJobUniDAL {
         }
 
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public static DataSet1Main.DailyScheduleDataTable GetDailyScheduleByDateAndAgendaID(DateTime date, short? agendaID) {
+        public static DataSet1Main.DailyScheduleDataTable GetDailyScheduleByDateAndAgendaID(DateTime? date, short? agendaID) {
             try {
                 return Adapter.GetDailyScheduleByDateAndAgID(date, agendaID);
             }
@@ -99,7 +99,8 @@ namespace WebJobUniDAL {
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
         public static int? AddDailySchedule(short? agendaID, DateTime date, XmlDocument dailyBookingsXML) {
             try {
-
+                if (dailyBookingsXML == null)
+                    dailyBookingsXML = new XmlDocument();
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertDailySchedule(agendaID, date, dailyBookingsXML.OuterXml);//exception if XmlDocument is null
                 return (int?)result;

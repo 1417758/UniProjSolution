@@ -8045,10 +8045,11 @@ SELECT payMethodID, isOnlinePay, isCashPay, payMetType FROM PaymentMethods WHERE
             tableMapping.ColumnMappings.Add("duration", "duration");
             tableMapping.ColumnMappings.Add("durationUnit", "durationUnit");
             tableMapping.ColumnMappings.Add("dateCreated", "dateCreated");
+            tableMapping.ColumnMappings.Add("price", "price");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Services] WHERE (([serviceID] = @Original_serviceID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_isCertifReq = 1 AND [isCertifReq] IS NULL) OR ([isCertifReq] = @Original_isCertifReq)) AND ((@IsNull_isInsReq = 1 AND [isInsReq] IS NULL) OR ([isInsReq] = @Original_isInsReq)) AND ((@IsNull_description = 1 AND [description] IS NULL) OR ([description] = @Original_description)) AND ((@IsNull_duration = 1 AND [duration] IS NULL) OR ([duration] = @Original_duration)) AND ((@IsNull_durationUnit = 1 AND [durationUnit] IS NULL) OR ([durationUnit] = @Original_durationUnit)) AND ((@IsNull_dateCreated = 1 AND [dateCreated] IS NULL) OR ([dateCreated] = @Original_dateCreated)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Services] WHERE (([serviceID] = @Original_serviceID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_isCertifReq = 1 AND [isCertifReq] IS NULL) OR ([isCertifReq] = @Original_isCertifReq)) AND ((@IsNull_isInsReq = 1 AND [isInsReq] IS NULL) OR ([isInsReq] = @Original_isInsReq)) AND ((@IsNull_description = 1 AND [description] IS NULL) OR ([description] = @Original_description)) AND ((@IsNull_duration = 1 AND [duration] IS NULL) OR ([duration] = @Original_duration)) AND ((@IsNull_durationUnit = 1 AND [durationUnit] IS NULL) OR ([durationUnit] = @Original_durationUnit)) AND ((@IsNull_dateCreated = 1 AND [dateCreated] IS NULL) OR ([dateCreated] = @Original_dateCreated)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_serviceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serviceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -8065,10 +8066,12 @@ SELECT payMethodID, isOnlinePay, isCashPay, payMetType FROM PaymentMethods WHERE
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_durationUnit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "durationUnit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateCreated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateCreated", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.SmallMoney, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Services] ([name], [isCertifReq], [isInsReq], [description], [duration], [durationUnit], [dateCreated]) VALUES (@name, @isCertifReq, @isInsReq, @description, @duration, @durationUnit, @dateCreated);
-SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUnit, dateCreated FROM Services WHERE (serviceID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Services] ([name], [isCertifReq], [isInsReq], [description], [duration], [durationUnit], [dateCreated], [price]) VALUES (@name, @isCertifReq, @isInsReq, @description, @duration, @durationUnit, @dateCreated, @price);
+SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUnit, dateCreated, price FROM Services WHERE (serviceID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isCertifReq", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isCertifReq", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8077,10 +8080,11 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@duration", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "duration", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@durationUnit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "durationUnit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateCreated", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.SmallMoney, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Services] SET [name] = @name, [isCertifReq] = @isCertifReq, [isInsReq] = @isInsReq, [description] = @description, [duration] = @duration, [durationUnit] = @durationUnit, [dateCreated] = @dateCreated WHERE (([serviceID] = @Original_serviceID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_isCertifReq = 1 AND [isCertifReq] IS NULL) OR ([isCertifReq] = @Original_isCertifReq)) AND ((@IsNull_isInsReq = 1 AND [isInsReq] IS NULL) OR ([isInsReq] = @Original_isInsReq)) AND ((@IsNull_description = 1 AND [description] IS NULL) OR ([description] = @Original_description)) AND ((@IsNull_duration = 1 AND [duration] IS NULL) OR ([duration] = @Original_duration)) AND ((@IsNull_durationUnit = 1 AND [durationUnit] IS NULL) OR ([durationUnit] = @Original_durationUnit)) AND ((@IsNull_dateCreated = 1 AND [dateCreated] IS NULL) OR ([dateCreated] = @Original_dateCreated)));
-SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUnit, dateCreated FROM Services WHERE (serviceID = @serviceID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Services] SET [name] = @name, [isCertifReq] = @isCertifReq, [isInsReq] = @isInsReq, [description] = @description, [duration] = @duration, [durationUnit] = @durationUnit, [dateCreated] = @dateCreated, [price] = @price WHERE (([serviceID] = @Original_serviceID) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_isCertifReq = 1 AND [isCertifReq] IS NULL) OR ([isCertifReq] = @Original_isCertifReq)) AND ((@IsNull_isInsReq = 1 AND [isInsReq] IS NULL) OR ([isInsReq] = @Original_isInsReq)) AND ((@IsNull_description = 1 AND [description] IS NULL) OR ([description] = @Original_description)) AND ((@IsNull_duration = 1 AND [duration] IS NULL) OR ([duration] = @Original_duration)) AND ((@IsNull_durationUnit = 1 AND [durationUnit] IS NULL) OR ([durationUnit] = @Original_durationUnit)) AND ((@IsNull_dateCreated = 1 AND [dateCreated] IS NULL) OR ([dateCreated] = @Original_dateCreated)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)));
+SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUnit, dateCreated, price FROM Services WHERE (serviceID = @serviceID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isCertifReq", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isCertifReq", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8089,6 +8093,7 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@duration", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "duration", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@durationUnit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "durationUnit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateCreated", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.SmallMoney, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_serviceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serviceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8104,6 +8109,8 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_durationUnit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "durationUnit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateCreated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateCreated", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.SmallMoney, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serviceID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "serviceID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -8121,7 +8128,7 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUni" +
-                "t, dateCreated FROM Services";
+                "t, dateCreated, price FROM Services";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -8326,7 +8333,7 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_serviceID, string Original_name, global::System.Nullable<bool> Original_isCertifReq, global::System.Nullable<bool> Original_isInsReq, string Original_description, global::System.Nullable<byte> Original_duration, string Original_durationUnit, global::System.Nullable<global::System.DateTime> Original_dateCreated) {
+        public virtual int Delete(int Original_serviceID, string Original_name, global::System.Nullable<bool> Original_isCertifReq, global::System.Nullable<bool> Original_isInsReq, string Original_description, global::System.Nullable<byte> Original_duration, string Original_durationUnit, global::System.Nullable<global::System.DateTime> Original_dateCreated, global::System.Nullable<decimal> Original_price) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_serviceID));
             if ((Original_name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -8384,6 +8391,14 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
+            if ((Original_price.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_price.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8404,7 +8419,7 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string name, global::System.Nullable<bool> isCertifReq, global::System.Nullable<bool> isInsReq, string description, global::System.Nullable<byte> duration, string durationUnit, global::System.Nullable<global::System.DateTime> dateCreated) {
+        public virtual int Insert(string name, global::System.Nullable<bool> isCertifReq, global::System.Nullable<bool> isInsReq, string description, global::System.Nullable<byte> duration, string durationUnit, global::System.Nullable<global::System.DateTime> dateCreated, global::System.Nullable<decimal> price) {
             if ((name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -8447,6 +8462,12 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(price.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8475,6 +8496,7 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
                     global::System.Nullable<byte> duration, 
                     string durationUnit, 
                     global::System.Nullable<global::System.DateTime> dateCreated, 
+                    global::System.Nullable<decimal> price, 
                     int Original_serviceID, 
                     string Original_name, 
                     global::System.Nullable<bool> Original_isCertifReq, 
@@ -8483,6 +8505,7 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
                     global::System.Nullable<byte> Original_duration, 
                     string Original_durationUnit, 
                     global::System.Nullable<global::System.DateTime> Original_dateCreated, 
+                    global::System.Nullable<decimal> Original_price, 
                     int serviceID) {
             if ((name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -8526,64 +8549,78 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_serviceID));
-            if ((Original_name == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            if ((price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(price.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_name));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_serviceID));
+            if ((Original_name == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_name));
             }
             if ((Original_isCertifReq.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Original_isCertifReq.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Original_isCertifReq.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_isInsReq.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_isInsReq.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(Original_isInsReq.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_description == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_description));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_description));
             }
             if ((Original_duration.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((byte)(Original_duration.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((byte)(Original_duration.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_durationUnit == null)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_durationUnit));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_durationUnit));
             }
             if ((Original_dateCreated.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_dateCreated.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((System.DateTime)(Original_dateCreated.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(serviceID));
+            if ((Original_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(Original_price.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(serviceID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8604,8 +8641,25 @@ SELECT serviceID, name, isCertifReq, isInsReq, description, duration, durationUn
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string name, global::System.Nullable<bool> isCertifReq, global::System.Nullable<bool> isInsReq, string description, global::System.Nullable<byte> duration, string durationUnit, global::System.Nullable<global::System.DateTime> dateCreated, int Original_serviceID, string Original_name, global::System.Nullable<bool> Original_isCertifReq, global::System.Nullable<bool> Original_isInsReq, string Original_description, global::System.Nullable<byte> Original_duration, string Original_durationUnit, global::System.Nullable<global::System.DateTime> Original_dateCreated) {
-            return this.Update(name, isCertifReq, isInsReq, description, duration, durationUnit, dateCreated, Original_serviceID, Original_name, Original_isCertifReq, Original_isInsReq, Original_description, Original_duration, Original_durationUnit, Original_dateCreated, Original_serviceID);
+        public virtual int Update(
+                    string name, 
+                    global::System.Nullable<bool> isCertifReq, 
+                    global::System.Nullable<bool> isInsReq, 
+                    string description, 
+                    global::System.Nullable<byte> duration, 
+                    string durationUnit, 
+                    global::System.Nullable<global::System.DateTime> dateCreated, 
+                    global::System.Nullable<decimal> price, 
+                    int Original_serviceID, 
+                    string Original_name, 
+                    global::System.Nullable<bool> Original_isCertifReq, 
+                    global::System.Nullable<bool> Original_isInsReq, 
+                    string Original_description, 
+                    global::System.Nullable<byte> Original_duration, 
+                    string Original_durationUnit, 
+                    global::System.Nullable<global::System.DateTime> Original_dateCreated, 
+                    global::System.Nullable<decimal> Original_price) {
+            return this.Update(name, isCertifReq, isInsReq, description, duration, durationUnit, dateCreated, price, Original_serviceID, Original_name, Original_isCertifReq, Original_isInsReq, Original_description, Original_duration, Original_durationUnit, Original_dateCreated, Original_price, Original_serviceID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

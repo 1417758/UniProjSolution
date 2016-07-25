@@ -10,12 +10,12 @@ namespace WebJobUniBLL {
 
         public int? ID { get; set; }
         public string name { get; set; }
-        public bool isCertifReq { get; set; }
-        public bool isInsuranceReq { get; set; }
+        public bool? isCertifReq { get; set; }
+        public bool? isInsuranceReq { get; set; }
         public string description { get; set; }
-        public byte duration { get; set; }
+        public byte? duration { get; set; }
         public string durationUnit { get; set; }
-        public decimal price { get; set; }
+        public decimal? price { get; set; }
 
         //constructor
         public ServicesBLL() {
@@ -25,6 +25,15 @@ namespace WebJobUniBLL {
             this.name = _name;
             this.description = _description;
             this.duration = _duration;
+            this.price = _price;
+        }
+        public ServicesBLL(string _name, bool? _isCertReq, bool? _isInsReq, string _description, byte? _duration, string _durationUnit, decimal? _price) {
+            this.name = _name;
+            this.isCertifReq = _isCertReq;
+            this.isInsuranceReq = _isInsReq;
+            this.description = _description;
+            this.duration = _duration;
+            this.durationUnit = _durationUnit;
             this.price = _price;
         }
 

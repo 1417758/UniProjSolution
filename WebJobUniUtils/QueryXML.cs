@@ -427,6 +427,54 @@ namespace WebJobUniUtils {
                 return null;
             }
         }
+
+        /// <summary>
+        /// creates a child node element to last child
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="childName"></param>
+        /// <param name="childIValue"></param>
+        /// <param name="attribute1Name"></param>
+        /// <param name="attribute1Value"></param>
+        /// <param name="attribute2Name"></param>
+        /// <param name="attribute2Value"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static XmlDocument AddChild2SpecificNode(string filename, string parentName, string childName, string childIValue = "", string attribute1Name = "", string attribute1Value = "") {
+            try {
+                // Sub-element: childName
+                XmlDocument doc = OpenFile(filename);
+                child = doc.CreateElement(childName);
+
+                //child's text
+                if (!string.IsNullOrEmpty(childIValue)) {
+                    child.InnerText = childIValue;
+                }
+
+                //child attribute1
+                if (!string.IsNullOrEmpty(attribute1Name)) {
+                    XmlAttribute at1 = doc.CreateAttribute(attribute1Name);
+                    at1.Value = attribute1Value;
+                    child.Attributes.Append(at1);
+                }
+
+                //add child to root note
+                //R  doc.ChildNodes[parentIndex].AppendChild(child);
+                string xpath = "//"+ parentName;
+
+               doc.DocumentElement.SelectSingleNode(xpath).AppendChild(child);
+             //   doc.DocumentElement.   .SelectNodes(parentName).Item(0)..a. .AppendChild(child);
+
+                //save document
+                doc.Save(filename);
+
+                return doc;
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Print("<h2>Utils.QueryXML.AddChild() </h2> \n" + ex.InnerException + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>

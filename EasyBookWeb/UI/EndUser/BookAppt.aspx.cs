@@ -60,7 +60,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
             Button selectedBt = (Button)sender;
             string btID = selectedBt.ID;
             //ie: buttonID = ButtonUserInfo
-            int idNumb = (int)WebJobUniUtils.Utils.GetNumberInt(btID.Substring(6, 1));
+            int idNumb = (int)Utils.GetNumberInt(btID.Substring(6, 1));
             //get panel
             //R AccordionPane curPanel = (AccordionPane)Master.FindControl("MainContent").FindControl("AccordionPane" + idNumb);
             //get ajax accordion panel
@@ -95,6 +95,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                     break;
                 case 5://payment
                     //add payment validation
+                    isValid = true;
                     break;
                 case 6://confirmation
                     //add confirmation validation
@@ -131,6 +132,9 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                     break;
                 case 5://payment
                     UpdateInstallationObject(isPayment: true);
+                    //show confirmation msg and exit button
+                    this.confirmationTag.Visible = true;
+                    this.button6.Visible = true;
                     break;
                 case 6://confirmation
                     UpdateInstallationObject(isConfirmation: true);
@@ -259,7 +263,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                 //add ASP.NETUSER, If it already exists return aspnetID
                 Guid endUserASPUserID = WebUtils.AddEndUserASPNETUser(userPersoDet[2], userPersoDet[1], userPersoDet[3]);
                 //check user exists of DB/session 20/716 revise?
-                int userIndex = i.Customers.FindIndex(endUser => endUser.aspnetUserID.ToString().Equals(endUserASPUserID.ToString(), StringComparison.Ordinal));
+                int userIndex = i.EndUsers.FindIndex(endUser => endUser.aspnetUserID.ToString().Equals(endUserASPUserID.ToString(), StringComparison.Ordinal));
                 //create new
                 if (userIndex < 0) {
                     //create new end-user contact Details
@@ -267,7 +271,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                     //create new end-user
                     EndUserBLL newEndUser = new EndUserBLL(userPersoDet[0], userPersoDet[1], userPersoDet[2], newEndUserContact, endUserASPUserID);
                     //add to installation
-                    i.Customers.Add(newEndUser);
+                    i.EndUsers.Add(newEndUser);
                 }
                 //add notes to current appt (userID is added on SaveInstallationToDB2)
                 currAppt.notes = userPersoDet[8];
@@ -284,7 +288,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                 string curSelStaff1stName = this.LabelServProvider.Text;
 
                 //----- process data and save to database ------
-                InstallationBLL.SaveInstallationToDB2(ref i, ref currAppt, curSelStaff1stName, SessionVariables.TempStaffFolder);
+                InstallationBLL.SaveInstallationToDB2(ref i, ref currAppt, curSelStaff1stName, SessionVariables.TempStaffFolder, SessionVariables.ISummaryXML);
             }
 
             //save current appt back to session installation and current appt from session 

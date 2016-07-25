@@ -83,7 +83,10 @@
             <ajaxToolkit:AccordionPane ID="AccordionPane6" runat="server">
                 <Header>6. Appointment Confirmation</Header>
                 <Content>
-                    content is located here 
+                   <p  ID="confirmationTag" runat="server" Visible="true" > Congratulations your appointment is now booked! <br />
+                       You will also receive a confirmation by email.
+                    <br /><br />
+                    Looking forward to seeing you then!  </p>
                     <asp:Button ID="button6" runat="server" Text="Finish &raquo;" OnClick="Button_Click" class="btn btn-default" />
                 </Content>
             </ajaxToolkit:AccordionPane>

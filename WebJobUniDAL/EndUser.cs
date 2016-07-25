@@ -103,7 +103,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddEndUser(string title, string firstName, string lastName, int? contactDetailID, Guid asp_netUSER_ID) {
+        public static int? AddEndUser(string title, string firstName, string lastName, int? contactDetailID, Guid? asp_netUSER_ID) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertPersonInherit(title, firstName, lastName, contactDetailID, (byte)RolesEnum.END_USER, asp_netUSER_ID, "", "", null);

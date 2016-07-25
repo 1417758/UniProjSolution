@@ -12,6 +12,7 @@
 
     void Application_End(object sender, EventArgs e) {
         //  Code that runs on application shutdown
+            System.Diagnostics.Debug.Print("------------------------  APPLICATION SHUT DOWN    -----------------");
 
     }
 
@@ -75,40 +76,15 @@
         // Fires when the session is started
         try {
 
-            //load settings file                    
-            //R  ECWebUtils.GetECSettings();
-
-            //load unit convertor
-            //R   UnitConvertorUtils.loadUnitsConvertorItems(SharedSettings.Settings.UnitsXMLFilename);
-
-            //load new installation                
-            Installation i = WebUtils.GetInstallationObjectFromSession();
-
+         
             //source https://msdn.microsoft.com/en-us/library/6c3yckfw.aspx
             //solve client link here
             string clientURL1 = this.Request.RawUrl; //ie: Page.ResolveUrl("~");
 
-            //error  string  clientURL = HttpContext.Current.Server.MapPath("~/UI/EndUser/WelcomeUser.aspx?field1=5");
-            //check if its the endUser pages trying to be accessed
-            if (clientURL1.Contains("UI/EndUser")) {
-                //get companyID passed on client given url
-                string compID_url = Request.QueryString[XMLConstants.URLVar1];
-                System.Diagnostics.Debug.Print("<h1>Request.QueryString[field1]</h1> \t GET field1 is: \t " + compID_url.ToString() );
-                //NOTE //InstallationBLL. GET/BUILD COMPANY INSTALLATION OBJ (INCLUDING STAFF AND SERVICES) *GetAllStaff, GetAllServices (as unique DB)  
-                //18/7/16 usign test config for now
-            //    i = Installation.GetTestInstallation();
-                //http://msdn.microsoft.com/en-us/library/ms150046.aspx
-            //    Uri myUri = new Uri("http://www.example.com?param1=good&param2=bad");
-            //    string param1 = HttpUtility.ParseQueryString(myUri.Query).Get("param1");
-            }
+           //update session installation accordingly
+    //R        WebUtils.LoadInstallation2Sesssion(clientURL1);
 
-            //save in session
-            WebUtils.PutInstallationObjectinSession(i);
-
-
-
-
-
+      
         }
         catch (Exception ex) {
             System.Diagnostics.Debug.Print("<h2>Global.asax, Application_Error Method</h2>\n" + ex.ToString() + "\n" + ex.InnerException + "\n" + ex.Message);
@@ -125,6 +101,8 @@
         // is set to InProc in the Web.config file. If session mode is set to StateServer 
         // or SQLServer, the event is not raised.
         Session.RemoveAll();
+          System.Diagnostics.Debug.Print("------------------------  SESSION END    -----------------");
+
 
     }
 

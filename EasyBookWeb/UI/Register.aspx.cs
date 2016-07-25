@@ -371,7 +371,7 @@ public partial class UI_Register : System.Web.UI.Page {
 
             if (isComplete) {
                 //process data and save to database
-                InstallationBLL.SaveInstallationToDB(ref i);
+                InstallationBLL.SaveInstallationToDB(ref i, SessionVariables.ISummaryXML);
                 SessionVariables.CompanyID = i.Company.ID;
             }
         }

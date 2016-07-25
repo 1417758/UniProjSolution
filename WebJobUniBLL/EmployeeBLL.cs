@@ -19,7 +19,7 @@ namespace WebJobUniBLL {
         public string natInsNumb { get; set; }
         public string jobTitle { get; set; }
         public AgendaBLL agenda { get; set; }
-        public Guid aspnetUserID { get; set; }
+        public Guid? aspnetUserID { get; set; }
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace WebJobUniBLL {
             this.contactDetail = new ContactDetailsBLL();
             this.agenda = new AgendaBLL();
         }
-        public EmployeeBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, string _natInsNumb, string _jobTitle, AgendaBLL _agenda, Guid _aspUserID) {
+        public EmployeeBLL(string _title, string _firstName, string _lastName, ContactDetailsBLL _contactDet, string _natInsNumb, string _jobTitle, AgendaBLL _agenda, Guid? _aspUserID) {
             this.contactDetail = _contactDet;
             this.agenda = new AgendaBLL();
             this.title = _title;

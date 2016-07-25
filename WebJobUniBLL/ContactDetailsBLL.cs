@@ -19,8 +19,8 @@ namespace WebJobUniBLL {
         public string landline { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }
-        public DateTime dateCreated { get; set; }
-        public DateTime dateUpdated { get; set; }
+        public DateTime? dateCreated { get; set; }
+        public DateTime? dateUpdated { get; set; }
 
         #endregion
 

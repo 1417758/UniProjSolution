@@ -86,7 +86,7 @@ namespace WebJobUniDAL {
         /// <returns></returns>
         /// <remarks></remarks>
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public static int? AddService(string name,bool isCertifReq, bool isInsReq, string description, byte duration, string durationUnit, decimal price) {
+        public static int? AddService(string name,bool? isCertifReq, bool? isInsReq, string description, byte? duration, string durationUnit, decimal? price) {
             try {
                 //NB tableAdapter returns decimal value by default. TYPE= object {decimal}
                 dynamic result = Adapter.InsertService(name, isCertifReq, isInsReq, description, duration, durationUnit, price);
