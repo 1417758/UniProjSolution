@@ -111,27 +111,33 @@ namespace WebJobUniBLL {
 
                 // Loop through all employees
                 int tempStaffID = 0;
-                for (int a = 0; a < i.Employees.Count - 1; a++) {
+                for (int a = 0; a < i.Employees.Count; a++) {
                     EmployeeBLL employee = i.Employees[a];
                     //get staff ID
                     tempStaffID = (int)employee.ID;
                     //add to xml
                     xmlDoc = AddNode2ISummaryXML(fileName, AppSettings.iEmpID, tempStaffID.ToString(), a);
                 }
+                ////still add Employees parent node if users dont exist this point
+                if (i.Employees.Count == 0)
+                    xmlDoc = AddNode2ISummaryXML(fileName, AppSettings.iEmpID, String.Empty, 0, addChild: false);
 
                 // Loop through all services
                 int tempServID = 0;
-                for (int b = 0; b < i.Services.Count - 1; b++) {
+                for (int b = 0; b < i.Services.Count; b++) {
                     ServicesBLL service = i.Services[b];
                     //get service ID
                     tempServID = (int)service.ID;
                     //add to xml
                     xmlDoc = AddNode2ISummaryXML(fileName, AppSettings.iServID, tempServID.ToString(), b);
                 }
+                ////still add services parent node if users dont exist this point
+                if (i.Services.Count == 0)
+                    xmlDoc = AddNode2ISummaryXML(fileName, AppSettings.iServID, String.Empty, 0, addChild: false);
 
                 // Loop through all endUsers
                 int tempEndUserID = 0;
-                for (int c = 0; c < i.EndUsers.Count - 1; c++) {
+                for (int c = 0; c < i.EndUsers.Count; c++) {
                     EndUserBLL endUser = i.EndUsers[c];
                     //get endUser ID
                     tempEndUserID = (int)endUser.ID;
@@ -145,7 +151,7 @@ namespace WebJobUniBLL {
 
                 // Loop through all appointments
                 int tempApptID = 0;
-                for (int d = 0; d < i.Appointments.Count - 1; d++) {
+                for (int d = 0; d < i.Appointments.Count; d++) {
                     ApptBLL appt = i.Appointments[d];
                     //get appt ID
                     tempApptID = (int)appt.ID;
@@ -275,6 +281,18 @@ namespace WebJobUniBLL {
 
                 //set parent Names
                 switch (perform) {
+                    case iEmpID:
+                        // case operations
+                        parentName = "Employees";
+                        childName = iEmpID;
+                        childValue = value2Add;
+                        break;
+                    case iServID:
+                        // case operations
+                        parentName = "Services";
+                        childName = iServID;
+                        childValue = value2Add;
+                        break;
                     case iuserID:
                         // case operations
                         parentName = "EndUsers";

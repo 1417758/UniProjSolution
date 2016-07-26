@@ -229,22 +229,24 @@ namespace EasyBookWeb {
                     //get test installation
                     i = Installation.GetTestInstallation();//NB for the time being only
                     compID_valid = (int)i.Company.ID;
+                    //update session installation
+                    WebUtils.PutInstallationObjectinSession(i);
                 }
-                else if (compID_url_INT != compID_sess && compID_sess != null) {//session variablehas preference over URL. 
+                else if (compID_sess != null && i.Company.iSummaryXML != null) {//session variablehas preference over URL. 
                     //get session
                     compID_valid = (int)compID_sess;
                     //Do nothing because already have installation from session 
                 }
-                else if (compID_url_INT != null) {
+                else { // if (compID_url_INT != null || i.Company.iSummaryXML == null)
                     //get url comp variable as number
                     compID_valid = (int)compID_url_INT;
                     //get installation from the DB
+                    i = new Installation();
                     i = Installation.PopulateInstalationObjFromDB(ref i, compID_valid, SessionVariables.ISummaryXML);
+                    //update session installation
+                    WebUtils.PutInstallationObjectinSession(i);
                 }
-
-
-                //update session installation
-                WebUtils.PutInstallationObjectinSession(i);
+          
                 //update compID variable on session
                 SessionVariables.CompanyID = compID_valid;
 

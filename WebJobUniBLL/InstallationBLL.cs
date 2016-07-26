@@ -87,6 +87,8 @@ namespace WebJobUniBLL {
 
                 //------- SAVE  INSTALLATION XML SUMMARY TO DB  ------------  
                 int? NumbXmlAdded = CompanyBLL.AddCompanyInstallationSummaryXMLByID((short)i.Company.ID, iXmlDoc);
+                //------- SAVE  INSTALLATION XML SUMMARY TO SESSION  ------------  
+                i.Company.iSummaryXML = iXmlDoc;
 
             }
             catch (Exception ex) {
@@ -150,8 +152,9 @@ namespace WebJobUniBLL {
                 //-------  create and save summary installation xml file ------------ 
                 XmlDocument iXmlDoc = AppSettings.GetInstallationSummaryXML(i, iSumXMLfileName);
                 iXmlDoc.Save(iSumXMLfileName);
-                //save intall XML SUMMARY TO DB  
+                //save intall XML SUMMARY TO DB AND SESSION 
                 int? NumbXmlAdded = CompanyBLL.AddCompanyInstallationSummaryXMLByID((short)i.Company.ID, iXmlDoc);
+                i.Company.iSummaryXML = iXmlDoc;
             }
             catch (Exception ex) {
                 ExceptionHandling.LogException(ref ex);

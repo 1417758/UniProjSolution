@@ -23,7 +23,7 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidatorDuration" runat="server" ErrorMessage="Service duration is required."
                 ControlToValidate="TextBoxDuration" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
         </td>
-         <td><asp:TextBox ID="TextBoxPrice" runat="server" placeholder="Price" type="number" step="0.01"></asp:TextBox>
+         <td><asp:TextBox ID="TextBoxPrice" runat="server" placeholder="Price" type="number" step="0.01" min="0" max="214748.35"></asp:TextBox>
              <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server" ErrorMessage="Service price is required."
                 ControlToValidate="TextBoxPrice" ValidationGroup="AddService">*</asp:RequiredFieldValidator>
          </td>

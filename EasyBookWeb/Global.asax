@@ -75,14 +75,13 @@
         // Code that runs when a new session is started
         // Fires when the session is started
         try {
-
          
             //source https://msdn.microsoft.com/en-us/library/6c3yckfw.aspx
             //solve client link here
             string clientURL1 = this.Request.RawUrl; //ie: Page.ResolveUrl("~");
 
            //update session installation accordingly
-    //R        WebUtils.LoadInstallation2Sesssion(clientURL1);
+            WebUtils.LoadInstallation2Sesssion(clientURL1);
 
       
         }

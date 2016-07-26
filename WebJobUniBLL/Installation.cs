@@ -211,8 +211,10 @@ namespace WebJobUniBLL {
                     var _with1 = company.Rows[0];
                     CompanyBLL coBLL = new CompanyBLL(_with1.Field<string>(1), _with1.Field<string>(2), _with1.Field<int?>(3), _with1.Field<string>(4), _with1.Field<DateTime?>(5), _with1.Field<string>(6), _with1.Field<bool?>(9), _with1.Field<string>(10));
                     coBLL.ID = _with1.Field<int>(0);//same as companyID               
-                                                    //add contact details to coBLL
+                    //add contact details to coBLL
                     coBLL.businessAddress = coContactBLL;
+                    //------- SAVE  INSTALLATION XML SUMMARY TO SESSION  ------------  
+                    i.Company.iSummaryXML = iXmlDoc;
                     //foreign keys
                     int clientID = _with1.Field<int>(7);
 

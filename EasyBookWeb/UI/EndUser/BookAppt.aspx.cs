@@ -74,7 +74,7 @@ public partial class UI_EndUser_BookAppt : System.Web.UI.Page {
                 case 1://services
                     //check service is selected
                     userSevSelected = this.ServiceSelectionUserControl.GetSelectedServiceIndex();
-                    if (userSevSelected > 0)
+                    if (userSevSelected >= 0)
                         isValid = true;
                     break;
                 case 2://staff
